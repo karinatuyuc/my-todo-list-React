@@ -1,21 +1,20 @@
-<<<<<<< HEAD
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🧠 Descripción/ Description
 
-Currently, two official plugins are available:
+Esta es una aplicación de lista de tareas construida con React. Su objetivo es ayudar a los
+usuarios a organizar sus pendientes de forma sencilla, visual y accesible.
+Incluye funcionalidades básicas como agregar, marcar y eliminar tareas, y fue desarrollada
+como parte de mi práctica personal para aprender y aplicar conceptos fundamentales de React.
+La documentación está escrita en español e inglés para reflejar mi enfoque bilingue en 
+proyectos técnicos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*************************
 
-## React Compiler
+This a a task list app built with React. Its goal is to help users organize their to-do's in a simple,
+visual and accessible way.
+It includes basic features like adding, checking off, and deleting tasks, and was developed as 
+part of my personal practice to learn and apply core React concepts.
+Documentation is written in both Spanish and English to reflect my bilingual approach to 
+technical projects.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# mi-todo-list-React
-a todo list with React 
->>>>>>> a19dd4295c85374f7b8a78dd61bb86814e4f1e5b
+*************************

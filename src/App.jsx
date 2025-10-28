@@ -1,13 +1,13 @@
-
-
-
-
+import  TodoApp  from "./TodoApp.jsx";
 
 
 function App() {
   return (
-    <p>The first step to creat my todo app with react</p>
+      <TodoApp 
+        
+      />
   )
 }
 
-export default App
+
+export default App;
