@@ -1,7 +1,7 @@
 //Document to write the main functionalities first and then
 // integrate them into the App.jsx component and render it
 //All logic related to the todo app will be written here
-import { useState } from "react";
+import { useState } from "react"; // Importing useState hook from React
 
 function TodoApp() {
 
@@ -13,7 +13,7 @@ function TodoApp() {
     }
 
     const handleAddTask = () => {
-        if(task.trim() === "") {
+        if(task.trim() === "") {s
             alert("Plese enter a task, cannot add empty task");
         } else {
             setTasks([...tasks, task])
