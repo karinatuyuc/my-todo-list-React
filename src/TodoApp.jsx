@@ -1,20 +1,21 @@
 //Document to write the main functionalities first and then
 // integrate them into the App.jsx component and render it
 //All logic related to the todo app will be written here
-import { useState } from "react"; // Importing useState hook from React
+import { useState } from "react"; 
 
 function TodoApp() {
 
     const [task, setTask] = useState(""); // State to hold the current input value
     const [tasks, setTasks] = useState([]); // State to hold the list of tasks
+    const [inputValue, setInputValue] = useState("");  //State to hold the input field value
 
     const handleInputChange = (e) => {
-        setTask(e.target.value);
+        setTask(e.target.value); //Esto mostrara el valor del input
     }
 
     const handleAddTask = () => {
-        if(task.trim() === "") {s
-            alert("Plese enter a task, cannot add empty task");
+        if(task.trim() === "") {///trim to delte the spaces 
+            alert("Plese enter a task!");
         } else {
             setTasks([...tasks, task])
             setTask("")
