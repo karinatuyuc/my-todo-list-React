@@ -7,8 +7,7 @@ function TodoApp() {
 
     const [task, setTask] = useState(""); // State to hold the current input value
     const [tasks, setTasks] = useState([]); // State to hold the list of tasks
-    const [inputValue, setInputValue] = useState("");  //State to hold the input field value
-
+    const [inputValue, setInputValue] = useState(""); 
     const handleInputChange = (e) => {
         setTask(e.target.value); //Esto mostrara el valor del input
     }
