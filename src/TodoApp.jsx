@@ -14,10 +14,10 @@ function TodoApp() {
 
     const handleAddTask = () => {
         if(task.trim() === "") {///trim to delte the spaces 
-            alert("Plese enter a task!");
+            alert("Plese enter a task!"); // Alert if the input is empty
         } else {
-            setTasks([...tasks, task])
-            setTask("")
+            setTasks([...tasks, task]) 
+            setTask("") // Clear the input field after adding the task
         }
     }
 
