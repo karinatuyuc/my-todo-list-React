@@ -2,11 +2,11 @@
 // integrate them into the App.jsx component and render it
 //All logic related to the todo app will be written here
 import { useState } from "react"; 
-import { generateUniqueID } from "./UniqueID.jsx";
+import { generateUniqueID } from "./UniqueId.js"; // Importing the unique ID generator function
 
 function TodoApp() {
 
-        const [inputValue, setInputValue] = useState(""); // State to hold the input field value
+    const [inputValue, setInputValue] = useState(""); // State to hold the input field value
     const [tasks, setTasks] = useState([]); // State to hold the list of tasks
 
 
@@ -41,12 +41,16 @@ function TodoApp() {
 
            <div>
             <h2>Task List:</h2>
-             {tasks.length === 0 ? <p>No task added yet</p> : tasks.map((task) => (
+             {tasks.length === 0 ? 
+             <p>No task added yet</p> : 
+             
+             tasks.map((task) => (
                 <li key={task.id}>
                     <strong>ID: {task.id}</strong><br></br>
                     <strong>{task.text}</strong>
                 </li> 
-            )) }
+            ))
+             }
            </div>
         </>
     )
