@@ -46,7 +46,6 @@ function TodoApp() {
              
              tasks.map((task) => (
                 <li key={task.id}>
-                    <strong>ID: {task.id}</strong><br></br>
                     <strong>{task.text}</strong>
                 </li> 
             ))
