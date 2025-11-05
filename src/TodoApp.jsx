@@ -3,6 +3,7 @@
 //All logic related to the todo app will be written here
 import { useState } from "react"; 
 import { generateUniqueID } from "./UniqueId.js"; // Importing the unique ID generator function
+import { AddTaskModal } from "./addTaskModal.jsx";
 
 function TodoApp() {
 
@@ -26,11 +27,17 @@ function TodoApp() {
             setInputValue(""); // Clear the input field
     }
 
+    const handleEditTask = () => {
+        console.log("Edit task clicked");
+    }
+
 
     return (
         <>
+        <AddTaskModal />
+
            <div>
-            <label>Enter a new taks:</label>
+            <label>Title: </label>
             <input 
               type="text"
               value={inputValue}
@@ -43,10 +50,12 @@ function TodoApp() {
             <h2>Task List:</h2>
              {tasks.length === 0 ? 
              <p>No task added yet</p> : 
-             
+
              tasks.map((task) => (
+                
                 <li key={task.id}>
                     <strong>{task.text}</strong>
+                    <button onClick={handleEditTask}>Edit</button>
                 </li> 
             ))
              }
