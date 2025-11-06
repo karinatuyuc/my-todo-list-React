@@ -1,3 +1,4 @@
+// Componente raiz de la aplicacion
 import  TodoApp  from "./TodoApp.jsx"; //Importando el componente todo app
 
 
