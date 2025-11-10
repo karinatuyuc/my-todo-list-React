@@ -15,7 +15,7 @@ export function AddTaskModal() {
     title: title,
     date: date,
     priority: priority,
-    description: description
+    description: description /// 09/11205
   }
 
 
