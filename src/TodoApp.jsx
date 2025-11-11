@@ -1,19 +1,23 @@
-//Document to write the main functionalities first and then
-// integrate them into the App.jsx component and render it
-//All logic related to the todo app will be written here
 
 import { AddTaskModal } from "./addTaskModal";
-
+import TaskRenderer from "./TaskRenderer";
 function TodoApp() {
+
 
     return (
         <>
-         < AddTaskModal 
-         />
-        
+           < AddTaskModal 
+           />
+
+           < TaskRenderer 
+             tasks={tasks}
+           />
         </>
 
     )
 }
 
 export default TodoApp;
+
+
+

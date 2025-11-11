@@ -1,4 +1,3 @@
-import { useState } from "react";
 import React from "react";
 
 export function AddTaskModal() {
@@ -8,14 +7,12 @@ export function AddTaskModal() {
   const [ priority, setPriority ] = useState(""); // State to hold the task priority
   const [ description, setDescription ] = useState(""); // State to hold the task description
 
-  const [ tasks, setTasks ] = useState([]); // State to hold the list of tasks 06/11
-
 
   const newTask = { // Object to represent the new task, the states of the form fields
     title: title,
     date: date,
     priority: priority,
-    description: description /// 09/11205
+    description: description 
   }
 
 
