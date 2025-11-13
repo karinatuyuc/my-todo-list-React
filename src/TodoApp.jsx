@@ -7,10 +7,10 @@ function TodoApp() {
 
   const [ tasks, setTasks ] = useState([]); // State to hold the list of tasks
  
-
     return (
         <>
            < AddTaskModal 
+              tasks={tasks}
            />
 
            < TaskRenderer 
