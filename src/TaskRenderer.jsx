@@ -1,9 +1,14 @@
 
-function TaskRenderer(){
+
+
+
+function TaskRenderer({tasks}) {
 
     return (
         <>
-         <h1>Hola mundo, desde TaskRenderer</h1>
+         <div>
+            <h1>Tasks added: </h1>
+         </div>
         </>
     )
 }

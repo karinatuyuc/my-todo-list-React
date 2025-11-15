@@ -1,7 +1,7 @@
 import { useState } from "react"
 import React from "react";
 
-export function AddTaskModal() {
+export function AddTaskModal({setTasks}) {
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
   const [ date, setDate ] = useState(""); // State to hold the task date
@@ -37,7 +37,8 @@ export function AddTaskModal() {
   }
 
   // Handle form submission
-  const dataValidate = () => {
+  const dataValidate = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
     // Perform validation checks here
 
     if(!title.trim() || !date || !priority.trim() || !description.trim()) { // Check if any field is empty
@@ -56,7 +57,7 @@ export function AddTaskModal() {
             <button>Go Back</button>
          </nav>
 
-        <form>
+        <form onSubmit={dataValidate}>
           <div>
             <label htmlFor="title">Title</label>
             <input 
@@ -112,7 +113,6 @@ export function AddTaskModal() {
 
             <button 
              type="submit"
-            
             >
               Done
             </button>
