@@ -1,7 +1,7 @@
 import { useState } from "react"
 import React from "react";
 
-export function AddTaskModal({setTasks}) {
+export function AddTaskModal({setTasks, tasks}) {
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
   const [ date, setDate ] = useState(""); // State to hold the task date
@@ -41,13 +41,18 @@ export function AddTaskModal({setTasks}) {
     e.preventDefault(); // Prevent default form submission behavior
     // Perform validation checks here
 
-    if(!title.trim() || !date || !priority.trim() || !description.trim()) { // Check if any field is empty
+    if(!title.trim() || !date.trim() || !priority.trim() || !description.trim()) { // Check if any field is empty
       alert("Please fill in all fields, before submitting the form.");
     } else {
-      setTasks([...tasks, newTask]); // Add the new task to the tasks array
+      const newTask = {title, date, priority, description}; // Create a new task object
+      setTasks(prevTasks => [...prevTasks, newTask]); // Add the new task to the tasks array
+      // Reset form fields after submission
+      setTitle("");
+      setDate("");
+      setPriority("");
+      setDescription("");
     }
   }
-
 
 
     return (
