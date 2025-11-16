@@ -1,5 +1,5 @@
-import { useState } from "react"
-import React from "react";
+import { useState} from "react"
+import { generateUniqueID } from "./UniqueId";
 
 export function AddTaskModal({setTasks, tasks}) {
 
@@ -13,7 +13,8 @@ export function AddTaskModal({setTasks, tasks}) {
     title: title,
     date: date,
     priority: priority,
-    description: description 
+    description: description,
+    id : generateUniqueID().id,
   }
 
 
@@ -44,7 +45,7 @@ export function AddTaskModal({setTasks, tasks}) {
     if(!title.trim() || !date.trim() || !priority.trim() || !description.trim()) { // Check if any field is empty
       alert("Please fill in all fields, before submitting the form.");
     } else {
-      const newTask = {title, date, priority, description}; // Create a new task object
+      const newTask = {id: generateUniqueID().id, title, date, priority, description}; // Create a new task object
       setTasks(prevTasks => [...prevTasks, newTask]); // Add the new task to the tasks array
       // Reset form fields after submission
       setTitle("");
@@ -88,7 +89,7 @@ export function AddTaskModal({setTasks, tasks}) {
               {priorityOptions.map((priorityOption) => {
                
                 return (
-                   <React.Fragment key={priorityOption}>
+                   <div key={priorityOption}>
                   <input
                     type="radio" // Radio button for priority selection
                     id={`priority-${priorityOption}`} // Unique id for each priority option
@@ -99,7 +100,7 @@ export function AddTaskModal({setTasks, tasks}) {
                     required
                   />
                   <label htmlFor={`priority-${priorityOption}`}>{priorityOption}</label>
-                  </React.Fragment>
+                  </div>
                 )
               })}
               

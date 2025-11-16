@@ -1,7 +1,7 @@
 
-export function generateUniqueID(text) {
+export function generateUniqueID() {
     return {
         id: 'id-' + Date.now() + "-" + Math.floor(Math.random() * 1000),
-        text: text.trim()
-    }
+    
+   }
 }
