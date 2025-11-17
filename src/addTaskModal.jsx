@@ -1,6 +1,7 @@
 import { useState} from "react"
 import { GenerateUniqueID} from "./UniqueId";
 
+
 export function AddTaskModal({setTasks, tasks}) {
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
@@ -60,7 +61,10 @@ export function AddTaskModal({setTasks, tasks}) {
         <>
          <nav>
             <span>Add New Task</span>
-            <button>Go Back</button>
+            <button
+            > 
+             Go Back
+            </button>
          </nav>
 
         <form onSubmit={dataValidate}>
@@ -92,7 +96,7 @@ export function AddTaskModal({setTasks, tasks}) {
                    <div key={priorityOption}>
                   <input
                     type="radio" // Radio button for priority selection
-                    id={`priority-${priorityOption}`} // Unique id for each priority option
+                    id={`priority-${priorityOption}`} // Unique id for each p riority option
                     name="priority" // Name attribute to group radio buttons
                     value={priorityOption}  // Value of the radio button
                     checked={priority === priorityOption} // Check if the current priority matches the option
