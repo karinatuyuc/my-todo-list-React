@@ -1,5 +1,5 @@
 import { useState} from "react"
-import { generateUniqueID } from "./UniqueId";
+import { GenerateUniqueID} from "./UniqueId";
 
 export function AddTaskModal({setTasks, tasks}) {
 
@@ -14,7 +14,7 @@ export function AddTaskModal({setTasks, tasks}) {
     date: date,
     priority: priority,
     description: description,
-    id : generateUniqueID().id,
+    id : GenerateUniqueID().id,
   }
 
 
@@ -45,7 +45,7 @@ export function AddTaskModal({setTasks, tasks}) {
     if(!title.trim() || !date.trim() || !priority.trim() || !description.trim()) { // Check if any field is empty
       alert("Please fill in all fields, before submitting the form.");
     } else {
-      const newTask = {id: generateUniqueID().id, title, date, priority, description}; // Create a new task object
+      const newTask = {id: GenerateUniqueID().id, title, date, priority, description}; // Create a new task object
       setTasks(prevTasks => [...prevTasks, newTask]); // Add the new task to the tasks array
       // Reset form fields after submission
       setTitle("");
