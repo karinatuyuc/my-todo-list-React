@@ -2,7 +2,7 @@ import { useState} from "react"
 import { GenerateUniqueID} from "./UniqueId";
 
 
-export function AddTaskModal({setTasks, tasks}) {
+export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onClose as props
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
   const [ date, setDate ] = useState(""); // State to hold the task date
@@ -54,6 +54,7 @@ export function AddTaskModal({setTasks, tasks}) {
       setPriority("");
       setDescription("");
     }
+    onClose(); // Close the modal after submission
   }
 
 
@@ -62,6 +63,7 @@ export function AddTaskModal({setTasks, tasks}) {
          <nav>
             <span>Add New Task</span>
             <button
+              onClick={onClose} // Call onClose prop to close the modal
             > 
              Go Back
             </button>
