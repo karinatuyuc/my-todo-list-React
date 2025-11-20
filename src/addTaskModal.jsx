@@ -69,7 +69,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             </button>
          </nav>
 
-        <form onSubmit={dataValidate}> // Handle form submission
+        <form onSubmit={dataValidate}> 
           <div>
             <label htmlFor="title">Title</label>
             <input 
