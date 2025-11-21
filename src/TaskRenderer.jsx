@@ -1,5 +1,6 @@
 
-function TaskRenderer({tasks}) {
+function TaskRenderer({tasks, setEditingTaskId}) {
+
 
     return (
         <>
@@ -12,9 +13,9 @@ function TaskRenderer({tasks}) {
                     <h4>{task.title}</h4>
                     <span>Priority : {task.priority}</span> <br/>
                     <span>Created on: {task.date}</span>
-
                     <p>Task Description: {task.description}</p>
-                </div>
+                    <button onClick={() => setEditingTaskId(task.id)}>Edit</button> 
+                </div> 
              ))}
          </div>
         </>

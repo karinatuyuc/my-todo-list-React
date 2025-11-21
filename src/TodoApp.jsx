@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { AddTaskModal } from "./addTaskModal";
 import TaskRenderer from "./TaskRenderer";
+import { EditModal } from "./editModal";
 
 
 function TodoApp() {
 
   const [ tasks, setTasks ] = useState([]); // Global state. State to hold the list of tasks
+  const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
   const [ showModal, setShowModal] = useState(false); // State to control the visibility of the modal
+
 
   const buttonStyles = {
     backgroundColor: "#6d1783ff",
@@ -23,6 +26,8 @@ function TodoApp() {
   function onClose() { // Function to close the modal
     setShowModal(false); // Set showModal to false to hide the modal
   }
+
+  const taskToEdit = tasks.find(task => task.id === editingTaskId); // Find the task being edited based on editingTaskId
 
   
     return (
@@ -45,7 +50,11 @@ function TodoApp() {
 
            < TaskRenderer 
              tasks={tasks}
+             setEditingTaskId={setEditingTaskId}
            />
+
+           {editingTaskId && < EditModal taskToEdit={taskToEdit}/> } 
+           {/* Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
         </>
 
     )

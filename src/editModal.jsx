@@ -1,8 +1,6 @@
 
 
-export function EditModal() {
-
-
+export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
     return (
         <>
          <nav>
