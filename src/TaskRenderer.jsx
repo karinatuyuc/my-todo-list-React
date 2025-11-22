@@ -1,5 +1,5 @@
 
-function TaskRenderer({tasks, setEditingTaskId}) {
+function TaskRenderer({tasks, setEditingTaskId}) { // Receive tasks and setEditingTaskId as props
 
 
     return (
@@ -14,7 +14,7 @@ function TaskRenderer({tasks, setEditingTaskId}) {
                     <span>Priority : {task.priority}</span> <br/>
                     <span>Created on: {task.date}</span>
                     <p>Task Description: {task.description}</p>
-                    <button onClick={() => setEditingTaskId(task.id)}>Edit</button> 
+                    <button onClick={() => setEditingTaskId(task.id)}>Edit</button> {/* Set editing task ID on button click */}
                 </div> 
              ))}
          </div>

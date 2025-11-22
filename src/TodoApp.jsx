@@ -50,7 +50,7 @@ function TodoApp() {
 
            < TaskRenderer 
              tasks={tasks}
-             setEditingTaskId={setEditingTaskId}
+             setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
            />
 
            {editingTaskId && < EditModal taskToEdit={taskToEdit}/> } 
