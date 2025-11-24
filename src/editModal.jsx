@@ -69,7 +69,7 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
            </textarea>
 
            <input
-            value="Done" 
+            value="Done" //Boton para enviar el formulario
            />
          </form>
         </>
