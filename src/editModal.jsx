@@ -5,7 +5,7 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
     const {title, date, description, priority} = taskToEdit; // Destructure title, description, and priority from the taskToEdit object
 
         // Local state to hold the edited task details
-    const [ editTitle, setEditTitle ] = useState("title");
+    const [ editTitle, setEditTitle ] = useState(title);
     const [ editDate, setEditDate ] = useState(date);
     const [ editPriority, setEditPriority ] = useState(priority);
     const [ editDescription, setEditDescription ] = useState(description);
@@ -26,8 +26,8 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
             id="titleEdit"
             name="editTaskTitle"
             type="text"
-            value={editTitle}
-            onChange={(e) => setEditTitle(e.target.value)}
+            value={editTitle} // State value for the title input
+            onChange={(e) => setEditTitle(e.target.value)} // Update state on input change
           />
 
           <label htmlFor="dateEdit">Date</label>
@@ -69,6 +69,7 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
            </textarea>
 
            <input
+           type="submit"
             value="Done" //Boton para enviar el formulario
            />
          </form>
