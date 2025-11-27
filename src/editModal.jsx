@@ -4,11 +4,20 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
 
     const {title, date, description, priority} = taskToEdit; // Destructure title, description, and priority from the taskToEdit object
 
-        // Local state to hold the edited task details
+    const [editedTask, setEditedTask] = useState(taskToEdit); // State to hold the edited task
+
+    // Local state to hold the edited task details
     const [ editTitle, setEditTitle ] = useState(title);
     const [ editDate, setEditDate ] = useState(date);
     const [ editPriority, setEditPriority ] = useState(priority);
     const [ editDescription, setEditDescription ] = useState(description);
+
+    const updatedTask = {
+        title: editTitle,
+        date: editDate,
+        priority: editPriority,
+        description: editDescription
+    }
 
     const priorityEditOptions = ['Low', 'Medium', 'Extreme']; // Options for task priority
 
