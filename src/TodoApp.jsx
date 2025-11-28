@@ -27,6 +27,10 @@ function TodoApp() {
     setShowModal(false); // Set showModal to false to hide the modal
   }
 
+  const onUpdateTask = (obj) => {
+    console.log(obj);
+  }
+
   const taskToEdit = tasks.find(task => task.id === editingTaskId); // Find the task being edited based on editingTaskId
 
   
@@ -53,7 +57,7 @@ function TodoApp() {
              setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
            />
 
-           {editingTaskId && < EditModal taskToEdit={taskToEdit}/> } 
+           {editingTaskId && < EditModal taskToEdit={taskToEdit} onUpdateTask={onUpdateTask}/> } 
            {/* Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
         </>
 

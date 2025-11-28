@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
+export function EditModal({taskToEdit, onUpdateTask}) { // Receive tasks and taskId as props
 
     const {title, date, description, priority} = taskToEdit; // Destructure title, description, and priority from the taskToEdit object
 
-    const [editedTask, setEditedTask] = useState(taskToEdit); // State to hold the edited task
+    // This is a repeat code const [editedTask, setEditedTask] = useState(taskToEdit); // State to hold the edited task
 
     // Local state to hold the edited task details
     const [ editTitle, setEditTitle ] = useState(title);
@@ -21,6 +21,17 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
 
     const priorityEditOptions = ['Low', 'Medium', 'Extreme']; // Options for task priority
 
+    const validateEditData = (e) => {
+        e.preventDefault();
+        // Validation logic for edited data can be added here
+
+        if(!updatedTask.title.trim() || !updatedTask.date.trim() || !updatedTask.priority.trim() || !updatedTask.description.trim()) {
+            alert("Please fill in all fields, before submitting the form.");
+        } else {
+            onUpdateTask(updatedTask); // Call onUpdateTask with the updated task details
+        }
+    }
+
     return (
         <>
          <nav>
@@ -29,7 +40,7 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
                 Go Back
             </button>
          </nav>
-         <form>
+         <form onSubmit={validateEditData}>
           <label htmlFor="titleEdit">Title</label>
           <input
             id="titleEdit"
@@ -37,6 +48,7 @@ export function EditModal({taskToEdit}) { // Receive tasks and taskId as props
             type="text"
             value={editTitle} // State value for the title input
             onChange={(e) => setEditTitle(e.target.value)} // Update state on input change
+            
           />
 
           <label htmlFor="dateEdit">Date</label>
