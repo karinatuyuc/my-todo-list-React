@@ -10,7 +10,6 @@ function TodoApp() {
   const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
   const [ showModal, setShowModal] = useState(false); // State to control the visibility of the modal
 
-
   const buttonStyles = {
     backgroundColor: "#6d1783ff",
     color: "white",
@@ -28,7 +27,6 @@ function TodoApp() {
   }
 
   const onUpdateTask = (obj) => {
-    console.log(obj);
   }
 
   const taskToEdit = tasks.find(task => task.id === editingTaskId); // Find the task being edited based on editingTaskId

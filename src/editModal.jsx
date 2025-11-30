@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export function EditModal({taskToEdit, onUpdateTask}) { // Receive tasks and taskId as props
 
+    
     const {title, date, description, priority} = taskToEdit; // Destructure title, description, and priority from the taskToEdit object
 
     // This is a repeat code const [editedTask, setEditedTask] = useState(taskToEdit); // State to hold the edited task
@@ -16,7 +17,8 @@ export function EditModal({taskToEdit, onUpdateTask}) { // Receive tasks and tas
         title: editTitle,
         date: editDate,
         priority: editPriority,
-        description: editDescription
+        description: editDescription,
+        id : taskToEdit.id,
     }
 
     const priorityEditOptions = ['Low', 'Medium', 'Extreme']; // Options for task priority
