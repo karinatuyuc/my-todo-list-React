@@ -13,7 +13,7 @@ export function EditModal({taskToEdit, onUpdateTask}) { // Receive tasks and tas
     const [ editPriority, setEditPriority ] = useState(priority);
     const [ editDescription, setEditDescription ] = useState(description);
 
-    const updatedTask = {
+    const updatedTask = { //Objeto para representar la tarea actualizada
         title: editTitle,
         date: editDate,
         priority: editPriority,
