@@ -11,6 +11,8 @@ function TodoApp() {
 
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
+  const [ showEditTaskModal, setShowEditTaskModal] = useState(false) // State to control the Modal edit.
+
  
   const buttonStyles = {
     backgroundColor: "#6d1783ff",
@@ -30,7 +32,17 @@ function TodoApp() {
     setAddTaskShowModal(false); // Set showModal to false to hide the addTaskModal
   }
 
-  // Functions to handle button click to show the edit task Modal
+
+  // Functions to handle button click to show the edit task Modal 2/12/2025
+  function handleEditButton () {
+     setShowEditTaskModal(true)
+  }
+
+  // Function to close the Edit Modal, button in the editModal
+  function onCloseModalEdit() {
+    setShowEditTaskModal(false);
+    setEditingTaskId(null);
+  }
 
 
   // Function to recibe the updated task object from EditModal
@@ -69,12 +81,14 @@ function TodoApp() {
            < TaskRenderer 
              tasks={tasks}
              setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
+             onSecond={handleEditButton}
            />
 
            {editingTaskId && 
            < EditModal 
             taskToEdit={taskToEdit} 
             onUpdateTask={onUpdateTask}
+            closeTheModal={onCloseModalEdit}
             /> } 
            {/* Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
         </>

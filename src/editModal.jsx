@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function EditModal({taskToEdit, onUpdateTask}) { // Receive tasks and taskId as props
+export function EditModal({taskToEdit, onUpdateTask, closeTheModal}) { // Receive tasks and taskId as props
 
     
     const {title, date, description, priority} = taskToEdit; // Destructure title, description, and priority from the taskToEdit object
@@ -32,16 +32,21 @@ export function EditModal({taskToEdit, onUpdateTask}) { // Receive tasks and tas
         } else {
             onUpdateTask(updatedTask); // Call onUpdateTask with the updated task details
         }
+        closeTheModal();
     }
 
     return (
         <>
          <nav>
             <span>Edit Task</span>
-            <button>
+            <button 
+              onClick={closeTheModal}
+            >
                 Go Back
             </button>
          </nav>
+
+         
          <form onSubmit={validateEditData}>
           <label htmlFor="titleEdit">Title</label>
           <input
