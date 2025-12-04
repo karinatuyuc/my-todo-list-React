@@ -14,8 +14,8 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks an
                     <span>Created on: {task.date}</span>
                     <p>Task Description: {task.description}</p>
                     <button onClick={() => {
-                        setEditingTaskId(task.id);
-                        onSecond();
+                        setEditingTaskId(task.id); // Set the editing task ID
+                        onSecond(); // Call the onSecond function to open the modal
                     }}>Edit</button> {/* Set editing task ID on button click */}
                 </div> 
              ))}

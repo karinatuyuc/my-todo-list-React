@@ -40,8 +40,8 @@ function TodoApp() {
 
   // Function to close the Edit Modal, button in the editModal
   function onCloseModalEdit() {
-    setShowEditTaskModal(false);
-    setEditingTaskId(null);
+    setShowEditTaskModal(false); // Close the Edit Modal
+    setEditingTaskId(null); // Reset the editingTaskId state to null
   }
 
 
@@ -51,7 +51,7 @@ function TodoApp() {
       if (task.id === obj.id) {
         return obj; // Return the updated task object if the IDs match
       } else {
-        return task;
+        return task; // Return the original task if the IDs do not match
       }})
 
       setTasks(taskUpdated); // Update the tasks state with the updated tasks array
@@ -79,16 +79,16 @@ function TodoApp() {
            </button>
 
            < TaskRenderer 
-             tasks={tasks}
+             tasks={tasks} // Pass tasks state to TaskRenderer as a prop
              setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
-             onSecond={handleEditButton}
+             onSecond={handleEditButton} // Pass handleEditButton to TaskRenderer as a prop
            />
 
            {editingTaskId && 
            < EditModal 
             taskToEdit={taskToEdit} 
-            onUpdateTask={onUpdateTask}
-            closeTheModal={onCloseModalEdit}
+            onUpdateTask={onUpdateTask} // Pass onUpdateTask to EditModal as a prop
+            closeTheModal={onCloseModalEdit} // Pass onCloseModalEdit to EditModal as a prop
             /> } 
            {/* Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
         </>

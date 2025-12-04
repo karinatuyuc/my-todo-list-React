@@ -23,7 +23,7 @@ export function EditModal({taskToEdit, onUpdateTask, closeTheModal}) { // Receiv
 
     const priorityEditOptions = ['Low', 'Medium', 'Extreme']; // Options for task priority
 
-    const validateEditData = (e) => {
+    const validateEditData = (e) => { // Function to validate edited data
         e.preventDefault();
         // Validation logic for edited data can be added here
 
