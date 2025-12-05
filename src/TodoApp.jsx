@@ -59,7 +59,11 @@ function TodoApp() {
 
   const taskToEdit = tasks.find(task => task.id === editingTaskId); // Find the task being edited based on editingTaskId
 
-  
+  // Function to handle deleting a task (not implemented yet)
+  const handleDeleteTask = () => {
+    // Logic to delete a task can be added here
+    console.log("Delete task function called");
+  }
     return (
         <>
           <div>
@@ -82,6 +86,7 @@ function TodoApp() {
              tasks={tasks} // Pass tasks state to TaskRenderer as a prop
              setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
              onSecond={handleEditButton} // Pass handleEditButton to TaskRenderer as a prop
+             deleteTask={handleDeleteTask} // Pass handleDeleteTask to TaskRenderer as a prop
            />
 
            {editingTaskId && 

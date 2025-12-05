@@ -1,7 +1,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 
 
-function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks and setEditingTaskId as props
+function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask}) { // Receive tasks and setEditingTaskId as props
 
     const buttonStylesEdit= {
         backgroundColor: "#67058dff",
@@ -34,8 +34,10 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks an
                     <p>Task Description: {task.description}</p>
                     <button
                         style={trashStyle}
+                        onClick={deleteTask}
                     >
                         < TrashIcon
+
                         />
                     </button>
                     <button 
