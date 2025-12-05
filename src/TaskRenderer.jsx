@@ -1,3 +1,5 @@
+import { TrashIcon } from '@heroicons/react/24/outline';
+
 
 function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks and setEditingTaskId as props
 
@@ -11,6 +13,14 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks an
         cursor: "pointer",
     }
 
+    const trashStyle = {
+        width: "35px",
+        height: "35px",
+        color: "white",
+        cursor: "pointer",
+        borderRadius: "5px"
+    }
+
     return (
         <>
          <div>
@@ -22,6 +32,12 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks an
                     <span>Priority : {task.priority}</span> <br/>
                     <span>Created on: {task.date}</span>
                     <p>Task Description: {task.description}</p>
+                    <button
+                        style={trashStyle}
+                    >
+                        < TrashIcon
+                        />
+                    </button>
                     <button 
                     style={buttonStylesEdit}
                     onClick={() => {
