@@ -32,7 +32,7 @@ export function EditModal({taskToEdit, onUpdateTask, closeTheModal}) { // Receiv
         } else {
             onUpdateTask(updatedTask); // Call onUpdateTask with the updated task details
         }
-        closeTheModal();
+        closeTheModal(); // Close the modal after updating the task
     }
 
     return (
@@ -40,7 +40,7 @@ export function EditModal({taskToEdit, onUpdateTask, closeTheModal}) { // Receiv
          <nav>
             <span>Edit Task</span>
             <button 
-              onClick={closeTheModal}
+              onClick={closeTheModal} // Close the modal on button click
             >
                 Go Back
             </button>

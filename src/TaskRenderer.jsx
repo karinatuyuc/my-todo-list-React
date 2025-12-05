@@ -1,6 +1,16 @@
 
 function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks and setEditingTaskId as props
 
+    const buttonStylesEdit= {
+        backgroundColor: "#67058dff",
+        color: "white",
+        padding: "8px 8px",
+        border: "2px solid #67058dff",
+        borderRadius: "5px",
+        width: "60px",
+        cursor: "pointer",
+    }
+
     return (
         <>
          <div>
@@ -8,14 +18,16 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond}) { // Receive tasks an
             {tasks.length === 0 ? <p>No tasks added yet</p> :
              tasks.map(task => (
                 <div key={task.id}> 
-                    <p>ID: {task.id}</p>
                     <h4>{task.title}</h4>
                     <span>Priority : {task.priority}</span> <br/>
                     <span>Created on: {task.date}</span>
                     <p>Task Description: {task.description}</p>
-                    <button onClick={() => {
+                    <button 
+                    style={buttonStylesEdit}
+                    onClick={() => {
                         setEditingTaskId(task.id); // Set the editing task ID
                         onSecond(); // Call the onSecond function to open the modal
+                        
                     }}>Edit</button> {/* Set editing task ID on button click */}
                 </div> 
              ))}
