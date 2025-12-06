@@ -60,10 +60,15 @@ function TodoApp() {
   const taskToEdit = tasks.find(task => task.id === editingTaskId); // Find the task being edited based on editingTaskId
 
   // Function to handle deleting a task (not implemented yet)
-  const handleDeleteTask = () => {
+  const handleDeleteTask = (id) => {
     // Logic to delete a task can be added here
-    console.log("Delete task function called");
+
+    const taskFilterDeleted = tasks.filter(task => task.id !== id); // Filter out the task to be deleted
+    setTasks(taskFilterDeleted); // Update the tasks state with the filtered tasks array
   }
+
+
+  
     return (
         <>
           <div>
