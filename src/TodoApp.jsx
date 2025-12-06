@@ -61,8 +61,8 @@ function TodoApp() {
 
   // Function to handle deleting a task (not implemented yet)
   const handleDeleteTask = (id) => {
+    console.log(id); // id-1765000679515-175
     // Logic to delete a task can be added here
-
     const taskFilterDeleted = tasks.filter(task => task.id !== id); // Filter out the task to be deleted
     setTasks(taskFilterDeleted); // Update the tasks state with the filtered tasks array
   }
