@@ -67,6 +67,18 @@ function TodoApp() {
     setTasks(taskFilterDeleted); // Update the tasks state with the filtered tasks array
   }
 
+  const handleStatus = (id, status) => { // Function to handle status change
+    const taskMapStatus = tasks.map(task => { // Map through the tasks array
+
+      if(task.id === id) {
+        return {...task, status: status}; // Update the status of the matching task
+      }
+      return task; // Return the original task if IDs do not match 
+    });
+
+    setTasks(taskMapStatus); // Update the tasks state with the modified tasks array
+  }
+
 
   
     return (
@@ -92,6 +104,7 @@ function TodoApp() {
              setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
              onSecond={handleEditButton} // Pass handleEditButton to TaskRenderer as a prop
              deleteTask={handleDeleteTask} // Pass handleDeleteTask to TaskRenderer as a prop
+             statusChange={handleStatus} // Pass handleStatus to TaskRenderer as a prop
            />
 
            {editingTaskId && 

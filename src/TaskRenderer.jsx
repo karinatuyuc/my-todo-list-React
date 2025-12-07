@@ -1,10 +1,7 @@
-import { useState } from 'react';
+
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask}) { // Receive tasks and setEditingTaskId as props
-
-    const [ statusTask, setStatusTask ] = useState("Not started"); // State to hold the status of the task
-    // The initial value is set to "Not started"
+function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask, statusChange}) { // Receive tasks and setEditingTaskId as props
 
     const statusValues = ['Not started', "In Progress", "Completed"];
 
@@ -37,20 +34,24 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask}) { // Rece
                     <span>Priority : {task.priority}</span> <br/>
 
                     <label htmlFor="status">status:</label>
-                    <select id="status" value={statusTask}>
-                        {statusValues.map((status => {
+                    <select 
+                       id="status"  // Select dropdown for task status
+                       value={task.status} // Bind the select value to the task's status
+                       onChange={(e) => { 
+                        statusChange(task.id, e.target.value);
+                       }} // Update statusTask state on change
+                       
+                    >
+                        {statusValues.map((status => { // Map through statusValues array to create options
                         return (
                             <option
-                            key={status}
-                            value={status}
-                            >{status}</option>
+                            key={status} // Unique key for each option
+                            >{status}</option> // Display status value
                         )
                      }))}
                     </select><br/>
 
-
-
-
+                    
                     <span>Created on: {task.date}</span>
                     <p>Task Description: {task.description}</p>
                     <button
