@@ -70,7 +70,7 @@ function TodoApp() {
 
   
     return (
-        <>
+        <>0
           <div>
             {showAddTaskModal && // Conditional rendering of the AddTaskModal component
               < AddTaskModal  // Render the AddTaskModal component

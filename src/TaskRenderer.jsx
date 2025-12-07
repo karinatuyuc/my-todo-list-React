@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
 function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask}) { // Receive tasks and setEditingTaskId as props
+
+    const [ statusTask, setStatusTask ] = useState("Not started"); // State to hold the status of the task
+    // The initial value is set to "Not started"
+
+    const statusValues = ['Not started', "In Progress", "Completed"];
 
     const buttonStylesEdit= {
         backgroundColor: "#67058dff",
@@ -29,6 +35,22 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask}) { // Rece
                 <div key={task.id}> 
                     <h4>{task.title}</h4>
                     <span>Priority : {task.priority}</span> <br/>
+
+                    <label htmlFor="status">status:</label>
+                    <select id="status" value={statusTask}>
+                        {statusValues.map((status => {
+                        return (
+                            <option
+                            key={status}
+                            value={status}
+                            >{status}</option>
+                        )
+                     }))}
+                    </select><br/>
+
+
+
+
                     <span>Created on: {task.date}</span>
                     <p>Task Description: {task.description}</p>
                     <button
