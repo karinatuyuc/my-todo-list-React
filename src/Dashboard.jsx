@@ -3,7 +3,9 @@
 export default function Dashboard() {
     return (
         <>
-            <h1>Dashboard</h1>
+            <header>
+                <h1><span>Dash</span><span>board</span></h1>
+            </header>
         </>
     )
 }
