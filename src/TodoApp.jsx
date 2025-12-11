@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AddTaskModal } from "./addTaskModal";
 import TaskRenderer from "./TaskRenderer";
 import { EditModal } from "./editModal";
+import DashBoard from "./Dashboard";
 
 
 function TodoApp() {
@@ -82,7 +83,8 @@ function TodoApp() {
 
   
     return (
-        <>0
+        <>
+          <DashBoard />
           <div>
             {showAddTaskModal && // Conditional rendering of the AddTaskModal component
               < AddTaskModal  // Render the AddTaskModal component
