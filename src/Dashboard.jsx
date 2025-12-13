@@ -2,25 +2,28 @@ import { MagnifyingGlassIcon, BellIcon, CalendarDaysIcon } from "@heroicons/reac
 
 export default function Dashboard() {
     const currentDate = new Date();
+    console.log(currentDate);
     const options = {
         weekday: 'long',
         year: 'numeric',
         month: 'long', 
         day: 'long'
     }
-    const formattedDate = new Intl.DateTimeFormat('en-En', {weekday: 'long'}).format(currentDate);
+    const formattedDate = new Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(currentDate);
 
     return (
         <>
-         <div>
-            <header>
-                <h1 className="text-3xl">
+         <div className="m-3">
+
+            <header className="bg-amber-800 flex justify-around h-16">
+                <h1 className="text-3xl mt-2">
                     <span className="text-red-400 font-bold">Dash</span>
                     <span className="text-black-950 font-bold">board</span>
                 </h1>
-                <div className="decoration-red-400">
+
+                <div className="decoration-red-400 flex mt-3">
                     <input
-                     className="border-amber-300 border"
+                     className="border-amber-300 border p-0.5 w-64 flex-1 h-8"
                         type="text"
                         placeholder="Search your task here..."
                     />
@@ -29,21 +32,23 @@ export default function Dashboard() {
                     />
                 </div>
 
-                <div className="w-32">
+                <div className="flex">
                     <BellIcon 
                      className="w-6 h-6 text-red-400"
                     />
                     < CalendarDaysIcon 
-                     className="w-6 h-6 text-red-400"
+                     className="h-6 text-red-400"
                     />
-
-                    <span>{formattedDate}</span>
-                    <span
-                      className="text-blue-300"
-                    >{currentDate.toLocaleDateString()}</span>
+                
+                <div>
                 </div>
-
+                    <span>{formattedDate}</span>
+                    <span></span>
+                </div>
             </header>
+
+
+
          </div>
         </>
     )
