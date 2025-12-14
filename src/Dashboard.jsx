@@ -2,7 +2,6 @@ import { MagnifyingGlassIcon, BellIcon, CalendarDaysIcon } from "@heroicons/reac
 
 export default function Dashboard() {
     const currentDate = new Date();
-    console.log(currentDate);
     const options = {
         weekday: 'long',
         year: 'numeric',
@@ -13,38 +12,32 @@ export default function Dashboard() {
 
     return (
         <>
-         <div className="m-3">
+         <div className="m-3 2xl:m-8">
 
-            <header className="bg-amber-800 flex justify-around h-16">
-                <h1 className="text-3xl mt-2">
+            <header className="bg-amber-800 flex justify-around h-25 sm:z-20 text-center items-center rounded-md p-4 shadow-lg">
+                <h1 className="text-3xl">
                     <span className="text-red-400 font-bold">Dash</span>
                     <span className="text-black-950 font-bold">board</span>
                 </h1>
 
-                <div className="decoration-red-400 flex mt-3">
+                <div className="decoration-red-400 flex ">
                     <input
-                     className="border-amber-300 border p-0.5 w-64 flex-1 h-8"
+                     className="border-amber-300 border p-0.2 rounded-md w-90 flex-1 h-8"
                         type="text"
                         placeholder="Search your task here..."
                     />
-                    < MagnifyingGlassIcon 
-                    className="w-6 h-6 text-red-400"
-                    />
+                    <button className="bg-red-400 rounded-md">
+                         < MagnifyingGlassIcon 
+                           className="w-8 h-4 text-white"
+                         />
+                    </button>
+                    
                 </div>
 
-                <div className="flex">
-                    <BellIcon 
-                     className="w-6 h-6 text-red-400"
-                    />
-                    < CalendarDaysIcon 
-                     className="h-6 text-red-400"
-                    />
-                
-                <div>
-                </div>
-                    <span>{formattedDate}</span>
-                    <span></span>
-                </div>
+                  <div className="flex flex-col pl-5 ">
+                    <span className="font-bold">{formattedDate}</span>
+                    <span className="text-blue-300 font-bold">{currentDate.toLocaleDateString('en-US')}</span>
+                  </div>
             </header>
 
 
