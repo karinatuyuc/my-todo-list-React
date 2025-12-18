@@ -1,11 +1,10 @@
-import { MagnifyingGlassIcon, BellIcon, } from "@heroicons/react/24/outline";  
+import { MagnifyingGlassIcon, Bars4Icon} from "@heroicons/react/24/outline";  
 
 
 export default function Dashboard() {
-    const date = new Date(); // 
-    console.log(date) 
+    const date = new Date(); //Creating the local date 
     
-    const options = {
+    const options = { // Formatt to show the date.
         weekday: 'long',
         year: "numeric",
         month: "long",
@@ -14,6 +13,8 @@ export default function Dashboard() {
 
     const dayName= date.toLocaleDateString('en-US', { weekday: 'long'}); // To show the day of the week
     const dateInNumber = date.toLocaleDateString('en-US'); // To show the date in number 
+
+    let waveHand = "\u{1F44B}"
 
     return (
         <>
@@ -51,6 +52,6 @@ export default function Dashboard() {
                 </div>
             </header>
          </div>
-        </>
+        </> 
     )
 }
