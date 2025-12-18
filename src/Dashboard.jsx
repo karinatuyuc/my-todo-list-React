@@ -14,7 +14,7 @@ export default function Dashboard() {
     const dayName= date.toLocaleDateString('en-US', { weekday: 'long'}); // To show the day of the week
     const dateInNumber = date.toLocaleDateString('en-US'); // To show the date in number 
 
-    let waveHand = "\u{1F44B}"
+    let waveHand = "\u{1F44B}" //
 
     return (
         <>
@@ -51,6 +51,21 @@ export default function Dashboard() {
                     <span className="font-bold text-[10px] text-cyan-400 ">{dateInNumber}</span>
                 </div>
             </header>
+
+            <main className="bg-blue-300 h-screen w-full">
+
+                <div className="flex items-center justify-center">
+                    <button>
+                        <Bars4Icon className="w-6 h-6 ml-1"/>
+                    </button>
+                    <div className="mx-auto text-lg font-bold">
+                        <h1>Welcome back, {waveHand}</h1>
+                    </div>
+                </div>
+
+            </main>
+
+
          </div>
         </> 
     )
