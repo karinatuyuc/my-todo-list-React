@@ -85,7 +85,9 @@ function TodoApp() {
     return (
         <>
 
-        <Dashboard />
+        <Dashboard 
+          showModal={handleButtonClick}
+        />
 
           <div>
             {showAddTaskModal && // Conditional rendering of the AddTaskModal component
@@ -95,13 +97,17 @@ function TodoApp() {
               />
             }
           </div>
-         
-           <button 
+         {/*
+                    <button 
             onClick={handleButtonClick} // Show the modal on button click
             style={buttonStyles} // Apply button styles
            >
              Add task
            </button>
+         
+         
+         */}
+
 
            < TaskRenderer 
              tasks={tasks} // Pass tasks state to TaskRenderer as a prop

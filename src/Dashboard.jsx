@@ -1,20 +1,21 @@
-import { MagnifyingGlassIcon, Bars4Icon} from "@heroicons/react/24/outline";  
+import { MagnifyingGlassIcon, Bars4Icon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon} from "@heroicons/react/24/outline";  
 
 
-export default function Dashboard() {
+export default function Dashboard({showModal}) {
     const date = new Date(); //Creating the local date 
     
     const options = { // Formatt to show the date.
         weekday: 'long',
         year: "numeric",
-        month: "long",
+        month: "short",
         day: "numeric"
     };
 
     const dayName= date.toLocaleDateString('en-US', { weekday: 'long'}); // To show the day of the week
+    const dayMonth = date.toLocaleDateString('en-US', {day: 'numeric', month: 'short'});
     const dateInNumber = date.toLocaleDateString('en-US'); // To show the date in number 
 
-    let waveHand = "\u{1F44B}" //
+    let waveHand = "\u{1F44B}" //Emoji hand waving
 
     return (
         <>
@@ -54,7 +55,7 @@ export default function Dashboard() {
 
             <main className="bg-blue-300 h-screen w-full">
 
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center pt-6">
                     <button>
                         <Bars4Icon className="w-6 h-6 ml-1"/>
                     </button>
@@ -62,6 +63,37 @@ export default function Dashboard() {
                         <h1>Welcome back, {waveHand}</h1>
                     </div>
                 </div>
+
+                <section className="border-2 border-gray-400 m-1.5 mt-16 p-3">
+
+                    <div className="border-2 border-amber-400 mb-2 bg-blue-400 h-64 rounded-lg shadow-mb">
+
+                        <div className="flex justify-between p-2">
+
+                            <h1 className="absolute text-justify left-16 text-sm">To-do</h1>
+                            <div className="relative">
+                                 <ClipboardDocumentCheckIcon className="w-6 h-6 absolute text-gray-600"/>
+                                 <ClockIcon className="w-4 h-4 relative left-3 top-4 p-0.5 bg-gray-300 text-gray-600 rounded-full"/>
+                            </div>
+                             <span className="absolute text-justify mt-7 text-xs">{dayMonth}</span>
+
+
+                            <button 
+                              className="flex items-center text-sm"
+                              onClick={showModal}>
+                                <PlusIcon className="w-5 h-5"/>
+                                Add Task
+                            </button>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div className="border-2 border-violet-600 mb-2">Task status</div>
+                    <div className="border-2 border-fuchsia-600 mb-2">Completed task</div>
+                </section>
 
             </main>
 
