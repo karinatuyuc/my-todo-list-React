@@ -17,6 +17,8 @@ export default function Dashboard({showModal}) {
 
     let waveHand = "\u{1F44B}" //Emoji hand waving
 
+    let descripcionTaks  = "Esta es la descripcion del task donde veremos si cabe el espacio que le asignamos o no, pero no se veremos@ hola este sotro parrafo para averificar que cmabia !!"
+
     return (
         <>
          <div className="p-0.5 bg-yellow-300 h-screen w-full">
@@ -98,21 +100,24 @@ export default function Dashboard({showModal}) {
 
 
 
-                        <div className="bg-yellow-500 h-32 w-full mt-12 border-2 border-red-400 rounded-lg">
+                        <div className="bg-yellow-500 min-h-32 w-full mt-12 border-2 border-red-400 rounded-lg">
 
-                           <div className="flex gap-1.5 p-1 w-full h-full">
-                             
-                               <span className="inline-block w-3 h-3 rounded-full border-2 border-red-700 p-1 ml-1 mt-1"></span>
+                           <div className="flex gap-1 p-1 w-full h-full">
+                               <span className="inline-block w-3 h-3 rounded-full border-2 border-red-700 ml-2 mt-1"></span>
 
-                               <div className="flex-1 text-gray-50 overflow-hidden bg-amber-900">
+                               <div className="flex-1 text-gray-50 overflow-hidden flex flex-col p-1 text-sm">
                                 <h4 className="font-bold text-black">Task's title</h4>
-                                <p>Tasks description</p>
+                                <p className="line-clamp-3 text-xs text-justify mb-2 mt-1 mr-2">{descripcionTaks}</p>
+
+                                 <div className="mt-auto w-full flex justify-between gap-10 text-[10px]">
+                                    <span>Status: Not started </span>
+                                    <span>Priority: Medium</span>
+                                    <span>Created on: {dateInNumber}</span>
+                                 </div>
+
                                </div>
-
-
-                               
-                                <button className="bg-red-300">...</button>
                            </div>
+
 
                         </div>
 
