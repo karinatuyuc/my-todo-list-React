@@ -69,8 +69,9 @@ export default function Dashboard({showModal}) {
 
                 <section className="border-2 border-gray-400 m-1.5 mt-16 p-3">
 
-                    {/*ADD TASK SECTION*/}
-                    <div className="border-2 border-amber-400 mb-2 bg-blue-400 h-64 rounded-lg shadow-mb p-2">
+
+                    {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
+                    <div className="border-2 border-amber-200 mb-2 bg-blue-400 h-64 rounded-lg shadow-mb p-2">
 
                         <div className="flex justify-between m-1">
                             <h1 className="absolute text-justify left-16 text-sm">To-do</h1>
@@ -90,46 +91,33 @@ export default function Dashboard({showModal}) {
                         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-                        <div className="bg-yellow-500 min-h-32 w-full mt-12 border-2 border-red-400 rounded-lg">
+                        {/*DIV TO DO AND ADD TASK*/}
+                        <div className="bg-yellow-500 min-h-28 w-full mt-12 border-2 border-red-400 rounded-lg">
 
                            <div className="flex gap-1 p-1 w-full h-full">
                                <span className="inline-block w-3 h-3 rounded-full border-2 border-red-700 ml-2 mt-1"></span>
 
+                               {/*CARD TASKS */}
                                <div className="flex-1 text-gray-50 overflow-hidden flex flex-col p-1 text-sm">
                                 <h4 className="font-bold text-black">Task's title</h4>
-                                <p className="line-clamp-3 text-xs text-justify mb-2 mt-1 mr-2">{descripcionTaks}</p>
+                                <p className="line-clamp-4 text-xs text-justify mb-4 mt-1 mr-2">{descripcionTaks}</p>
 
-                                 <div className="mt-auto w-full flex justify-between gap-10 text-[10px]">
-                                    <span>Status: Not started </span>
+                                 <div className="mt-auto w-full flex gap-4 text-[9px]">
+                                    <span className="flex-1 text-center">Status: Not started </span>
                                     <span>Priority: Medium</span>
                                     <span>Created on: {dateInNumber}</span>
                                  </div>
 
                                </div>
                            </div>
-
-
                         </div>
-
-
-
-
-
                     </div>
 
 
                     {/**NOT STARTED - TASK STATUS*/}
-                    <div className="border-2 border-violet-600 mb-2">Task status</div>
+                    <div className="border-2 border-violet-600 mb-2">
+
+                    </div>
 
                     {/**NOT STARTED - COMPLETED TASK*/}
                     <div className="border-2 border-fuchsia-600 mb-2">Completed task</div>
