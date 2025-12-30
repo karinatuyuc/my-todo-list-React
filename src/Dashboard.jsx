@@ -1,4 +1,4 @@
-import { MagnifyingGlassIcon, Bars4Icon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon} from "@heroicons/react/24/outline";  
+import { MagnifyingGlassIcon, Bars4Icon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon, ClipboardIcon, CheckCircleIcon} from "@heroicons/react/24/outline";  
 
 
 export default function Dashboard({showModal}) {
@@ -71,7 +71,7 @@ export default function Dashboard({showModal}) {
 
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="border-2 border-amber-200 mb-2 bg-blue-400 h-64 rounded-lg shadow-mb p-2">
+                    <div className="border-2 border-amber-200 mb-2 bg-blue-400 h-60 rounded-lg shadow-mb p-2">
 
                         <div className="flex justify-between m-1">
                             <h1 className="absolute text-justify left-16 text-sm">To-do</h1>
@@ -115,8 +115,17 @@ export default function Dashboard({showModal}) {
 
 
                     {/**NOT STARTED - TASK STATUS*/}
-                    <div className="border-2 border-violet-600 mb-2">
-
+                    <div className="border-2 border-violet-600 mb-2 h-32 p-2">
+                         
+                        <div className="flex">
+                            
+                            <div className="relative flex">
+                            <ClipboardIcon className="w-6 h-6 absolute text-gray-500"/>
+                            <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 bg-gray-300 rounded-full text-gray-500" />
+                            </div>
+                            <h2 className="left-7">Task Status</h2>
+                        </div>
+                        
                     </div>
 
                     {/**NOT STARTED - COMPLETED TASK*/}
