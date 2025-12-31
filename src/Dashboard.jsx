@@ -117,11 +117,11 @@ export default function Dashboard({showModal}) {
                     {/**NOT STARTED - TASK STATUS*/}
                     <div className="border-2 border-violet-600 mb-2 h-32 p-2">
                          
-                        <div className="flex">
+                        <div className="flex gap-4">
                             
                             <div className="relative flex">
-                            <ClipboardIcon className="w-6 h-6 absolute text-gray-500"/>
-                            <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 bg-gray-300 rounded-full text-gray-500" />
+                              <ClipboardIcon className="w-6 h-6 absolute text-gray-500"/>
+                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 bg-gray-300 rounded-full text-gray-500" />
                             </div>
                             <h2 className="left-7">Task Status</h2>
                         </div>
