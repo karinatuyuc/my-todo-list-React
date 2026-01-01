@@ -125,8 +125,21 @@ export default function Dashboard({showModal}) {
                             </div>
                             <h2 className="left-7">Task Status</h2>
                         </div>
+
+
+                        {/*Progress circles*/}
+
+                        <svg viewBox="0 0 100 100"> 
+
+                            {/*Base circle  */}
+                            <circle cx="50" cy="50" r="45" stroke="gray" strokeWidth={8}></circle>
+
+                        </svg> {/* SVG for progress circles, to be implemented later */}
                         
                     </div>
+
+
+
 
                     {/**NOT STARTED - COMPLETED TASK*/}
                     <div className="border-2 border-fuchsia-600 mb-2">Completed task</div>
