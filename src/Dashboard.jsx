@@ -146,6 +146,7 @@ export default function Dashboard({showModal}) {
 
                     {/**NOT STARTED - COMPLETED TASK*/}
                     <div className="border-2 border-fuchsia-600 mb-2">Completed task</div>
+                    <h1>Section to add the filtered task<h1>
                 </section>
 
             </main>
