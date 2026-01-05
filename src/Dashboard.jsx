@@ -133,20 +133,13 @@ export default function Dashboard({showModal}) {
 
                             {/*Base circle  */}
                             <circle cx="50" cy="50" r="45" stroke="gray" strokeWidth={8}></circle>
-                            <div>Este es un div </div>
-                            <h1>This is the circle progress</h1>
-
-                        </svg> {/* SVG for progress circles, to be implemented later */}
-                        
-                        
+   
                     </div>
 
 
 
 
                     {/**NOT STARTED - COMPLETED TASK*/}
-                    <div className="border-2 border-fuchsia-600 mb-2">Completed task</div>
-                    <h1>Section to add the filtered task<h1>
                 </section>
 
             </main>
