@@ -129,10 +129,11 @@ export default function Dashboard({showModal}) {
 
                         {/*Progress circles*/}
 
-                        <svg viewBox="0 0 100 100"> </svg> {/**This is for the progress cirle */}
-
-                            {/*Base circle  */}
-                            <circle cx="50" cy="50" r="45" stroke="gray" strokeWidth={8}></circle>
+                        {/** SVG for progress circles*/}
+                        <svg viewBox="0 0 100 100"> 
+                            <circle cx="50" cy="50" r="45" stroke="gray" 
+                            strokeWidth={8} fill="transparent"> </circle>
+                        </svg>
    
                     </div>
 
