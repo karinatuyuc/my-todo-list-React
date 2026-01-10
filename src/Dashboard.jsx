@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon, Bars4Icon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon, ClipboardIcon, CheckCircleIcon} from "@heroicons/react/24/outline";  
-import  ProgressCircle  from "./ProgressCicle.jsx";
+import ProgressCircle from "./ProgressCircle.jsx";
 
 export default function Dashboard({showModal}) {
     const date = new Date(); //Creating the local date 
@@ -18,6 +18,13 @@ export default function Dashboard({showModal}) {
     let waveHand = "\u{1F44B}" //Emoji hand waving
 
     let descripcionTaks  = "Esta es la descripcion del task donde veremos si cabe el espacio que le asignamos o no, pero no se veremos@ hola este sotro parrafo para averificar que cmabia !!"
+
+    
+    const circles = [
+        { title: "Completed", progress: "25%", color: "green" },
+        { title: "In progress", progress: "50%", color: "blue" },
+        { title: "Not started", progress: "75%", color: "red" },
+    ];
 
     return (
         <>
@@ -128,8 +135,16 @@ export default function Dashboard({showModal}) {
 
 
                         {/*Progress circles*/}
-                        <div>
-                            <ProgressCircle />
+                        <div className="grid grid-cols-3 gap-4">
+                            
+                            {circles.map((item, index) => (
+                                <ProgressCircle 
+                                    key={index}
+                                    progress={item.progress}
+                                    title={item.title}
+                                    color={item.color}
+                                />
+                            ))}
                         </div>
    
                     </div>
