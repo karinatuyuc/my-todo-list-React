@@ -138,11 +138,11 @@ export default function Dashboard({showModal}) {
                         <div className="grid grid-cols-3 gap-4">
                             
                             {circles.map((item, index) => (
-                                <ProgressCircle 
-                                    key={index}
-                                    progress={item.progress}
-                                    title={item.title}
-                                    color={item.color}
+                                <ProgressCircle
+                                   // Aqui van los props que le pasamos al componente
+                                   key={index}
+                                   title={item.title}
+                                   progress={item.progress}
                                 />
                             ))}
                         </div>

@@ -34,7 +34,7 @@ export default function ProgressCircle({title, progress, color}) {
                                 className=""
                             >{progress}</text>
 
-                             <text
+                             <text // Title for each circle progress
                                 x="8"
                                 y="120"
                                 className=""
