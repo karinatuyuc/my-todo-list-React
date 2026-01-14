@@ -5,7 +5,7 @@ export default function ProgressCircle({title, progress, color}) {
     return (
         <>
             {/** SVG for progress circles*/}
-                        <svg viewBox="0 0 100 100"> 
+                        <svg viewBox="0 0 100 130" className="w-full h-22"> 
 
                             {/**Circle base */}
                             <circle cx="50" cy="50" r="40" stroke="gray" 
@@ -37,7 +37,6 @@ export default function ProgressCircle({title, progress, color}) {
                              <text // Title for each circle progress
                                 x="8"
                                 y="120"
-                                className=""
                              >{title}</text>
                              
                         </svg>

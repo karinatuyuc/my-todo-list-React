@@ -143,6 +143,7 @@ export default function Dashboard({showModal}) {
                                    key={index}
                                    title={item.title}
                                    progress={item.progress}
+                                   color={item.color}
                                 />
                             ))}
                         </div>
@@ -153,7 +154,7 @@ export default function Dashboard({showModal}) {
 
 
                     {/**NOT STARTED - COMPLETED TASK*/}
-                    {/*Aqui hay un comentario */}
+                    
                 </section>
 
             </main>
