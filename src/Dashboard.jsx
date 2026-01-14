@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon, Bars4Icon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon, ClipboardIcon, CheckCircleIcon} from "@heroicons/react/24/outline";  
 import ProgressCircle from "./ProgressCircle.jsx";
+import CompletedTask from "./CompletedTask.jsx";
 
 export default function Dashboard({showModal}) {
     const date = new Date(); //Creating the local date 
@@ -154,7 +155,13 @@ export default function Dashboard({showModal}) {
 
 
 
-                    {/**NOT STARTED - COMPLETED TASK*/}
+                    {/*COMPLETED TASK*/}
+
+                    <div>
+                        <CompletedTask />
+                    </div>
+
+                    
                     
                 </section>
 
