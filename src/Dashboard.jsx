@@ -122,7 +122,7 @@ export default function Dashboard({showModal}) {
 
 
                     {/**NOT STARTED - TASK STATUS*/}
-                    <div className="border-2 border-violet-600 mb-2 h-32 p-2">
+                    <div className="border-2 border-violet-600 mb-2 h-full p-2">
                          
                         <div className="flex gap-4">
                             
@@ -135,7 +135,7 @@ export default function Dashboard({showModal}) {
 
 
                         {/*Progress circles*/}
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-3 gap-4 h-full mt-2">
                             
                             {circles.map((item, index) => (
                                 <ProgressCircle
@@ -144,6 +144,7 @@ export default function Dashboard({showModal}) {
                                    title={item.title}
                                    progress={item.progress}
                                    color={item.color}
+
                                 />
                             ))}
                         </div>
