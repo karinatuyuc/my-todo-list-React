@@ -29,7 +29,7 @@ export default function Dashboard({showModal}) {
 
     return (
         <>
-         <div className="p-0.5 bg-yellow-300 h-screen w-full">
+         <div className="p-0.5 h-full w-full bg-orange-400">
 
             <header className="flex justify-between items-center p-1 bg-red-100">
 
@@ -59,12 +59,12 @@ export default function Dashboard({showModal}) {
 
                 <div className="flex flex-col">
                     <span className="font-bold text-[10px]">{dayName}</span>
-                    <span className="font-bold text-[10px] text-cyan-400 ">{dateInNumber}</span>
+                    <span className="font-bold text-[10px] text-cyan-950 ">{dateInNumber}</span>
                 </div>
             </header>
 
 
-            <main className="bg-blue-300 h-screen w-full">
+            <main className="bg-cyan-600 h-full w-full">
 
                 <div className="flex items-center justify-center pt-6">
                     <button>
@@ -79,7 +79,7 @@ export default function Dashboard({showModal}) {
 
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="border-2 border-amber-200 mb-2 bg-blue-400 h-60 rounded-lg shadow-mb p-2">
+                    <div className="border-2 border-amber-200 mb-2 bg-blue-400 h-60 not-[]:rounded-lg shadow-mb p-2">
 
                         <div className="flex justify-between m-1">
                             <h1 className="absolute text-justify left-16 text-sm">To-do</h1>
@@ -157,8 +157,11 @@ export default function Dashboard({showModal}) {
 
                     {/*COMPLETED TASK*/}
 
-                    <div>
-                        <CompletedTask />
+                    <div className="border-2 border-gray-400 h-full p-2">
+                        <CompletedTask 
+                            dateIn={dateInNumber}
+                        />
+
                     </div>
 
                     
