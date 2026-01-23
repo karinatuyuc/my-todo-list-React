@@ -157,7 +157,7 @@ export default function Dashboard({showModal}) {
 
                     {/*COMPLETED TASK*/}
 
-                    <div className="border-2 border-gray-400 h-full p-2">
+                    <div className="border-yellow-600 border-2 p-4 h-full mt-4">
                         <CompletedTask 
                             dateIn={dateInNumber}
                         />
