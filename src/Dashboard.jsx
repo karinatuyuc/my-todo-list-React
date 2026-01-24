@@ -14,7 +14,7 @@ export default function Dashboard({showModal}) {
 
     const dayName= date.toLocaleDateString('en-US', { weekday: 'long'}); // To show the day of the week
     const dayMonth = date.toLocaleDateString('en-US', {day: 'numeric', month: 'short'});
-    const dateInNumber = date.toLocaleDateString('en-US'); // To show the date in number 
+    const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number 
 
     let waveHand = "\u{1F44B}" //Emoji hand waving
 
@@ -29,89 +29,91 @@ export default function Dashboard({showModal}) {
 
     return (
         <>
-         <div className="p-0.5 h-full w-full bg-orange-400">
+         <div className="p-0.5 h-full w-full bg-gray-200">
 
             <header className="flex justify-between items-center p-1 bg-red-100">
 
+                {/** Dashboard title*/}
                 <div className= "font-bold text-xl">
-                    <span className="text-black">Dash</span>
-                    <span className="text-red-300">board</span>
+                    <span className="text-red-300">Dash</span>
+                    <span className="text-black">board</span>
                 </div>
 
+                {/** Search bar */}
                 <div className="flex w-44 bg-white rounded-lg">
+
                     <input 
                       type="text"
                       id="search"
                       name="search"
                       placeholder="Search your task..."
                       className=" w-full h-8 p-2 text-sm rounded-lg focus:outline-none"
-                    />
+                />
                     <button className="flex items-center justify-center">
                         <MagnifyingGlassIcon 
                         className="w-7 h-7 p-2 bg-red-300 rounded-lg hover:bg-red-200"/>
                     </button>
                 </div>
 
-                
-               { /* <div className="bg-red-300">
-                    <span><BellIcon  className="w-4 h-4"/></span>
-                </div> */}
-
+                {/** Date section */}
                 <div className="flex flex-col">
-                    <span className="font-bold text-[10px]">{dayName}</span>
-                    <span className="font-bold text-[10px] text-cyan-950 ">{dateInNumber}</span>
+                    <span className="font-bold text-[8px]">{dayName}</span>
+                    <span className="font-bold text-[7px] text-blue-300">{dateInNumber}</span>
                 </div>
+
             </header>
 
 
-            <main className="bg-cyan-600 h-full w-full">
+            <main className="h-full w-full">
 
-                <div className="flex items-center justify-center pt-6">
+                {/** Greeting and menu */}
+                <div className="flex items-center justify-center pt-4">
                     <button>
                         <Bars4Icon className="w-6 h-6 ml-1"/>
                     </button>
-                    <div className="mx-auto text-lg font-bold">
-                        <h1>Welcome back, {waveHand}</h1>
+                    <div className="mx-auto text-xl font-bold">
+                        <h1>Welcome back,<span className="text-3xl">{waveHand}</span></h1>
                     </div>
                 </div>
 
-                <section className="border-2 border-gray-400 m-1.5 mt-16 p-3">
 
+                {/** Main section */}
+                <section className="border-2 border-gray-300 m-1.5 mt-12 p-3">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="border-2 border-amber-200 mb-2 bg-blue-400 h-60 not-[]:rounded-lg shadow-mb p-2">
+                    <div className="border-2 border-black mb-2 h-full not-[]:rounded-lg shadow-mb p-2">
 
-                        <div className="flex justify-between m-1">
-                            <h1 className="absolute text-justify left-16 text-sm">To-do</h1>
+                        <div className="flex justify-between m-2">
+                            <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium">To-Do</span>
                             <div className="relative">
-                                 <ClipboardDocumentCheckIcon className="w-6 h-6 absolute text-gray-600"/>
-                                 <ClockIcon className="w-4 h-4 relative left-3 top-4 p-0.5 bg-gray-300 text-gray-600 rounded-full"/>
+                                 <ClipboardDocumentCheckIcon className="w-7 h-7 absolute text-gray-400"/>
+                                 <ClockIcon className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full"/>
                             </div>
-                             <span className="absolute text-justify mt-8 text-xs">{dayMonth}</span>
+                             <span className="absolute text-justify mt-10 text-xs">{dayMonth} <span className="text-gray-400 m-4">Today</span></span>
 
 
                             <button 
-                              className="flex items-center text-sm"
+                              className="flex items-center text-sm cursor-pointer gap-1"
                               onClick={showModal}>
-                                <PlusIcon className="w-5 h-5"/>
-                                Add Task
+                                <PlusIcon className="w-5 h-5 text-red-500 font-medium"/>
+                                <span className="text-gray-400">Add task</span>
                             </button>
                         </div>
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className="bg-yellow-500 min-h-28 w-full mt-12 border-2 border-red-400 rounded-lg">
+                        <div className="grid place-content-center m-auto bg-amber-900 min-h-28 mt-12 border-2 border-red-400 rounded-lg min-w-45">
 
-                           <div className="flex gap-1 p-1 w-full h-full">
+                           <div className="flex gap-1 p-1  h-full">
                                <span className="inline-block w-3 h-3 rounded-full border-2 border-red-700 ml-2 mt-1"></span>
 
                                {/*CARD TASKS */}
                                <div className="flex-1 text-gray-50 overflow-hidden flex flex-col p-1 text-sm">
                                 <h4 className="font-bold text-black">Task's title</h4>
-                                <p className="line-clamp-4 text-xs text-justify mb-4 mt-1 mr-2">{descripcionTaks}</p>
+                                <p className="line-clamp-3 text-xs text-justify mb-4 mt-1 mr-2">{descripcionTaks}</p>
 
-                                 <div className="mt-auto w-full flex gap-4 text-[9px]">
-                                    <span className="flex-1 text-center">Status: Not started </span>
+                                 <div className=" w-full flex gap-2 text-[8px]">
+                                    <span className="">Status: Not started </span>
                                     <span>Priority: Medium</span>
                                     <span>Created on: {dateInNumber}</span>
                                  </div>

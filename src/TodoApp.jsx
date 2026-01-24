@@ -86,9 +86,9 @@ function TodoApp() {
         <>
 
         <Dashboard 
-          showModal={handleButtonClick}
         />
 
+          {/*
           <div>
             {showAddTaskModal && // Conditional rendering of the AddTaskModal component
               < AddTaskModal  // Render the AddTaskModal component
@@ -97,7 +97,7 @@ function TodoApp() {
               />
             }
           </div>
-         {/*
+       
                     <button 
             onClick={handleButtonClick} // Show the modal on button click
             style={buttonStyles} // Apply button styles
@@ -106,8 +106,7 @@ function TodoApp() {
            </button>
          
          
-         */}
-
+        
 
            < TaskRenderer 
              tasks={tasks} // Pass tasks state to TaskRenderer as a prop
@@ -123,7 +122,9 @@ function TodoApp() {
             onUpdateTask={onUpdateTask} // Pass onUpdateTask to EditModal as a prop
             closeTheModal={onCloseModalEdit} // Pass onCloseModalEdit to EditModal as a prop
             /> } 
-           {/* Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
+          Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
+
+
         </>
 
     )
