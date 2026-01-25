@@ -81,7 +81,7 @@ export default function Dashboard({showModal}) {
                 <section className="border-2 border-gray-300 m-1.5 mt-12 p-3">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="border-2 border-black mb-2 h-full not-[]:rounded-lg shadow-mb p-2">
+                    <div className="w-full border-2 border-black p-2 mb-3 rounded-2xl">
 
                         <div className="flex justify-between m-2">
                             <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium">To-Do</span>
@@ -102,15 +102,18 @@ export default function Dashboard({showModal}) {
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className="grid place-content-center m-auto bg-amber-900 min-h-28 mt-12 border-2 border-red-400 rounded-lg min-w-45">
+                        <div className=" min-h-28 mt-12 border-2 border-gray-400 rounded-lg w-72 max-w-md mx-auto">
 
-                           <div className="flex gap-1 p-1  h-full">
-                               <span className="inline-block w-3 h-3 rounded-full border-2 border-red-700 ml-2 mt-1"></span>
+                           <div className="flex gap-4 p-2">
+                            <div className="flex justify-center items-start">
+                                <span className="w-4 h-4 border-2 rounded-full border-red-700"></span>
+                            </div>
+                               
 
                                {/*CARD TASKS */}
-                               <div className="flex-1 text-gray-50 overflow-hidden flex flex-col p-1 text-sm">
-                                <h4 className="font-bold text-black">Task's title</h4>
-                                <p className="line-clamp-3 text-xs text-justify mb-4 mt-1 mr-2">{descripcionTaks}</p>
+                               <div className="">
+                                <span className="font-bold text-black">Task's title</span>
+                                <p className="line-clamp-3">{descripcionTaks}</p>
 
                                  <div className=" w-full flex gap-2 text-[8px]">
                                     <span className="">Status: Not started </span>
