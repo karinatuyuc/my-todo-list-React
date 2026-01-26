@@ -102,22 +102,23 @@ export default function Dashboard({showModal}) {
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className=" min-h-28 mt-12 border-2 border-gray-400 rounded-lg w-72 max-w-md mx-auto">
+                        <div className=" min-h-28 mt-12 border-2 border-gray-400 rounded-lg w-68 max-w-md mx-auto p-0.5">
 
-                           <div className="flex gap-4 p-2">
-                            <div className="flex justify-center items-start">
-                                <span className="w-4 h-4 border-2 rounded-full border-red-700"></span>
+                           <div className="flex gap-2.5 p-1.5">
+                            <div className="flex justify-center items-start mt-1">
+                                <span className="w-3 h-3 border-2 rounded-full border-red-700"></span> {/**This sould be interactive too */}
                             </div>
                                
 
                                {/*CARD TASKS */}
-                               <div className="">
+                               <div className="flex flex-col gap-4">
                                 <span className="font-bold text-black">Task's title</span>
-                                <p className="line-clamp-3">{descripcionTaks}</p>
+                                <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
 
-                                 <div className=" w-full flex gap-2 text-[8px]">
-                                    <span className="">Status: Not started </span>
-                                    <span>Priority: Medium</span>
+                                {/** CARD FOOTER */}
+                                 <div className="text-[8px] flex justify-between">
+                                     <span>Priority: <span className="text-blue-400">Moderate</span></span>
+                                    <span className="">Status: Not started </span> {/**This should be interactive  */}
                                     <span>Created on: {dateInNumber}</span>
                                  </div>
 
