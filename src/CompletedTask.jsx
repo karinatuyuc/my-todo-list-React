@@ -10,62 +10,67 @@ export default function CompletedTask({dateIn}){
                {/** <div className="">*/}
                 <div className="flex gap-2 mb-2">
                     < DocumentCheckIcon
-                        className="w-9 h-9 text-gray-700 mb-2"
+                        className="w-7 h-7 text-gray-500 mb-2"
                     />
-                    <h1 className="text-lg text-red-600 font-bold">Completed Task</h1>
+                    <h1 className=" text-red-400 font-medium">Completed Task</h1>
                 </div>
 
                 {/**CARDS*/}
-                <div className="">
+                <div className="flex flex-col gap-4">
 
                     {/**CARD #1 */}
-                    <div className="grid border-2 border-green-700 mb-4 p-2 rounded-lg grid-cols-[1fr_4fr_1fr] ">
+                    <div className="grid border-2 border-gray-400 rounded-2xl grid-cols-[1fr_4fr_1fr] w-68 max-w-md mx-auto p-0.5">
 
-                        <div className="flex justify-center items-start">
-                            <div className="w-5 h-5 rounded-full border-2 border-amber-300 mt-2"></div>
+                        <div className="flex justify-center items-start pt-1">
+                            <div className="w-4 h-4 rounded-full border-2 border-green-600"></div>
                         </div>
                        
 
-                           <div className="mb-1.5 mt-2 max-w-auto">
-                              <span className="font-bold mb-2 text-base">Aqui va el titulo de el task</span>
-                              <p className="mb-1.5 text-sm line-clamp-2"
+                           <div className="max-w-auto">
+                              <span className="font-bold text-sm ">Aqui va el titulo de el task</span>
+                              <p className="text-sm line-clamp-2 mt-2 text-gray-600"
                             
                               >Esta es la descripcion que tendra dos lineas de longitud no mas</p>
-                              <h4 className="mb-1.5">Status: <span className="text-green-500">Completed</span></h4>
-                              <span className="text-xs">Completed {dateIn} </span>
+                              <h4 className="text-[9px] mt-2">Status: <span className="text-green-600">Completed</span></h4>
+                              <span className="text-[9px] text-gray-500">Completed {dateIn} </span> {/**This should be interactive */}
                            </div>
                     
-                           <div>
+                           <div className="flex justify-end items-start">
                                 <EllipsisHorizontalIcon
-                                className="w-6 h-6 text-gray-950 font-extrabold text-xs ml-auto"
+                                className="w-6 h-6"
                                 />
                             </div>
                     </div>
+
+
+
+
 
                    {/**CARDS 2*/}
+                   <div className="grid border-2 border-gray-400 mb-4 rounded-2xl grid-cols-[1fr_4fr_1fr] p-1 w-68 max-w-md mx-auto">
 
-                                          <div className="grid border-2 border-green-700 mb-4 p-2 rounded-lg grid-cols-[1fr_4fr_1fr] ">
-
-                        <div className="flex justify-center items-start">
-                            <div className="w-5 h-5 rounded-full border-2 border-amber-300 mt-2"></div>
+                        <div className="flex justify-center items-start pt-1">
+                            <div className="w-4 h-4 rounded-full border-2 border-green-600"></div>
                         </div>
                        
 
-                           <div className="mb-1.5 mt-2 max-w-auto">
-                              <span className="font-bold mb-2 text-base">Aqui va el titulo de el task</span>
-                              <p className="mb-1.5 text-sm line-clamp-2"
+                           <div className="max-w-auto">
+                              <span className="font-bold text-sm ">Aqui va el titulo de el task</span>
+                              <p className="text-sm line-clamp-2 mt-2 text-gray-600"
                             
                               >Esta es la descripcion que tendra dos lineas de longitud no mas</p>
-                              <h4 className="mb-1.5">Status: <span className="text-green-500">Completed</span></h4>
-                              <span className="text-xs">Completed {dateIn} </span>
+                              <h4 className="text-[9px] mt-2">Status: <span className="text-green-600">Completed</span></h4>
+                              <span className="text-[9px] text-gray-500">Completed {dateIn} </span> {/**This should be interactive */}
                            </div>
                     
-                           <div>
+                           <div className="flex justify-end items-start">
                                 <EllipsisHorizontalIcon
-                                className="w-6 h-6 text-gray-950 font-extrabold text-xs ml-auto"
+                                className="w-6 h-6"
                                 />
                             </div>
                     </div>
+
+ 
                       
                 </div>
                 

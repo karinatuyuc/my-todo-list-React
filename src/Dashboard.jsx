@@ -78,7 +78,7 @@ export default function Dashboard({showModal}) {
 
 
                 {/** Main section */}
-                <section className="border-2 border-gray-300 m-1.5 mt-12 p-3">
+                <section className="border-2 border-gray-300 m-4 mt-12 p-3.5">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
                     <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl">
@@ -102,7 +102,7 @@ export default function Dashboard({showModal}) {
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className=" min-h-28 mt-12 border-2 border-gray-400 rounded-lg w-68 max-w-md mx-auto p-0.5">
+                        <div className=" min-h-28 mt-12 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
 
                            <div className="flex gap-2.5 p-1.5">
                             <div className="flex justify-center items-start mt-1">
@@ -134,8 +134,8 @@ export default function Dashboard({showModal}) {
                         <div className="flex gap-4">
                             
                             <div className="flex relative mb-4">
-                              <ClipboardIcon className="w-6 h-6 absolute text-gray-400"/>
-                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 bg-gray-200 rounded-full text-gray-400" />
+                              <ClipboardIcon className="w-7 h-7 absolute text-gray-400"/>
+                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200" />
                             </div>
                             <span className="text-red-400 font-medium">Task Status</span>
                         </div>
@@ -163,7 +163,7 @@ export default function Dashboard({showModal}) {
 
                     {/*COMPLETED TASK*/}
 
-                    <div className="border-yellow-600 border-2 p-4 h-full mt-4">
+                    <div className=" border-2 drop-shadow-lg border-gray-300 p-4 h-full mt-4 rounded-2xl">
                         <CompletedTask 
                             dateIn={dateInNumber}
                         />
