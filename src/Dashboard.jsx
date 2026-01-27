@@ -1,6 +1,7 @@
-import { MagnifyingGlassIcon, Bars4Icon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon, ClipboardIcon, CheckCircleIcon} from "@heroicons/react/24/outline";  
+import { MagnifyingGlassIcon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon, ClipboardIcon, CheckCircleIcon} from "@heroicons/react/24/outline";  
 import ProgressCircle from "./ProgressCircle.jsx";
 import CompletedTask from "./CompletedTask.jsx";
+import SideMenu from "./sideMenu.jsx";
 
 export default function Dashboard({showModal}) {
     const date = new Date(); //Creating the local date 
@@ -67,11 +68,9 @@ export default function Dashboard({showModal}) {
             <main className="h-full w-full">
 
                 {/** Greeting and menu */}
-                <div className="flex items-center justify-center pt-4">
-                    <button>
-                        <Bars4Icon className="w-6 h-6 ml-1"/>
-                    </button>
-                    <div className="mx-auto text-xl font-bold">
+                <div className="flex items-center justify-center p-4">
+                    <SideMenu />
+                    <div className="mx-auto text-xl font-bold mb-4">
                         <h1>Welcome back,<span className="text-3xl">{waveHand}</span></h1>
                     </div>
                 </div>
