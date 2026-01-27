@@ -81,7 +81,7 @@ export default function Dashboard({showModal}) {
                 <section className="border-2 border-gray-300 m-1.5 mt-12 p-3">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="w-full border-2 border-black p-2 mb-3 rounded-2xl">
+                    <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl">
 
                         <div className="flex justify-between m-2">
                             <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium">To-Do</span>
@@ -106,7 +106,7 @@ export default function Dashboard({showModal}) {
 
                            <div className="flex gap-2.5 p-1.5">
                             <div className="flex justify-center items-start mt-1">
-                                <span className="w-3 h-3 border-2 rounded-full border-red-700"></span> {/**This sould be interactive too */}
+                                <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
                             </div>
                                
 
@@ -118,8 +118,8 @@ export default function Dashboard({showModal}) {
                                 {/** CARD FOOTER */}
                                  <div className="text-[8px] flex justify-between">
                                      <span>Priority: <span className="text-blue-400">Moderate</span></span>
-                                    <span className="">Status: Not started </span> {/**This should be interactive  */}
-                                    <span>Created on: {dateInNumber}</span>
+                                    <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
+                                    <span className="text-gray-500">Created on: {dateInNumber}</span>
                                  </div>
 
                                </div>
@@ -129,20 +129,20 @@ export default function Dashboard({showModal}) {
 
 
                     {/**NOT STARTED - TASK STATUS*/}
-                    <div className="border-2 border-violet-600 mb-2 h-full p-2">
+                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4">
                          
                         <div className="flex gap-4">
                             
-                            <div className="relative flex">
-                              <ClipboardIcon className="w-6 h-6 absolute text-gray-500"/>
-                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 bg-gray-300 rounded-full text-gray-500" />
+                            <div className="flex relative mb-4">
+                              <ClipboardIcon className="w-6 h-6 absolute text-gray-400"/>
+                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 bg-gray-200 rounded-full text-gray-400" />
                             </div>
-                            <h2 className="left-7">Task Status</h2>
+                            <span className="text-red-400 font-medium">Task Status</span>
                         </div>
 
 
                         {/*Progress circles*/}
-                        <div className="grid grid-cols-3 gap-4 h-full mt-2">
+                        <div className="grid grid-cols-3 gap-2 h-full">
                             
                             {circles.map((item, index) => (
                                 <ProgressCircle
