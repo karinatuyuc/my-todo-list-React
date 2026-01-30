@@ -16,7 +16,31 @@ const [isOpen, setIsOpen] = useState(true);
             />
 
             {isOpen &&  (
-                <div className=" fixed bg-white left-0 h-screen w-full z-50">
+                <div className="absolute bg-white left-0 h-screen w-screen z-50">
+
+                        <div className="bg-red-600 w-64 h-16 mt-10 flex justify-center rounded-tr-lg" >
+
+                            <div className=" absolute top-0">
+                                <UserCircleIcon
+                                    className="w-18 h-18"
+                                />
+                            </div>
+
+                            <span className="mt-8">User name</span>
+                            
+                        </div>
+
+                        <div className="bg-red-600 w-64 h-full">
+                            <ol>
+                                <li>FIRST</li>
+                                <li>FIRST</li>
+                                <li>FIRST</li>
+                                <li>FIRST</li>
+                                <li>FIRST</li>
+                                <li>FIRST</li>
+                            </ol>
+                        </div>
+
 
                 </div>
             )}
