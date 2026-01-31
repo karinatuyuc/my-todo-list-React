@@ -34,10 +34,7 @@ const [isOpen, setIsOpen] = useState(true);
                             <ol>
                                 <li>FIRST</li>
                                 <li>FIRST</li>
-                                <li>FIRST</li>
-                                <li>FIRST</li>
-                                <li>FIRST</li>
-                                <li>FIRST</li>
+                                <span>Dashboard</span>
                             </ol>
                         </div>
 
