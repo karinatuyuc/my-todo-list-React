@@ -35,6 +35,7 @@ const [isOpen, setIsOpen] = useState(true);
                                 <li>FIRST</li>
                                 <li>FIRST</li>
                                 <span>Dashboard</span>
+                                <h1>Aqui hay otro menus</h1>
                             </ol>
                         </div>
 
