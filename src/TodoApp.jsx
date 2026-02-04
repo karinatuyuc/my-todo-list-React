@@ -14,6 +14,7 @@ function TodoApp() {
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   const [ showEditTaskModal, setShowEditTaskModal] = useState(false) // State to control the Modal edit.
 
+
  
   const buttonStyles = {
     backgroundColor: "#6d1783ff",
@@ -84,7 +85,6 @@ function TodoApp() {
   
     return (
         <>
-
         <Dashboard 
         />
 
