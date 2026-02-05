@@ -18,7 +18,7 @@ export default function SideMenu(){
             {isOpen &&  (
                 <>
                   <div className="fixed inset-0 bg-black/50 z-40"></div>
-                    <div className="fixed left-0 top-26 bottom-0 w-78 z-50 bg-gray-300 rounded-r-2xl shadow-lg">
+                    <div className="fixed left-0 top-26 bottom-0 w-76 z-50 bg-gray-300 rounded-r-2xl shadow-lg">
 
                         <div className="bg-red-500 w-64 mt-10 flex justify-center rounded-tr-lg" >
                             <div className=" absolute top-0">
