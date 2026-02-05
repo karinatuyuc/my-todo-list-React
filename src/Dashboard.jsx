@@ -35,31 +35,31 @@ export default function Dashboard({showModal}) {
             <header className="flex justify-between items-center p-1 bg-red-100">
 
                 {/** Dashboard title*/}
-                <div className= "font-bold text-xl">
+                <div className= "font-bold text-xl md:text-3xl">
                     <span className="text-red-300">Dash</span>
                     <span className="text-black">board</span>
                 </div>
 
                 {/** Search bar */}
-                <div className="flex w-44 bg-white rounded-lg">
+                <div className="flex w-44 bg-white rounded-lg md:w-94">
 
                     <input 
                       type="text"
                       id="search"
                       name="search"
                       placeholder="Search your task..."
-                      className=" w-full h-8 p-2 text-sm rounded-lg focus:outline-none"
+                      className=" w-full h-8 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base"
                 />
-                    <button className="flex items-center justify-center">
+                    <button className="flex items-center justify-center md:h-9">
                         <MagnifyingGlassIcon 
-                        className="w-7 h-7 p-2 bg-red-300 rounded-lg hover:bg-red-200"/>
+                        className="w-7 h-7 p-2 bg-red-300 rounded-lg hover:bg-red-200 md:w-8 md:h-8"/>
                     </button>
                 </div>
 
                 {/** Date section */}
                 <div className="flex flex-col">
-                    <span className="font-bold text-[8px]">{dayName}</span>
-                    <span className="font-bold text-[7px] text-blue-300">{dateInNumber}</span>
+                    <span className="font-bold text-[8px] md:text-sm ">{dayName}</span>
+                    <span className="font-bold text-[7px] text-blue-300 md:text-sm md:flex md:justify-center">{dateInNumber}</span>
                 </div>
 
             </header>
@@ -69,9 +69,11 @@ export default function Dashboard({showModal}) {
 
                 {/** Greeting and menu */}
                 <div className="flex items-center justify-center p-4">
-                    <SideMenu />
-                    <div className="mx-auto text-xl font-bold mb-4">
-                        <h1>Welcome back,<span className="text-3xl">{waveHand}</span></h1>
+                    <SideMenu
+                         className="w-8 h-8 text-gray-100"
+                     />
+                    <div className="mx-auto text-xl font-bold mb-4 md:text-2xl">
+                        <h1>Welcome back,<span className="text-3xl md:text-4xl">{waveHand}</span></h1>
                     </div>
                 </div>
 

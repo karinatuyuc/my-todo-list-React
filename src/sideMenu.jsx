@@ -9,7 +9,7 @@ export default function SideMenu(){
         <>
           <div className={isOpen ? "overflow-hidden" : ""}>
             <Bars3Icon
-                className="w-7 h-7 hover:text-red-400"
+                className="w-7 h-7 hover:text-red-400 md:w-8 md:h-8"
                 onClick={() => {setIsOpen(true);
                     document.body.classList.add("overflow-hidden");
                 }}
