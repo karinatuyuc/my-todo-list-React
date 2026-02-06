@@ -85,25 +85,46 @@ export default function Dashboard({showModal}) {
                     <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl">
 
                         <div className="flex justify-between m-2">
-                            <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium">To-Do</span>
+                            <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium md:text-base">To-Do</span>
                             <div className="relative">
-                                 <ClipboardDocumentCheckIcon className="w-7 h-7 absolute text-gray-400"/>
-                                 <ClockIcon className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full"/>
+                                 <ClipboardDocumentCheckIcon 
+                                      className="w-7 h-7 absolute text-gray-400 
+                                      md:w-8 md:h-8"
+                                 />
+                                 <ClockIcon 
+                                      className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full
+                                       md:left-4 md:top-5"
+                                 />
                             </div>
-                             <span className="absolute text-justify mt-10 text-xs">{dayMonth} <span className="text-gray-400 m-4">Today</span></span>
+                             <span 
+                                 className="absolute text-justify mt-10 text-xs
+                                 md:text-sm md:mt-12">
+                                    {dayMonth} 
+                                     <span 
+                                     className="text-gray-400 m-4
+                                     md:text-sm">
+                                        Today
+                                     </span>
+                            </span>
 
 
                             <button 
-                              className="flex items-center text-sm cursor-pointer gap-1"
+                              className="flex items-center text-sm cursor-pointer gap-1
+                              md:text-base"
                               onClick={showModal}>
-                                <PlusIcon className="w-5 h-5 text-red-500 font-medium"/>
+                                <PlusIcon 
+                                   className="w-5 h-5 text-red-500 font-medium
+                                   md:w-6 md:h-6"
+                                />
                                 <span className="text-gray-400">Add task</span>
                             </button>
                         </div>
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className=" min-h-28 mt-12 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
+                        <div className="grid grid-cols-1 gap-3 mt-10 p-2 md:flex md:gap-2">
+
+                            <div className=" min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
 
                            <div className="flex gap-2.5 p-1.5">
                             <div className="flex justify-center items-start mt-1">
@@ -125,20 +146,73 @@ export default function Dashboard({showModal}) {
 
                                </div>
                            </div>
+                          </div>
+                             
+                        <div className="min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
+
+                           <div className="flex gap-2.5 p-1.5">
+                            <div className="flex justify-center items-start mt-1">
+                                <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
+                            </div>
+                               
+
+                               {/*CARD TASKS */}
+                               <div className="flex flex-col gap-4">
+                                <span className="font-bold text-black">Task's title</span>
+                                <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
+
+                                {/** CARD FOOTER */}
+                                 <div className="text-[8px] flex justify-between">
+                                     <span>Priority: <span className="text-blue-400">Moderate</span></span>
+                                    <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
+                                    <span className="text-gray-500">Created on: {dateInNumber}</span>
+                                 </div>
+
+                               </div>
+                           </div>
+                          </div>
+
+                        <div className="min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
+
+                           <div className="flex gap-2.5 p-1.5">
+                            <div className="flex justify-center items-start mt-1">
+                                <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
+                            </div>
+                               
+
+                               {/*CARD TASKS */}
+                               <div className="flex flex-col gap-4">
+                                <span className="font-bold text-black">Task's title</span>
+                                <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
+
+                                {/** CARD FOOTER */}
+                                 <div className="text-[8px] flex justify-between">
+                                     <span>Priority: <span className="text-blue-400">Moderate</span></span>
+                                    <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
+                                    <span className="text-gray-500">Created on: {dateInNumber}</span>
+                                 </div>
+
+                               </div>
+                           </div>
+                          </div>
+
                         </div>
+
+
                     </div>
 
 
-                    {/**NOT STARTED - TASK STATUS*/}
+                    {/* TASK STATUS*/}
                     <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4">
                          
                         <div className="flex gap-4">
                             
                             <div className="flex relative mb-4">
-                              <ClipboardIcon className="w-7 h-7 absolute text-gray-400"/>
-                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200" />
+                              <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-8 md:h-8"/>
+                              <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200
+                              md:w-5 md:h-5" />
                             </div>
-                            <span className="text-red-400 font-medium">Task Status</span>
+                            <span className="text-red-400 font-medium md:text-base">Task Status</span>
                         </div>
 
 
