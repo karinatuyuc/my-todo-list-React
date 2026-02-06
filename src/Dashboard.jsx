@@ -122,7 +122,7 @@ export default function Dashboard({showModal}) {
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className="grid grid-cols-1 gap-3 mt-10 p-2 md:flex md:gap-2">
+                        <div className="grid grid-cols-1 gap-3 mt-10 p-5 md:flex md:gap-2">
 
                             <div className=" min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
 

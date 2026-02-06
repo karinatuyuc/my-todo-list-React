@@ -5,8 +5,8 @@ export default function ProgressCircle({title, progress, color}) {
     return (
         <>
             {/** SVG for progress circles*/}
-            <div className="h-22">
-                        <svg viewBox="0 0 100 100" className="w-full h-16"> 
+            <div className="h-22 md:h-26">
+                        <svg viewBox="0 0 100 100" className="w-full h-16 md:h-22"> 
 
                             {/**Circle base */}
                             <circle cx="50" cy="50" r="40" stroke="#C0C1C9" 
