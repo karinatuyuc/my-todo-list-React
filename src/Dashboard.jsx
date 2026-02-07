@@ -30,36 +30,36 @@ export default function Dashboard({showModal}) {
 
     return (
         <>
-         <div className="p-0.5 h-full w-full bg-gray-200">
+         <div className="h-full w-full bg-gray-200 ">
 
-            <header className="flex justify-between items-center p-1 bg-red-100">
+            <header className="flex justify-between items-center p-1.5 bg-red-100">
 
                 {/** Dashboard title*/}
-                <div className= "font-bold text-xl md:text-3xl">
+                <div className= "font-bold text-[15px] md:text-3xl">
                     <span className="text-red-300">Dash</span>
                     <span className="text-black">board</span>
                 </div>
 
                 {/** Search bar */}
-                <div className="flex w-44 bg-white rounded-lg md:w-94">
+                <div className="flex bg-white rounded-lg md:w-94">
 
                     <input 
                       type="text"
                       id="search"
                       name="search"
                       placeholder="Search your task..."
-                      className=" w-full h-8 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base"
+                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base"
                 />
                     <button className="flex items-center justify-center md:h-9">
                         <MagnifyingGlassIcon 
-                        className="w-7 h-7 p-2 bg-red-300 rounded-lg hover:bg-red-200 md:w-8 md:h-8"/>
+                        className="w-7 h-9 p-1.5 bg-red-300 rounded-lg hover:bg-red-200 md:w-8 md:h-8"/>
                     </button>
                 </div>
 
                 {/** Date section */}
                 <div className="flex flex-col">
-                    <span className="font-bold text-[8px] md:text-sm ">{dayName}</span>
-                    <span className="font-bold text-[7px] text-blue-300 md:text-sm md:flex md:justify-center">{dateInNumber}</span>
+                    <span className="font-bold text-[9px] md:text-sm ">{dayName}</span>
+                    <span className="font-bold text-[9px] text-blue-300 md:text-sm md:flex md:justify-center">{dateInNumber}</span>
                 </div>
 
             </header>
@@ -68,7 +68,7 @@ export default function Dashboard({showModal}) {
             <main className="h-full w-full">
 
                 {/** Greeting and menu */}
-                <div className="flex items-center justify-center p-4">
+                <div className="flex items-center justify-center gap-4 m-4">
                     <SideMenu
                          className="w-8 h-8 text-gray-100"
                      />
@@ -79,7 +79,7 @@ export default function Dashboard({showModal}) {
 
 
                 {/** Main section */}
-                <section className="border-2 border-gray-300 m-4 mt-12 p-3.5">
+                <section className="border-2 border-gray-300 m-4 mt-12 p-6">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
                     <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl">
@@ -122,79 +122,61 @@ export default function Dashboard({showModal}) {
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className="grid grid-cols-1 gap-3 mt-10 p-5 md:flex md:gap-2">
+                        <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:flex md:gap-2">
 
-                            <div className=" min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
+                            {/**Card #1 */}
+                          <div className="w-full max-w-sm mx-auto min-h-28 border-2 border-green-400 rounded-2xl  p-0.5 md:grid md:grid-cols-1">
 
                            <div className="flex gap-2.5 p-1.5">
-                            <div className="flex justify-center items-start mt-1">
-                                <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
-                            </div>
+                               <div className="flex justify-center items-start mt-1">
+                                   <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
+                               </div>
                                
 
                                {/*CARD TASKS */}
                                <div className="flex flex-col gap-4">
-                                <span className="font-bold text-black">Task's title</span>
-                                <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
+                                    <span className="font-bold text-black">Task's title</span>
+                                    <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
 
-                                {/** CARD FOOTER */}
-                                 <div className="text-[8px] flex justify-between">
-                                     <span>Priority: <span className="text-blue-400">Moderate</span></span>
-                                    <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
-                                    <span className="text-gray-500">Created on: {dateInNumber}</span>
+                                  {/** CARD FOOTER */}
+                                   <div className="text-[7px] flex justify-between">
+                                       <span>Priority: <span className="text-blue-400">Moderate</span></span>
+                                       <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
+                                       <span className="text-gray-500">Created on: {dateInNumber}</span>
+                                   </div>
+
                                  </div>
+                            </div>
+                          </div>
+                        
 
+                          {/**Card #2 */}
+                          
+                        <div className="w-full max-w-sm mx-auto min-h-28 border-2 border-green-400 rounded-2xl  p-0.5 md:grid md:grid-cols-1">
+
+                           <div className="flex gap-2.5 p-1.5">
+                               <div className="flex justify-center items-start mt-1">
+                                   <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
                                </div>
-                           </div>
+                               
+
+                               {/*CARD TASKS */}
+                               <div className="flex flex-col gap-4">
+                                    <span className="font-bold text-black">Task's title</span>
+                                    <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
+
+                                  {/** CARD FOOTER */}
+                                   <div className="text-[7px] flex justify-between">
+                                       <span>Priority: <span className="text-blue-400">Moderate</span></span>
+                                       <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
+                                       <span className="text-gray-500">Created on: {dateInNumber}</span>
+                                   </div>
+
+                                 </div>
+                            </div>
                           </div>
                              
-                        <div className="min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
-
-                           <div className="flex gap-2.5 p-1.5">
-                            <div className="flex justify-center items-start mt-1">
-                                <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
-                            </div>
-                               
-
-                               {/*CARD TASKS */}
-                               <div className="flex flex-col gap-4">
-                                <span className="font-bold text-black">Task's title</span>
-                                <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
-
-                                {/** CARD FOOTER */}
-                                 <div className="text-[8px] flex justify-between">
-                                     <span>Priority: <span className="text-blue-400">Moderate</span></span>
-                                    <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
-                                    <span className="text-gray-500">Created on: {dateInNumber}</span>
-                                 </div>
-
-                               </div>
-                           </div>
-                          </div>
-
-                        <div className="min-h-28 border-2 border-gray-400 rounded-2xl w-68 max-w-md mx-auto p-0.5">
-
-                           <div className="flex gap-2.5 p-1.5">
-                            <div className="flex justify-center items-start mt-1">
-                                <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
-                            </div>
-                               
-
-                               {/*CARD TASKS */}
-                               <div className="flex flex-col gap-4">
-                                <span className="font-bold text-black">Task's title</span>
-                                <p className="line-clamp-3 text-xs text-gray-600">{descripcionTaks}</p>
-
-                                {/** CARD FOOTER */}
-                                 <div className="text-[8px] flex justify-between">
-                                     <span>Priority: <span className="text-blue-400">Moderate</span></span>
-                                    <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
-                                    <span className="text-gray-500">Created on: {dateInNumber}</span>
-                                 </div>
-
-                               </div>
-                           </div>
-                          </div>
+  
 
                         </div>
 
@@ -217,7 +199,7 @@ export default function Dashboard({showModal}) {
 
 
                         {/*Progress circles*/}
-                        <div className="grid grid-cols-3 gap-2 h-full">
+                        <div className="grid grid-cols-3 gap-1.5 h-full">
                             
                             {circles.map((item, index) => (
                                 <ProgressCircle

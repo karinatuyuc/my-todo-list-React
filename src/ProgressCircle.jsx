@@ -5,7 +5,7 @@ export default function ProgressCircle({title, progress, color}) {
     return (
         <>
             {/** SVG for progress circles*/}
-            <div className="h-22 md:h-26">
+            <div className="h-22 md:h-28">
                         <svg viewBox="0 0 100 100" className="w-full h-16 md:h-22"> 
 
                             {/**Circle base */}
@@ -38,7 +38,7 @@ export default function ProgressCircle({title, progress, color}) {
 
                         <div className="flex justify-center items-center gap-2 mt-2">
                             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></span>
-                            <span className="text-xs font-medium text-center">{title}</span>
+                            <span className="text-[10px] text-center md:text-sm">{title}</span>
                         </div>
             </div>
                        
