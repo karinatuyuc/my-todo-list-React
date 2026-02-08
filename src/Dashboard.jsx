@@ -30,7 +30,7 @@ export default function Dashboard({showModal}) {
 
     return (
         <>
-         <div className="h-full w-full bg-gray-200 ">
+         <div className="min-h-screen w-full bg-indigo-600 flex flex-col md:min-h-screen">
 
             <header className="flex justify-between items-center p-1.5 bg-red-100">
 
@@ -52,7 +52,7 @@ export default function Dashboard({showModal}) {
                 />
                     <button className="flex items-center justify-center md:h-9">
                         <MagnifyingGlassIcon 
-                        className="w-7 h-9 p-1.5 bg-red-300 rounded-lg hover:bg-red-200 md:w-8 md:h-8"/>
+                        className="w-7 h-9 p-1.5 bg-red-300 rounded-lg hover:bg-red-200 md:w-8 md:h-8 "/>
                     </button>
                 </div>
 
@@ -63,9 +63,9 @@ export default function Dashboard({showModal}) {
                 </div>
 
             </header>
+ 
 
-
-            <main className="h-full w-full">
+            <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen">
 
                 {/** Greeting and menu */}
                 <div className="flex items-center justify-center gap-4 m-4">
@@ -79,10 +79,10 @@ export default function Dashboard({showModal}) {
 
 
                 {/** Main section */}
-                <section className="border-2 border-gray-300 m-4 mt-12 p-6">
+                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-green-700 md:min-h-screen md:p-8 md:rounded-2xl">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl">
+                    <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl md:">
 
                         <div className="flex justify-between m-2">
                             <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium md:text-base">To-Do</span>
@@ -122,10 +122,10 @@ export default function Dashboard({showModal}) {
 
 
                         {/*DIV TO DO AND ADD TASK*/}
-                        <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:flex md:gap-2">
+                        <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:grid md:grid-cols-2">
 
                             {/**Card #1 */}
-                          <div className="w-full max-w-sm mx-auto min-h-28 border-2 border-green-400 rounded-2xl  p-0.5 md:grid md:grid-cols-1">
+                          <div className="w-full max-w-sm mx-auto min-h-28 border-2 border-indigo-400 rounded-2xl  p-0.5 md:grid md:grid-cols-1">
 
                            <div className="flex gap-2.5 p-1.5">
                                <div className="flex justify-center items-start mt-1">
@@ -185,7 +185,7 @@ export default function Dashboard({showModal}) {
 
 
                     {/* TASK STATUS*/}
-                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4">
+                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4 md:mb-6">
                          
                         <div className="flex gap-4">
                             
@@ -233,7 +233,10 @@ export default function Dashboard({showModal}) {
 
             </main>
 
+            
+                   <span className="text-[10px] bg-red-200">&copy; 2026 <a>RacooDev</a>. All rights reserved.</span>
 
+         
          </div>
         </> 
     )
