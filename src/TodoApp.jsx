@@ -3,6 +3,7 @@ import { AddTaskModal } from "./addTaskModal";
 import TaskRenderer from "./TaskRenderer";
 import { EditModal } from "./editModal";
 import  Dashboard  from "./Dashboard";
+import { TaskGrid } from "./TaskGrid";
 
 
 function TodoApp() {
@@ -88,6 +89,11 @@ function TodoApp() {
         <Dashboard 
             tasks={tasks}
         />
+
+        <TaskGrid 
+            tasks={tasks}
+        />
+
 
           {/*
           <div>
