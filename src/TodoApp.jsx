@@ -86,6 +86,7 @@ function TodoApp() {
     return (
         <>
         <Dashboard 
+            tasks={tasks}
         />
 
           {/*
