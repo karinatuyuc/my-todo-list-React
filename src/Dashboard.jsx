@@ -3,16 +3,18 @@ import ProgressCircle from "./ProgressCircle.jsx";
 import CompletedTask from "./CompletedTask.jsx";
 import TaskCard from "./TaskCard.jsx";
 import SideMenu from "./sideMenu.jsx";
+import useMediaQuery from "./useMediaQuery.js";
+import { TaskGrid } from "./TaskGrid.jsx";
 
-export default function Dashboard({showModal}) {
+export default function Dashboard({showModal, tasks}) {
     const date = new Date(); //Creating the local date 
     
-    const options = { // Formatt to show the date.
-        weekday: 'long',
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-    };
+   // const options = { // Formatt to show the date.
+     //   weekday: 'long',
+       // year: "numeric",
+        //month: "short",s
+        //day: "numeric"
+    //};
 
     const dayName= date.toLocaleDateString('en-US', { weekday: 'long'}); // To show the day of the week
     const dayMonth = date.toLocaleDateString('en-US', {day: 'numeric', month: 'short'});
@@ -29,11 +31,19 @@ export default function Dashboard({showModal}) {
         { title: "Not started", progress: "75%", color: "red" },
     ];
 
+
+    {/**This are for MediaQuery logic */}
+    const isMobile = useMediaQuery("(max-width: 768px)");
+    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1024px)");
+    const isDesktop = useMediaQuery("(min-width: 1024px)");
+
     return (
         <>
          <div className="min-h-screen w-full bg-indigo-600 flex flex-col md:min-h-screen">
 
-            <header className="flex justify-between items-center p-1.5 bg-red-100">
+
+            {/*Header*/}
+            <header className="flex justify-between items-center p-1.5 bg-red-100  lg:flex lg:justify-around lg:p-2 ">
 
                 {/** Dashboard title*/}
                 <div className= "font-bold text-[15px] md:text-3xl">
@@ -42,37 +52,51 @@ export default function Dashboard({showModal}) {
                 </div>
 
                 {/** Search bar */}
-                <div className="flex bg-white rounded-lg md:w-94">
+                <div className="flex bg-white rounded-lg md:w-94 lg:w-lvh">
 
                     <input 
                       type="text"
                       id="search"
                       name="search"
-                      placeholder="Search your task..."
-                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base"
+                      placeholder={isDesktop ? "Search your task here...." : "Search you task..." }
+                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base "
                 />
                     <button className="flex items-center justify-center md:h-9">
                         <MagnifyingGlassIcon 
-                        className="w-7 h-9 p-1.5 bg-red-300 rounded-lg hover:bg-red-200 md:w-8 md:h-8 "/>
+                        className="w-7 h-9 p-1.5 bg-red-400  text-white rounded-lg md:w-8 md:h-8 lg:w-9 lg:h-9"/>
                     </button>
                 </div>
 
+
                 {/** Date section */}
-                <div className="flex flex-col">
-                    <span className="font-bold text-[9px] md:text-sm ">{dayName}</span>
-                    <span className="font-bold text-[9px] text-blue-300 md:text-sm md:flex md:justify-center">{dateInNumber}</span>
+                <div className="flex items-center justify-center gap-6">
+                    {/**Notification and calendar icon */}
+                    <div className="hidden lg:flex lg:gap-2 text-gray-50">
+                         <ClockIcon className="w-8 h-8 bg-red-400 p-1.5 rounded-md"/>
+                         <ClipboardDocumentCheckIcon className="w-8 h-8 bg-red-400 p-1.5 rounded-md"/>
+                    </div>
+
+                    <div className="flex flex-col gap-0.5">
+                         <span className="font-bold text-[9px] md:text-sm lg:text-xs">{dayName}</span>
+                         <span className="font-bold text-[9px] text-blue-300 md:text-sm md:flex md:justify-center lg:text-sm">{dateInNumber}</span>
+                    </div>
+                   
                 </div>
 
             </header>
  
 
-            <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen">
+            <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen lg:bg-fuchsia-800 ">
+
 
                 {/** Greeting and menu */}
                 <div className="flex items-center justify-center gap-4 m-4">
-                    <SideMenu
+                    <div>
+                        <SideMenu
                          className="w-8 h-8 text-gray-100"
-                     />
+                        />
+                    </div>
+                    
                     <div className="mx-auto text-xl font-bold mb-4 md:text-2xl">
                         <h1>Welcome back,<span className="text-3xl md:text-4xl">{waveHand}</span></h1>
                     </div>
@@ -80,7 +104,7 @@ export default function Dashboard({showModal}) {
 
 
                 {/** Main section */}
-                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl">
+                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl lg:bg-green-800">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
                     <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl md:">
@@ -175,6 +199,18 @@ export default function Dashboard({showModal}) {
 
                     </div>
 
+
+
+
+                    <div>
+                        <TaskGrid
+                        isMobile={isMobile}
+                        isTablet={isTablet}
+                        isDesktop={isDesktop}
+                        task={tasks}
+                    />
+                    </div>
+                    
                     
                     
                 </section>
