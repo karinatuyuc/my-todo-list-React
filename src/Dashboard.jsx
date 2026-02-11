@@ -86,21 +86,23 @@ export default function Dashboard({showModal, tasks}) {
             </header>
  
 
-            <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen lg:bg-fuchsia-800 ">
+            <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen lg:bg-fuchsia-800  lg:grid lg:grid-cols-2 lg:gap-0.5">
 
-
-                {/** Greeting and menu */}
-                <div className="flex items-center justify-center gap-4 m-4">
-                    <div>
-                        <SideMenu
-                         className="w-8 h-8 text-gray-100"
-                        />
-                    </div>
-                    
-                    <div className="mx-auto text-xl font-bold mb-4 md:text-2xl">
-                        <h1>Welcome back,<span className="text-3xl md:text-4xl">{waveHand}</span></h1>
-                    </div>
+                <div className="p-2 bg-lime-200 lg:inset-y-0  lg:left-0">
+                    <SideMenu
+                       isDesktop={isDesktop}
+                    />
                 </div>
+
+
+                <div className="border-y-green-900">
+
+
+                     <div className="flex items-center justify-center gap-4 m-4">
+                        <div className="mx-auto text-xl font-bold mb-4 md:text-2xl">
+                           <h1>Welcome back,<span className="text-3xl md:text-4xl">{waveHand}</span></h1>
+                        </div>
+                    </div>
 
 
                 {/** Main section */}
@@ -214,6 +216,8 @@ export default function Dashboard({showModal, tasks}) {
                     
                     
                 </section>
+                </div>
+                {/** Greeting and menu */}
 
             </main>
 
