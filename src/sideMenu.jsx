@@ -5,6 +5,8 @@ export default function SideMenu({isDesktop}){
 
     const[isOpen, setIsOpen] = useState (false);
 
+    const iconsStyles = `w-6 h-6 inline-block mr-2 md:w-7 md:h-7`;
+
     return (
         <>
 
@@ -18,8 +20,7 @@ export default function SideMenu({isDesktop}){
         )}
                    
                 
-                    <div className={`fixed inset-0 w-full z-50
-                     lg:absolute lg:top-20 lg:bottom-0 lg:left-0 lg:w-64 
+                    <div className={`h-screen w-full fixed top-0 left-0 z-50 md:w-full 
 
                         ${isDesktop ? 'block' : isOpen ? 'block' : 'hidden'}`}>
 
@@ -32,55 +33,55 @@ export default function SideMenu({isDesktop}){
                             />
                         </div>
 
-                        <div className="bg-red-500 w-78 mt-10 flex justify-center rounded-tr-3xl
-                        md:w-xl lg:w-full" >
-                            <div className=" absolute top-0">
+                        <div className="bg-red-500/90  w-full flex justify-center z-50 
+                        md:w-full lg:w-full" >
+                            <div className="absolute top-0">
                                 <UserCircleIcon
-                                    className="w-20 h-20  text-black md:w-26 md:h-26"
+                                    className="w-20 h-20  text-black md:w-34 md:h-34"
                                 />                  
                             </div>
 
-                            <span className="mt-8 text-white text-xl md:mt-16 md:text-3xl">User name</span>
+                            <span className="mt-20 text-white text-xl md:mt-34 md:text-4xl">User name</span>
                         </div>
 
 
-                        <div className="bg-red-500 w-78 h-full
-                        md:w-xl lg:w-full lg:h-full">
+                        <div className="bg-red-500/90 w-full h-full
+                        md:w-full lg:w-full lg:h-full">
                             <div className="p-10">
-                                <ol className="space-y-10 text-white md:pl-14 md:text-2xl">
+                                <ol className="space-y-10 text-white text-xl md:pl-14 md:text-2xl">
                                     <li>
                                         <Squares2X2Icon
-                                            className="w-6 h-6 inline-block mr-2 md:w-7 md:h-7"
+                                            className={iconsStyles}
                                         />
                                         Dashboard
                                     </li>
                                     <li>
                                         <ExclamationCircleIcon
-                                            className="w-6 h-6 inline-block mr-2 md:w-7 md:h-7"
+                                            className={iconsStyles}
                                         />
                                         Vital Task
                                     </li>
                                     <li>
                                         <DocumentCheckIcon
-                                            className="w-6 h-6 inline-block mr-2 md:w-7 md:h-7"
+                                            className={iconsStyles}
                                         />
                                         My Task
                                     </li>
                                     <li>
                                         <ListBulletIcon
-                                            className="w-6 h-6 inline-block mr-2 md:w-7 md:h-7"
+                                            className={iconsStyles}
                                         />
                                         Task Categories
                                     </li>
                                     <li>
                                         <Cog6ToothIcon
-                                            className="w-6 h-6 inline-block mr-2 md:w-7 md:h-7"
+                                            className={iconsStyles}
                                         />
                                         Settings
                                     </li>
                                     <li>
                                         <QuestionMarkCircleIcon
-                                            className="w-6 h-6 inline-block mr-2 md:w-7 md:h-7"
+                                            className={iconsStyles}
                                         />
                                         Help
                                     </li>
@@ -98,8 +99,6 @@ export default function SideMenu({isDesktop}){
                             </span>
                             
                         </div>
-
-
                     </div>
 
         </>

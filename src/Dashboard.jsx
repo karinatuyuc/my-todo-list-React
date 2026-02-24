@@ -88,7 +88,7 @@ export default function Dashboard({showModal, tasks}) {
 
             <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen lg:bg-fuchsia-800  lg:grid lg:grid-cols-2 lg:gap-0.5">
 
-                <div className="p-2 bg-lime-200 lg:inset-y-0  lg:left-0">
+                <div className="">
                     <SideMenu
                        isDesktop={isDesktop}
                     />
@@ -106,7 +106,7 @@ export default function Dashboard({showModal, tasks}) {
 
 
                 {/** Main section */}
-                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl lg:bg-green-800">
+                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl lg:bg-green-900">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
                     <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl md:">
@@ -182,7 +182,6 @@ export default function Dashboard({showModal, tasks}) {
                                    title={item.title}
                                    progress={item.progress}
                                    color={item.color}
-
                                 />
                             ))}
                         </div>
@@ -200,8 +199,6 @@ export default function Dashboard({showModal, tasks}) {
                         />
 
                     </div>
-
-
 
 
                     <div>
