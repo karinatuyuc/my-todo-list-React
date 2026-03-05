@@ -12,7 +12,7 @@ export default function SideMenu({isDesktop}){
 
         {!isDesktop && (
              <Bars3Icon
-                className="w-7 h-7 hover:text-red-400 md:w-8 md:h-8"
+                className="w-7 h-7 hover:text-red-400 md:w-8 md:h-8 show-sandwich"
                 onClick={() => {setIsOpen(true);
                     document.body.classList.add("overflow-hidden");
                 }}
@@ -22,7 +22,7 @@ export default function SideMenu({isDesktop}){
                 
                     <div className={`h-screen w-full fixed top-0 left-0 z-50 md:w-full 
 
-                        ${isDesktop ? 'block' : isOpen ? 'block' : 'hidden'}`}>
+                        ${isDesktop ? 'block' : isOpen ? 'block' : 'hidden'}  menu-landscape`}>
 
 
                         <div className="absolute p-2 top-0 right-0">
