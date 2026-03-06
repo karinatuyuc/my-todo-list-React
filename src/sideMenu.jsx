@@ -20,7 +20,7 @@ export default function SideMenu({isDesktop}){
         )}
                    
                 
-                    <div className={`h-screen w-full fixed top-0 left-0 z-50 md:w-full 
+                    <div className={`h-screen w-full fixed top-4 left-0 z-50 md:w-full lg:top-0
 
                         ${isDesktop ? 'block' : isOpen ? 'block' : 'hidden'}  menu-landscape`}>
 
@@ -34,21 +34,22 @@ export default function SideMenu({isDesktop}){
                         </div>
 
                         <div className="bg-red-500/90  w-full flex justify-center z-50 
-                        md:w-full lg:w-full" >
+                        md:w-full lg:w-full " >
+
                             <div className="absolute top-0">
                                 <UserCircleIcon
-                                    className="w-20 h-20  text-black md:w-34 md:h-34"
+                                    className="w-20 h-20  text-black md:w-34 md:h-34 lg:w-18"
                                 />                  
                             </div>
 
-                            <span className="mt-20 text-white text-xl md:mt-34 md:text-4xl">User name</span>
+                            <span className="mt-20 text-white text-xl md:mt-34 md:text-4xl lg:text-2xl lg:mt-26">User name</span>
                         </div>
 
 
                         <div className="bg-red-500/90 w-full h-full
-                        md:w-full lg:w-full lg:h-full">
+                        md:w-full lg:w-full">
                             <div className="p-10">
-                                <ol className="space-y-10 text-white text-xl md:pl-14 md:text-2xl">
+                                <ol className="space-y-10 text-white text-xl md:pl-14 md:text-2xl lg:mt-12 lg:space-y-6 lg:pl-0">
                                     <li>
                                         <Squares2X2Icon
                                             className={iconsStyles}

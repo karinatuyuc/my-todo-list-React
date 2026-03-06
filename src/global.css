@@ -1,13 +1,18 @@
 @media (orintation: portrait) {
     .show-sandwich {
-        display: inline-block; /* sideMenu three bars hidden*/
+        display: inline-block; /*sideMenu visible in portrait*/
     }
 }
 
 @media (orientation: landscape) {
     .side-sandwich {
-        display: block; /* sideMenu three bars visible*/
-        background-color: green;
-        width: 45px;
+        display: block; /* sideMenu hidden in landscape*/
+    }
+
+    .menu-landscape {
+        position: fixed;
+        top: 55px;
+        left: 0;
+        width: 400px;
     }
 }
