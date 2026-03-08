@@ -1,18 +1,12 @@
-@media (orintation: portrait) {
-    .show-sandwich {
-        display: inline-block; /*sideMenu visible in portrait*/
-    }
-}
-
-@media (orientation: landscape) {
-    .side-sandwich {
-        display: block; /* sideMenu hidden in landscape*/
-    }
-
-    .menu-landscape {
+@media (max-width: 640px) and (orientation: portrait) {
+    .menu-mobile {
+        background-color: red;
         position: fixed;
-        top: 55px;
+        top: 0;
         left: 0;
-        width: 400px;
+        width: 100%;
+        height: 100vh;
+        z-index: 50;
+        overflow-y: auto; 
     }
 }

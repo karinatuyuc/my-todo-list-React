@@ -39,11 +39,11 @@ export default function Dashboard({showModal, tasks}) {
 
     return (
         <>
-         <div className="min-h-screen w-full bg-indigo-600 flex flex-col md:min-h-screen">
+         <div className="min-h-screen w-full flex flex-col md:min-h-screen">
 
 
             {/*Header*/}
-            <header className="flex justify-between items-center p-1.5 bg-red-100  lg:flex lg:justify-around lg:p-2 ">
+            <header className="flex justify-between items-center p-1.5 bg-red-100  lg:flex lg:justify-around lg:p-5 ">
 
                 {/** Dashboard title*/}
                 <div className= "font-bold text-[15px] md:text-3xl">
@@ -88,18 +88,16 @@ export default function Dashboard({showModal, tasks}) {
 
 
 
-            <main className="min-h-screen w-full grow md:bg-red-300 md:min-h-screen lg:flex lg:justify-between">
+        <main className="min-h-screen w-full grow md:min-h-screen lg:flex lg:gap-16">
 
-                <div>
-                      <SideMenu
-                       isDesktop={isDesktop}
-                    />
-                </div>
+            <div className="top-0 mt-0">
+                <SideMenu/>
+            </div>
                   
 
 
 
-                <div className="border-y-green-900 bg-sky-400 lg:w-8/12 lg:justify-end">
+            <div className="border-y-green-900 bg-sky-400">
 
 
                      <div className="flex items-center justify-center gap-4 m-4">
@@ -217,10 +215,10 @@ export default function Dashboard({showModal, tasks}) {
                     
                     
                 </section>
-                </div>
+            </div>
                 {/** Greeting and menu */}
 
-            </main>
+        </main>
 
             
                    <span className="text-[10px] bg-red-200">&copy; 2026 <a>RacooDev</a>. All rights reserved.</span>
