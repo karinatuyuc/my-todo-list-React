@@ -84,20 +84,19 @@ export default function Dashboard({showModal, tasks}) {
                 </div>
 
             </header>
- 
 
 
+         
 
-        <main className="min-h-screen w-full grow md:min-h-screen lg:flex lg:gap-16">
 
-            <div className="top-0 mt-0">
-                <SideMenu/>
+        <main className="min-h-screen w-full grow md:grid md:grid-cols-[2fr_3fr]">
+
+               <div>
+                  <SideMenu/>
             </div>
-                  
-
-
-
             <div className="border-y-green-900 bg-sky-400">
+
+                
 
 
                      <div className="flex items-center justify-center gap-4 m-4">
