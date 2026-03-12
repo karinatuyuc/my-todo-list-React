@@ -1,1 +1,17 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+@import "tailwindcss/theme";
+
+@layer utilities {
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .tablet-portrait\:bg-green-500 {
+      background-color: #22c55e; /* Tailwind green-500 */
+    }
+  }
+
+  @media (min-width: 900px) and (max-width: 1024px) and (orientation: landscape) {
+    .tablet-landscape\:bg-yellow-500 {
+      background-color: #eab308; /* Tailwind yellow-500 */
+    }
+  }
+}

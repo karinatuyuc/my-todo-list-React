@@ -89,7 +89,7 @@ export default function Dashboard({showModal, tasks}) {
          
 
 
-        <main className="min-h-screen w-full grow md:grid md:grid-cols-[2fr_3fr]">
+        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_2fr] md:gap-22">
 
                <div>
                   <SideMenu/>
