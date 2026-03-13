@@ -19,13 +19,13 @@ export default function SideMenu() {
             <div className="flex flex-col justify-center items-center">
                 <UserCircleIcon className="w-22 h-22 text-white
                 md:w-24 md:h-24
-                lg:-top-22 lg:relative lg:text-black"
+                 lg:relative lg:text-black"
                 />
                 <span className="text-2xl text-white 
-                lg:-top-44 lg:bg-gray-600">User name</span>
+                 lg:bg-gray-600">User name</span>
             </div>
 
-            <div className="p-8 h-screen lg:bg-amber-900 ">
+            <div className="p-8 h-screen lg:h-screen">
                 <ol className="space-y-12 ">
                     <li className="flex items-center gap-2 text-xl text-white md:gap-4">
                         <Squares2X2Icon className="w-10 h-10"/>
