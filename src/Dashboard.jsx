@@ -39,11 +39,11 @@ export default function Dashboard({showModal, tasks}) {
 
     return (
         <>
-         <div className="min-h-screen w-full flex flex-col md:min-h-screen">
+         <div className="min-h-screen w-full flex flex-col md:min-h-screen lg:bg-lime-600">
 
 
             {/*Header*/}
-            <header className="flex justify-between items-center p-1.5 bg-red-100  lg:flex lg:justify-around lg:p-5 ">
+            <header className="flex justify-between items-center p-1.5 bg-red-100  lg:flex lg:justify-around lg:p-5 lg:sticky lg:top-0 lg:z-20">
 
                 {/** Dashboard title*/}
                 <div className= "font-bold text-[15px] md:text-3xl">
@@ -89,7 +89,7 @@ export default function Dashboard({showModal, tasks}) {
          
 
 
-        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_2fr] md:gap-22">
+        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_2fr] md:gap-22 lg:h-full lg:mt-13 lg:bg-purple-700">
 
                <div>
                   <SideMenu/>
@@ -220,7 +220,7 @@ export default function Dashboard({showModal, tasks}) {
         </main>
 
             
-                   <span className="text-[10px] bg-red-200">&copy; 2026 <a>RacooDev</a>. All rights reserved.</span>
+                   <span className="text-[10px] bg-red-200 lg:mb-0">&copy; 2026 <a>RacooDev</a>. All rights reserved.</span>
 
          
          </div>
