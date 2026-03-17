@@ -1,17 +1,15 @@
 .menu-side {
-    background-color: red;
     opacity: 0.97;
     position: fixed;
-    top: 0;
+    top: 0px;
     padding-top: -6px;
-    height: 100vh;
     z-index: 50;
 }
 
 /*Vertical tablet*/
 @media (min-width: 768px) and (max-width: 900px) and (orientation: portrait) {
     .menu-side {
-        background-color: violet;
+        /*background-color: violet;*/
         width: 100%;
     }
 }
@@ -22,7 +20,7 @@
         background-color: blue;
         width: 38%;
         position:absolute;
-        height: 114vh;
+       /* height: 114vh;*/
         top: 145px;
     }
 }
@@ -31,8 +29,9 @@
 /* Desktop pequeño (laptops) */
 @media (min-width: 1024px) and (max-width: 1279px) {
     .menu-side {
-        width: 100%;
-        background-color: black
+        position: absolute;
+        width: 36%;
+        background-color: chocolate;
     }
 }
 
@@ -40,11 +39,7 @@
 @media (min-width: 1280px) {
     .menu-side {
         position: absolute;
-        height: 112vh;
-        width: 36%;
-        background-color: yellow;
-        top: 116px;
-        border-top-right-radius: 16px;
-        z-index: 10;
+        width: 28%;
+        z-index: 5;
     }
  }

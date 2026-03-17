@@ -39,7 +39,7 @@ export default function Dashboard({showModal, tasks}) {
 
     return (
         <>
-         <div className="min-h-screen w-full flex flex-col md:min-h-screen lg:bg-lime-600">
+         <div className="min-h-screen w-full flex flex-col md:min-h-screen">
 
 
             {/*Header*/}
@@ -89,9 +89,9 @@ export default function Dashboard({showModal, tasks}) {
          
 
 
-        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_2fr] md:gap-22 lg:h-full lg:mt-13 lg:bg-purple-700">
+        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-16 lg:h-full">
 
-               <div>
+               <div className="bg-red-700 lg:bg-red-400 lg:w-80">
                   <SideMenu/>
             </div>
             <div className="border-y-green-900 bg-sky-400">
@@ -107,7 +107,7 @@ export default function Dashboard({showModal, tasks}) {
 
 
                 {/** Main section */}
-                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl lg:bg-green-900">
+                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl lg:bg-green-400">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
                     <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl md:">

@@ -3,48 +3,56 @@ import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, Docum
 
 export default function SideMenu() {
 
+    const listStyles = "flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md";
+    const iconStyles =  "w-10 h-10 text-white"
+
     return (
         <>
-           <div className="bg-red-400 z-20 fixed w-full h-screen top-0 menu-side
-
-           md:w-100 md:-top-20 md:h-screen
+           <div className="z-20 fixed w-full h-screen top-0 menu-side
+           lg:w-10
            ">
 
 
-            <div className="flex justify-end p-2 text-xl text-white">
+            <div className="flex justify-end p-2 text-xl text-white top-0 absolute">
                 Close
             </div>
 
 
-            <div className="flex flex-col justify-center items-center">
-                <UserCircleIcon className="w-22 h-22 text-white
+            <div className="bg-red-700 flex flex-col justify-center items-center lg:absolute lg:mt-22 lg:w-80 lg:flex lg:justify-center lg:items-center">
+                <UserCircleIcon className="w-22 h-22
                 md:w-24 md:h-24
-                 lg:relative lg:text-black"
+                 lg:relative lg:text-teal-200 "
                 />
-                <span className="text-2xl text-white 
-                 lg:bg-gray-600">User name</span>
+                <span className="text-2xl text-white lg:text-black
+                ">
+                    User name
+                </span>
             </div>
 
-            <div className="p-8 h-screen lg:h-screen">
-                <ol className="space-y-12 ">
-                    <li className="flex items-center gap-2 text-xl text-white md:gap-4">
-                        <Squares2X2Icon className="w-10 h-10"/>
+            <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80 ">
+                <ol className="space-y-12 lg:space-y-12 lg:mt-55">
+                    <li className={listStyles}>
+                        <Squares2X2Icon className={iconStyles}/>
                         Dashboard
                     </li>
-                    <li className="flex items-center gap-2 text-xl text-white md:gap-4">
-                        <DocumentCheckIcon className="w-10 h-10"/>
+                    <li className={listStyles}>
+                        <DocumentCheckIcon className={iconStyles}/>
                         My Task
                     </li>
-                    <li className="flex items-center gap-2 text-xl text-white md:gap-4">
-                        <ListBulletIcon className="w-10 h-10"/>
+                    <li className={listStyles}>
+                        <ListBulletIcon className={iconStyles}/>
                         Task Categories
                     </li>
-                    <li className="flex items-center gap-2 text-xl text-white md:gap-4">
-                        <Cog6ToothIcon className="w-10 h-10"/>
+                    <li className={listStyles}>
+                        <Cog6ToothIcon className={iconStyles}/>
                         Settings
                     </li>
-                    <li className="flex items-center gap-2 text-xl text-white md:gap-4">
-                        <ExclamationCircleIcon className="w-10 h-10 text-white"/>
+                    <li className={listStyles}>
+                        <ExclamationCircleIcon className={iconStyles}/>
+                        About
+                    </li>
+                    <li className={listStyles}>
+                        <QuestionMarkCircleIcon className={iconStyles}/>
                         Help
                     </li>
                 </ol>
