@@ -15,11 +15,13 @@ export default function CompletedTask({dateIn}){
                     <h1 className=" text-red-400 font-medium">Completed Task</h1>
                 </div>
 
+
+
                 {/**CARDS*/}
-                <div className="flex flex-col gap-4 p-2 md:flex-row "> 
+                <div className="flex flex-col gap-4 p-2 md:flex-row lg:grid lg:pl-8 lg:pr-8 lg:p-0 lg:gap-3"> 
 
                     {/**CARD #1 */}
-                    <div className="grid border-2 border-violet-600 rounded-2xl grid-cols-[1fr_4fr_1fr] w-full max-w-md mx-auto p-1">
+                    <div className="grid border-2 border-violet-600 rounded-2xl grid-cols-[1fr_4fr_1fr] w-full max-w-md mx-auto p-1 lg:w-72">
 
                         <div className="flex justify-center items-start pt-1">
                             <div className="w-4 h-4 rounded-full border-2 border-green-600"></div>
@@ -43,7 +45,7 @@ export default function CompletedTask({dateIn}){
                     </div>
 
                    {/**CARD #2 */}
-                   <div className="grid border-2 border-violet-600 rounded-2xl grid-cols-[1fr_4fr_1fr] w-full max-w-md mx-auto p-1">
+                   <div className="grid border-2 border-violet-600 rounded-2xl grid-cols-[1fr_4fr_1fr] w-full max-w-md mx-auto p-1 lg:w-72">
 
                         <div className="flex justify-center items-start pt-1">
                             <div className="w-4 h-4 rounded-full border-2 border-green-600"></div>

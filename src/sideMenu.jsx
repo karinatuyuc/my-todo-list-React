@@ -4,7 +4,7 @@ import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, Docum
 export default function SideMenu() {
 
     const listStyles = 
-    "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:mt-8 lg:hover:mb-8";
+    "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:scale-110 transition-all duration-300";
     const iconStyles =  "w-10 h-10 text-white lg:group-hover:text-red-500 lg:transition-colors lg:duration-200"
 
     return (
@@ -32,7 +32,7 @@ export default function SideMenu() {
             </div>
 
             <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80 ">
-                <ol className="space-y-12 lg:space-y-14 lg:mt-60 lg:hover:text-blue-900">
+                <ol className="space-y-12 lg:space-y-12 lg:mt-60 lg:hover:text-blue-900">
                     <li className={listStyles}>
                         <Squares2X2Icon className={iconStyles}/>
                         Dashboard
