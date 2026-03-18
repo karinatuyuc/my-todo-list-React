@@ -99,18 +99,21 @@ export default function Dashboard({showModal, tasks}) {
                 
 
 
-                     <div className="flex items-center justify-center gap-4 m-4">
-                        <div className="mx-auto text-xl font-bold mb-4 md:text-2xl">
-                           <h1>Welcome back,<span className="text-3xl md:text-4xl">{waveHand}</span></h1>
+                     <div className="flex items-center justify-center gap-4 m-4 lg:p-1">
+                        <div className="mx-auto text-xl font-bold mb-4 md:text-2xl lg:ml-0 lg:text-4xl lg:mb-0">
+                           <h1>Welcome back, userName<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
                         </div>
                     </div>
 
 
                 {/** Main section */}
+
                 <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl lg:bg-green-400">
 
+                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:bg-fuchsia-500 lg:h-screen">
+
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-                    <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl md:">
+                    <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl lg:bg-amber-400 lg:h-full">
 
                         <div className="flex justify-between m-2">
                             <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium md:text-base">To-Do</span>
@@ -159,8 +162,15 @@ export default function Dashboard({showModal, tasks}) {
                     </div>
 
 
+
+
+
+
+                    <div className="lg:flex lg:flex-col lg:gap-2 lg:bg-cyan-600">
+
+                    
                     {/* TASK STATUS*/}
-                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4 md:mb-6">
+                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4 md:mb-6 lg:h-80 lg:p-6">
                          
                         <div className="flex gap-4">
                             
@@ -194,7 +204,7 @@ export default function Dashboard({showModal, tasks}) {
 
                     {/*COMPLETED TASK*/}
 
-                    <div className=" border-2 drop-shadow-lg border-gray-300 p-4 h-full mt-4 rounded-2xl">
+                    <div className=" border-2 drop-shadow-lg border-gray-300 p-4 h-full mt-4 rounded-2xl lg:bg-green-950">
                         <CompletedTask 
                             dateIn={dateInNumber}
                         />
@@ -211,7 +221,12 @@ export default function Dashboard({showModal, tasks}) {
                     />
                     </div>
                     
-                    
+                    </div>
+
+
+
+
+                    </div>
                     
                 </section>
             </div>

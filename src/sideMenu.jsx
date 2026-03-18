@@ -3,8 +3,9 @@ import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, Docum
 
 export default function SideMenu() {
 
-    const listStyles = "flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md";
-    const iconStyles =  "w-10 h-10 text-white"
+    const listStyles = 
+    "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:mt-8 lg:hover:mb-8";
+    const iconStyles =  "w-10 h-10 text-white lg:group-hover:text-red-500 lg:transition-colors lg:duration-200"
 
     return (
         <>
@@ -13,24 +14,25 @@ export default function SideMenu() {
            ">
 
 
-            <div className="flex justify-end p-2 text-xl text-white top-0 absolute">
+            <div className="absolute right-4 top-4 text-xl text-white ">
                 Close
             </div>
 
 
-            <div className="bg-red-700 flex flex-col justify-center items-center lg:absolute lg:mt-22 lg:w-80 lg:flex lg:justify-center lg:items-center">
+            <div className="bg-red-700 flex flex-col justify-center items-center lg:absolute lg:mt-22 lg:w-80 lg:flex lg:justify-center lg:items-center lg:bg-red-400">
                 <UserCircleIcon className="w-22 h-22
-                md:w-24 md:h-24
+                   md:w-24 md:h-24
                  lg:relative lg:text-teal-200 "
                 />
                 <span className="text-2xl text-white lg:text-black
+                lg:text-3xl
                 ">
                     User name
                 </span>
             </div>
 
             <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80 ">
-                <ol className="space-y-12 lg:space-y-12 lg:mt-55">
+                <ol className="space-y-12 lg:space-y-14 lg:mt-60 lg:hover:text-blue-900">
                     <li className={listStyles}>
                         <Squares2X2Icon className={iconStyles}/>
                         Dashboard
