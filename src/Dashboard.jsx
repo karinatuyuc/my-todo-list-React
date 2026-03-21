@@ -224,9 +224,7 @@ export default function Dashboard({showModal, tasks}) {
                     </div>
                     
                     {/*Este es un comentario de prueba*/}
-                    </div>
-
-
+                    </div> {/*Este s en comentariso para mamantener rachas */}
 
 
                     </div>
