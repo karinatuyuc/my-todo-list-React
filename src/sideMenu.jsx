@@ -7,6 +7,23 @@ export default function SideMenu() {
     "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:scale-110 transition-all duration-300";
     const iconStyles =  "w-10 h-10 text-white lg:group-hover:text-red-500 lg:transition-colors lg:duration-200"
 
+    let randomAvatar = [
+       "/avatar/avatar1.webp",
+       "/avatar/avatar2.webp",
+       "/avatar/avatar3.webp",
+       "/avatar/avatar4.webp"
+    ];
+
+    const getAnRandomIndex = (arr) => {
+        const randomNumber = Math.random();
+
+        const randomIndex = Math.floor(randomNumber * arr.length);
+
+        return arr[randomIndex];
+    }
+
+    console.log(getAnRandomIndex(randomAvatar));
+
     return (
         <>
            <div className="z-20 fixed w-full h-screen top-0 menu-side
@@ -20,6 +37,8 @@ export default function SideMenu() {
 
 
             <div className="bg-red-700 flex flex-col justify-center items-center lg:absolute lg:mt-22 lg:w-80 lg:flex lg:justify-center lg:items-center lg:bg-red-400">
+
+                {/*Aqui van las imagenes */}
                 <UserCircleIcon className="w-22 h-22
                    md:w-24 md:h-24
                  lg:relative lg:text-teal-200 "
