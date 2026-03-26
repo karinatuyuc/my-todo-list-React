@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { MagnifyingGlassIcon, ClockIcon, ClipboardDocumentCheckIcon, PlusIcon, ClipboardIcon, CheckCircleIcon} from "@heroicons/react/24/outline";  
 import ProgressCircle from "./ProgressCircle.jsx";
 import CompletedTask from "./CompletedTask.jsx";
@@ -5,8 +6,15 @@ import TaskCard from "./TaskCard.jsx";
 import SideMenu from "./sideMenu.jsx";
 import useMediaQuery from "./useMediaQuery.js";
 import { TaskGrid } from "./TaskGrid.jsx";
+import  UserName  from "./UserNameModal.jsx"
 
 export default function Dashboard({showModal, tasks}) {
+
+    {/** Catching userName Name */}
+    const [modalName, setModalName] = useState(true);
+    const [userName, setUserName] = useState("");
+
+
     const date = new Date(); //Creating the local date 
     
    // const options = { // Formatt to show the date.
@@ -39,6 +47,11 @@ export default function Dashboard({showModal, tasks}) {
 
     return (
         <>
+        <UserName
+         isOpen={modalName}
+         setModalName={setModalName}
+         setUserName={setUserName}
+        />
          <div className="min-h-screen w-full flex flex-col md:min-h-screen">
 
 
@@ -50,6 +63,7 @@ export default function Dashboard({showModal, tasks}) {
                     <span className="text-red-300">Dash</span>
                     <span className="text-black">board</span>
                 </div>
+
 
                 {/** Search bar */}
                 <div className="flex bg-white rounded-lg md:w-94 lg:w-lvh">
@@ -92,7 +106,9 @@ export default function Dashboard({showModal, tasks}) {
         <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-16 lg:h-full">
 
                <div className="bg-red-700 lg:bg-red-400 lg:w-80">
-                  <SideMenu/>
+                  <SideMenu
+                    userName={userName}
+                  />
             </div>
             <div className="border-y-green-900 bg-sky-400">
 
@@ -101,7 +117,7 @@ export default function Dashboard({showModal, tasks}) {
 
                      <div className="flex items-center justify-center gap-4 m-4">
                         <div className="mx-auto text-xl font-bold mb-4 md:text-2xl lg:ml-0 lg:text-4xl lg:mb-0">
-                           <h1>Welcome back, userName<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
+                           <h1>Welcome back, {userName}<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
                         </div>
                     </div>
 
