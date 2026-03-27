@@ -11,8 +11,8 @@ import  UserName  from "./UserNameModal.jsx"
 export default function Dashboard({showModal, tasks}) {
 
     {/** Catching userName Name */}
-    const [modalName, setModalName] = useState(true);
-    const [userName, setUserName] = useState("");
+   // const [modalName, setModalName] = useState(true);
+    //const [userName, setUserName] = useState("");
 
 
     const date = new Date(); //Creating the local date 
@@ -47,16 +47,18 @@ export default function Dashboard({showModal, tasks}) {
 
     return (
         <>
+
+        {/**
         <UserName
          isOpen={modalName}
          setModalName={setModalName}
          setUserName={setUserName}
-        />
+        /> */}
          <div className="min-h-screen w-full flex flex-col md:min-h-screen">
 
 
             {/*Header*/}
-            <header className="flex justify-between items-center p-1.5 bg-red-100  lg:flex lg:justify-around lg:p-5 lg:sticky lg:top-0 lg:z-20">
+            <header className="flex justify-between items-center p-1.5 bg-red-100 lg:flex lg:justify-around lg:p-3 lg:sticky lg:top-0 lg:z-20 lg:gap-40">
 
                 {/** Dashboard title*/}
                 <div className= "font-bold text-[15px] md:text-3xl">
@@ -66,14 +68,14 @@ export default function Dashboard({showModal, tasks}) {
 
 
                 {/** Search bar */}
-                <div className="flex bg-white rounded-lg md:w-94 lg:w-lvh">
+                <div className="flex bg-white rounded-lg md:w-94 lg:w-lvw ">
 
                     <input 
                       type="text"
                       id="search"
                       name="search"
                       placeholder={isDesktop ? "Search your task here...." : "Search you task..." }
-                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base "
+                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base"
                 />
                     <button className="flex items-center justify-center md:h-9">
                         <MagnifyingGlassIcon 
@@ -105,18 +107,24 @@ export default function Dashboard({showModal, tasks}) {
 
         <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-16 lg:h-full">
 
-               <div className="bg-red-700 lg:bg-red-400 lg:w-80">
+
+            <sideMenu/>
+            {/** 
+            <div className="bg-red-700 lg:bg-red-400 lg:w-80">
                   <SideMenu
                     userName={userName}
                   />
-            </div>
-            <div className="border-y-green-900 bg-sky-400">
+            </div> */}
+
+
+
+            <div className="border-y-green-900">
 
                 
 
 
                      <div className="flex items-center justify-center gap-4 m-4">
-                        <div className="mx-auto text-xl font-bold mb-4 md:text-2xl lg:ml-0 lg:text-4xl lg:mb-0">
+                        <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
                            <h1>Welcome back, {userName}<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
                         </div>
                     </div>
@@ -124,14 +132,14 @@ export default function Dashboard({showModal, tasks}) {
 
                 {/** Main section */}
 
-                <section className="border-2 border-gray-300 m-4 mb-5 mt-12 p-6 md:bg-orange-700 md:min-h-screen md:p-8 md:rounded-2xl 
-                lg:bg-green-400 lg:p-4">
+                <section className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-8 shadow-2xl 
+                lg:p-8">
 
-                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:bg-fuchsia-500 lg:h-screen">
+                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
 
-                    <div className="w-full border-2 border-gray-300 drop-shadow-lg p-2 mb-3 rounded-2xl lg:bg-amber-400 
+                    <div className="w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg p-2 mb-3 rounded
                     lg:h-full ">
 
                         <div className="flex justify-between m-4 lg:mt-1">
@@ -167,9 +175,12 @@ export default function Dashboard({showModal, tasks}) {
                                    className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
                                 />
-                                <span className="text-gray-400">Add task</span>
+                                <span className="text-gray-400 lg:text-sm">Add task</span>
                             </button>
                         </div>
+
+
+
 
                         <TaskCard
                           descriptionTask={descripcionTaks}
@@ -183,7 +194,7 @@ export default function Dashboard({showModal, tasks}) {
 
 
 
-                <div className="lg:flex lg:flex-col lg:bg-cyan-500 lg:h-screen">
+                <div className="lg:flex lg:flex-col lg:h-screen">
 
                     
                     {/* TASK STATUS*/}
@@ -222,7 +233,7 @@ export default function Dashboard({showModal, tasks}) {
                     {/*COMPLETED TASK*/}
 
                     <div className=" border-2 drop-shadow-lg border-gray-300 p-4 h-full mt-4 rounded-2xl 
-                    lg:bg-green-950 lg:mt-0 lg:p-4">
+                     lg:mt-0 lg:p-4">
                         <CompletedTask 
                             dateIn={dateInNumber}
                         />
