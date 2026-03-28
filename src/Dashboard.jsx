@@ -105,27 +105,19 @@ export default function Dashboard({showModal, tasks}) {
          
 
 
-        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-16 lg:h-full">
+        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-10 lg:h-full">
 
-
-            <sideMenu/>
-            {/** 
-            <div className="bg-red-700 lg:bg-red-400 lg:w-80">
-                  <SideMenu
-                    userName={userName}
-                  />
-            </div> */}
+            <div className="lg:bg-red-400 lg:w-80">
+                <SideMenu/>
+            </div>
 
 
 
-            <div className="border-y-green-900">
+            <div className="border-y-green-900" >
 
-                
-
-
-                     <div className="flex items-center justify-center gap-4 m-4">
+                     <div className="flex items-center justify-center gap-4 m-2">
                         <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
-                           <h1>Welcome back, {userName}<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
+                           <h1>Welcome back, <span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
                         </div>
                     </div>
 
