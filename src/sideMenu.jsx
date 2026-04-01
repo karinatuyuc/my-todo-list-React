@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, DocumentCheckIcon, ListBulletIcon, Cog6ToothIcon, QuestionMarkCircleIcon, ArrowUturnLeftIcon, XMarkIcon } from "@heroicons/react/16/solid"
+import UserName from "./UserNameModal";
 
 export default function SideMenu() {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+
+
     const listStyles = 
     "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:scale-110 transition-all duration-300";
     const iconStyles =  "w-7 h-7 text-white lg:group-hover:text-red-500 lg:transition-colors lg:duration-200"
@@ -20,6 +24,15 @@ export default function SideMenu() {
     const randomIndex = Math.floor(Math.random() * avatarRandom.length);
 
     const avatar = avatarRandom[randomIndex];
+
+    {/**This is the fx to change the input username value */}
+
+    function onClickButton() {
+        setInputValue(inputValue);
+    };
+
+    console.log(onClickButton)
+
 
     return (
         <>
@@ -62,13 +75,18 @@ export default function SideMenu() {
                 lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
 
                     <input
-                      type='text'
-                      value="John Doe"
+                      type="text"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
                       placeholder="Write your name here"
                       className="w-52 ml-1 border-b-fuchsia-800 text-lg text-center"
                     />
-                    <button className="ml-1 bg-cyan-700 cursor-pointer">D</button>
+                    <button className="ml-1 text-sm bg-red-300 p-1 cursor-pointer rounded-2xl"
+                    onClick={onClickButton}
+                    >Save</button>
                 </div>
+                {/**End DIV FOR THE USERNAME */}
+
             </div>
 
             <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80">

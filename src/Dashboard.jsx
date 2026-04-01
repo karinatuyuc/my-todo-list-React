@@ -12,10 +12,9 @@ export default function Dashboard({showModal, tasks}) {
 
     {/** Catching userName Name */}
    // const [modalName, setModalName] = useState(true);
-    //const [userName, setUserName] = useState("");
 
 
-    const date = new Date(); //Creating the local date 
+    const date = new Date(); //Creating the local date  
     
    // const options = { // Formatt to show the date.
      //   weekday: 'long',
@@ -54,7 +53,7 @@ export default function Dashboard({showModal, tasks}) {
          setModalName={setModalName}
          setUserName={setUserName}
         /> */}
-         <div className="min-h-screen w-full flex flex-col md:min-h-screen">
+         <div className="min-h-screen w-full flex flex-col md:min-h-screen lg:bg-blue-950">
 
 
             {/*Header*/}
@@ -107,9 +106,13 @@ export default function Dashboard({showModal, tasks}) {
 
         <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-10 lg:h-full">
 
+            {/**SIDE MENU */}
             <div className="lg:bg-red-400 lg:w-80">
-                <SideMenu/>
+                <SideMenu
+                
+                />
             </div>
+            {/**End SIDE MENU */}
 
 
 
