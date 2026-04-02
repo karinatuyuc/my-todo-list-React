@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, DocumentCheckIcon, ListBulletIcon, Cog6ToothIcon, QuestionMarkCircleIcon, ArrowUturnLeftIcon, XMarkIcon } from "@heroicons/react/16/solid"
+import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, 
+    DocumentCheckIcon, ListBulletIcon, Cog6ToothIcon, QuestionMarkCircleIcon, ArrowUturnLeftIcon, XMarkIcon, 
+    PencilIcon, CheckIcon } from "@heroicons/react/16/solid"
 import UserName from "./UserNameModal";
 
-export default function SideMenu() {
+export default function SideMenu({ userName, setUserName}) {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
 
@@ -28,10 +31,9 @@ export default function SideMenu() {
     {/**This is the fx to change the input username value */}
 
     function onClickButton() {
-        setInputValue(inputValue);
+       setUserName(inputValue);
+       setIsEditing(!isEditing);
     };
-
-    console.log(onClickButton)
 
 
     return (
@@ -70,22 +72,50 @@ export default function SideMenu() {
                 </div>
 
 
-                {/**DIV for the username */}
-                <div className="text-2xl text-white font-semibold mt-2 flex
-                lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
+
+                {!isEditing ?  
+
+                  <div className="text-2xl text-white font-semibold mt-5 flex
+                        lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
+                          <h1>User name...</h1>
+
+                        <button onClick={onClickButton}>
+                          <PencilIcon
+                          className="w-5 h-5 text-white ml-2 cursor-pointer hover:text-red-700"
+                          />
+                        </button>
+                    
+                  </div>
+                  : 
+                  <div className="flex items-center mt-5">
 
                     <input
                       type="text"
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
-                      placeholder="Write your name here"
-                      className="w-52 ml-1 border-b-fuchsia-800 text-lg text-center"
+                      placeholder="write your username"
+                      className="hover:bg-red-200 p-0.5 border-none"
                     />
-                    <button className="ml-1 text-sm bg-red-300 p-1 cursor-pointer rounded-2xl"
-                    onClick={onClickButton}
-                    >Save</button>
-                </div>
+                    <CheckIcon
+                      className="w-8 h-8 cursor-pointer text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm"
+                      onClick={onClickButton}
+                    />
+                 </div>
+                }
+
+                {/**DIV for the username */}
+
                 {/**End DIV FOR THE USERNAME */}
+
+
+
+
+
+
+
+
+
+
 
             </div>
 
