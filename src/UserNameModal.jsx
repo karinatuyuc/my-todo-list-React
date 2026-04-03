@@ -1,18 +1,10 @@
 import { useState } from 'react';
 
-function UserName({setModalName, isOpen, setUserName}) {
+function UserName() {
 
     const [inputValue, setInputValue] = useState("");
 
-    const nameValid = () => {
 
-        if(!inputValue.trim()) {
-            alert("Please enter a valid username")
-        } else {
-            setUserName(inputValue);
-            setModalName(false);
-        }
-    }
 
     return (
         <>

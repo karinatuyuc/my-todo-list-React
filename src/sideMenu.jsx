@@ -10,6 +10,8 @@ export default function SideMenu({ userName, setUserName}) {
     const [isEditing, setIsEditing] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
+    console.log(!isEditing);
+
 
     const listStyles = 
     "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:scale-110 transition-all duration-300";
@@ -77,8 +79,10 @@ export default function SideMenu({ userName, setUserName}) {
 
                   <div className="text-2xl text-white font-semibold mt-5 flex
                         lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
-                          <h1>User name...</h1>
-
+                          <span>
+                            {userName === "" ? "user name" : userName}
+                          </span>
+                    
                         <button onClick={onClickButton}>
                           <PencilIcon
                           className="w-5 h-5 text-white ml-2 cursor-pointer hover:text-red-700"
