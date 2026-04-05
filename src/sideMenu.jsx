@@ -79,7 +79,8 @@ export default function SideMenu({ userName, setUserName}) {
 
                   <div className="text-2xl text-white font-semibold mt-5 flex
                         lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
-                          <span>
+                          <span className="truncate overflow-hidden text-ellipsis w-75
+                          lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis">
                             {userName === "" ? "user name" : userName}
                           </span>
                     
