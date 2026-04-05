@@ -52,7 +52,7 @@ export default function Dashboard({showModal, tasks}) {
          setModalName={setModalName}
          setUserName={setUserName}
         /> */}
-         <div className="min-h-screen w-full flex flex-col md:min-h-screen lg:bg-blue-950">
+         <div className="min-h-screen w-full flex flex-col md:min-h-screen">
 
 
             {/*Header*/}
@@ -118,7 +118,7 @@ export default function Dashboard({showModal, tasks}) {
 
             <div className="border-y-green-900" >
 
-                     <div className="flex items-center justify-center gap-4 m-2">
+                     <div className="flex items-center justify-center gap-4 lg:mt-6">
                         <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
                            <h1>Welcome back, {userName}<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
                         </div>

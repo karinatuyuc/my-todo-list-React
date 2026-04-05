@@ -98,7 +98,7 @@ export default function SideMenu({ userName, setUserName}) {
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="write your username"
-                      className="hover:bg-red-200 p-0.5 border-none text-sm"
+                      className="bg-red-300 p-0.5 border-none text-lg rounded-sm focus:ring-2 focus:ring-red-500 focus:outline-none lg:p-1"
                     />
                     <CheckIcon
                       className="w-8 h-8 cursor-pointer text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm"
