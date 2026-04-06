@@ -79,8 +79,8 @@ export default function SideMenu({ userName, setUserName}) {
 
                   <div className="text-2xl text-white font-semibold mt-5 flex
                         lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
-                          <span className="truncate overflow-hidden text-ellipsis w-75
-                          lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis">
+                          <span className="truncate overflow-hidden text-ellipsis w-75 text-center
+                          lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis ">
                             {userName === "" ? "user name" : userName}
                           </span>
                     
@@ -99,7 +99,8 @@ export default function SideMenu({ userName, setUserName}) {
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="write your username"
-                      className="bg-red-300 p-0.5 border-none text-lg rounded-sm focus:ring-2 focus:ring-red-500 focus:outline-none lg:p-1"
+                      className="bg-red-300 p-0.5 border-none text-lg rounded-sm focus:ring-2 focus:ring-red-500 focus:outline-none lg:p-1
+                      text-center"
                     />
                     <CheckIcon
                       className="w-8 h-8 cursor-pointer text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm"

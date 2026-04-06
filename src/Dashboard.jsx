@@ -118,13 +118,13 @@ export default function Dashboard({showModal, tasks}) {
 
             <div className="border-y-green-900" >
 
-                     <div className="flex items-center justify-center gap-4 lg:mt-6">
-                        <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
+                     <div className="flex items-center justify-center gap-2 lg:mt-9 text-center">
+                        <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
                            <h1 
-                             className=' truncate overflow-hidden text-ellipsis w-75 text-black font-bold
-                             lg:w-full lg:truncate lg:overflow-hidden lg:text-ellipsis'
-                           >Welcome back, {userName}<span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1>
+                             className='sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold'
+                           >Welcome, {userName} <span className="text-3xl md:text-4xl lg:text-4xl">{waveHand}</span></h1> 
                         </div>
+                         
                     </div>
 
 
