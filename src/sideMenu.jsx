@@ -51,17 +51,17 @@ export default function SideMenu({ userName, setUserName}) {
 
        
 
-        <div className={`z-20 fixed w-full h-screen top-0 menu-side
-           lg:w-80 ${isOpen ? "w-full" : "hidden"} md:flex md:flex-col md:static md:w-80`}>
+        <div className={`z-20 fixed w-full h-screen top-0 menu-side md:bg-fuchsia-800
+            ${isOpen ? "left-0" : "-left-full"} `}>
 
 
-            <div className={`bg-red-700 flex flex-col justify-center items-center lg:w-80 lg:bg-red-400
+            <div className={`bg-red-700 flex flex-col justify-center items-center lg:w-80 lg:bg-red-400 md:bg-yellow-300
               
               
             `}>
 
 
-                   <div className="absolute right-4 top-4 text-xl text-white lg:hidden">
+                   <div className="absolute right-4 top-4 text-xl text-white lg:hidden md:hidden">
                       <button onClick={() => setIsOpen(false)}>Close</button>
                    </div>
 

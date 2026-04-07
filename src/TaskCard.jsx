@@ -4,7 +4,8 @@ export default function TaskCard ({descriptionTask, date}){
         <>
             
             
-        <div className="lg:p-6 border-gray-800">     
+        <div className="lg:p-6 border-gray-800
+        md:mt-20 lg:mt-4">     
                 
                                   {/*DIV TO DO AND ADD TASK*/}
              <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:grid md:grid-cols-2 lg:flex lg:mt-2">

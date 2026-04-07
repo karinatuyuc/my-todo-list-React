@@ -56,7 +56,8 @@ export default function Dashboard({showModal, tasks}) {
 
 
             {/*Header*/}
-            <header className="flex justify-between items-center p-1.5 bg-red-100 lg:flex lg:justify-around lg:p-3 lg:sticky lg:top-0 lg:z-20 lg:gap-40">
+            <header className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20
+            lg:flex lg:justify-around lg:p-4 lg:pl-12 lg:pr-12 lg:sticky lg:top-0 lg:z-20 lg:gap-44">
 
                 {/** Dashboard title*/}
                 <div className= "font-bold text-[15px] md:text-3xl">
@@ -66,16 +67,16 @@ export default function Dashboard({showModal, tasks}) {
 
 
                 {/** Search bar */}
-                <div className="flex bg-white rounded-lg md:w-94 lg:w-lvw ">
+                <div className="flex bg-yellow-50 hover:bg-red-200 rounded-lg md:w-94 lg:w-lvw ">
 
                     <input 
                       type="text"
                       id="search"
                       name="search"
                       placeholder={isDesktop ? "Search your task here...." : "Search you task..." }
-                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base"
+                      className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base hover:bg-red-200"
                 />
-                    <button className="flex items-center justify-center md:h-9">
+                    <button className="flex items-center justify-center md:h-9 hover:bg-red-300">
                         <MagnifyingGlassIcon 
                         className="w-7 h-9 p-1.5 bg-red-400  text-white rounded-lg md:w-8 md:h-8 lg:w-9 lg:h-9"/>
                     </button>
@@ -103,7 +104,8 @@ export default function Dashboard({showModal, tasks}) {
          
 
 
-        <main className="min-h-screen w-full grow md:grid md:grid-cols-[1fr_3fr] md:gap-10 lg:h-full">
+        <main className="min-h-screen w-full grow  md:h-full md:bg-blue-600
+        lg:grid lg:grid-cols-[1fr_3fr] lg:gap-10 lg:h-full lg:bg-amber-400">
 
             {/**SIDE MENU */}
             <div className="lg:bg-red-400 lg:w-80">
@@ -130,18 +132,22 @@ export default function Dashboard({showModal, tasks}) {
 
                 {/** Main section */}
 
-                <section className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-8 shadow-2xl 
+                <section className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-10 shadow-2xl 
+                
                 lg:p-8">
 
                     <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
 
-                    <div className="w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg p-2 mb-3 rounded
+                    <div className="w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg p-2 mb-3 rounded 
+                    md:bg-amber-400 md:p-4 md:mb-12
                     lg:h-full ">
 
-                        <div className="flex justify-between m-4 lg:mt-1">
-                            <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium md:text-base">To-Do</span>
+                        <div className="flex justify-between m-4 
+                        
+                        lg:mt-1">
+                            <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium md:text-2xl">To-Do</span>
                             <div className="relative">
                                  <ClipboardDocumentCheckIcon 
                                       className="w-7 h-7 absolute text-gray-400 
@@ -155,7 +161,7 @@ export default function Dashboard({showModal, tasks}) {
 
                              <span 
                                  className="absolute text-justify mt-10 text-xs
-                                 md:text-sm md:mt-12 lg:text-[11px] lg:mt-10">
+                                 md:text-sm md:mt-14 lg:text-[11px] lg:mt-10">
                                     {dayMonth} 
                                      <span 
                                      className="text-gray-400 m-4
@@ -173,7 +179,7 @@ export default function Dashboard({showModal, tasks}) {
                                    className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
                                 />
-                                <span className="text-gray-400 lg:text-sm">Add task</span>
+                                <span className="text-gray-400 md:text-2xl lg:text-sm">Add task</span>
                             </button>
                         </div>
 
@@ -192,20 +198,22 @@ export default function Dashboard({showModal, tasks}) {
 
 
 
-                <div className="lg:flex lg:flex-col lg:h-screen">
+                <div className="lg:flex lg:flex-col lg:h-screen md:bg-red-700 md:p-0.5 lg:bg-red-400 lg:p-0.5">
 
                     
                     {/* TASK STATUS*/}
-                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4 md:mb-6 lg:h-80 lg:pt-3">
+                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4 
+                    md:mb-12
+                    lg:h-80 lg:pt-3 lg:mb-4">
                          
-                        <div className="flex gap-4 lg:pb-6">
+                        <div className="flex gap-4  md:pb-6 lg:pb-4">
                             
-                            <div className="flex relative mb-4">
-                              <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-8 md:h-8"/>
+                            <div className="flex relative mb-4 md:mt-3">
+                              <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-8 lg:h-8"/>
                               <CheckCircleIcon className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200
-                              md:w-5 md:h-5" />
+                              md:w-6 md:h-6 lg:w-6 lg:h-6" />
                             </div>
-                            <span className="text-red-400 font-medium md:text-base">Task Status</span>
+                            <span className="text-red-400 font-medium md:text-2xl">Task Status</span>
                         </div>
 
 
@@ -231,7 +239,8 @@ export default function Dashboard({showModal, tasks}) {
                     {/*COMPLETED TASK*/}
 
                     <div className=" border-2 drop-shadow-lg border-gray-300 p-4 h-full mt-4 rounded-2xl 
-                     lg:mt-0 lg:p-4">
+                       max-w-7xl
+                     lg:mt-0 lg:p-1">
                         <CompletedTask 
                             dateIn={dateInNumber}
                         />
