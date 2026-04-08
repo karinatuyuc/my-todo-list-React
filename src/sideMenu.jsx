@@ -10,8 +10,6 @@ export default function SideMenu({ userName, setUserName}) {
     const [isEditing, setIsEditing] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
-    console.log(!isEditing);
-
 
     const listStyles = 
     "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-md lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-3 lg:hover:scale-110 transition-all duration-300";
@@ -42,7 +40,7 @@ export default function SideMenu({ userName, setUserName}) {
         <>
 
         {/**Movil Menu hamburguer */}
-        <div className="w-7 h-7 m-1 block md:hidden lg:hidden">
+        <div className="w-7 h-7 m-1 block md:m-2 md:w-10 md:h-10 lg:hidden">
            <Bars3Icon
             onClick={() => setIsOpen(true)}
            />
@@ -51,17 +49,20 @@ export default function SideMenu({ userName, setUserName}) {
 
        
 
-        <div className={`z-20 fixed w-full h-screen top-0 menu-side md:bg-fuchsia-800
-            ${isOpen ? "left-0" : "-left-full"} `}>
+        <div className={`fixed h-screen top-0 menu-side z-20
+            ${isOpen ? "translate-x-0" : "-translate-x-full"}
+             transition-transform 
+             duration-300 ease-in-out lg:static lg:translate-x-0`}>
 
 
-            <div className={`bg-red-700 flex flex-col justify-center items-center lg:w-80 lg:bg-red-400 md:bg-yellow-300
+            <div className={`bg-red-700 flex flex-col justify-center items-center 
+            w-full md:w-lvw lg:w-80 lg:bg-red-400
               
               
             `}>
 
 
-                   <div className="absolute right-4 top-4 text-xl text-white lg:hidden md:hidden">
+                   <div className="absolute right-4 top-4 text-xl text-white md:text-2xl lg:hidden">
                       <button onClick={() => setIsOpen(false)}>Close</button>
                    </div>
 
@@ -69,8 +70,8 @@ export default function SideMenu({ userName, setUserName}) {
 
 
                 {/**This is the icon */}   
-                <div className="rounded-full mt-4 border-white border-2 lg:mt-20">
-                    <img src={avatar} alt="avatar" className="w-20 h-20 rounded-full"/> 
+                <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-20">
+                    <img src={avatar} alt="avatar" className="w-20 h-20 md:w-22 md:h-22 rounded-full"/> 
                 </div>
 
 
@@ -80,30 +81,34 @@ export default function SideMenu({ userName, setUserName}) {
                   <div className="text-2xl text-white font-semibold mt-5 flex
                         lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
                           <span className="truncate overflow-hidden text-ellipsis w-75 text-center
+                          md:text-2xl md:w-56
                           lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis ">
                             {userName === "" ? "user name" : userName}
                           </span>
                     
                         <button onClick={onClickButton}>
                           <PencilIcon
-                          className="w-5 h-5 text-white ml-2 cursor-pointer hover:text-red-700"
+                          className="w-5 h-5 text-white ml-2 cursor-pointer hover:text-red-700 
+                          md:w-7 md:h-7 md:ml-0.5 md:bg-green-700
+                          lg:ml-0.5 lg:w-5 lg:h-5"
                           />
                         </button>
                     
                   </div>
                   : 
-                  <div className="flex items-center mt-5">
+                  <div className="flex items-center mt-5 md:mt-7 lg:mt-3">
 
                     <input
                       type="text"
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
                       placeholder="write your username"
-                      className="bg-red-300 p-0.5 border-none text-lg rounded-sm focus:ring-2 focus:ring-red-500 focus:outline-none lg:p-1
+                      className="bg-red-300 p-0.5 border-none text-lg rounded-sm focus:ring-2 focus:ring-red-500 focus:outline-none 
+                      md:text-medium
                       text-center"
                     />
                     <CheckIcon
-                      className="w-8 h-8 cursor-pointer text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm"
+                      className="w-8 h-8 cursor-pointer text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm md:bg-green-700"
                       onClick={onClickButton}
                     />
                  </div>
@@ -126,7 +131,7 @@ export default function SideMenu({ userName, setUserName}) {
             </div>
 
             <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80">
-                <ol className="space-y-12 lg:space-y-12 lg:mt-4 ">
+                <ol className="space-y-12 md:space-y-14 lg:space-y-12 lg:mt-4">
                     <li className={listStyles}>
                         <Squares2X2Icon className={iconStyles}/>
                         Dashboard

@@ -4,15 +4,15 @@ export default function TaskCard ({descriptionTask, date}){
         <>
             
             
-        <div className="lg:p-6 border-gray-800
-        md:mt-20 lg:mt-4">     
+        <div className="lg:p-1 border-gray-800
+        md:mt-20 lg:m-0">     
                 
                                   {/*DIV TO DO AND ADD TASK*/}
-             <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:grid md:grid-cols-2 lg:flex lg:mt-2">
+             <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:grid md:grid-cols-2 md:p-5 lg:flex lg:mt-0.5">
            
                 {/**Card #1 */}
-                <div className="w-full max-w-sm mx-auto min-h-28 border-2 rounded-lg p-0.5 border-gray-300 md:grid md:grid-cols-1 
-                 lg:w-96 lg:bg-white lg:p-2">
+                <div className="w-full max-w-sm mx-auto min-h-28 border-2 rounded-lg p-0.5 border-gray-300 md:grid md:grid-cols-1 md:p-4
+                 lg:w-96 lg:p-2">
            
                     <div className="flex gap-2.5 p-1.5 
                      ">

@@ -10,9 +10,9 @@ export default function CompletedTask({dateIn}){
                {/** <div className="">*/}
                 <div className="flex gap-2 mb-2">
                     < DocumentCheckIcon
-                        className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-6 lg:h-6 lg:mb-1"
+                        className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1"
                     />
-                    <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-base">Completed Task</h1>
+                    <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-lg">Completed Task</h1>
                 </div>
 
 
