@@ -27,7 +27,7 @@ function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask, statusChan
         <>
          <div>
             <h1>Tasks added: </h1>
-            {tasks.length === 0 ? <p>No tasks added yet</p> :
+            {tasks === 0 ? <p>No tasks added yet</p> :
              tasks.map(task => (
                 <div key={task.id}> 
                     <h4>{task.title}</h4>

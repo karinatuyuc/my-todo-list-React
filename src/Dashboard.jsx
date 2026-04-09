@@ -12,6 +12,9 @@ export default function Dashboard({showModal, tasks}) {
     {/** Catching userName Name */}
     const [userName, setUserName] = useState("");
 
+    {/** Show addTask Modal */}
+    const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+
     const date = new Date(); //Creating the local date  
     
    // const options = { // Formatt to show the date.
@@ -36,6 +39,11 @@ export default function Dashboard({showModal, tasks}) {
         { title: "Not started", progress: "75%", color: "red" },
     ];
 
+
+    function addClick (){
+        showModal();
+    }
+
     return (
         <>
 
@@ -45,7 +53,7 @@ export default function Dashboard({showModal, tasks}) {
          setModalName={setModalName}
          setUserName={setUserName}
         /> */}
-         <div className="min-h-screen w-full flex flex-col md:min-h-screen lg:max-w-full ">
+         <div className="min-h-screen w-full">
 
 
             {/*Header*/}
@@ -66,7 +74,7 @@ export default function Dashboard({showModal, tasks}) {
                       type="text"
                       id="search"
                       name="search"
-                      placeholder={isDesktop ? "Search your task here...." : "Search you task..." }
+                      placeholder="Search your task here...."
                       className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base hover:bg-red-200"
                 />
                     <button className="flex items-center justify-center md:h-9 hover:bg-red-300">
@@ -93,29 +101,24 @@ export default function Dashboard({showModal, tasks}) {
 
             </header>
 
+        <div className="flex min-h-screen flex-col lg:flex-row">
 
-         
-
-
-        <main className="min-h-screen w-full grow  md:h-full
-        lg:grid lg:grid-cols-[1fr_3fr] lg:gap-10 lg:h-full ">
-
-            <AddTaskModal/>
-
-            {/**SIDE MENU */}
-            <div className="lg:bg-red-400 lg:w-80">
+            
+         {/**SIDE MENU */}
+            <aside className="lg:bg-red-400 lg:w-80 lg:min-h-screen lg:sticky">
                 <SideMenu
                     userName={userName}
                     setUserName={setUserName}
                 />
-            </div>
+            </aside>
             {/**End SIDE MENU */}
 
 
+        <main className="flex-1 p-0.5 overflows-auto">
 
             <div className="border-y-green-900" >
 
-                     <div className="flex items-center justify-center gap-2 lg:mt-9 text-center">
+                     <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
                         <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
                            <h1 
                              className='sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl'
@@ -127,17 +130,17 @@ export default function Dashboard({showModal, tasks}) {
 
                 {/** Main section */}
 
-                <section className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-10 shadow-2xl 
-                
-                lg:p-8">
+                <section className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-10 shadow-2xl
+                ">
 
-                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen">
+                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen lg:bg-black">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
 
                     <div className="w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg p-2 mb-3 rounded 
                     md:p-4 md:mb-12
-                    lg:h-full ">
+                    lg:h-full 
+                    lg:bg-red-700">
 
                         <div className="flex justify-between m-4 
                         
@@ -173,10 +176,15 @@ export default function Dashboard({showModal, tasks}) {
                                 <PlusIcon 
                                    className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
+                                   onClick={() => setShowAddTaskModal(true)}
                                 />
                                 <span className="text-gray-400 md:text-2xl lg:text-sm">Add task</span>
                             </button>
                         </div>
+
+                        {showAddTaskModal && (
+                            <AddTaskModal />
+                        )}
 
 
 
@@ -197,7 +205,7 @@ export default function Dashboard({showModal, tasks}) {
 
                     
                     {/* TASK STATUS*/}
-                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-4 
+                    <div className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-2
                     md:mb-12
                     lg:h-80 lg:pt-3 lg:mb-4">
                          
@@ -245,9 +253,6 @@ export default function Dashboard({showModal, tasks}) {
 
                     <div>
                         <TaskGrid
-                        isMobile={isMobile}
-                        isTablet={isTablet}
-                        isDesktop={isDesktop}
                         task={tasks}
                     />
                     </div>
@@ -262,6 +267,7 @@ export default function Dashboard({showModal, tasks}) {
              
         </main>
 
+        </div>
             
                    <span className="text-[10px] bg-red-200 lg:mb-0">&copy; 2026 <a>RacooDev</a>. All rights reserved.</span>
 

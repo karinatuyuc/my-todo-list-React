@@ -49,14 +49,14 @@ export default function SideMenu({ userName, setUserName}) {
 
        
 
-        <div className={`fixed h-screen top-0 menu-side z-20
+        <div className={`z-20 h-screen w-full
             ${isOpen ? "translate-x-0" : "-translate-x-full"}
-             transition-transform 
-             duration-300 ease-in-out lg:static lg:translate-x-0`}>
+            fixed top-0 left-0 transition-transform duration-300 ease-in-out 
+            lg:static lg:translate-x-0 lg:w-80 lg:bg-fuchsia-100`}>
 
 
-            <div className={`bg-red-700 flex flex-col justify-center items-center 
-            w-full md:w-lvw lg:w-80 lg:bg-red-400
+            <div className={`bg-red-700 flex flex-col justify-center items-center w-full 
+            lg:w-80 lg:bg-red-600 
               
               
             `}>
@@ -70,7 +70,7 @@ export default function SideMenu({ userName, setUserName}) {
 
 
                 {/**This is the icon */}   
-                <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-20">
+                <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-4">
                     <img src={avatar} alt="avatar" className="w-20 h-20 md:w-22 md:h-22 rounded-full"/> 
                 </div>
 
@@ -117,18 +117,11 @@ export default function SideMenu({ userName, setUserName}) {
                 {/**DIV for the username */}
 
                 {/**End DIV FOR THE USERNAME */}
-
-
-
-
-
-
-
-
-
-
-
             </div>
+
+
+
+
 
             <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80">
                 <ol className="space-y-12 md:space-y-14 lg:space-y-12 lg:mt-4">

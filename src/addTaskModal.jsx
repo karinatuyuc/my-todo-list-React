@@ -9,7 +9,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
   const [ priority, setPriority ] = useState(""); // State to hold the task priority
   const [ description, setDescription ] = useState(""); // State to hold the task description
 
-
+/*
   const newTask = { // Object to represent the new task, the states of the form fields
     title: title,
     date: date,
@@ -17,7 +17,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
     description: description,
     id : GenerateUniqueID().id,
   }
-
+*/
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
@@ -60,6 +60,8 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
     return (
         <>
+
+      <div className="bg-amber-700 fixed top-0 h-screen w-full z-30 flex flex-col justify-start items-center gap-4 p-4">
          <nav>
             <span>Add New Task</span>
             <button
@@ -130,6 +132,9 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             </button>
           </div>
         </form>
+
+
+      </div>
         </>
     )
 }
