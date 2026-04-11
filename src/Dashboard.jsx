@@ -39,11 +39,6 @@ export default function Dashboard({showModal, tasks}) {
         { title: "Not started", progress: "75%", color: "red" },
     ];
 
-
-    function addClick (){
-        showModal();
-    }
-
     return (
         <>
 
@@ -133,14 +128,14 @@ export default function Dashboard({showModal, tasks}) {
                 <section className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-10 shadow-2xl
                 ">
 
-                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen lg:bg-black">
+                    <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen">
 
                     {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
 
                     <div className="w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg p-2 mb-3 rounded 
                     md:p-4 md:mb-12
                     lg:h-full 
-                    lg:bg-red-700">
+                  ">
 
                         <div className="flex justify-between m-4 
                         
@@ -172,18 +167,20 @@ export default function Dashboard({showModal, tasks}) {
                             <button 
                               className="flex items-center text-sm cursor-pointer gap-1
                               md:text-base"
-                              onClick={showModal}>
+                              onClick={() => setShowAddTaskModal(true)}> // Call the function to show the add task modal when the button is clicked
                                 <PlusIcon 
                                    className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
-                                   onClick={() => setShowAddTaskModal(true)}
                                 />
                                 <span className="text-gray-400 md:text-2xl lg:text-sm">Add task</span>
                             </button>
                         </div>
 
                         {showAddTaskModal && (
-                            <AddTaskModal />
+                            <AddTaskModal 
+                                isOpen={showAddTaskModal} // Pass the setTasks function as a prop to AddTaskModal
+                                onClose={() => setShowAddTaskModal(false)} // Pass a function to close the modal as a prop to AddTaskModal
+                            />
                         )}
 
 

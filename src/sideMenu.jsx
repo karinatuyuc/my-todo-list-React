@@ -56,7 +56,7 @@ export default function SideMenu({ userName, setUserName}) {
 
 
             <div className={`bg-red-700 flex flex-col justify-center items-center w-full 
-            lg:w-80 lg:bg-red-600 
+            lg:w-80 lg:bg-red-400 
               
               
             `}>
@@ -71,7 +71,7 @@ export default function SideMenu({ userName, setUserName}) {
 
                 {/**This is the icon */}   
                 <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-4">
-                    <img src={avatar} alt="avatar" className="w-20 h-20 md:w-22 md:h-22 rounded-full"/> 
+                    <img src={avatar} alt="avatar" className="w-20 h-20 md:w-20 md:h-20 rounded-full"/> 
                 </div>
 
 

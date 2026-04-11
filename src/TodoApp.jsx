@@ -88,6 +88,13 @@ function TodoApp() {
         <>
         <Dashboard 
             tasks={tasks}
+            showAddTaskModal={showAddTaskModal}
+        />
+
+        <AddTaskModal
+            setTasks={setTasks} // Pass the setTasks function as a prop to AddTaskModal
+            onClose={onClose} // Pass the onClose function as a prop to AddTaskModal
+            showAddTaskModal={showAddTaskModal} // Pass the showAddTaskModal state as a prop to AddTaskModal
         />
 
         <TaskGrid 
