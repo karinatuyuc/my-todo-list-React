@@ -104,6 +104,7 @@ export default function Dashboard({showModal, tasks}) {
                 <SideMenu
                     userName={userName}
                     setUserName={setUserName}
+                    {/**COmment fo the username */}
                 />
             </aside>
             {/**End SIDE MENU */}
