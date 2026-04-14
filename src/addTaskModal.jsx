@@ -127,6 +127,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
             <button 
              type="submit"
+             onClick={onClose} // Call onClose prop to close the modal after submission
             >
               Done
             </button>

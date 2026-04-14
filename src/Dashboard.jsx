@@ -5,15 +5,17 @@ import CompletedTask from "./CompletedTask.jsx";
 import TaskCard from "./TaskCard.jsx";
 import SideMenu from "./sideMenu.jsx";
 import { TaskGrid } from "./TaskGrid.jsx";
-import { AddTaskModal } from './addTaskModal.jsx';
+import { AddTaskModal } from "./addTaskModal.jsx";
 
-export default function Dashboard({showModal, tasks}) {
+export default function Dashboard({ modalAddTask, setModalAddTask, onClose, tasks, setTasks }) { // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
 
     {/** Catching userName Name */}
     const [userName, setUserName] = useState("");
 
     {/** Show addTask Modal */}
-    const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+
+
+
 
     const date = new Date(); //Creating the local date  
     
@@ -38,6 +40,8 @@ export default function Dashboard({showModal, tasks}) {
         { title: "In progress", progress: "50%", color: "blue" },
         { title: "Not started", progress: "75%", color: "red" },
     ];
+
+
 
     return (
         <>
@@ -104,7 +108,7 @@ export default function Dashboard({showModal, tasks}) {
                 <SideMenu
                     userName={userName}
                     setUserName={setUserName}
-                    {/**Another comment for today, but no changes made today */}
+
                 />
             </aside>
             {/**End SIDE MENU */}
@@ -167,22 +171,24 @@ export default function Dashboard({showModal, tasks}) {
 
                             <button 
                               className="flex items-center text-sm cursor-pointer gap-1
-                              md:text-base"
-                              onClick={() => setShowAddTaskModal(true)}> // Call the function to show the add task modal when the button is clicked
+                              md:text-base">
                                 <PlusIcon 
                                    className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
+                                   onClick={setModalAddTask}
+                                   
                                 />
                                 <span className="text-gray-400 md:text-2xl lg:text-sm">Add task</span>
                             </button>
                         </div>
 
-                        {showAddTaskModal && (
-                            <AddTaskModal 
-                                isOpen={showAddTaskModal} // Pass the setTasks function as a prop to AddTaskModal
-                                onClose={() => setShowAddTaskModal(false)} // Pass a function to close the modal as a prop to AddTaskModal
+                          {modalAddTask && (
+                            <AddTaskModal
+                                onClose={onClose} // Pass the onClose
+                                setTasks={setTasks} // Pass the setTasks function as a prop
                             />
                         )}
+                        
 
 
 
@@ -251,7 +257,7 @@ export default function Dashboard({showModal, tasks}) {
 
                     <div>
                         <TaskGrid
-                        task={tasks}
+                        tasks={tasks}
                     />
                     </div>
                     

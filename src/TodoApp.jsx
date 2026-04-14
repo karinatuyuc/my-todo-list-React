@@ -13,7 +13,7 @@ function TodoApp() {
 
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
-  const [ showEditTaskModal, setShowEditTaskModal] = useState(false) // State to control the Modal edit.
+  //const [ showEditTaskModal, setShowEditTaskModal] = useState(false) // State to control the Modal edit.
 
 
  
@@ -31,8 +31,8 @@ function TodoApp() {
     setAddTaskShowModal(true); // Show the modal when the button is clicked
   }
 
-  function onClose() { // Function to close the addTaskModal
-    setAddTaskShowModal(false); // Set showModal to false to hide the addTaskModal
+  function onCloseModalAdd() { // Function to close the addTaskModal
+    console.log("Closing the add task modal"); // Log a message to the console for debugging
   }
 
 
@@ -88,57 +88,11 @@ function TodoApp() {
         <>
         <Dashboard 
             tasks={tasks}
-            showAddTaskModal={showAddTaskModal}
+            setTasks={setTasks}
+            modalAddTask={showAddTaskModal}
+            setModalAddTask={setAddTaskShowModal}
+            onClose={onCloseModalAdd}
         />
-
-        <AddTaskModal
-            setTasks={setTasks} // Pass the setTasks function as a prop to AddTaskModal
-            onClose={onClose} // Pass the onClose function as a prop to AddTaskModal
-            showAddTaskModal={showAddTaskModal} // Pass the showAddTaskModal state as a prop to AddTaskModal
-        />
-
-        <TaskGrid 
-            tasks={tasks}
-        />
-
-
-          {/*
-          <div>
-            {showAddTaskModal && // Conditional rendering of the AddTaskModal component
-              < AddTaskModal  // Render the AddTaskModal component
-                setTasks={setTasks} // Pass the setTasks function as a prop
-                onClose={onClose} // Pass the onClose function as a prop
-              />
-            }
-          </div>
-       
-                    <button 
-            onClick={handleButtonClick} // Show the modal on button click
-            style={buttonStyles} // Apply button styles
-           >
-             Add task
-           </button>
-         
-         
-        
-
-           < TaskRenderer 
-             tasks={tasks} // Pass tasks state to TaskRenderer as a prop
-             setEditingTaskId={setEditingTaskId} // Pass setEditingTaskId to TaskRenderer as a prop
-             onSecond={handleEditButton} // Pass handleEditButton to TaskRenderer as a prop
-             deleteTask={handleDeleteTask} // Pass handleDeleteTask to TaskRenderer as a prop
-             statusChange={handleStatus} // Pass handleStatus to TaskRenderer as a prop
-           />
-
-           {editingTaskId && 
-           < EditModal 
-            taskToEdit={taskToEdit} 
-            onUpdateTask={onUpdateTask} // Pass onUpdateTask to EditModal as a prop
-            closeTheModal={onCloseModalEdit} // Pass onCloseModalEdit to EditModal as a prop
-            /> } 
-          Render EditModal if a task is being edited, passing the taskToEdit as a prop */}
-
-
         </>
 
     )
