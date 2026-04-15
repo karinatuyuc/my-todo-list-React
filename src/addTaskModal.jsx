@@ -61,10 +61,13 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
     return (
         <>
 
-      <div className="bg-amber-700 fixed top-0 h-screen w-full z-30 flex flex-col justify-start items-center gap-4 p-4">
-         <nav>
+        <div className="bg-black/50 fixed inset-0 z-50 h-screen flex items-center justify-center">
+      <div className="bg-white p-4 m-4 rounded-xs shadow-lg w-full">
+
+         <nav className="flex justify-between">
             <span>Add New Task</span>
             <button
+              className="cursor-pointer"
               onClick={onClose} // Call onClose prop to close the modal
             > 
              Go Back
@@ -72,7 +75,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
          </nav>
 
         <form onSubmit={dataValidate}> 
-          <div>
+          <div className="border-amber-500 border-2 mt-3 mb-3 p-2 flex flex-col gap-2">
             <label htmlFor="title">Title</label>
             <input 
             id="title" 
@@ -80,6 +83,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             name="taskTitle"
             value={title} // Bind the input value to the title state
             onChange={handleTaskChange}
+            className="bg-gray-400 w-60"
             required
              />
 
@@ -90,14 +94,15 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
              name="taskDate"
              value={date}
              onChange={handleDateChange}
+             className="bg-gray-400 w-60"
             />
 
-            <fieldset>
+            <fieldset className="bg-gray-400">
               <legend>Priority</legend>
               {priorityOptions.map((priorityOption) => {
                
                 return (
-                   <div key={priorityOption}>
+                  <div key={priorityOption} className="bg-amber-500 flex">
                   <input
                     type="radio" // Radio button for priority selection
                     id={`priority-${priorityOption}`} // Unique id for each p riority option
@@ -105,6 +110,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
                     value={priorityOption}  // Value of the radio button
                     checked={priority === priorityOption} // Check if the current priority matches the option
                     onChange={handlePriorityChange} // Handle change event
+                    className="cursor-pointer"
                     required
                   />
                   <label htmlFor={`priority-${priorityOption}`}>{priorityOption}</label>
@@ -121,19 +127,24 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
              value={description} // Bind the textarea value to the description state
              placeholder="Start writing here...." // Placeholder text
              onChange={handleDescriptionChange} // Handle change event
+             className="bg-gray-400"
              required
              >
              </textarea>
 
+          </div>
+
             <button 
              type="submit"
+             className="cursor-pointer"
              onClick={onClose} // Call onClose prop to close the modal after submission
             >
               Done
             </button>
-          </div>
         </form>
 
+
+      </div>
 
       </div>
         </>

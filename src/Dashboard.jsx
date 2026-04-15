@@ -46,6 +46,13 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
     return (
         <>
 
+                         {modalAddTask && (
+                            <AddTaskModal
+                                onClose={onClose} // Pass the onClose
+                                setTasks={setTasks} // Pass the setTasks function as a prop
+                            />
+                        )}
+
         {/**
         <UserName
          isOpen={modalName}
@@ -181,13 +188,6 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
                                 <span className="text-gray-400 md:text-2xl lg:text-sm">Add task</span>
                             </button>
                         </div>
-
-                          {modalAddTask && (
-                            <AddTaskModal
-                                onClose={onClose} // Pass the onClose
-                                setTasks={setTasks} // Pass the setTasks function as a prop
-                            />
-                        )}
                         
 
 

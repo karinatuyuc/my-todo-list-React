@@ -32,7 +32,7 @@ function TodoApp() {
   }
 
   function onCloseModalAdd() { // Function to close the addTaskModal
-    console.log("Closing the add task modal"); // Log a message to the console for debugging
+     setAddTaskShowModal(false); // Close the modal
   }
 
 
