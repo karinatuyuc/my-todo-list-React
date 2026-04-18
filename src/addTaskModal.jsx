@@ -57,12 +57,16 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
     onClose(); // Close the modal after submission
   }
 
+  function handleDate() {
+    console.log("Aquie debe aparecer la fecha actual en el input de date, al hacer click en el input");
+  }
+
 
     return (
         <>
 
-        <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs">
-      <div className="bg-white p-4 m-4 rounded-xs shadow-lg w-full">
+     <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs ">
+      <div className="bg-white p-4 m-4 rounded-xs shadow-lg w-full md:w-md lg:w-lg">
 
          <nav className="flex justify-between">
             <span className="underline decoration-orange-500 decoration-2 underline-offset-4">Add New Task</span>
@@ -89,12 +93,13 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
             <label className="font-medium">Date</label>
             <input 
-             type="date"
+             type="text"
              id="start"
              name="taskDate"
              value={date}
              onChange={handleDateChange}
-             className="w-64 border-gray-200 border-2 rounded-sm"
+             onClick={() => handleDate()}
+             className="w-64 border-gray-300 border-2 rounded-sm"
             />
 
             <fieldset className="flex gap-4">
@@ -129,7 +134,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
              value={description} // Bind the textarea value to the description state
              placeholder="Start writing here...." // Placeholder text
              onChange={handleDescriptionChange} // Handle change event
-             className="text-gray-500 border-2 border-gray-200 rounded-sm w-64"
+             className="text-gray-500 border-2 border-gray-200 rounded-sm w-64 lg:h-32 p-2"
              required
              >
              </textarea>
