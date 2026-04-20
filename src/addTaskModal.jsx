@@ -87,7 +87,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             name="taskTitle"
             value={title} // Bind the input value to the title state
             onChange={handleTaskChange}
-            className="w-64 border-gray-200 border-2 rounded-sm"
+            className="w-64 border-red border-2 rounded-sm"
             required
              />
 
