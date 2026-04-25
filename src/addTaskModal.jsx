@@ -119,7 +119,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
                     value={priorityOption}  // Value of the radio button
                     checked={priority === priorityOption} // Check if the current priority matches the option
                     onChange={handlePriorityChange} // Handle change event
-                    className="cursor-pointer flex flex-row w-4 bg-red-700 border-2 border-amber-50 rounded-sm"
+                    className="cursor-pointer flex flex-row w-4 bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                     required
                   />
                   </div>
