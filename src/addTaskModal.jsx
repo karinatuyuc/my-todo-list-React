@@ -1,5 +1,7 @@
 import { useState} from "react"
 import { GenerateUniqueID} from "./UniqueId";
+//import { data } from "autoprefixer";
+import FormErrors from "./FormErrors/FormErrors";
 
 
 export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onClose as props
@@ -9,15 +11,15 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
   const [ priority, setPriority ] = useState(""); // State to hold the task priority
   const [ description, setDescription ] = useState(""); // State to hold the task description
 
-/*
+
+  /*
   const newTask = { // Object to represent the new task, the states of the form fields
     title: title,
     date: date,
     priority: priority,
     description: description,
     id : GenerateUniqueID().id,
-  }
-*/
+  }*/
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
@@ -45,6 +47,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
     if(!title.trim() || !date.trim() || !priority.trim() || !description.trim()) { // Check if any field is empty
       alert("Please fill in all fields, before submitting the form.");
+      <FormErrors/> // Render the FormErrors component to display error messages
     } else {
       const newTask = {id: GenerateUniqueID().id, title, date, priority, description}; // Create a new task object
       setTasks(prevTasks => [...prevTasks, newTask]); // Add the new task to the tasks array
@@ -53,8 +56,9 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
       setDate("");
       setPriority("");
       setDescription("");
+      onClose(); // Close the modal after submission
     }
-    onClose(); // Close the modal after submission
+    
   }
 
   function handleDate() {
@@ -67,7 +71,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
      <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs ">
       <div className="bg-white p-4 m-5 rounded-sm border-2 border-gray-200 shadow-lg w-full md:w-md 
-      lg:w-3xl lg:bg-red-700 lg:p-5 lg:pl-9 lg:pr-9">
+      lg:w-3xl lg:p-5 lg:pl-9 lg:pr-9">
 
          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
             <span className="underline decoration-orange-500 decoration-2 underline-offset-4">Add New Task</span>
@@ -80,7 +84,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
          </nav>
 
         <form onSubmit={dataValidate}> 
-          <div className="border-gray-300 border-2 mt-3 mb-3 p-2 flex flex-col gap-2 lg:bg-indigo-600 lg:mt-6 lg:p-4">
+          <div className="border-gray-300 border-2 mt-3 mb-3 p-2 flex flex-col gap-2 lg:mt-6 lg:p-4">
             <label htmlFor="title" className="font-medium">Title</label>
             <input 
             id="title" 
@@ -94,13 +98,13 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
             <label className="font-medium">Date</label>
             <input 
-             type="text"
+             type="date"
              id="start"
              name="taskDate"
              value={date}
              onChange={handleDateChange}
              onClick={() => handleDate()}
-             className="w-64 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96 lg:bg-red-700"
+             className="w-64 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96"
             />
 
             <fieldset className="flex gap-4 lg:gap-14">
@@ -145,12 +149,10 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             <button 
              type="submit"
              className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"
-             onClick={onClose} // Call onClose prop to close the modal after submission
             >
               Done
             </button>
         </form>
-
 
       </div>
 
