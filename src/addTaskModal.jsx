@@ -94,13 +94,13 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
             <label className="font-medium">Date</label>
             <input 
-             type="date"
+             type="text"
              id="start"
              name="taskDate"
              value={date}
              onChange={handleDateChange}
              onClick={() => handleDate()}
-             className="w-64 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96"
+             className="w-64 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96 lg:bg-red-700"
             />
 
             <fieldset className="flex gap-4 lg:gap-14">
