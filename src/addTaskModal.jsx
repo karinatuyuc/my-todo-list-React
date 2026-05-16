@@ -45,9 +45,14 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
     e.preventDefault(); // Prevent default form submission behavior
     // Perform validation checks here
 
+    let formErrors = {}; // Object to hold form error messages
+
     if(!title.trim() || !date.trim() || !priority.trim() || !description.trim()) { // Check if any field is empty
-      alert("Please fill in all fields, before submitting the form.");
-      <FormErrors/> // Render the FormErrors component to display error messages
+      formErrors.title = "Title is required"; // Set error message for title field
+      formErrors.date = "Date is required"; // Set error message for date field
+      formErrors.priority = "Priority is required"; // Set error message for priority field
+      formErrors.description = "Description is required"; // Set error message for description field
+
     } else {
       const newTask = {id: GenerateUniqueID().id, title, date, priority, description}; // Create a new task object
       setTasks(prevTasks => [...prevTasks, newTask]); // Add the new task to the tasks array
@@ -69,9 +74,9 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
     return (
         <>
 
-     <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs ">
-      <div className="bg-white p-4 m-5 rounded-sm border-2 border-gray-200 shadow-lg w-full md:w-md 
-      lg:w-3xl lg:p-5 lg:pl-9 lg:pr-9">
+     <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
+      <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-md 
+      lg:w-5/12 lg:h-7/12 lg:p-2 lg:pl-7 lg:pr-7">
 
          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
             <span className="underline decoration-orange-500 decoration-2 underline-offset-4">Add New Task</span>
@@ -84,19 +89,19 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
          </nav>
 
         <form onSubmit={dataValidate}> 
-          <div className="border-gray-300 border-2 mt-3 mb-3 p-2 flex flex-col gap-2 lg:mt-6 lg:p-4">
-            <label htmlFor="title" className="font-medium">Title</label>
+          <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2 lg:mt-4 lg:p-2">
+            <label htmlFor="title" className="font-medium underline-offset-4 decoration-amber-600 decoration-1 underline">Title</label>
             <input 
             id="title" 
             type="text"
             name="taskTitle"
             value={title} // Bind the input value to the title state
             onChange={handleTaskChange}
-            className="w-64 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96"
+            className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96"
             required
              />
 
-            <label className="font-medium">Date</label>
+            <label className="font-medium underline decoration-orange-500 decoration-1 underline-offset-4">Date</label>
             <input 
              type="date"
              id="start"
@@ -104,15 +109,15 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
              value={date}
              onChange={handleDateChange}
              onClick={() => handleDate()}
-             className="w-64 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96"
+             className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96"
             />
 
-            <fieldset className="flex gap-4 lg:gap-14">
-              <legend className="font-medium">Priority</legend>
+            <fieldset className="flex gap-4 lg:gap-8">
+              <legend className="font-medium underline decoration-orange-500 decoration-1 underline-offset-4">Priority</legend>
               {priorityOptions.map((priorityOption) => {
                
                 return (
-                  <div key={priorityOption} className="flex gap-2 mt-2 font-light">
+                  <div key={priorityOption} className="flex gap-4 mt-2 font-light">
                   <label htmlFor={`priority-${priorityOption}`}>
                     {priorityOption}
                   </label>
@@ -123,13 +128,12 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
                     value={priorityOption}  // Value of the radio button
                     checked={priority === priorityOption} // Check if the current priority matches the option
                     onChange={handlePriorityChange} // Handle change event
-                    className="cursor-pointer flex flex-row w-4 bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
+                    className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                     required
                   />
                   </div>
                 )
               })}
-              
             </fieldset>
 
             <label className="font-medium">Task Description</label>
