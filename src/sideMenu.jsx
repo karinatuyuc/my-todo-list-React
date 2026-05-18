@@ -89,7 +89,7 @@ export default function SideMenu({ userName, setUserName}) {
                         <button onClick={onClickButton}>
                           <PencilIcon
                           className="w-5 h-5 text-white ml-2 cursor-pointer hover:text-red-700 
-                          md:w-7 md:h-7 md:ml-0.5 md:bg-green-700
+                          md:w-7 md:h-7 md:ml-0.5 md:bg-green-400/10
                           lg:ml-0.5 lg:w-5 lg:h-5"
                           />
                         </button>

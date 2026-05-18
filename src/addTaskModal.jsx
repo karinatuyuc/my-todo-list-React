@@ -75,11 +75,10 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
         <>
 
      <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
-      <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-md 
-      lg:w-5/12 lg:h-7/12 lg:p-2 lg:pl-7 lg:pr-7">
+      <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-md">
 
          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
-            <span className="underline decoration-orange-500 decoration-2 underline-offset-4">Add New Task</span>
+            <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">Add New Task</span>
             <button
               className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4"
               onClick={onClose} // Call onClose prop to close the modal
@@ -89,19 +88,19 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
          </nav>
 
         <form onSubmit={dataValidate}> 
-          <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2 lg:mt-4 lg:p-2">
-            <label htmlFor="title" className="font-medium underline-offset-4 decoration-amber-600 decoration-1 underline">Title</label>
+          <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2.5 lg:mt-4 lg:p-2">
+            <label htmlFor="title" className="font-medium">Title</label>
             <input 
             id="title" 
             type="text"
             name="taskTitle"
             value={title} // Bind the input value to the title state
             onChange={handleTaskChange}
-            className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96"
+            className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
             required
              />
 
-            <label className="font-medium underline decoration-orange-500 decoration-1 underline-offset-4">Date</label>
+            <label className="font-medium">Date</label>
             <input 
              type="date"
              id="start"
@@ -109,11 +108,11 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
              value={date}
              onChange={handleDateChange}
              onClick={() => handleDate()}
-             className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96"
+             className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96 lg:p-0.5"
             />
 
             <fieldset className="flex gap-4 lg:gap-8">
-              <legend className="font-medium underline decoration-orange-500 decoration-1 underline-offset-4">Priority</legend>
+              <legend className="font-medium">Priority</legend>
               {priorityOptions.map((priorityOption) => {
                
                 return (
@@ -143,7 +142,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
              value={description} // Bind the textarea value to the description state
              placeholder="Start writing here...." // Placeholder text
              onChange={handleDescriptionChange} // Handle change event to update the description state
-             className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-28 lg:w-96"
+             className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
              required
              >
              </textarea>
