@@ -12,11 +12,6 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
     {/** Catching userName Name */}
     const [userName, setUserName] = useState("");
 
-    {/** Show addTask Modal */}
-
-
-
-
     const date = new Date(); //Creating the local date  
     
    // const options = { // Formatt to show the date.
@@ -31,9 +26,6 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
     const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number 
 
     let waveHand = "\u{1F44B}" //Emoji hand waving
-    let descripcionTaks  = "Esta es la descripcion del task donde veremos si cabe el espacio que le asignamos o no, pero no se veremos@ hola este sotro parrafo para averificar que cmabia !!"
-
-   
     
     const circles = [
         { title: "Completed", progress: "25%", color: "green" },
@@ -194,7 +186,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
 
 
                         <TaskCard
-                          descriptionTask={descripcionTaks}
+                          setTasks={setTasks}
                           date={dateInNumber}
                         />
 
@@ -257,6 +249,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
 
                     <div>
                         <TaskGrid
+                        
                         tasks={tasks}
                     />
                     </div>
@@ -280,3 +273,8 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
         </> 
     )
 }
+
+
+/*
+TODO: show task on Todo LIST, MAKE DESCRIPTION AND DATE DYNAMIC, MAKE THE PROGRESS CIRCLES DYNAMIC, MAKE THE COMPLETED TASK DYNAMIC, MAKE THE USER NAME DYNAMIC, MAKE THE DATE DYNAMIC, MAKE THE SEARCH BAR WORK, MAKE THE ADD TASK MODAL WORK, MAKE THE SIDE MENU WORK, MAKE THE DASHBOARD RESPONSIVE
+*/

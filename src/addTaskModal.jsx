@@ -4,7 +4,7 @@ import { GenerateUniqueID} from "./UniqueId";
 import FormErrors from "./FormErrors/FormErrors";
 
 
-export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onClose as props
+export function AddTaskModal({setTasks, onClose, setTaskUpdated}) { // Receive setTasks and onClose as props
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
   const [ date, setDate ] = useState(""); // State to hold the task date
@@ -23,7 +23,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
-  const handleTaskChange = (e) => {
+  const handleTitleChange = (e) => {
     setTitle(e.target.value); // Update the title state with the input value
   }
 
@@ -36,9 +36,15 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
     setPriority(e.target.value); // Update the priority state with the selected value
   }
 
+  /*
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value); // Update the description state with the input value
-  }
+    setTaskDescription(e.target.value); // Update the task description state with the input value
+  }*/
+
+    function handelDescritpionChange(){
+      setDescription(description)
+    }
 
   // Handle form submission
   const dataValidate = (e) => {
@@ -95,7 +101,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             type="text"
             name="taskTitle"
             value={title} // Bind the input value to the title state
-            onChange={handleTaskChange}
+            onChange={handleTitleChange}
             className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
             required
              />
@@ -135,13 +141,16 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
               })}
             </fieldset>
 
+
+            {/*Text area del la descripcion del task */}
             <label className="font-medium">Task Description</label>
             <textarea 
              id="description"
              name="taskDescription"
+             type="text"
              value={description} // Bind the textarea value to the description state
              placeholder="Start writing here...." // Placeholder text
-             onChange={handleDescriptionChange} // Handle change event to update the description state
+             onChange={(e) => setDescription(e.target.value)} // Handle change event to update the description state
              className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
              required
              >
@@ -152,6 +161,7 @@ export function AddTaskModal({setTasks, onClose}) { // Receive setTasks and onCl
             <button 
              type="submit"
              className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"
+             onClick={handelDescritpionChange}
             >
               Done
             </button>

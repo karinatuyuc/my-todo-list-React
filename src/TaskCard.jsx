@@ -1,9 +1,7 @@
-export default function TaskCard ({descriptionTask, date}){
+export default function TaskCard ({setTasks, date}) {
 
     return (
-        <>
-            
-            
+        <>    
         <div className="lg:p-1 border-gray-800
         md:mt-20 lg:m-0">     
                 
@@ -24,7 +22,11 @@ export default function TaskCard ({descriptionTask, date}){
                              {/*CARD TASKS */}
                             <div className="flex flex-col gap-4">
                                 <span className="font-bold text-black">Task's title</span>
-                                    <p className="line-clamp-3 text-xs text-gray-600">{descriptionTask}</p>
+
+                                <div className="text-sm">
+                                    {setTasks.description} {/**This should be the task description */}
+                                </div>
+                                
            
                                         {/** CARD FOOTER */}
                                         <div className="text-[7px] flex justify-between">

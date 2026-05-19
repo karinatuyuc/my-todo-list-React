@@ -9,13 +9,18 @@ import { TaskGrid } from "./TaskGrid";
 function TodoApp() {
 
   const [ tasks, setTasks ] = useState([]); // Global state. State to hold the list of tasks
-  const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
+  //const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
 
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   //const [ showEditTaskModal, setShowEditTaskModal] = useState(false) // State to control the Modal edit.
 
 
+  // Function to close the Add Modal, button in the addModal
+    function onCloseModalAdd() { 
+     setAddTaskShowModal(false); 
+  }
+/*
  
   const buttonStyles = {
     backgroundColor: "#6d1783ff",
@@ -25,22 +30,19 @@ function TodoApp() {
     borderRadius: "5px",
   }
 
-
     // Function to handle button click to show the add task modal
   function handleButtonClick() {
     setAddTaskShowModal(true); // Show the modal when the button is clicked
   }
 
-  function onCloseModalAdd() { // Function to close the addTaskModal
-     setAddTaskShowModal(false); // Close the modal
-  }
 
 
   // Functions to handle button click to show the edit task Modal 2/12/2025
   function handleEditButton () {
      setShowEditTaskModal(true)
   }
-
+*/
+  /*
   // Function to close the Edit Modal, button in the editModal
   function onCloseModalEdit() {
     setShowEditTaskModal(false); // Close the Edit Modal
@@ -81,8 +83,7 @@ function TodoApp() {
 
     setTasks(taskMapStatus); // Update the tasks state with the modified tasks array
   }
-
-
+*/
   
     return (
         <>
