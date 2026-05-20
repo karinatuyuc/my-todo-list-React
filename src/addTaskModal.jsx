@@ -30,35 +30,33 @@ export function AddTaskModal({setTasks, onClose, setTaskUpdated}) { // Receive s
   // Handle date change event
   const handleDateChange = (e) => {
     setDate(e.target.value); // Update the date state with the input value
+    console.log(setDate(e.target.value)); // Log the selected date value to the console
   }
 
   const handlePriorityChange = (e) => {
     setPriority(e.target.value); // Update the priority state with the selected value
   }
 
+  
+    function handelDescritpionChange(){
+      setDescription(description)
+    }
+
+
   /*
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value); // Update the description state with the input value
     setTaskDescription(e.target.value); // Update the task description state with the input value
   }*/
-
-    function handelDescritpionChange(){
-      setDescription(description)
-    }
-
   // Handle form submission
   const dataValidate = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     // Perform validation checks here
 
-    let formErrors = {}; // Object to hold form error messages
+    //let formErrors = {}; // Object to hold form error messages
 
     if(!title.trim() || !date.trim() || !priority.trim() || !description.trim()) { // Check if any field is empty
-      formErrors.title = "Title is required"; // Set error message for title field
-      formErrors.date = "Date is required"; // Set error message for date field
-      formErrors.priority = "Priority is required"; // Set error message for priority field
-      formErrors.description = "Description is required"; // Set error message for description field
-
+      alert("Please fill in all the fields"); // Alert the user to fill in all fields
     } else {
       const newTask = {id: GenerateUniqueID().id, title, date, priority, description}; // Create a new task object
       setTasks(prevTasks => [...prevTasks, newTask]); // Add the new task to the tasks array

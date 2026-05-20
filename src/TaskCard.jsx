@@ -1,4 +1,4 @@
-export default function TaskCard ({setTasks, date}) {
+export default function TaskCard ({dataInputs, date}) {
 
     return (
         <>    
@@ -24,7 +24,7 @@ export default function TaskCard ({setTasks, date}) {
                                 <span className="font-bold text-black">Task's title</span>
 
                                 <div className="text-sm">
-                                    {setTasks.description} {/**This should be the task description */}
+                                    {dataInputs.description} {/**This should be the task description */}
                                 </div>
                                 
            

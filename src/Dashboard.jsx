@@ -33,8 +33,6 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
         { title: "Not started", progress: "75%", color: "red" },
     ];
 
-
-
     return (
         <>
 
@@ -186,7 +184,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
 
 
                         <TaskCard
-                          setTasks={setTasks}
+                          
                           date={dateInNumber}
                         />
 
@@ -249,7 +247,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
 
                     <div>
                         <TaskGrid
-                        
+
                         tasks={tasks}
                     />
                     </div>
