@@ -7,7 +7,7 @@ import SideMenu from "./sideMenu.jsx";
 import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 
-export default function Dashboard({ modalAddTask, setModalAddTask, onClose, tasks, setTasks }) { // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
+export default function Dashboard({ modalAddTask, setModalAddTask, onClose, tasks, setTasks, addTask}) { // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
 
     {/** Catching userName Name */}
     const [userName, setUserName] = useState("");
@@ -40,6 +40,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
                             <AddTaskModal
                                 onClose={onClose} // Pass the onClose
                                 setTasks={setTasks} // Pass the setTasks function as a prop
+                                onAddTask={addTask} // Pass the addTask function as a prop
                             />
                         )}
 
@@ -178,16 +179,17 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
                                 <span className="text-gray-400 md:text-2xl lg:text-sm">Add task</span>
                             </button>
                         </div>
-                        
 
 
 
 
-                        <TaskCard
-                          
-                          date={dateInNumber}
+                        {tasks.map((task, index) => (
+                            <TaskCard
+                            key={index}
+                            task={task}
                         />
-
+                        ))}
+                    
                     </div>
 
 

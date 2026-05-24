@@ -20,6 +20,10 @@ function TodoApp() {
     function onCloseModalAdd() { 
      setAddTaskShowModal(false); 
   }
+
+  function addTask(newTask) {
+    setTasks([...tasks, newTask]); // Update the tasks state by adding the new task to the existing list of tasks
+  }
 /*
  
   const buttonStyles = {
@@ -93,6 +97,7 @@ function TodoApp() {
             modalAddTask={showAddTaskModal}
             setModalAddTask={setAddTaskShowModal}
             onClose={onCloseModalAdd}
+            addTask={addTask}
         />
         </>
 

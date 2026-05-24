@@ -1,4 +1,5 @@
-export default function TaskCard ({dataInputs, date}) {
+export default function TaskCard ({task}) { // Receive dataInputs, date, tasks, and setTasks as props
+
 
     return (
         <>    
@@ -21,10 +22,10 @@ export default function TaskCard ({dataInputs, date}) {
            
                              {/*CARD TASKS */}
                             <div className="flex flex-col gap-4">
-                                <span className="font-bold text-black">Task's title</span>
+                                <span className="font-bold text-black">Aqui va el titulo {task.title}</span>
 
                                 <div className="text-sm">
-                                    {dataInputs.description} {/**This should be the task description */}
+                                    <p className="font-medium text-gray-500">Description: Aqwui va la descripcion</p>
                                 </div>
                                 
            
@@ -32,7 +33,7 @@ export default function TaskCard ({dataInputs, date}) {
                                         <div className="text-[7px] flex justify-between">
                                                   <span>Priority: <span className="text-blue-400">Moderate</span></span>
                                                   <span className="">Status: <span className='text-red-600'>Not started</span></span> {/**This should be interactive  */}
-                                                  <span className="text-gray-500">Created on: {date}</span>
+                                                  <span className="text-gray-500">Created on:</span>
                                         </div>
            
                             </div>
