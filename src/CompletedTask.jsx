@@ -30,10 +30,10 @@ export default function CompletedTask({dateIn}){
                        
 
                            <div className="max-w-auto">
-                              <span className="font-bold text-sm md:text-base lg:text-sm">Aqui va el titulo de el task</span>
+                              <span className="font-bold text-sm md:text-base lg:text-sm">Aqui va el titulo de el tafjsldjflajksdlkjjlsjflskdjfjksk</span>
                               <p className="text-sm line-clamp-2 mt-2 text-gray-600 md:text-base lg:text-sm xl:text-medium"
                             
-                              >Esta es la descripcion que tendra dos lineas de longitud no mas</p>
+                              >Esta es la descripcion que tendra dossdafsjdfjalkjsdlkjflksfljasldfjslk lineas de longitud no mas</p>
                               <h4 className="text-[9px] mt-2">Status: <span className="text-green-600">Completed</span></h4>
                               <span className="text-[9px] text-gray-500">Completed {dateIn} </span> {/**This should be interactive */}
                            </div>

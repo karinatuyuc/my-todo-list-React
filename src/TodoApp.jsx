@@ -8,7 +8,6 @@ import { TaskGrid } from "./TaskGrid";
 
 function TodoApp() {
 
-  const [ tasks, setTasks ] = useState([]); // Global state. State to hold the list of tasks
   //const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
 
   // States to control the Modal visibility
@@ -19,10 +18,6 @@ function TodoApp() {
   // Function to close the Add Modal, button in the addModal
     function onCloseModalAdd() { 
      setAddTaskShowModal(false); 
-  }
-
-  function addTask(newTask) {
-    setTasks([...tasks, newTask]); // Update the tasks state by adding the new task to the existing list of tasks
   }
 /*
  
@@ -92,12 +87,9 @@ function TodoApp() {
     return (
         <>
         <Dashboard 
-            tasks={tasks}
-            setTasks={setTasks}
             modalAddTask={showAddTaskModal}
             setModalAddTask={setAddTaskShowModal}
             onClose={onCloseModalAdd}
-            addTask={addTask}
         />
         </>
 

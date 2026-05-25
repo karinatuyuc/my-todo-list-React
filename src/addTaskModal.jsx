@@ -4,7 +4,7 @@ import { GenerateUniqueID} from "./UniqueId";
 import FormErrors from "./FormErrors/FormErrors";
 
 
-export function AddTaskModal({onClose, onAddTask}) { // Receive setTasks and onClose as props
+export function AddTaskModal({onClose}) { // Receive setTasks and onClose as props
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
  /* const [ date, setDate ] = useState(""); // State to hold the task date
@@ -56,10 +56,8 @@ export function AddTaskModal({onClose, onAddTask}) { // Receive setTasks and onC
   // Funcion para enviar el objeto al TodoApp
   function handleSubmit(e) {
     e.preventDefault(); // Prevent the default form submission behavior
-    const newTask = {
-      title
-    }
-    onAddTask(newTask); // Call the onAddTask prop to add the new task
+    onClose(); // Call the onClose prop to close the modal
+    console.log("Formulario enviado")
   }
 
     return (
@@ -135,7 +133,6 @@ export function AddTaskModal({onClose, onAddTask}) { // Receive setTasks and onC
 
             <button 
              type="submit"
-             onClick={onClose}
              className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"
             >
               Done
