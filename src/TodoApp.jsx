@@ -5,11 +5,33 @@ import { EditModal } from "./editModal";
 import  Dashboard  from "./Dashboard";
 import { TaskGrid } from "./TaskGrid";
 
+const defaultTask ={
+  title: "No hay task para mostrar"
+};
+
 
 function TodoApp() {
 
+  // states 
+  const [ taskList, setTaskList] = useState([defaultTask]); // State to hold the list of tasks
+
   //const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
 
+
+  // Functions 
+  //  Function to cahnge the card 
+  const handleSubmit2 = (e, newTask) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    if(taskList.length === 1 && taskList[0].title === defaultTask.title) {
+      setTaskList([newTask])
+    } else {
+      setTaskList([...taskList, newTask])
+    }
+  }
+
+
+  
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   //const [ showEditTaskModal, setShowEditTaskModal] = useState(false) // State to control the Modal edit.
@@ -86,7 +108,9 @@ function TodoApp() {
   
     return (
         <>
-        <Dashboard 
+        <Dashboard
+            tasks={taskList} 
+            onSubmit={handleSubmit2}
             modalAddTask={showAddTaskModal}
             setModalAddTask={setAddTaskShowModal}
             onClose={onCloseModalAdd}

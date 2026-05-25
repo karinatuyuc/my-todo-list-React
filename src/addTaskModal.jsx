@@ -4,60 +4,37 @@ import { GenerateUniqueID} from "./UniqueId";
 import FormErrors from "./FormErrors/FormErrors";
 
 
-export function AddTaskModal({onClose}) { // Receive setTasks and onClose as props
+export function AddTaskModal({onClose, onSubmit}) { // Receive setTasks and onClose as props
 
   const [ title, setTitle ] = useState(""); // State to hold the task title
- /* const [ date, setDate ] = useState(""); // State to hold the task date
-  const [ priority, setPriority ] = useState(""); // State to hold the task priority
-  const [ description, setDescription ] = useState(""); // State to hold the task description
 
 
-
-  
-  const newTask = { // Object to represent the new task, the states of the form fields
-    title: title,
-    date: date,
-    priority: priority,
-    description: description,
-    id : GenerateUniqueID().id,
-  }  */
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
+
+  // Function to change the state of title 
   function onTitleChange(e){
     let titleValue = e.target.value;
     setTitle(titleValue); // Update the title state with the input value
-
     if(titleValue.trim() === "") {
       console.log("Title esta vacio");
     }
   }
 
-  /*
-  // Handle date change event
-  const handleDateChange = (e) => {
-    console.log(e.target.value); // Log the selected date value to the console
-  }
 
-  const handlePriorityChange = (e) => {
-    console.log(e.target.value); // Update the priority state with the selected value
-  }
-
-  
-    function handelDescritpionChange(e){
-      console.log(e.target.value); // Log the description value to the console
-    }
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value); // Update the description state with the input value
-    setTaskDescription(e.target.value); // Update the task description state with the input value
-  }*/
-
-
+/*
   // Funcion para enviar el objeto al TodoApp
   function handleSubmit(e) {
     e.preventDefault(); // Prevent the default form submission behavior
+    onAddTask(newTask);
     onClose(); // Call the onClose prop to close the modal
-    console.log("Formulario enviado")
+  }*/
+
+  const handleSubmit2 = (e) => {
+    const newTask = { title: title };
+    onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
+    onClose();
   }
 
     return (
@@ -76,8 +53,9 @@ export function AddTaskModal({onClose}) { // Receive setTasks and onClose as pro
             </button>
          </nav>
 
-        <form onSubmit={handleSubmit}> 
+        <form onSubmit={handleSubmit2}> 
           <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2.5 lg:mt-4 lg:p-2">
+            {/**This is the TITLE INPUT */}
             <label htmlFor="title" className="font-medium">Title</label>
             <input 
             id="title" 

@@ -1,6 +1,6 @@
-export default function TaskCard () { // Receive dataInputs, date, tasks, and setTasks as props
+export default function TaskCard ({task}) { // Receive dataInputs, date, tasks, and setTasks as props
 
-
+    console.log(task);
     return (
         <>    
         <div className="border-gray-800 
@@ -10,10 +10,10 @@ export default function TaskCard () { // Receive dataInputs, date, tasks, and se
              <div className="grid grid-cols-1 gap-4 mt-10 p-2 md:grid md:grid-cols-2 md:p-5 lg:flex lg:mt-0.5">
            
                 {/**Card #1 */}
-                <div className="w-full max-w-sm mx-auto min-h-28 border-2 rounded-lg p-0.5 border-gray-300 md:grid md:grid-cols-1 md:p-4
+                <div className="w-full max-w-sm mx-auto bg-red-200 min-h-28 border-2 rounded-lg p-0.5 border-gray-300 md:grid md:grid-cols-1 md:p-4
                  lg:w-96 lg:p-1">
            
-                    <div className="flex gap-2.5 p-1.5 
+                    <div className="flex gap-2.5 p-1.5
                      ">
                         <div className="flex justify-center items-start mt-1">
                             <span className="w-3 h-3 border-2 rounded-full text-red-500"></span> {/**This sould be interactive too */}
@@ -21,19 +21,19 @@ export default function TaskCard () { // Receive dataInputs, date, tasks, and se
                                           
            
                              {/*CARD TASKS */}
-                            <div className="flex flex-col gap-4 bg-red-300 lg:w-100 lg:p-2">
-                                <span className="font-bold line-clamp-1 text-black">No title yet</span>
+                            <div className="flex flex-col gap-4lg:w-100 lg:p-2">
+                                <span className="font-bold line-clamp-1 text-black">{task.title}</span>
 
                                 <div className="text-sm lg:overflow-hidden lg:h-20">
                                     <p className="font-medium text-gray-500 line-clamp-4">
-                                        No description yet
+                                        {task.description}
                                     </p>
                                 </div>
                                 
            
                                         {/** CARD FOOTER */}
-                                        <div className="text-[9px] flex justify-between">
-                                                  <span>Priority: <span className="text-blue-400">Not defined yet</span></span>
+                                        <div className="text-[9px] flex justify-between lg:gap-4">
+                                                  <span>Priority: <span className="text-blue-400">{task.title}</span></span>
                                                   <span className="">Status: <span className='text-red-600'>No status</span></span> {/**This should be interactive  */}
                                                   <span className="text-gray-500">Created on: No date yet</span>
                                         </div>

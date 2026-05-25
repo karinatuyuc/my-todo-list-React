@@ -7,7 +7,7 @@ import SideMenu from "./sideMenu.jsx";
 import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 
-export default function Dashboard({ modalAddTask, setModalAddTask, onClose, tasks, setTasks}) { // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
+export default function Dashboard({ modalAddTask, setModalAddTask, onClose, tasks, onSubmit}) { // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
 
     {/** Catching userName Name */}
     const [userName, setUserName] = useState("");
@@ -38,8 +38,8 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
 
                          {modalAddTask && (
                             <AddTaskModal
-                                onClose={onClose} // Pass the onClose
-                                setTasks={setTasks} // Pass the setTasks function as a prop
+                                onClose={onClose} // Pass the onClose function as a prop to close the modal
+                                onSubmit={onSubmit}// Passing onAddTask function to update the task list in the Dashboard component when a new task is added
 
                             />
                         )}
@@ -182,10 +182,22 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
 
 
 
-
+                      <div className="h-full overflow-auto p-2 md:p-4 lg:p-2">
+                        {tasks.map((task, index) => (
                             <TaskCard
-                
+                                key={index}
+                                task={task}
                             />
+                        ))}
+                      </div>
+                        
+ 
+
+
+
+
+
+                            
 
                     
                     </div>
@@ -248,7 +260,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
                     <div>
                         <TaskGrid
 
-                        tasks={tasks}
+
                     />
                     </div>
                     
