@@ -1,6 +1,4 @@
 export default function TaskCard ({task}) { // Receive dataInputs, date, tasks, and setTasks as props
-
-    console.log(task);
     return (
         <>    
         <div className="border-gray-800 
@@ -21,21 +19,21 @@ export default function TaskCard ({task}) { // Receive dataInputs, date, tasks, 
                                           
            
                              {/*CARD TASKS */}
-                            <div className="flex flex-col gap-4lg:w-100 lg:p-2">
+                            <div className="flex flex-col gap-2 lg:w-100 lg:p-2">
                                 <span className="font-bold line-clamp-1 text-black">{task.title}</span>
 
-                                <div className="text-sm lg:overflow-hidden lg:h-20">
-                                    <p className="font-medium text-gray-500 line-clamp-4">
+                                <div className="text-sm text-ellipsis">
+                                    <p className="font-medium text-gray-500 line-clamp-3 lg:p-1 lg:w-full lg:text-xs">
                                         {task.description}
                                     </p>
                                 </div>
                                 
            
                                         {/** CARD FOOTER */}
-                                        <div className="text-[9px] flex justify-between lg:gap-4">
-                                                  <span>Priority: <span className="text-blue-400">{task.title}</span></span>
-                                                  <span className="">Status: <span className='text-red-600'>No status</span></span> {/**This should be interactive  */}
-                                                  <span className="text-gray-500">Created on: No date yet</span>
+                                        <div className="text-[9px] flex justify-between lg:gap-0.5">
+                                                  <span>Priority: <span className="text-blue-400">{task.Priority}</span></span>
+                                                  <span className="">Status: <span className='text-red-600'>{task.status}</span></span> {/**This should be interactive  */}
+                                                  <span className="text-gray-500">Created on: {task.date}</span>
                                         </div>
            
                             </div>

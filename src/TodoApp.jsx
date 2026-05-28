@@ -6,7 +6,11 @@ import  Dashboard  from "./Dashboard";
 import { TaskGrid } from "./TaskGrid";
 
 const defaultTask ={
-  title: "No hay task para mostrar"
+  title: "No hay task para mostrar",
+  Priority: "No proiority chosen",
+  status: "No status",
+  description: "No description yet",
+  date: "No date yet"
 };
 
 

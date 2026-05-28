@@ -190,16 +190,6 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
                             />
                         ))}
                       </div>
-                        
- 
-
-
-
-
-
-                            
-
-                    
                     </div>
 
 
