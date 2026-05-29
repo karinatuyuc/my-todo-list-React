@@ -6,36 +6,43 @@ import FormErrors from "./FormErrors/FormErrors";
 export function AddTaskModal({ onClose, onSubmit }) {
   // Receive setTasks and onClose as props
 
+  const [errors, setErrors] = useState({}); // State to hold form validation errors
+
   const [title, setTitle] = useState(""); // State to hold the task title
   const [description, setDescription] = useState("");
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
   // Function to change the state of title
-  function onTitleChange(e) {
+  function handleTitleChange(e) {
     let titleValue = e.target.value;
     setTitle(titleValue); // Update the title state with the input value
-    if (titleValue.trim() === "") {
-      console.log("Title esta vacio");
+
+    if(titleValue.trim() === ""){
+      setErrors((prev) => ({...prev, title: "Title is required"}))
+    } else {
+      setErrors((prev) => {
+        const { title: _,  ...rest} = prev;
+        return rest;
+      })
     }
   }
 
-  function onChangeDescription(e) {
-    setDescription(e.target.value); // Update the description state with the input value (e.target.value)
+  // Function to update the state of description
+  function handleDescriptionChange(){
+    console.log("Input de descripcion")
   }
 
-  /*
-  // Funcion para enviar el objeto al TodoApp
-  function handleSubmit(e) {
-    e.preventDefault(); // Prevent the default form submission behavior
-    onAddTask(newTask);
-    onClose(); // Call the onClose prop to close the modal
-  }*/
 
   const handleSubmit2 = (e) => {
-    const newTask = { 
-      title: title,
-      description };
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    if (title.trim() === "") {
+      setErrors((prev) => ({ ...prev, title: "Title is required" })); // Set an error message if the title is empty
+      return; // Stop the form submission if there are validation errors
+    }
+
+    const newTask = {title};
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
@@ -67,9 +74,11 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 type="text"
                 name="taskTitle"
                 value={title} // Bind the input value to the title state
-                onChange={onTitleChange}
+                onChange={handleTitleChange}
                 className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
+              
               />
+              {errors.title && <span className="text-red-500">{errors.title}</span>}
 
               {/*Text area del la descripcion del task */}
               <label className="font-medium">Task Description</label>
@@ -77,8 +86,8 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 id="description"
                 name="taskDescription"
                 type="text"
-                value={description}
-                onChange={onChangeDescription}
+                //value={description} // Bind the textarea value to the description state
+                onClick={handleDescriptionChange}
                 placeholder="Start writing here...." // Placeholder text
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
@@ -91,6 +100,8 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96 lg:p-0.5"
               />
 
+
+              {/* Priority options  */}
               <fieldset className="flex gap-4 lg:gap-8">
                 <legend className="font-medium">Priority</legend>
                 {priorityOptions.map((priorityOption) => {
@@ -106,6 +117,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                         type="radio" // Radio button for priority selection
                         id={`priority-${priorityOption}`} // Unique id for each p riority option
                         name="priority" // Name attribute to group radio buttons
+                        value={priorityOption} // Value of the radio button
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>

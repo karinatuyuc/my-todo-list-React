@@ -31,7 +31,7 @@ export default function TaskCard ({task}) { // Receive dataInputs, date, tasks, 
            
                                         {/** CARD FOOTER */}
                                         <div className="text-[9px] flex justify-between lg:gap-0.5">
-                                                  <span>Priority: <span className="text-blue-400">{task.Priority}</span></span>
+                                                  <span>Priority: <span className="text-blue-400">{task.priority}</span></span>
                                                   <span className="">Status: <span className='text-red-600'>{task.status}</span></span> {/**This should be interactive  */}
                                                   <span className="text-gray-500">Created on: {task.date}</span>
                                         </div>
