@@ -29,20 +29,31 @@ export function AddTaskModal({ onClose, onSubmit }) {
   }
 
   // Function to update the state of description
-  function handleDescriptionChange(){
-    console.log("Input de descripcion")
+  function handleDescriptionChange(e){
+    let descriptionValue = e.target.value;
+
+    setDescription(descriptionValue);
+
+    if(descriptionValue.trim() === "") {
+      setErrors((prev) => ({...prev, description: "Description is required"}))
+    } else {
+      setErrors((prev) => {
+        const { description: _,  ...rest} = prev;
+        return rest;
+      })
+    }
   }
 
 
   const handleSubmit2 = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    if (title.trim() === "") {
-      setErrors((prev) => ({ ...prev, title: "Title is required" })); // Set an error message if the title is empty
+    if (title.trim() === "" || description.trim() === "") {
+      setErrors((prev) => ({ ...prev, title: "Title is required", description: "Description is required" })); // Set an error message if the title or description is empty
       return; // Stop the form submission if there are validation errors
     }
 
-    const newTask = {title};
+    const newTask = {title, description};
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
@@ -78,7 +89,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
               
               />
-              {errors.title && <span className="text-red-500">{errors.title}</span>}
+              {errors.title && <span className="text-[10px] text-red-500">{errors.title}</span>}
 
               {/*Text area del la descripcion del task */}
               <label className="font-medium">Task Description</label>
@@ -86,11 +97,12 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 id="description"
                 name="taskDescription"
                 type="text"
-                //value={description} // Bind the textarea value to the description state
-                onClick={handleDescriptionChange}
+                value={description} // Bind the textarea value to the description state
+                onChange={handleDescriptionChange}
                 placeholder="Start writing here...." // Placeholder text
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
+              {errors.description && <span className="text-[10px] text-red-500">{errors.description}</span>}
 
               <label className="font-medium">Date</label>
               <input

@@ -1,4 +1,5 @@
 export default function TaskCard ({task}) { // Receive dataInputs, date, tasks, and setTasks as props
+
     return (
         <>    
         <div className="border-gray-800 
