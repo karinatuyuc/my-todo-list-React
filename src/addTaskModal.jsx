@@ -7,12 +7,33 @@ export function AddTaskModal({ onClose, onSubmit }) {
   // Receive setTasks and onClose as props
 
   const [errors, setErrors] = useState({}); // State to hold form validation errors
-
   const [title, setTitle] = useState(""); // State to hold the task title
-  const [description, setDescription] = useState("");
+ // const [description, setDescription] = useState("");
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
+  function validateFild(fieldName, inputValue) {
+
+    if(fieldName === "title") { 
+      setTitle(inputValue); // Always update the title state with the input value
+      if(inputValue.trim() === "") { // Check if the input value is empty or only whitespace
+        setErrors(prev => ({
+          ...prev,
+          title: "Title is required"
+        })); // Set an error message if the title is empty
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          title: ""
+        })); // Clear the error message if the title is not empty
+      }
+
+      
+    }
+  }
+
+
+/*
   // Function to change the state of title
   function handleTitleChange(e) {
     let titleValue = e.target.value;
@@ -35,7 +56,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
     setDescription(descriptionValue);
 
     if(descriptionValue.trim() === "") {
-      setErrors((prev) => ({...prev, description: "Description is required"}))
+      setErrors((prev) => ({...prev, title: "Title is required", description: "Description is required"}))
     } else {
       setErrors((prev) => {
         const { description: _,  ...rest} = prev;
@@ -43,17 +64,17 @@ export function AddTaskModal({ onClose, onSubmit }) {
       })
     }
   }
-
+*/
 
   const handleSubmit2 = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    if (title.trim() === "" || description.trim() === "") {
-      setErrors((prev) => ({ ...prev, title: "Title is required", description: "Description is required" })); // Set an error message if the title or description is empty
+    if (title.trim() === "") {
+      setErrors((prev) => ({ ...prev, title: "Title is required"})); // Set an error message if the title or description is empty
       return; // Stop the form submission if there are validation errors
     }
 
-    const newTask = {title, description};
+    const newTask = {title};
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
@@ -85,7 +106,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 type="text"
                 name="taskTitle"
                 value={title} // Bind the input value to the title state
-                onChange={handleTitleChange}
+                onChange={(e) => validateFild("title", e.target.value)} // Call validateField on input change
                 className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
               
               />
@@ -97,8 +118,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 id="description"
                 name="taskDescription"
                 type="text"
-                value={description} // Bind the textarea value to the description state
-                onChange={handleDescriptionChange}
+               // value={description} // Bind the textarea value to the description state
                 placeholder="Start writing here...." // Placeholder text
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
@@ -129,7 +149,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                         type="radio" // Radio button for priority selection
                         id={`priority-${priorityOption}`} // Unique id for each p riority option
                         name="priority" // Name attribute to group radio buttons
-                        value={priorityOption} // Value of the radio button
+                    //    value={priorityOption} // Value of the radio button
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>

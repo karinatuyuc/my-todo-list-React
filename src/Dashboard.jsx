@@ -50,7 +50,7 @@ export default function Dashboard({ modalAddTask, setModalAddTask, onClose, task
          setModalName={setModalName}
          setUserName={setUserName}
         /> */}
-         <div className="min-h-screen w-full">
+         <div className="min-h-screen w-full bg-black">
 
 
             {/*Header*/}
