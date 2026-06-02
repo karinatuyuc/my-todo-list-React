@@ -8,7 +8,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
 
   const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
- // const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("");
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
@@ -27,54 +27,46 @@ export function AddTaskModal({ onClose, onSubmit }) {
           title: ""
         })); // Clear the error message if the title is not empty
       }
+    }
 
-      
+    if(fieldName === "description") {
+      setDescription(inputValue);
+      if(inputValue.trim() === "") {
+        setErrors((prev) => ({
+          ...prev,
+          description: 'Description is required'
+        }))
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          description: ""
+        }))
+      }
     }
   }
 
-
-/*
-  // Function to change the state of title
-  function handleTitleChange(e) {
-    let titleValue = e.target.value;
-    setTitle(titleValue); // Update the title state with the input value
-
-    if(titleValue.trim() === ""){
-      setErrors((prev) => ({...prev, title: "Title is required"}))
-    } else {
-      setErrors((prev) => {
-        const { title: _,  ...rest} = prev;
-        return rest;
-      })
-    }
-  }
-
-  // Function to update the state of description
-  function handleDescriptionChange(e){
-    let descriptionValue = e.target.value;
-
-    setDescription(descriptionValue);
-
-    if(descriptionValue.trim() === "") {
-      setErrors((prev) => ({...prev, title: "Title is required", description: "Description is required"}))
-    } else {
-      setErrors((prev) => {
-        const { description: _,  ...rest} = prev;
-        return rest;
-      })
-    }
-  }
-*/
 
   const handleSubmit2 = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
+    let hasErrors = false;
+
     if (title.trim() === "") {
-      setErrors((prev) => ({ ...prev, title: "Title is required"})); // Set an error message if the title or description is empty
-      return; // Stop the form submission if there are validation errors
+      setErrors((prev) => ({...prev, title: "Title is required" }));
+      hasErrors = true;
+    }
+    if (description.trim() === "") {
+      setErrors((prev) => ({...prev, description: "Description is required" }));
+      hasErrors = true;
     }
 
-    const newTask = {title};
+
+    if(hasErrors) {
+      setErrors(prev => ({...prev, title: prev.title || "Title is required", description: prev.description || "Description is required" }));
+      return; // Stop form submission if there are validation errors
+    }
+
+    const newTask = {title, description};
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
@@ -118,7 +110,8 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 id="description"
                 name="taskDescription"
                 type="text"
-               // value={description} // Bind the textarea value to the description state
+                value={description} // Bind the textarea value to the description state
+                onChange={(e) => validateFild("description", e.target.value)}
                 placeholder="Start writing here...." // Placeholder text
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
