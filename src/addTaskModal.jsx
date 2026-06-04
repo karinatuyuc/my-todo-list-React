@@ -12,7 +12,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
-  function validateFild(fieldName, inputValue) {
+  function validateField(fieldName, inputValue) {
 
     if(fieldName === "title") { 
       setTitle(inputValue); // Always update the title state with the input value
@@ -98,7 +98,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 type="text"
                 name="taskTitle"
                 value={title} // Bind the input value to the title state
-                onChange={(e) => validateFild("title", e.target.value)} // Call validateField on input change
+                onChange={(e) => validateField("title", e.target.value)} // Call validateField on input change
                 className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
               
               />
@@ -111,7 +111,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 name="taskDescription"
                 type="text"
                 value={description} // Bind the textarea value to the description state
-                onChange={(e) => validateFild("description", e.target.value)}
+                onChange={(e) => validateField("description", e.target.value)}
                 placeholder="Start writing here...." // Placeholder text
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
