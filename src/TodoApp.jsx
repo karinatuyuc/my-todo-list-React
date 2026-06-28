@@ -32,6 +32,7 @@ function TodoApp() {
     } else {
       setTaskList([...taskList, newTask])
     }
+
   }
 
 

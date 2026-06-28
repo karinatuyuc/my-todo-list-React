@@ -18,3 +18,8 @@ Documentation is written in both Spanish and English to reflect my bilingual app
 technical projects.
 
 *************************
+
+
+*************************
+Fecha 27/06/2026
+Trabajando para mostrar la prioridad seleccionada por el usuario

@@ -9,6 +9,8 @@ export function AddTaskModal({ onClose, onSubmit }) {
   const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
   const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("");
+
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
@@ -43,6 +45,8 @@ export function AddTaskModal({ onClose, onSubmit }) {
         }))
       }
     }
+
+    setPriority(inputValue)
   }
 
 
@@ -66,7 +70,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
       return; // Stop form submission if there are validation errors
     }
 
-    const newTask = {title, description};
+    const newTask = {title, description, priority};
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
@@ -142,7 +146,9 @@ export function AddTaskModal({ onClose, onSubmit }) {
                         type="radio" // Radio button for priority selection
                         id={`priority-${priorityOption}`} // Unique id for each p riority option
                         name="priority" // Name attribute to group radio buttons
-                    //    value={priorityOption} // Value of the radio button
+                        value={priorityOption} // Value of the radio button
+                        checked={priority === priorityOption}
+                        onChange={(e) => validateField("priority", e.target.value)}
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>

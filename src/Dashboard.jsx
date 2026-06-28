@@ -8,7 +8,6 @@ import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 
 export default function Dashboard({ modalAddTask, setModalAddTask, onClose, tasks, onSubmit}) { // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
-
     {/** Catching userName Name */}
     const [userName, setUserName] = useState("");
 
