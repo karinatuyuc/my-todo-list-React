@@ -17,7 +17,7 @@ const defaultTask ={
 function TodoApp() {
 
   // states 
-  const [ taskList, setTaskList] = useState([defaultTask]); // State to hold the list of tasks
+  const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
 
   //const [ editingTaskId, setEditingTaskId] = useState(null) // State to hold the ID of the task being edited
 

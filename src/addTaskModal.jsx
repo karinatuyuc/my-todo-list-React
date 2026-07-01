@@ -10,6 +10,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
   const [title, setTitle] = useState(""); // State to hold the task title
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
+  const [date, setDate] = useState("");
 
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
@@ -45,10 +46,16 @@ export function AddTaskModal({ onClose, onSubmit }) {
         }))
       }
     }
+    
+    if(fieldName === "priority") {
+      setPriority(inputValue);
+    }
 
-    setPriority(inputValue)
+    if(fieldName === "date") {
+      setDate(inputValue)
+    }
+    
   }
-
 
   const handleSubmit2 = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
@@ -70,7 +77,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
       return; // Stop form submission if there are validation errors
     }
 
-    const newTask = {title, description, priority};
+    const newTask = {title, description, priority, date};
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
@@ -126,6 +133,8 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 type="date"
                 id="start"
                 name="taskDate"
+                value={date}
+                onChange={(e) => validateField("date", e.target.value)}
                 className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96 lg:p-0.5"
               />
 

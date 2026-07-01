@@ -44,36 +44,6 @@ export default function CompletedTask({dateIn}){
                                 />
                             </div>
                     </div>
-
-                    {/**CARD #1 */}
-                    <div className="grid border-2 border-violet-600 rounded-2xl grid-cols-[1fr_4fr_1fr] w-full max-w-md mx-auto p-1        
-                    lg:w-72 lg:mt-0.5 xl:mt-0.5">
-
-                        <div className="flex justify-center items-start pt-1">
-                            <div className="w-4 h-4 rounded-full border-2 border-green-600 md:w-5 md:h-5 lg:w-4 lg:h-4"></div>
-                        </div>
-                       
-
-                           <div className="max-w-auto">
-                              <span className="font-bold text-sm md:text-base lg:text-sm">Aqui va el titulo de el task</span>
-                              <p className="text-sm line-clamp-2 mt-2 text-gray-600 md:text-base lg:text-sm xl:text-medium"
-                            
-                              >Esta es la descripcion que tendra dos lineas de longitud no mas</p>
-                              <h4 className="text-[9px] mt-2">Status: <span className="text-green-600">Completed</span></h4>
-                              <span className="text-[9px] text-gray-500">Completed {dateIn} </span> {/**This should be interactive */}
-                           </div>
-                    
-                           <div className="flex justify-end items-start">
-                                <EllipsisHorizontalIcon
-                                className="w-6 h-6"
-                                />
-                            </div>
-                    </div>
-
-                    
-
-
- 
                 </div>
                 
              { /** </div>*/} 
