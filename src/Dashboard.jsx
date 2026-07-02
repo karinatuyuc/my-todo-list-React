@@ -77,7 +77,7 @@ export default function Dashboard({
          setModalName={setModalName}
          setUserName={setUserName}
         /> */}
-      <div className="min-h-screen w-full">
+      <div className="min-h-screen w-full bg-black">
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20
@@ -158,15 +158,15 @@ export default function Dashboard({
                     lg:p-0 lg:min-h-full lg:overflow-auto`}
                   >
                     <div
-                      className={`lg:top-0 lg:sticky ${hasScrolled ? "bg-black/80" : "bg-gray-00"}`}
+                      className={`lg:top-0 lg:sticky text-red-400 ${hasScrolled ? "bg-red-400 text-white" : "bg-gray-00"}`}
                     >
                       <div className="flex justify-between p-2.5 lg:h-17">
-                        <span className="absolute text-justify left-16 text-xm ml-2 text-red-400 font-medium md:text-2xl lg:text-lg">
+                        <span className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg">
                           To-Do
                         </span>
                         <div className="relative">
                           <ClipboardDocumentCheckIcon
-                            className="w-7 h-7 absolute text-gray-400 
+                            className="w-7 h-7 absolute
                                       md:w-8 md:h-8"
                           />
                           <ClockIcon
