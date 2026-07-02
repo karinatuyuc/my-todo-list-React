@@ -1,11 +1,15 @@
+// 90 PLEASE 
+
 import { useState } from "react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { EditModal } from "./editModal";
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, openEditModal }) {
   // Receive dataInputs, date, tasks, and setTasks as props
 
 
   const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
+  const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
 
   const priorityColors = {
     Low: "text-green-600 font-semibold",
@@ -19,8 +23,10 @@ export default function TaskCard({ task }) {
     setIsOpen(!isOpen); // Toggle the visibility of the modal when the ellipsis button is clicked
   }
 
-
-
+  function handleEditClick() {
+    setEditModalOpen(true); // Open the edit modal when the "Editar" button is clicked
+    openEditModal(task); // Call the function to open the edit modal in the parent component
+  }
 
   return (
     <>
@@ -28,6 +34,7 @@ export default function TaskCard({ task }) {
         className="border-gray-800 
         md:mt-2 lg:mt-2 lg:p-0.5"
       >
+
         <div className="grid grid-cols-1 gap-4 mt-10 p-1.5 md:grid md:grid-cols-2 md:p-2  lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
@@ -38,6 +45,8 @@ export default function TaskCard({ task }) {
               className="flex gap-0.5
                      "
             >
+
+                {/**This  is the cricle  */}
               <div className=" flex mt-1">
                 <span className="w-3 h-3 border-2 rounded-full text-red-500"></span>{" "}
                 {/**This sould be interactive too */}
@@ -48,8 +57,8 @@ export default function TaskCard({ task }) {
                   {task.title}
                 </span>
 
-                <div className="text-sm text-ellipsis">
-                  <p className="text-xs font-medium text-gray-500 line-clamp-3 lg:line-clamp-3">
+                <div className="text-sm text-ellipsis h-14">
+                  <p className="text-xs font-medium text-gray-500 line-clamp-3 lg:line-clamp-4">
                     {task.description}
                   </p>
                 </div>
@@ -70,18 +79,21 @@ export default function TaskCard({ task }) {
                 </div>
               </div>
 
-              <button className="cursor-pointer flex" onClick={handleEllipsis}>
+              <div className="cursor-pointer flex" onClick={handleEllipsis}>
                 <EllipsisHorizontalIcon className=" text-white w-4 h-4" />
 
                 {isOpen && (
                     <div className="absolute bg-red-700 right-0 m-1 mt-3 rounded-sm">
                         <div className="text-[10px]">
-                            <button className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
+                            <div>
+                                <button onClick={handleEditClick} className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
+                            </div>
                             <button className="block w-full text-left p-2 hover:bg-red-300">Eliminar</button>
                         </div>
                     </div>
+
                 )}
-              </button>
+              </div>
             </div>
           </div>
         </div>

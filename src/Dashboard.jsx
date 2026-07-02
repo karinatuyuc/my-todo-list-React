@@ -13,6 +13,7 @@ import TaskCard from "./TaskCard.jsx";
 import SideMenu from "./sideMenu.jsx";
 import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
+import { EditModal } from "./editModal.jsx";
 
 export default function Dashboard({
   modalAddTask,
@@ -20,14 +21,17 @@ export default function Dashboard({
   onClose,
   tasks,
   onSubmit,
+  editTask
 }) {
   // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
   {
     /** Catching userName Name */
   }
   const [userName, setUserName] = useState("");
+  const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
 
-  const [hasScrolled, setHasScrolled] = useState(false);
+  const [ showEditModal, setShowEditModal] = useState(false); // State to control the visibility of the edit modal
+  const [ selectedTask, setSelectedTask ] = useState(null); // State to hold the selected task for editing
 
   const handleScroll = () => {
     if (tasksRef.current) {
@@ -60,7 +64,14 @@ export default function Dashboard({
     { title: "Not started", progress: "75%", color: "red" },
   ];
 
-  const tasksRef = useRef(null);
+  const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
+
+
+  // Function to open the editModal
+  const openEditModal = (task) => {
+    setSelectedTask(task);
+    setShowEditModal(true);
+  }
 
   return (
     <>
@@ -70,6 +81,13 @@ export default function Dashboard({
           onSubmit={onSubmit} // Passing onAddTask function to update the task list in the Dashboard component when a new task is added
         />
       )}
+
+      {
+        showEditModal && selectedTask && (
+          <EditModal task={selectedTask} editTask={editTask} />
+        )
+
+      }
 
       {/**
         <UserName
@@ -216,7 +234,7 @@ export default function Dashboard({
                         
                       ) : (
                         tasks.map((task, index) => (
-                          <TaskCard key={index} task={task} />
+                          <TaskCard key={index} task={task} openEditModal={openEditModal} />
                         ))
                       )}
                     </div>

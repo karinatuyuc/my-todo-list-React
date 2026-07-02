@@ -110,24 +110,12 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 name="taskTitle"
                 value={title} // Bind the input value to the title state
                 onChange={(e) => validateField("title", e.target.value)} // Call validateField on input change
-                className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:w-96 lg:p-0.5"
+                className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
               
               />
               {errors.title && <span className="text-[10px] text-red-500">{errors.title}</span>}
 
-              {/*Text area del la descripcion del task */}
-              <label className="font-medium">Task Description</label>
-              <textarea
-                id="description"
-                name="taskDescription"
-                type="text"
-                value={description} // Bind the textarea value to the description state
-                onChange={(e) => validateField("description", e.target.value)}
-                placeholder="Start writing here...." // Placeholder text
-                className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
-              ></textarea>
-              {errors.description && <span className="text-[10px] text-red-500">{errors.description}</span>}
-
+              
               <label className="font-medium">Date</label>
               <input
                 type="date"
@@ -135,9 +123,10 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 name="taskDate"
                 value={date}
                 onChange={(e) => validateField("date", e.target.value)}
-                className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:w-96 lg:p-0.5"
+                className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:p-0.5"
               />
 
+              
 
               {/* Priority options  */}
               <fieldset className="flex gap-4 lg:gap-8">
@@ -164,6 +153,20 @@ export function AddTaskModal({ onClose, onSubmit }) {
                   );
                 })}
               </fieldset>
+
+              {/*Text area del la descripcion del task */}
+              <label className="font-medium">Task Description</label>
+              <textarea
+                id="description"
+                name="taskDescription"
+                type="text"
+                value={description} // Bind the textarea value to the description state
+                onChange={(e) => validateField("description", e.target.value)}
+                placeholder="Start writing here...." // Placeholder text
+                className="h-28 w-80 border-2 border-gray-200 rounded-sm p-2"
+              ></textarea>
+              {errors.description && <span className="text-[10px] text-red-500">{errors.description}</span>}
+
             </div>
 
             <button
