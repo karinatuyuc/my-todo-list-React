@@ -14,14 +14,14 @@ import SideMenu from "./sideMenu.jsx";
 import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 import { EditModal } from "./editModal.jsx";
+import TaskRenderer from "./TaskRenderer.jsx";
 
 export default function Dashboard({
+  addTask,
   modalAddTask,
   setModalAddTask,
   onClose,
-  tasks,
-  onSubmit,
-  editTask
+  onSubmit
 }) {
   // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
   {
@@ -30,8 +30,8 @@ export default function Dashboard({
   const [userName, setUserName] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
 
-  const [ showEditModal, setShowEditModal] = useState(false); // State to control the visibility of the edit modal
-  const [ selectedTask, setSelectedTask ] = useState(null); // State to hold the selected task for editing
+// const [ showEditModal, setShowEditModal] = useState(false); // State to control the visibility of the edit modal
+  //const [ selectedTask, setSelectedTask ] = useState(null); // State to hold the selected task for editing
 
   const handleScroll = () => {
     if (tasksRef.current) {
@@ -65,29 +65,15 @@ export default function Dashboard({
   ];
 
   const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
-
-
-  // Function to open the editModal
-  const openEditModal = (task) => {
-    setSelectedTask(task);
-    setShowEditModal(true);
-  }
-
   return (
     <>
       {modalAddTask && (
         <AddTaskModal
+          addTask={addTask}
           onClose={onClose} // Pass the onClose function as a prop to close the modal
           onSubmit={onSubmit} // Passing onAddTask function to update the task list in the Dashboard component when a new task is added
         />
       )}
-
-      {
-        showEditModal && selectedTask && (
-          <EditModal task={selectedTask} editTask={editTask} />
-        )
-
-      }
 
       {/**
         <UserName
@@ -222,22 +208,13 @@ export default function Dashboard({
                       </div>
                     </div>
 
-                    <div className="p-1 md:p-2">
-                      {tasks.length === 0 ? (
-                        <div className="flex flex-row justify-center items-center mt-9 m-2 lg:m-6">
-                          <div className="border border-gray-300 rounded-md p-4 shadow bg-transparent animate-pulse w-full">
-                          <div className="h-4 bg-gray-100 rounded w-3/4 mb-2"></div>
-                          <div className="h-3 bg-gray-100 rounded w-1/2 mb-2"></div>
-                          <div className="h-3 bg-gray-100 rounded w-5/6"></div>
-                           </div>
-                        </div>
-                        
-                      ) : (
-                        tasks.map((task, index) => (
-                          <TaskCard key={index} task={task} openEditModal={openEditModal} />
-                        ))
-                      )}
+                    <div className="">
+                      {addTask.length === 0 ? (
+                        <div className="bg-white">Hola mundo</div>
+                      ) : (<div>Hola mundo</div>)}                      
                     </div>
+                          
+
                   </div>
 
                   <div className="lg:flex lg:flex-col lg:h-screen md:p-0.5 lg:p-0.5 ">
@@ -284,9 +261,10 @@ export default function Dashboard({
                       <CompletedTask dateIn={dateInNumber} />
                     </div>
 
-                    <div>
+                    <div className="h-60">
                       <TaskGrid />
                     </div>
+
                   </div>
                 </div>
               </section>

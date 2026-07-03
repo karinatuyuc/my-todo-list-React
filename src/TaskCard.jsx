@@ -4,28 +4,17 @@ import { useState } from "react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import { EditModal } from "./editModal";
 
-export default function TaskCard({ task, openEditModal }) {
+export default function TaskCard() {
   // Receive dataInputs, date, tasks, and setTasks as props
 
 
   const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
-  const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
+ // const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
 
-  const priorityColors = {
-    Low: "text-green-600 font-semibold",
-    Medium: "text-orange-500",
-    Extreme: "text-red-700 font-bold",
-  };
-
-  const priorityClass = priorityColors[task.priority] || "text-gray-800";
+ // const priorityClass = priorityColors[task.priority] || "text-gray-800";
 
   function handleEllipsis(){
     setIsOpen(!isOpen); // Toggle the visibility of the modal when the ellipsis button is clicked
-  }
-
-  function handleEditClick() {
-    setEditModalOpen(true); // Open the edit modal when the "Editar" button is clicked
-    openEditModal(task); // Call the function to open the edit modal in the parent component
   }
 
   return (
@@ -54,27 +43,27 @@ export default function TaskCard({ task, openEditModal }) {
               {/*CARD TASKS */}
               <div className="flex flex-col gap-2 p-2 w-full lg:p-2">
                 <span className="font-bold line-clamp-1 text-black">
-                  {task.title}
+            
                 </span>
 
                 <div className="text-sm text-ellipsis h-14">
                   <p className="text-xs font-medium text-gray-500 line-clamp-3 lg:line-clamp-4">
-                    {task.description}
+                 
                   </p>
                 </div>
 
                 {/** CARD FOOTER */}
                 <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5">
                   <span>
-                    Priority:{" "}
-                    <span className={`${priorityClass}`}>{task.priority}</span>
+                
+                    <span className=""></span>
                   </span>
                   <span className="">
                     Status: <span className="text-red-600">No status</span>
                   </span>{" "}
                   {/**This should be interactive  */}
                   <span className="text-gray-500">
-                    Created on: <span>{task.date}</span>
+                    Created on: <span></span>
                   </span>
                 </div>
               </div>
@@ -86,7 +75,7 @@ export default function TaskCard({ task, openEditModal }) {
                     <div className="absolute bg-red-700 right-0 m-1 mt-3 rounded-sm">
                         <div className="text-[10px]">
                             <div>
-                                <button onClick={handleEditClick} className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
+                                <button className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
                             </div>
                             <button className="block w-full text-left p-2 hover:bg-red-300">Eliminar</button>
                         </div>

@@ -1,24 +1,22 @@
 import { useState } from "react";
 import { AddTaskModal } from "./addTaskModal";
-import TaskRenderer from "./TaskRenderer";
 import { EditModal } from "./editModal";
 import  Dashboard  from "./Dashboard";
 import { TaskGrid } from "./TaskGrid";
-
-const defaultTask ={
-  title: "No hay task para mostrar",
-  priority: "No proiority chosen",
-  status: "No status",
-  description: "No description yet",
-  date: "No date yet"
-};
-
 
 function TodoApp() {
 
   // states 
   const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
 
+  function addTask(task) {
+    setTaskList([...taskList, task])
+  };
+
+
+  console.log(taskList)
+
+/*
   // Functions 
   //  Function to cahnge the card 
   const handleSubmit2 = (e, newTask) => {
@@ -30,7 +28,7 @@ function TodoApp() {
       setTaskList([...taskList, newTask])
     }
 
-  }
+  }*/
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   //const [ showEditTaskModal, setShowEditTaskModal] = useState(false); // State to control the visibility of the edit modal
@@ -60,16 +58,15 @@ function TodoApp() {
     return (
         <>
         <Dashboard
-            tasks={taskList} 
-            onSubmit={handleSubmit2}
+            addTask={addTask}
             modalAddTask={showAddTaskModal}
             setModalAddTask={setAddTaskShowModal}
             onClose={onCloseModalAdd}
             editTask={editTask}
 
         />
-        </>
 
+        </>
     )
 }
 

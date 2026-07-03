@@ -3,17 +3,18 @@ import { GenerateUniqueID } from "./UniqueId";
 //import { data } from "autoprefixer";
 import FormErrors from "./FormErrors/FormErrors";
 
-export function AddTaskModal({ onClose, onSubmit }) {
-  // Receive setTasks and onClose as props
+export function AddTaskModal({ addTask, onClose }) {
 
-  const [errors, setErrors] = useState({}); // State to hold form validation errors
+
+  // Receive setTasks and onClose as props
+ // const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
   const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState("");
+ // const [priority, setPriority] = useState("");
   const [date, setDate] = useState("");
 
 
-  const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
+  /*
 
   function validateField(fieldName, inputValue) {
 
@@ -78,9 +79,30 @@ export function AddTaskModal({ onClose, onSubmit }) {
     }
 
     const newTask = {title, description, priority, date};
+
+    console.log(newTask)
     onSubmit(e, newTask); // Pass the event and the new task to the onSubmit prop
     onClose();
   };
+*/   
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    let newTask = {
+      id: GenerateUniqueID().id,
+      title,
+      date,
+      description
+    }
+
+    addTask(newTask);
+    onClose();
+    console.log("Se guardo el task")
+    
+  }
+
+
+
 
   return (
     <>
@@ -92,13 +114,12 @@ export function AddTaskModal({ onClose, onSubmit }) {
             </span>
             <button
               className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4"
-              onClick={onClose} // Call onClose prop to close the modal
             >
               Go Back
             </button>
           </nav>
 
-          <form onSubmit={handleSubmit2}>
+          <form onSubmit={onSubmit}>
             <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2.5 lg:mt-4 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
@@ -109,12 +130,11 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 type="text"
                 name="taskTitle"
                 value={title} // Bind the input value to the title state
-                onChange={(e) => validateField("title", e.target.value)} // Call validateField on input change
+                onChange={(e) => setTitle(e.target.value)} // Call validateField on input change
                 className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
               
               />
-              {errors.title && <span className="text-[10px] text-red-500">{errors.title}</span>}
-
+              
               
               <label className="font-medium">Date</label>
               <input
@@ -122,7 +142,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 id="start"
                 name="taskDate"
                 value={date}
-                onChange={(e) => validateField("date", e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
                 className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:p-0.5"
               />
 
@@ -131,27 +151,7 @@ export function AddTaskModal({ onClose, onSubmit }) {
               {/* Priority options  */}
               <fieldset className="flex gap-4 lg:gap-8">
                 <legend className="font-medium">Priority</legend>
-                {priorityOptions.map((priorityOption) => {
-                  return (
-                    <div
-                      key={priorityOption}
-                      className="flex gap-4 mt-2 font-light"
-                    >
-                      <label htmlFor={`priority-${priorityOption}`}>
-                        {priorityOption}
-                      </label>
-                      <input
-                        type="radio" // Radio button for priority selection
-                        id={`priority-${priorityOption}`} // Unique id for each p riority option
-                        name="priority" // Name attribute to group radio buttons
-                        value={priorityOption} // Value of the radio button
-                        checked={priority === priorityOption}
-                        onChange={(e) => validateField("priority", e.target.value)}
-                        className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
-                      />
-                    </div>
-                  );
-                })}
+
               </fieldset>
 
               {/*Text area del la descripcion del task */}
@@ -161,12 +161,11 @@ export function AddTaskModal({ onClose, onSubmit }) {
                 name="taskDescription"
                 type="text"
                 value={description} // Bind the textarea value to the description state
-                onChange={(e) => validateField("description", e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Start writing here...." // Placeholder text
                 className="h-28 w-80 border-2 border-gray-200 rounded-sm p-2"
               ></textarea>
-              {errors.description && <span className="text-[10px] text-red-500">{errors.description}</span>}
-
+             
             </div>
 
             <button
