@@ -1,5 +1,3 @@
-
-
 export function validateTitle(value, setTitle, setErrors) {
   setTitle(value);
   if (value === "") {
