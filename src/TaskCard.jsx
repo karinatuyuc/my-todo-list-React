@@ -10,8 +10,11 @@ export default function TaskCard({ tasks }) {
 
   const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
  // const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
-
- // const priorityClass = priorityColors[task.priority] || "text-gray-800";
+ const priorityColors = {
+  "Low": 'text-green-500',
+  "Medium": "text-orange-400",
+  "Extreme": "text-red-700"
+ }
 
   function handleEllipsis(){
     setIsOpen(!isOpen); // Toggle the visibility of the modal when the ellipsis button is clicked
@@ -53,13 +56,17 @@ export default function TaskCard({ tasks }) {
 
                 {/** CARD FOOTER */}
                 <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5">
-                  <span>
-                    Priority: {tasks.priority}
-                  <span className=""></span>
+                  <span className="text-white">
+                    Priority: {" "}
+                    <span className={priorityColors[tasks.priority]} >
+                    {tasks.priority}
+                    </span>
                   </span>
+
                   <span className="">
                     Status: <span className="text-red-600">No status</span>
                   </span>{" "}
+
                   {/**This should be interactive  */}
                   <span className="text-gray-500">
                     Created on: <span>{tasks.date}</span>

@@ -113,6 +113,7 @@ export function AddTaskModal({ addTask, onClose }) {
               Add New Task
             </span>
             <button
+              onClick={onClose} 
               className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4"
             >
               Go Back
