@@ -31,8 +31,7 @@ export default function TaskCard({ tasks }) {
                  lg:w-80 lg:p-1.2"
           >
             <div
-              className="flex gap-0.5
-                     "
+              className="flex gap-0.5"
             >
 
                 {/**This  is the cricle  */}
@@ -41,13 +40,13 @@ export default function TaskCard({ tasks }) {
                 {/**This sould be interactive too */}
               </div>
               {/*CARD TASKS */}
-              <div className="flex flex-col gap-2 p-2 w-full lg:p-2">
+              <div className="flex flex-col gap-2 p-2 lg:p-2">
                 <span className="font-bold line-clamp-1 text-black">
                   {tasks.title}
                 </span>
 
-                <div className="text-sm text-ellipsis h-14">
-                  <p className="text-xs font-medium text-gray-500 line-clamp-3 lg:line-clamp-4">
+                <div className="text-sm h-14 text-ellipsis">
+                  <p className="text-xs font-medium text-gray-900 line-clamp-4 break-all">
                     {tasks.description}
                   </p>
                 </div>
@@ -55,7 +54,7 @@ export default function TaskCard({ tasks }) {
                 {/** CARD FOOTER */}
                 <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5">
                   <span>
-                    Priority: 
+                    Priority: {tasks.priority}
                   <span className=""></span>
                   </span>
                   <span className="">

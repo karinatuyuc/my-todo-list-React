@@ -94,6 +94,7 @@ export function AddTaskModal({ addTask, onClose }) {
       id: GenerateUniqueID().id,
       title,
       date,
+      priority,
       description
     }
 
@@ -150,7 +151,22 @@ export function AddTaskModal({ addTask, onClose }) {
               {/* Priority options  */}
               <fieldset className="flex gap-4 lg:gap-8">
                 <legend className="font-medium">Priority</legend>
-                
+
+                  {priorityOptions.map((priorities) => (
+                  <div key={priorities}>
+                    
+                      <input 
+                      type="radio" 
+                      id={`priority-${priorities}`} 
+                      name="priority" 
+                      value={priorities}
+                      checked={priority === priorities}
+                      onChange={(e) => setPriority(e.target.value)}
+                      />
+                      <label htmlFor={`priority-${priorities}`}> {priorities}</label>
+                  </div>
+                ))}
+    
               </fieldset>
 
               {/*Text area del la descripcion del task */}
