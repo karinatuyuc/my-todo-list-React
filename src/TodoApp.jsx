@@ -14,8 +14,6 @@ function TodoApp() {
   };
 
 
-  console.log(taskList)
-
 /*
   // Functions 
   //  Function to cahnge the card 
@@ -58,6 +56,7 @@ function TodoApp() {
     return (
         <>
         <Dashboard
+            task={taskList}
             addTask={addTask}
             modalAddTask={showAddTaskModal}
             setModalAddTask={setAddTaskShowModal}

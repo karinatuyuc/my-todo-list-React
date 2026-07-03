@@ -4,7 +4,7 @@ import { useState } from "react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import { EditModal } from "./editModal";
 
-export default function TaskCard() {
+export default function TaskCard({ tasks }) {
   // Receive dataInputs, date, tasks, and setTasks as props
 
 
@@ -27,8 +27,8 @@ export default function TaskCard() {
         <div className="grid grid-cols-1 gap-4 mt-10 p-1.5 md:grid md:grid-cols-2 md:p-2  lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
-            className="w-full max-w-sm mx-auto bg-red-900 min-h-36 border-2 rounded-lg p-3 border-gray-300 md:grid md:grid-cols-1 md:p-2
-                 lg:w-96 lg:p-1.2"
+            className="w-full max-w-sm mx-auto bg-red-900 min-h-36 border-2 rounded-lg p-2 border-gray-300 md:grid md:grid-cols-1 md:p-2
+                 lg:w-80 lg:p-1.2"
           >
             <div
               className="flex gap-0.5
@@ -43,27 +43,27 @@ export default function TaskCard() {
               {/*CARD TASKS */}
               <div className="flex flex-col gap-2 p-2 w-full lg:p-2">
                 <span className="font-bold line-clamp-1 text-black">
-            
+                  {tasks.title}
                 </span>
 
                 <div className="text-sm text-ellipsis h-14">
                   <p className="text-xs font-medium text-gray-500 line-clamp-3 lg:line-clamp-4">
-                 
+                    {tasks.description}
                   </p>
                 </div>
 
                 {/** CARD FOOTER */}
                 <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5">
                   <span>
-                
-                    <span className=""></span>
+                    Priority: 
+                  <span className=""></span>
                   </span>
                   <span className="">
                     Status: <span className="text-red-600">No status</span>
                   </span>{" "}
                   {/**This should be interactive  */}
                   <span className="text-gray-500">
-                    Created on: <span></span>
+                    Created on: <span>{tasks.date}</span>
                   </span>
                 </div>
               </div>

@@ -10,8 +10,10 @@ export function AddTaskModal({ addTask, onClose }) {
  // const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
   const [description, setDescription] = useState("");
- // const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState("");
   const [date, setDate] = useState("");
+
+  const priorityOptions = ["Low", "Medium", "Extreme"];
 
 
   /*
@@ -101,9 +103,6 @@ export function AddTaskModal({ addTask, onClose }) {
     
   }
 
-
-
-
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
@@ -151,7 +150,7 @@ export function AddTaskModal({ addTask, onClose }) {
               {/* Priority options  */}
               <fieldset className="flex gap-4 lg:gap-8">
                 <legend className="font-medium">Priority</legend>
-
+                
               </fieldset>
 
               {/*Text area del la descripcion del task */}

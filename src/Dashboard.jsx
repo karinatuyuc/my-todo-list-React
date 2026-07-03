@@ -17,11 +17,12 @@ import { EditModal } from "./editModal.jsx";
 import TaskRenderer from "./TaskRenderer.jsx";
 
 export default function Dashboard({
+  task,
   addTask,
   modalAddTask,
   setModalAddTask,
   onClose,
-  onSubmit
+  onSubmit,
 }) {
   // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
   {
@@ -30,7 +31,7 @@ export default function Dashboard({
   const [userName, setUserName] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
 
-// const [ showEditModal, setShowEditModal] = useState(false); // State to control the visibility of the edit modal
+  // const [ showEditModal, setShowEditModal] = useState(false); // State to control the visibility of the edit modal
   //const [ selectedTask, setSelectedTask ] = useState(null); // State to hold the selected task for editing
 
   const handleScroll = () => {
@@ -65,6 +66,7 @@ export default function Dashboard({
   ];
 
   const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
+
   return (
     <>
       {modalAddTask && (
@@ -209,12 +211,29 @@ export default function Dashboard({
                     </div>
 
                     <div className="">
-                      {addTask.length === 0 ? (
-                        <div className="bg-white">Hola mundo</div>
-                      ) : (<div>Hola mundo</div>)}                      
-                    </div>
-                          
+                      {task.length === 0 ? (
+                        <div className=" p-1.5 rounded-sm gap-2 mt-12 m-6">
+                          <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
+                            {/* Barra tipo título */}
+                            <div className="h-5 bg-gray-200 rounded w-3/4"></div>
 
+                            {/* Barra tipo descripción */}
+                            <div className="h-4 bg-gray-200 rounded w-full"></div>
+                            <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+
+                            {/* Barra tipo detalle */}
+                            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                          </div>
+                        </div>
+                      ) : (
+                        
+                          task.map((tasks) => (
+                            
+                            <TaskCard key={tasks.id} tasks={tasks}/>
+                          ))
+                        
+                      )}
+                    </div>
                   </div>
 
                   <div className="lg:flex lg:flex-col lg:h-screen md:p-0.5 lg:p-0.5 ">
@@ -264,7 +283,6 @@ export default function Dashboard({
                     <div className="h-60">
                       <TaskGrid />
                     </div>
-
                   </div>
                 </div>
               </section>
