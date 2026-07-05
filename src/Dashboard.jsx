@@ -23,16 +23,15 @@ export default function Dashboard({
   setModalAddTask,
   onClose,
   onSubmit,
+  editTaskModal,
+  setEditTaskModal,
+  onCloseEditModal,
+
+  selectedTask,
+  editTask
 }) {
-  // Receive modalAddTask, setModalAddTask, onClose, tasks, and setTasks as props
-  {
-    /** Catching userName Name */
-  }
   const [userName, setUserName] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
-
-  // const [ showEditModal, setShowEditModal] = useState(false); // State to control the visibility of the edit modal
-  //const [ selectedTask, setSelectedTask ] = useState(null); // State to hold the selected task for editing
 
   const handleScroll = () => {
     if (tasksRef.current) {
@@ -43,12 +42,6 @@ export default function Dashboard({
 
   const date = new Date(); //Creating the local date
 
-  // const options = { // Formatt to show the date.
-  //   weekday: 'long',
-  // year: "numeric",
-  //month: "short",s
-  //day: "numeric"
-  //};
 
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dayMonth = date.toLocaleDateString("en-US", {
@@ -77,12 +70,16 @@ export default function Dashboard({
         />
       )}
 
-      {/**
-        <UserName
-         isOpen={modalName}
-         setModalName={setModalName}
-         setUserName={setUserName}
-        /> */}
+      {
+        editTaskModal && (
+          <EditModal
+            onCloseEditModal={onCloseEditModal}
+
+            selectedTask={selectedTask}
+          /> 
+        )
+      }
+
       <div className="min-h-screen w-full bg-black">
         {/*Header*/}
         <header
@@ -201,7 +198,7 @@ export default function Dashboard({
                           <PlusIcon
                             className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
-                            onClick={setModalAddTask}
+                            onClick={() => setModalAddTask(true)}
                           />
                           <span className="text-gray-400 md:text-2xl lg:text-sm">
                             Add task
@@ -229,7 +226,12 @@ export default function Dashboard({
                         
                           task.map((tasks) => (
                             
-                            <TaskCard key={tasks.id} tasks={tasks}/>
+                            <TaskCard 
+                            key={tasks.id} 
+                            tasks={tasks} 
+                            setEditTaskModal={setEditTaskModal}
+                            editTask={editTask}
+                            />
                           ))
                         
                       )}

@@ -8,49 +8,29 @@ function TodoApp() {
 
   // states 
   const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
+  const [ selectedTask, setSelectedTask ] = useState(null);
 
   function addTask(task) {
     setTaskList([...taskList, task])
   };
 
+  function editTask(task) {
+    setSelectedTask(task);
+  }
 
-/*
-  // Functions 
-  //  Function to cahnge the card 
-  const handleSubmit2 = (e, newTask) => {
-    e.preventDefault(); // Prevent the default form submission behavior
 
-    if(taskList.length === 1 && taskList[0].title === defaultTask.title) {
-      setTaskList([newTask])
-    } else {
-      setTaskList([...taskList, newTask])
-    }
-
-  }*/
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
-  //const [ showEditTaskModal, setShowEditTaskModal] = useState(false); // State to control the visibility of the edit modal
+  const [ editTaskModal, setEditTaskModal ] = useState(false); 
 
-
-  // Function to close the Add Modal, button in the addModal
     function onCloseModalAdd() { 
      setAddTaskShowModal(false); 
   }
 
-  // LOGICA PARA EDITAR TAREAS PRUEBA #1
-  function editTask(id, updatedTask) {
-    const taskEdited = taskList.map(task => {
-
-      if(task.id === id) {
-        return { ...task, ...updatedTask }; // Update the task with the new data 
-      } else {
-        return task; // Return the task unchanged if the ID doesn't match
-      }
-    });
-
-    setTaskList(taskEdited); // Update the state with the edited task list
+  const closeEditModal = () => {
+   setEditTaskModal(false);
+   setSelectedTask(null)
   }
-
 
  
     return (
@@ -61,8 +41,12 @@ function TodoApp() {
             modalAddTask={showAddTaskModal}
             setModalAddTask={setAddTaskShowModal}
             onClose={onCloseModalAdd}
-            editTask={editTask}
 
+            editTaskModal={editTaskModal}
+            setEditTaskModal={setEditTaskModal}
+            onCloseEditModal={closeEditModal}
+            selectedTask={selectedTask}
+            editTask={editTask}
         />
 
         </>

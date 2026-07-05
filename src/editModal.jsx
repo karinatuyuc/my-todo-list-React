@@ -1,43 +1,8 @@
-import { useState } from 'react';
-import { validateTitle, validatePriority, validaateDescription } from './helper/validation';
+//import { useState } from 'react';
+//import { validateTitle, validatePriority, validaateDescription } from './helper/validation';
 
-export function EditModal({ task, editTask, onClose }) {
+export function EditModal({ onCloseEditModal, selectedTask }) {
 
-    const [ editTitle, setEditTitle] = useState(task.title); // State to hold the edited title
-    const [ editPriority, setEditPriority] = useState(task.priority);
-    const [ editDate, setEditDate] = useState(task.date);
-    const [ editDescription, setEditDescription] = useState(task.description);
-
-   // const [ errors, setErrors ] = useState({});
-/*
-    function onSubmit(e){
-      let hasErrors = false;
-
-      e.preventDefault();
-
-      if (editTitle.trim() === "") {
-        setErrors(prev => ({...prev, title: "Title is required" }));
-        hasErrors = true;
-      }
-
-      if (editDescription.trim() === "") {
-        setErrors(prev => ({ ...prev, description: 'Description is required'}));
-        hasErrors = true;
-      }
-
-      if(editPriority.trim() === "") {
-        setErrors(prev => ({...prev, priority: "Priority is required"}));
-        hasErrors = true;
-      }
-
-      if(!hasErrors) {
-        const newTask = { title, description, priority, date };
-        onSubmit(newTask);
-        onClose();
-      }
-
-    }
-*/
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
 
@@ -49,12 +14,12 @@ export function EditModal({ task, editTask, onClose }) {
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Edit Task
             </span>
-            <button className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4">
+            <button onClick={onCloseEditModal} className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4">
               Go Back
             </button>
           </nav>
 
-          <form onSubmit={onSubmit}>
+          <form>
             <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2.5 lg:mt-4 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
@@ -63,9 +28,7 @@ export function EditModal({ task, editTask, onClose }) {
               <input
                 id="title"
                 type="text"
-                name="taskTitle"
-                value={editTitle}
-                onChange={(e) => validateTitle(e.target.value, setEditTitle, setErrors )} // Update the title state on input change
+                name="taskTitle" // Update the title state on input change
                 className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5"
               />
 
@@ -74,8 +37,6 @@ export function EditModal({ task, editTask, onClose }) {
                 type="date"
                 id="start"
                 name="taskDate"
-                value={editDate}
-                onChange={(e) => e.target.value}
                 className="w-52 border-gray-300 border-2 rounded-sm cursor-pointer md:w-52 lg:p-0.5"
               />
 
@@ -95,8 +56,6 @@ export function EditModal({ task, editTask, onClose }) {
                         type="radio" // Radio button for priority selection
                         id={`priority-${priorityOption}`} // Unique id for each p riority option
                         name="priority" // Name attribute to group radio buttons
-                        value={editPriority} // Value of the radio button
-                        onChange={(e) => validatePriority(e.target.value, setEditPriority, setErrors)}
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>
@@ -110,8 +69,6 @@ export function EditModal({ task, editTask, onClose }) {
                 id="description"
                 name="taskDescription"
                 type="text"
-                value={editDescription}
-                onChange={ (e) => validaateDescription(e.target.value, setEditDescription, setErrors)}
                 placeholder="Start writing here...." // Placeholder text
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>

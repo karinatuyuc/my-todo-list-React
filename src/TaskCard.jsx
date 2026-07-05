@@ -1,15 +1,15 @@
 // 90 PLEASE 
 
 import { useState } from "react";
-import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { EllipsisHorizontalIcon, } from "@heroicons/react/24/outline";
 import { EditModal } from "./editModal";
 
-export default function TaskCard({ tasks }) {
+export default function TaskCard({ tasks, setEditTaskModal, editTask }) {
   // Receive dataInputs, date, tasks, and setTasks as props
 
 
   const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
- // const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
+ //const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
  const priorityColors = {
   "Low": 'text-green-500',
   "Medium": "text-orange-400",
@@ -34,7 +34,7 @@ export default function TaskCard({ tasks }) {
                  lg:w-80 lg:p-1.2"
           >
             <div
-              className="flex gap-0.5"
+              className="flex gap-2"
             >
 
                 {/**This  is the cricle  */}
@@ -42,13 +42,16 @@ export default function TaskCard({ tasks }) {
                 <span className="w-3 h-3 border-2 rounded-full text-red-500"></span>{" "}
                 {/**This sould be interactive too */}
               </div>
+
+
               {/*CARD TASKS */}
-              <div className="flex flex-col gap-2 p-2 lg:p-2">
-                <span className="font-bold line-clamp-1 text-black">
+              <div className="grid w-full">
+
+                <span className="font-bold text-sm line-clamp-1 text-black">
                   {tasks.title}
                 </span>
 
-                <div className="text-sm h-14 text-ellipsis">
+                <div className="text-sm h-14 text-ellipsis w-full">
                   <p className="text-xs font-medium text-gray-900 line-clamp-4 break-all">
                     {tasks.description}
                   </p>
@@ -81,7 +84,9 @@ export default function TaskCard({ tasks }) {
                     <div className="absolute bg-red-700 right-0 m-1 mt-3 rounded-sm">
                         <div className="text-[10px]">
                             <div>
-                                <button className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
+                                <button onClick={() => { 
+                                  setEditTaskModal(true); 
+                                  editTask(tasks)}} className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
                             </div>
                             <button className="block w-full text-left p-2 hover:bg-red-300">Eliminar</button>
                         </div>
