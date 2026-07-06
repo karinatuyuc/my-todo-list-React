@@ -16,6 +16,7 @@ function TodoApp() {
 
   function editTask(task) {
     setSelectedTask(task);
+    console.log(task)
   }
 
 

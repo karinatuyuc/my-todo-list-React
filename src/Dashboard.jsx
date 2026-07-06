@@ -74,8 +74,8 @@ export default function Dashboard({
         editTaskModal && (
           <EditModal
             onCloseEditModal={onCloseEditModal}
-
             selectedTask={selectedTask}
+            editTask={editTask}
           /> 
         )
       }

@@ -1,9 +1,34 @@
-//import { useState } from 'react';
-//import { validateTitle, validatePriority, validaateDescription } from './helper/validation';
 
-export function EditModal({ onCloseEditModal, selectedTask }) {
+import { useState } from "react";
+import { validateTitle, validatePriority, validaateDescription } from "./helper/validation"
+
+export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
+
+  //Local state with the actual value of the inputs
+  const [ title, setTitle ] = useState(selectedTask.title);
+  const [ date, setDate ] = useState(selectedTask.date);
+  const [ priority, setPriority ] = useState(selectedTask.priority);
+  const [ description, setDescription ] = useState(selectedTask.description); 
+
+  // State to control de erros
+  const [ errors, setErrors ] = useState({});
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
+
+  const onSubmitEditedTask = (e) => {
+    e.preventDefault();
+    const newTask = {
+      title,
+      date,
+      priority,
+      description
+    }
+
+  
+    editTask(newTask);
+    onCloseEditModal();
+    console.log("El task editado se envio")
+  }
 
 
   return (
@@ -19,7 +44,7 @@ export function EditModal({ onCloseEditModal, selectedTask }) {
             </button>
           </nav>
 
-          <form>
+          <form onSubmit={onSubmitEditedTask}>
             <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2.5 lg:mt-4 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
@@ -29,6 +54,8 @@ export function EditModal({ onCloseEditModal, selectedTask }) {
                 id="title"
                 type="text"
                 name="taskTitle" // Update the title state on input change
+                value={title}
+                onChange={(e) => validateTitle(e.target.value, setTitle, setErrors)}
                 className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5"
               />
 
@@ -37,6 +64,8 @@ export function EditModal({ onCloseEditModal, selectedTask }) {
                 type="date"
                 id="start"
                 name="taskDate"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
                 className="w-52 border-gray-300 border-2 rounded-sm cursor-pointer md:w-52 lg:p-0.5"
               />
 
@@ -56,6 +85,9 @@ export function EditModal({ onCloseEditModal, selectedTask }) {
                         type="radio" // Radio button for priority selection
                         id={`priority-${priorityOption}`} // Unique id for each p riority option
                         name="priority" // Name attribute to group radio buttons
+                        value={priorityOption}
+                        checked={priority === priorityOption}
+                        onChange={(e) => validatePriority(e.target.value, setPriority, setErrors)}
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>
@@ -70,6 +102,8 @@ export function EditModal({ onCloseEditModal, selectedTask }) {
                 name="taskDescription"
                 type="text"
                 placeholder="Start writing here...." // Placeholder text
+                value={description}
+                onChange={(e) => validaateDescription(e.target.value, setDescription, setErrors)}
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
             </div>
