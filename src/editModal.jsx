@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { validateTitle, validatePriority, validateDescription } from "./helper/validation"
+import { validateTitle, validatePriority, validateDescription} from "./helper/validation"
 
 export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
@@ -12,7 +12,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
   // State to control de erros
   const [ errors, setErrors ] = useState({});
-  console.log(errors)
+
   // state for the disabled/availabe button
   const [ isDisabled, setIsDisabled ] = useState(false) // True para indicar que los campos estan llenos
 
@@ -54,15 +54,14 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
     }
 
     if(description.trim() === "") {
-      setErrors((prev) => ({
+      setErrors(prev => ({
         ...prev,
-        description: "Title is required"
+        description: 'Description is required'
       }))
-      hasEmptyInputs = true;
     } else {
-      setErrors((prev) => ({
+      setErrors(prev => ({
         ...prev,
-        description: ""
+        description: ''
       }))
     }
 
@@ -150,7 +149,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                 onChange={(e) => validateDescription(e.target.value, setDescription, setErrors)}
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
-              {errors.description}
+             {errors.description}
 
             </div>
 

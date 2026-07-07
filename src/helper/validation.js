@@ -4,7 +4,7 @@ export function validateTitle(value, setTitle, setErrors) {
   if (value === "") {
     setErrors((prev) => ({
       ...prev,
-      title: "Title isfsfd required",
+      title: "Title is required",
     })); // Set an error message if the title is empty
     
   } else {
@@ -33,21 +33,20 @@ export function validatePriority(value, setPriority, setErrors){
   }
 }
 
-export function validateDescription(value, setDescription, setErrors){
+export function validateDescription(value, setDescription, setErrors) {
   setDescription(value);
-  if(value.trim === "") {
-    setErrors((prev) => ({
+  if(value.trim() === "") {
+    setErrors(prev => ({
       ...prev,
       description: "Description is required"
     }))
   } else {
-    setErrors((prev) => ({
+    setErrors(prev => ({
       ...prev,
       description: ""
     }))
   }
 }
-
 
 
 
