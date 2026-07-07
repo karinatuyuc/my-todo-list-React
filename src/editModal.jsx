@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { validateTitle, validatePriority, validaateDescription } from "./helper/validation"
+import { useState, useEffect } from "react";
+import { validateTitle, validatePriority, validateDescription } from "./helper/validation"
 
 export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
@@ -12,11 +12,26 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
   // State to control de erros
   const [ errors, setErrors ] = useState({});
+  console.log(errors)
+  // state for the disabled/availabe button
+  const [ isDisabled, setIsDisabled ] = useState(false) // True para indicar que los campos estan llenos
+
+
+  useEffect(() => {
+    if(title.trim() !== "" && description.trim() !== "") {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+
+  }, [title, description]);
+
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
   const onSubmitEditedTask = (e) => {
     e.preventDefault();
+
     const newTask = {
       title,
       date,
@@ -24,10 +39,38 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
       description
     }
 
-  
-    editTask(newTask);
-    onCloseEditModal();
-    console.log("El task editado se envio")
+    let hasEmptyInputs = false;
+    if(title.trim() === "") {
+      setErrors((prev) => ({
+        ...prev,
+        title: "Title is required"
+      })) 
+      hasEmptyInputs = true;
+    } else {
+      setErrors((prev) => ({
+        ...prev,
+        title: ""
+      }))
+    }
+
+    if(description.trim() === "") {
+      setErrors((prev) => ({
+        ...prev,
+        description: "Title is required"
+      }))
+      hasEmptyInputs = true;
+    } else {
+      setErrors((prev) => ({
+        ...prev,
+        description: ""
+      }))
+    }
+
+    if(!hasEmptyInputs) {
+      editTask(newTask);
+      onCloseEditModal();
+    }
+
   }
 
 
@@ -58,6 +101,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                 onChange={(e) => validateTitle(e.target.value, setTitle, setErrors)}
                 className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5"
               />
+              {errors.title}
 
               <label className="font-medium">Date</label>
               <input
@@ -87,7 +131,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                         name="priority" // Name attribute to group radio buttons
                         value={priorityOption}
                         checked={priority === priorityOption}
-                        onChange={(e) => validatePriority(e.target.value, setPriority, setErrors)}
+                        onChange={(e) => validatePriority(e.target.value, setPriority, setErrors, setIsDisabled)}
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>
@@ -103,14 +147,18 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                 type="text"
                 placeholder="Start writing here...." // Placeholder text
                 value={description}
-                onChange={(e) => validaateDescription(e.target.value, setDescription, setErrors)}
+                onChange={(e) => validateDescription(e.target.value, setDescription, setErrors)}
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
+              {errors.description}
+
             </div>
+
 
             <button
               type="submit"
-              className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"
+              className={`cursor-pointer p-1 text-amber-50 rounded-sm mt-1 ml-4 w-18 ${!isDisabled ? 'bg-orange-500' : 'bg-orange-300'}`}
+              disabled={isDisabled}
             >
               Done
             </button>
@@ -120,3 +168,6 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
     </>
   );
 }
+
+
+// className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"

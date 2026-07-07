@@ -2,7 +2,7 @@ import { useState } from "react";
 import { GenerateUniqueID } from "./UniqueId";
 //import { data } from "autoprefixer";
 import FormErrors from "./FormErrors/FormErrors";
-import { validaateDescription, validatePriority, validateTitle } from "./helper/validation";
+import { validateDescription, validatePriority, validateTitle } from "./helper/validation";
 
 export function AddTaskModal({ addTask, onClose }) {
   // Receive setTasks and onClose as props
@@ -149,7 +149,7 @@ export function AddTaskModal({ addTask, onClose }) {
                 name="taskDescription"
                 type="text"
                 value={description} // Bind the textarea value to the description state
-                onChange={(e) => validaateDescription(e.target.value, setDescription, setErrors)}
+                onChange={(e) => validateDescription(e.target.value, setDescription, setErrors)}
                 placeholder="Start writing here...." // Placeholder text
                 className="h-28 w-80 border-2 border-gray-200 rounded-sm p-2"
               ></textarea>
