@@ -18,7 +18,6 @@ function TodoApp() {
     setSelectedTask(task);
 
     const editTasked = taskList.map((tasks) => {
-      console.log("TASK ID", task.id + " este es el id del task en la lista", tasks.id)
       if (tasks.id === task.id) {
         return task
       } else {

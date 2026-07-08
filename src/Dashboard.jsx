@@ -80,7 +80,7 @@ export default function Dashboard({
         )
       }
 
-      <div className="min-h-screen w-full bg-black">
+      <div className="min-h-screen w-full bg-black text-white">
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20

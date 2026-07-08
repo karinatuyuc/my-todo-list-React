@@ -51,7 +51,7 @@ export default function TaskCard({ tasks, setEditTaskModal, editTask }) {
                   {tasks.title}
                 </span>
 
-                <div className="text-sm h-14 text-ellipsis w-full">
+                <div className="text-sm h-14 text-ellipsis w-full m-0.5">
                   <p className="text-xs font-medium text-gray-900 line-clamp-4 break-all">
                     {tasks.description}
                   </p>
