@@ -27,18 +27,17 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
   }, [title, description]);
 
 
+  useEffect(() => {
+    setTitle(selectedTask.title)
+    setDate(selectedTask.date)
+    setPriority(selectedTask.priority)
+    setDescription(selectedTask.description)
+  }, [selectedTask])
+
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
   const onSubmitEditedTask = (e) => {
     e.preventDefault();
-
-    const newTask = {
-      title,
-      date,
-      priority,
-      description
-    }
-
     let hasEmptyInputs = false;
     if(title.trim() === "") {
       setErrors((prev) => ({
@@ -63,6 +62,14 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
         ...prev,
         description: ''
       }))
+    }
+
+    const newTask = {
+      id: selectedTask.id,
+      title,
+      date,
+      priority,
+      description
     }
 
     if(!hasEmptyInputs) {

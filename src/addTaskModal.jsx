@@ -2,7 +2,7 @@ import { useState } from "react";
 import { GenerateUniqueID } from "./UniqueId";
 //import { data } from "autoprefixer";
 import FormErrors from "./FormErrors/FormErrors";
-import { validateDescription, validatePriority, validateTitle } from "./helper/validation";
+import { validateTitle, validateDescription, validatePriority } from "./helper/validation";
 
 export function AddTaskModal({ addTask, onClose }) {
   // Receive setTasks and onClose as props

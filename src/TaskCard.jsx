@@ -47,7 +47,7 @@ export default function TaskCard({ tasks, setEditTaskModal, editTask }) {
               {/*CARD TASKS */}
               <div className="grid w-full">
 
-                <span className="font-bold text-sm line-clamp-1 text-black">
+                <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black">
                   {tasks.title}
                 </span>
 

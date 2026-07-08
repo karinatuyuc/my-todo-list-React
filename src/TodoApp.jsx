@@ -16,7 +16,17 @@ function TodoApp() {
 
   function editTask(task) {
     setSelectedTask(task);
-    console.log(task)
+
+    const editTasked = taskList.map((tasks) => {
+      console.log("TASK ID", task.id + " este es el id del task en la lista", tasks.id)
+      if (tasks.id === task.id) {
+        return task
+      } else {
+        return tasks
+      }
+    })
+
+    setTaskList(editTasked);
   }
 
 
@@ -30,7 +40,6 @@ function TodoApp() {
 
   const closeEditModal = () => {
    setEditTaskModal(false);
-   setSelectedTask(null)
   }
 
  
