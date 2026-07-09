@@ -15,6 +15,7 @@ import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 import { EditModal } from "./editModal.jsx";
 import TaskRenderer from "./TaskRenderer.jsx";
+import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
 
 export default function Dashboard({
   task,
@@ -28,7 +29,11 @@ export default function Dashboard({
   onCloseEditModal,
 
   selectedTask,
-  editTask
+  editTask,
+
+  idOptions,
+  openOptionsTaskId,
+
 }) {
   const [userName, setUserName] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
@@ -231,6 +236,8 @@ export default function Dashboard({
                             tasks={tasks} 
                             setEditTaskModal={setEditTaskModal}
                             editTask={editTask}
+                            idOptions={idOptions}
+                            openOptionsTaskId={openOptionsTaskId}
                             />
                           ))
                         

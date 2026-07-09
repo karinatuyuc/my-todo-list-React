@@ -32,6 +32,7 @@ function TodoApp() {
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   const [ editTaskModal, setEditTaskModal ] = useState(false); 
+  const [ openOptionsTaskId, setOpenOptionsTaskid ] = useState(null);
 
     function onCloseModalAdd() { 
      setAddTaskShowModal(false); 
@@ -41,7 +42,10 @@ function TodoApp() {
    setEditTaskModal(false);
   }
 
- 
+  const idOpenOptions = (idOpen) => {
+    setOpenOptionsTaskid(idOpen);
+  }
+
     return (
         <>
         <Dashboard
@@ -56,6 +60,9 @@ function TodoApp() {
             onCloseEditModal={closeEditModal}
             selectedTask={selectedTask}
             editTask={editTask}
+
+            openOptionsTaskId={openOptionsTaskId}
+            idOptions={idOpenOptions}
         />
 
         </>

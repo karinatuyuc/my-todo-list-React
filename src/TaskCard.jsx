@@ -1,24 +1,24 @@
 // 90 PLEASE 
 
-import { useState } from "react";
+//import { useState } from "react";
 import { EllipsisHorizontalIcon, } from "@heroicons/react/24/outline";
 import { EditModal } from "./editModal";
+import { EditDeleteModal } from "./optionModals/EditDeleteModal";
+//import { useState } from "react";
 
-export default function TaskCard({ tasks, setEditTaskModal, editTask }) {
+export default function TaskCard({ tasks, idOptions, openOptionsTaskId }) {
   // Receive dataInputs, date, tasks, and setTasks as props
 
 
-  const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
+ // const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
  //const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
+
  const priorityColors = {
   "Low": 'text-green-500',
   "Medium": "text-orange-400",
   "Extreme": "text-red-700"
  }
 
-  function handleEllipsis(){
-    setIsOpen(!isOpen); // Toggle the visibility of the modal when the ellipsis button is clicked
-  }
 
   return (
     <>
@@ -26,7 +26,6 @@ export default function TaskCard({ tasks, setEditTaskModal, editTask }) {
         className="border-gray-800 
         md:mt-2 lg:mt-2 lg:p-0.5"
       >
-
         <div className="grid grid-cols-1 gap-4 mt-10 p-1.5 md:grid md:grid-cols-2 md:p-2  lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
@@ -75,24 +74,20 @@ export default function TaskCard({ tasks, setEditTaskModal, editTask }) {
                     Created on: <span>{tasks.date}</span>
                   </span>
                 </div>
-              </div>
+              </div>   
 
-              <div className="cursor-pointer flex" onClick={handleEllipsis}>
-                <EllipsisHorizontalIcon className=" text-white w-4 h-4" />
+              <div className="cursor-pointer flex">
+                <EllipsisHorizontalIcon
+                 className="w-5 h-5"
+                 onClick={() => {
+                  idOptions(tasks.id)}}
+                />
 
-                {isOpen && (
-                    <div className="absolute bg-red-700 right-0 m-1 mt-3 rounded-sm">
-                        <div className="text-[10px]">
-                            <div>
-                                <button onClick={() => { 
-                                  setEditTaskModal(true); 
-                                  editTask(tasks)}} className="block w-full text-left p-2 hover:bg-red-300">Editar</button>
-                            </div>
-                            <button className="block w-full text-left p-2 hover:bg-red-300">Eliminar</button>
-                        </div>
-                    </div>
-
-                )}
+                {
+                  openOptionsTaskId === tasks.id &&  (
+                    <EditDeleteModal/>
+                  )
+                }
               </div>
             </div>
           </div>
