@@ -1,17 +1,32 @@
-// 90 PLEASE 
-
-//import { useState } from "react";
+import { useEffect, useRef } from 'react'
 import { EllipsisHorizontalIcon, } from "@heroicons/react/24/outline";
 import { EditModal } from "./editModal";
 import { EditDeleteModal } from "./optionModals/EditDeleteModal";
-//import { useState } from "react";
 
-export default function TaskCard({ tasks, idOptions, openOptionsTaskId }) {
+export default function TaskCard({ tasks, idOptions, openOptionsTaskId, setOpenOptionsTaskId }) {
   // Receive dataInputs, date, tasks, and setTasks as props
 
+  const modalRef = useRef(null);
 
- // const [isOpen, setIsOpen] = useState(false); // State to control the visibility of the modal for the option
- //const [editModalOpen, setEditModalOpen] = useState(false); // State to control the visibility of the edit modal
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpenOptionsTaskId(null)
+      }
+    };
+
+    if(openOptionsTaskId !== null) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [openOptionsTaskId, setOpenOptionsTaskId]);
+
+
+
+
 
  const priorityColors = {
   "Low": 'text-green-500',
@@ -85,7 +100,8 @@ export default function TaskCard({ tasks, idOptions, openOptionsTaskId }) {
 
                 {
                   openOptionsTaskId === tasks.id &&  (
-                    <EditDeleteModal/>
+
+                    <EditDeleteModal ref={modalRef} />
                   )
                 }
               </div>

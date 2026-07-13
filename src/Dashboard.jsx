@@ -33,6 +33,7 @@ export default function Dashboard({
 
   idOptions,
   openOptionsTaskId,
+  setOpenOptionsTaskId
 
 }) {
   const [userName, setUserName] = useState("");
@@ -237,6 +238,7 @@ export default function Dashboard({
                             setEditTaskModal={setEditTaskModal}
                             editTask={editTask}
                             idOptions={idOptions}
+                            setOpenOptionsTaskId={setOpenOptionsTaskId}
                             openOptionsTaskId={openOptionsTaskId}
                             />
                           ))
