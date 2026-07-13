@@ -5,10 +5,10 @@ import { validateTitle, validatePriority, validateDescription} from "./helper/va
 export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
   //Local state with the actual value of the inputs
-  const [ title, setTitle ] = useState(selectedTask.title);
-  const [ date, setDate ] = useState(selectedTask.date);
-  const [ priority, setPriority ] = useState(selectedTask.priority);
-  const [ description, setDescription ] = useState(selectedTask.description); 
+  const [ title, setTitle ] = useState(selectedTask?.title || '');
+  const [ date, setDate ] = useState(selectedTask?.date || '');
+  const [ priority, setPriority ] = useState(selectedTask?.priority || '');
+  const [ description, setDescription ] = useState(selectedTask?.description || ''); 
 
   // State to control de erros
   const [ errors, setErrors ] = useState({});
@@ -28,10 +28,13 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
 
   useEffect(() => {
+    if (selectedTask) {
     setTitle(selectedTask.title)
     setDate(selectedTask.date)
     setPriority(selectedTask.priority)
     setDescription(selectedTask.description)
+    }
+
   }, [selectedTask])
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority

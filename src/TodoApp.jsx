@@ -3,6 +3,7 @@ import { AddTaskModal } from "./addTaskModal";
 import { EditModal } from "./editModal";
 import  Dashboard  from "./Dashboard";
 import { TaskGrid } from "./TaskGrid";
+import { DeleteTaskModal } from "./optionModals/DeleteModal";
 
 function TodoApp() {
 
@@ -29,10 +30,15 @@ function TodoApp() {
   }
 
 
+
+
   // States to control the Modal visibility
   const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   const [ editTaskModal, setEditTaskModal ] = useState(false); 
+  const [ deleteTaskModal, setDeleteTaskModal ]= useState(false);
   const [ openOptionsTaskId, setOpenOptionsTaskId ] = useState(null);
+
+  console.log(deleteTaskModal);
 
     function onCloseModalAdd() { 
      setAddTaskShowModal(false); 
@@ -59,11 +65,15 @@ function TodoApp() {
             setEditTaskModal={setEditTaskModal}
             onCloseEditModal={closeEditModal}
             selectedTask={selectedTask}
+            setSelectedTask={setSelectedTask}
             editTask={editTask}
 
             openOptionsTaskId={openOptionsTaskId}
             setOpenOptionsTaskId={setOpenOptionsTaskId}
             idOptions={idOpenOptions}
+
+            deleteTaskModal={deleteTaskModal}
+            setDeleteTaskModal={setDeleteTaskModal}
         />
 
         </>

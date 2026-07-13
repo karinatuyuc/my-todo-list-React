@@ -3,8 +3,17 @@ import { EllipsisHorizontalIcon, } from "@heroicons/react/24/outline";
 import { EditModal } from "./editModal";
 import { EditDeleteModal } from "./optionModals/EditDeleteModal";
 
-export default function TaskCard({ tasks, idOptions, openOptionsTaskId, setOpenOptionsTaskId }) {
+export default function TaskCard({ 
+  tasks, 
+  idOptions, 
+  openOptionsTaskId, 
+  setOpenOptionsTaskId, 
+  setEditTaskModal, 
+  setSelectedTask,
+  setDeleteTaskModal}) {
   // Receive dataInputs, date, tasks, and setTasks as props
+  //  editTaskModal,setEditTaskModal,onCloseEditModal,
+
 
   const modalRef = useRef(null);
 
@@ -91,7 +100,7 @@ export default function TaskCard({ tasks, idOptions, openOptionsTaskId, setOpenO
                 </div>
               </div>   
 
-              <div className="cursor-pointer flex">
+              <div className="cursor-pointer">
                 <EllipsisHorizontalIcon
                  className="w-5 h-5"
                  onClick={() => {
@@ -101,7 +110,18 @@ export default function TaskCard({ tasks, idOptions, openOptionsTaskId, setOpenO
                 {
                   openOptionsTaskId === tasks.id &&  (
 
-                    <EditDeleteModal ref={modalRef} />
+                    <EditDeleteModal 
+                    ref={modalRef}
+                    
+                    onEdit={() => {
+                      setSelectedTask(tasks);
+                      setEditTaskModal(true);
+                    }}
+                    onDelete={ () => {
+                      setDeleteTaskModal(true)
+                    }
+                    }
+                     />
                   )
                 }
               </div>

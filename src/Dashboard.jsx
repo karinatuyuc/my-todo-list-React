@@ -16,6 +16,7 @@ import { AddTaskModal } from "./addTaskModal.jsx";
 import { EditModal } from "./editModal.jsx";
 import TaskRenderer from "./TaskRenderer.jsx";
 import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
+import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
 
 export default function Dashboard({
   task,
@@ -29,11 +30,15 @@ export default function Dashboard({
   onCloseEditModal,
 
   selectedTask,
+  setSelectedTask,
   editTask,
 
   idOptions,
   openOptionsTaskId,
-  setOpenOptionsTaskId
+  setOpenOptionsTaskId,
+
+  deleteTaskModal,
+  setDeleteTaskModal,
 
 }) {
   const [userName, setUserName] = useState("");
@@ -83,6 +88,12 @@ export default function Dashboard({
             selectedTask={selectedTask}
             editTask={editTask}
           /> 
+        )
+      }
+
+      {
+        deleteTaskModal && (
+          <DeleteTaskModal/>
         )
       }
 
@@ -170,7 +181,8 @@ export default function Dashboard({
                       className={`lg:top-0 lg:sticky text-red-400 ${hasScrolled ? "bg-red-400 text-white" : "bg-gray-00"}`}
                     >
                       <div className="flex justify-between p-2.5 lg:h-17">
-                        <span className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg">
+                        <span className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg"
+                        onClick={setEditTaskModal}>
                           To-Do
                         </span>
                         <div className="relative">
@@ -235,11 +247,17 @@ export default function Dashboard({
                             <TaskCard 
                             key={tasks.id} 
                             tasks={tasks} 
+                            setSelectedTask={setSelectedTask}
                             setEditTaskModal={setEditTaskModal}
+                            
                             editTask={editTask}
                             idOptions={idOptions}
                             setOpenOptionsTaskId={setOpenOptionsTaskId}
                             openOptionsTaskId={openOptionsTaskId}
+                            onCloseEditModal={onCloseEditModal}
+
+                            setDeleteTaskModal={setDeleteTaskModal}
+
                             />
                           ))
                         
