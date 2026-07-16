@@ -119,6 +119,7 @@ export default function TaskCard({
                     }}
                     onDelete={ () => {
                       setDeleteTaskModal(true)
+                      setSelectedTask(tasks)
                     }
                     }
                      />

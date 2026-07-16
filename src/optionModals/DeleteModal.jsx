@@ -1,4 +1,5 @@
-export function DeleteTaskModal( {setDeleteTaskModal, selectedTask, deleteTask}) {
+export function DeleteTaskModal( { setDeleteTaskModal, selectedTask, deleteTask }) {
+
 
   return (
     <>
@@ -15,9 +16,10 @@ export function DeleteTaskModal( {setDeleteTaskModal, selectedTask, deleteTask})
             </button>
             <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition"
             onClick={() => {
-                deleteTask(selectedTask),
-                setDeleteTaskModal(false)
-            }}>
+                setDeleteTaskModal(false);
+                deleteTask(selectedTask)
+            }}
+            >
                 Delete
             </button>
         </div>

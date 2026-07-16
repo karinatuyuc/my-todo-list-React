@@ -11,8 +11,6 @@ function TodoApp() {
   const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
   const [ selectedTask, setSelectedTask ] = useState(null);
 
-  console.log(taskList)
-
   function addTask(task) {
     setTaskList([...taskList, task])
   };
@@ -38,8 +36,6 @@ function TodoApp() {
   const [ deleteTaskModal, setDeleteTaskModal ]= useState(false);
   const [ openOptionsTaskId, setOpenOptionsTaskId ] = useState(null);
 
-  console.log(deleteTaskModal);
-
     function onCloseModalAdd() { 
      setAddTaskShowModal(false); 
   }
@@ -55,9 +51,10 @@ function TodoApp() {
  // console.log("Este es el id que guarda idOpenOptions", openOptionsTaskId)
 
 
-  function deleteTask(task) {
-    const filteredTask = taskList.filter((tasks) => tasks.id !== task.id);
-    setTaskList(filteredTask);
+  function deleteTask(taskId) {
+
+    let filterTask = taskList.filter((taskFiltered) => taskFiltered.id !== taskId.id);
+    setTaskList(filterTask)
   }
 
     return (
