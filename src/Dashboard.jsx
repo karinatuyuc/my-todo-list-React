@@ -39,6 +39,7 @@ export default function Dashboard({
 
   deleteTaskModal,
   setDeleteTaskModal,
+  deleteTask,
 
 }) {
   const [userName, setUserName] = useState("");
@@ -93,7 +94,12 @@ export default function Dashboard({
 
       {
         deleteTaskModal && (
-          <DeleteTaskModal/>
+          <DeleteTaskModal
+           setDeleteTaskModal={setDeleteTaskModal}
+           selectedTask={selectedTask}
+           deleteTask={deleteTask}
+           idOptions={idOptions}
+          />
         )
       }
 

@@ -1,12 +1,5 @@
-export function DeleteTaskModal() {
+export function DeleteTaskModal( {setDeleteTaskModal, selectedTask, deleteTask}) {
 
-    function cancelButton(){
-        console.log("Cancelar task");
-    }
-
-    function deleteButton(){
-        console.log("Delete task");
-    }
   return (
     <>
      <div className="bg-amber-500/50 fixed inset-0 z-50 flex justify-center items-center">
@@ -17,11 +10,14 @@ export function DeleteTaskModal() {
         <div className="flex justify-end gap-3 mt-4">
 
             <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md transition"
-            onClick={cancelButton}>
+            onClick={() => setDeleteTaskModal(false)}>
                 Cancel
             </button>
             <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition"
-            onClick={deleteButton}>
+            onClick={() => {
+                deleteTask(selectedTask),
+                setDeleteTaskModal(false)
+            }}>
                 Delete
             </button>
         </div>

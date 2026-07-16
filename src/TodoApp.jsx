@@ -11,6 +11,8 @@ function TodoApp() {
   const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
   const [ selectedTask, setSelectedTask ] = useState(null);
 
+  console.log(taskList)
+
   function addTask(task) {
     setTaskList([...taskList, task])
   };
@@ -28,8 +30,6 @@ function TodoApp() {
 
     setTaskList(editTasked);
   }
-
-
 
 
   // States to control the Modal visibility
@@ -50,6 +50,14 @@ function TodoApp() {
 
   const idOpenOptions = (idOpen) => {
     setOpenOptionsTaskId(idOpen);
+  }
+
+ // console.log("Este es el id que guarda idOpenOptions", openOptionsTaskId)
+
+
+  function deleteTask(task) {
+    const filteredTask = taskList.filter((tasks) => tasks.id !== task.id);
+    setTaskList(filteredTask);
   }
 
     return (
@@ -74,6 +82,7 @@ function TodoApp() {
 
             deleteTaskModal={deleteTaskModal}
             setDeleteTaskModal={setDeleteTaskModal}
+            deleteTask={deleteTask}
         />
 
         </>
