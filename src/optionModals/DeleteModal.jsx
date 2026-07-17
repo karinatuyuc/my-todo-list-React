@@ -10,11 +10,11 @@ export function DeleteTaskModal( { setDeleteTaskModal, selectedTask, deleteTask 
         </p>
         <div className="flex justify-end gap-3 mt-4">
 
-            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md transition"
+            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md transition cursor-pointer"
             onClick={() => setDeleteTaskModal(false)}>
                 Cancel
             </button>
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition"
+            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition cursor-pointer"
             onClick={() => {
                 setDeleteTaskModal(false);
                 deleteTask(selectedTask)

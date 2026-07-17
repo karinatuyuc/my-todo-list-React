@@ -110,7 +110,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                 onChange={(e) => validateTitle(e.target.value, setTitle, setErrors)}
                 className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5"
               />
-              {errors.title}
+              <span className="text-[8px] text-red-600">{errors.title}</span>
 
               <label className="font-medium">Date</label>
               <input
@@ -159,7 +159,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                 onChange={(e) => validateDescription(e.target.value, setDescription, setErrors)}
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
-             {errors.description}
+             <span className="text-[8px] text-red-600">{errors.description}</span>
 
             </div>
 
