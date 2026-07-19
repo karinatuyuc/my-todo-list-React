@@ -34,12 +34,9 @@ export default function TaskCard({
   }, [openOptionsTaskId, setOpenOptionsTaskId]);
 
 
-
-
-
  const priorityColors = {
   "Low": 'text-green-500',
-  "Medium": "text-orange-400",
+  "Moderate": "text-blue-400",
   "Extreme": "text-red-700"
  }
 

@@ -163,7 +163,6 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
 
             </div>
 
-
             <button
               type="submit"
               className={`cursor-pointer p-1 text-amber-50 rounded-sm mt-1 ml-4 w-18 ${!isDisabled ? 'bg-orange-500' : 'bg-orange-300'}`}
@@ -174,7 +173,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
           </form>
         </div>
       </div>
-    </>
+    </> 
   );
 }
 

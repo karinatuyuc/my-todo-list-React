@@ -12,7 +12,12 @@ export function AddTaskModal({ addTask, onClose }) {
   const [priority, setPriority] = useState("");
   const [date, setDate] = useState("");
 
-  const priorityOptions = ["Low", "Medium", "Extreme"];
+  const priorityOptions = ["Extreme", "Moderate", "Low"];
+   const priorityColors = {
+  "Low": 'bg-green-500',
+  "Moderate": "bg-blue-400",
+  "Extreme": "bg-red-700"
+ }
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -123,7 +128,12 @@ export function AddTaskModal({ addTask, onClose }) {
                 <legend className="font-medium mb-2">Priority</legend>
 
                 {priorityOptions.map((priorities) => (
-                  <div key={priorities}>
+                  <div key={priorities} className="flex items-center gap-2">
+                    <span className={`${priorityColors[priorities]} w-2 h-2 rounded-full shrink-0`}></span>                 
+                    <label htmlFor={`priority-${priorities}`}>
+                      {" "}
+                      {priorities}
+                    </label>
                     <input
                       type="radio"
                       id={`priority-${priorities}`}
@@ -132,10 +142,6 @@ export function AddTaskModal({ addTask, onClose }) {
                       checked={priority === priorities}
                       onChange={(e) => validatePriority(e.target.value, setPriority, setErrors)}
                     />
-                    <label htmlFor={`priority-${priorities}`}>
-                      {" "}
-                      {priorities}
-                    </label>
                   </div>
                 ))}
               </fieldset>
