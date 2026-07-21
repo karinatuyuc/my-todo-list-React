@@ -133,3 +133,10 @@ export function EditModal({ editTask }) { // Receive tasks and taskId as props
 
     )
 }
+
+21/07
+# Nuevos componentes creado
+Se creo componentes independientes segun el menu de navegacion, al hacer click se cambia de pestana
+Por ahora los componentes solo muestran una imagen temporal.
+# Pasos a seguir
+Crear el diseno para cada componente y mover los estados y props necesarios para anadir task, eliminar y editar
