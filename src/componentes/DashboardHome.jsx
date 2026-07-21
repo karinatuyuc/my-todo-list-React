@@ -49,7 +49,20 @@ export function DashboardHome({
   const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
   return (
     <>
-      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-8">
+                <div className="">
+              <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
+                <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
+                  <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl">
+                    Welcome, 
+                    <span className="text-3xl md:text-4xl lg:text-4xl text-white">
+                 ajsfkjasljfdlsk
+                    </span>
+                  </h1>
+                </div>
+              </div>
+              {/** Main section */}
+            </div>
+      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4">
         {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
         <div
           ref={tasksRef}

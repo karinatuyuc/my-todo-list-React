@@ -96,7 +96,7 @@ export function AddTaskModal({ addTask, onClose }) {
           </nav>
 
           <form onSubmit={onSubmit}>
-            <div className="border-red-400 border-2 mb-2 p-2 flex flex-col gap-1.5 mt-3 lg:p-2">
+            <div className="border-orange-200 border-2 mb-2 p-2 flex flex-col gap-1.5 mt-3 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
                 Title <span className="text-[7px] text-red-600">*</span>
