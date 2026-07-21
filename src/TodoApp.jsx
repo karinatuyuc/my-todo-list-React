@@ -4,8 +4,14 @@ import { EditModal } from "./editModal";
 import  Dashboard  from "./Dashboard";
 import { TaskGrid } from "./TaskGrid";
 import { DeleteTaskModal } from "./optionModals/DeleteModal";
+import SideMenu from "./sideMenu";
 
 function TodoApp() {
+
+  const [ activeView, setActiveView ] = useState("dashboard");
+
+  console.log(activeView)
+
 
   // states 
   const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
@@ -80,6 +86,9 @@ function TodoApp() {
             deleteTaskModal={deleteTaskModal}
             setDeleteTaskModal={setDeleteTaskModal}
             deleteTask={deleteTask}
+
+            activeView={activeView}
+            setActiveView={setActiveView}
         />
 
         </>

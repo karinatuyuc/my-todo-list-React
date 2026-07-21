@@ -17,6 +17,7 @@ import { EditModal } from "./editModal.jsx";
 import TaskRenderer from "./TaskRenderer.jsx";
 import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
 import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
+import { MyTask } from "./componentes/MyTask.jsx";
 
 export default function Dashboard({
   task,
@@ -41,6 +42,8 @@ export default function Dashboard({
   setDeleteTaskModal,
   deleteTask,
 
+  activeView,
+  setActiveView,
 }) {
   const [userName, setUserName] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
@@ -54,21 +57,22 @@ export default function Dashboard({
 
   const date = new Date(); //Creating the local date
 
-
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
+  const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
+
+  let waveHand = "\u{1F44B}"; //Emoji hand waving
+  /*
   const dayMonth = date.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
   });
-  const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
 
-  let waveHand = "\u{1F44B}"; //Emoji hand waving
 
   const circles = [
     { title: "Completed", progress: "25%", color: "green" },
     { title: "In progress", progress: "50%", color: "blue" },
     { title: "Not started", progress: "75%", color: "red" },
-  ];
+  ];*/
 
   const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
 
@@ -82,28 +86,24 @@ export default function Dashboard({
         />
       )}
 
-      {
-        editTaskModal && (
-          <EditModal
-            onCloseEditModal={onCloseEditModal}
-            selectedTask={selectedTask}
-            editTask={editTask}
-          /> 
-        )
-      }
+      {editTaskModal && (
+        <EditModal
+          onCloseEditModal={onCloseEditModal}
+          selectedTask={selectedTask}
+          editTask={editTask}
+        />
+      )}
 
-      {
-        deleteTaskModal && (
-          <DeleteTaskModal
-           setDeleteTaskModal={setDeleteTaskModal}
-           selectedTask={selectedTask}
-           deleteTask={deleteTask}
-           idOptions={idOptions}
-          />
-        )
-      }
+      {deleteTaskModal && (
+        <DeleteTaskModal
+          setDeleteTaskModal={setDeleteTaskModal}
+          selectedTask={selectedTask}
+          deleteTask={deleteTask}
+          idOptions={idOptions}
+        />
+      )}
 
-      <div className="min-h-screen w-full bg-black text-white">
+      <div className="w-full text-white">
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20
@@ -151,12 +151,18 @@ export default function Dashboard({
         <div className="flex min-h-screen flex-col lg:flex-row">
           {/**SIDE MENU */}
           <aside className="lg:bg-red-400 lg:w-80 lg:min-h-screen lg:sticky">
-            <SideMenu userName={userName} setUserName={setUserName} />
+            <SideMenu
+              userName={userName}
+              setUserName={setUserName}
+              myTask={MyTask}
+              activeView={activeView}
+              setActiveView={setActiveView}
+            />
           </aside>
           {/**End SIDE MENU */}
 
-          <main className="flex-1 p-0.5 overflows-auto">
-            <div className="border-y-green-900">
+          <main className="flex-1 p-0.5 overflows-auto bg-black">
+            <div className="border-y-green-900 bg-red-500">
               <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
                 <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
                   <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl">
@@ -167,165 +173,28 @@ export default function Dashboard({
                   </h1>
                 </div>
               </div>
-
               {/** Main section */}
-
-              <section
-                className="border-2 border-gray-200 m-4 mb-5 mt-12 p-6 md:min-h-screen md:p-10 shadow-2xl
-                "
-              >
-                <div className="lg:grid  lg:grid-cols-2 lg:gap-6 lg:h-screen">
-                  {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-
-                  <div
-                    ref={tasksRef}
-                    onScroll={handleScroll}
-                    className={`w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg mb-3 rounded p-4
-                    lg:p-0 lg:min-h-full lg:overflow-auto`}
-                  >
-                    <div
-                      className={`lg:top-0 lg:sticky text-red-400 ${hasScrolled ? "bg-red-400 text-white" : "bg-gray-00"}`}
-                    >
-                      <div className="flex justify-between p-2.5 lg:h-17">
-                        <span className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg"
-                        onClick={setEditTaskModal}>
-                          To-Do
-                        </span>
-                        <div className="relative">
-                          <ClipboardDocumentCheckIcon
-                            className="w-7 h-7 absolute
-                                      md:w-8 md:h-8"
-                          />
-                          <ClockIcon
-                            className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full
-                                       md:left-4 md:top-5 lg:top-4 lg:w-5 lg:h-5 lg:p-0.5"
-                          />
-                        </div>
-
-                        <span
-                          className="absolute text-justify mt-10 text-[10ox]
-                                 md:text-sm md:mt-14 lg:text-[10px] lg:mt-10"
-                        >
-                          {dayMonth}
-                          <span
-                            className="text-gray-400 m-4
-                                     md:text-sm"
-                          >
-                            Today
-                          </span>
-                        </span>
-
-                        <button
-                          className="flex items-center text-sm cursor-pointer gap-1
-                              md:text-base"
-                        >
-                          <PlusIcon
-                            className="w-5 h-5 text-red-500 font-medium
-                                   md:w-6 md:h-6"
-                            onClick={() => setModalAddTask(true)}
-                          />
-                          <span className="text-gray-400 md:text-2xl lg:text-sm">
-                            Add task
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="">
-                      {task.length === 0 ? (
-                        <div className=" p-1.5 rounded-sm gap-2 mt-12 m-6">
-                          <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
-                            {/* Barra tipo título */}
-                            <div className="h-5 bg-gray-200 rounded w-3/4"></div>
-
-                            {/* Barra tipo descripción */}
-                            <div className="h-4 bg-gray-200 rounded w-full"></div>
-                            <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-
-                            {/* Barra tipo detalle */}
-                            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                          </div>
-                        </div>
-                      ) : (
-                        
-                          task.map((tasks) => (
-                            
-                            <TaskCard 
-                            key={tasks.id} 
-                            tasks={tasks} 
-                            setSelectedTask={setSelectedTask}
-                            setEditTaskModal={setEditTaskModal}
-                            
-                            editTask={editTask}
-                            idOptions={idOptions}
-                            setOpenOptionsTaskId={setOpenOptionsTaskId}
-                            openOptionsTaskId={openOptionsTaskId}
-                            onCloseEditModal={onCloseEditModal}
-
-                            setDeleteTaskModal={setDeleteTaskModal}
-
-                            />
-                          ))
-                        
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="lg:flex lg:flex-col lg:h-screen md:p-0.5 lg:p-0.5 ">
-                    {/* TASK STATUS*/}
-                    <div
-                      className="border-2 border-gray-300 drop-shadow-lg rounded-2xl mb-2 h-full p-2
-                    md:mb-12
-                    lg:h-80 lg:pt-3 lg:mb-4"
-                    >
-                      <div className="flex gap-4  md:pb-6 lg:pb-4">
-                        <div className="flex relative mb-4 md:mt-2">
-                          <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
-                          <CheckCircleIcon
-                            className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200
-                              md:w-6 md:h-6 lg:w-4 lg:h-4"
-                          />
-                        </div>
-                        <span className="text-red-400 font-medium md:text-2xl lg:text-lg">
-                          Task Status
-                        </span>
-                      </div>
-
-                      {/*Progress circles*/}
-                      <div className="grid grid-cols-3 gap-1.5 h-full">
-                        {circles.map((item, index) => (
-                          <ProgressCircle
-                            // Aqui van los props que le pasamos al componente
-                            key={index}
-                            title={item.title}
-                            progress={item.progress}
-                            color={item.color}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    {/*COMPLETED TASK*/}
-
-                    <div
-                      className=" border-2 drop-shadow-lg border-gray-300 p-4 h-full mt-4 rounded-2xl 
-                      md:p-5
-                     lg:mt-0 lg:p-2"
-                    >
-                      <CompletedTask dateIn={dateInNumber} />
-                    </div>
-
-                    <div className="h-60">
-                      <TaskGrid />
-                    </div>
-                  </div>
-                </div>
-              </section>
             </div>
+
+            <div className="bg-amber-300 max-h-screen">
+              {
+
+              }
+
+
+            </div>
+
+
+
+
+
+
+
+
           </main>
         </div>
 
-        <span className="text-[10px] bg-red-200 lg:mb-0">
+        <span className="text-[10px] bg-red-200">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.
         </span>
       </div>

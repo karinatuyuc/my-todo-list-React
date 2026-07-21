@@ -4,7 +4,7 @@ import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon,
     PencilIcon, CheckIcon } from "@heroicons/react/16/solid"
 import UserName from "./UserNameModal";
 
-export default function SideMenu({ userName, setUserName}) {
+export default function SideMenu({ userName, setUserName, activeView, setActiveView}) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -49,7 +49,7 @@ export default function SideMenu({ userName, setUserName}) {
 
        
 
-        <div className={`z-20 h-screen w-full
+        <div className={`z-20 w-full
             ${isOpen ? "translate-x-0" : "-translate-x-full"}
             fixed top-0 left-0 transition-transform duration-300 ease-in-out 
             lg:static lg:translate-x-0 lg:w-80 lg:bg-fuchsia-100`}>
@@ -125,27 +125,28 @@ export default function SideMenu({ userName, setUserName}) {
 
             <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80">
                 <ol className="space-y-12 md:space-y-14 lg:space-y-12 lg:mt-4">
-                    <li className={listStyles}>
-                        <Squares2X2Icon className={iconStyles}/>
+                    <li className={listStyles} onClick={() => setActiveView("dashboard")}>
+                        <Squares2X2Icon 
+                        className={iconStyles}/>
                         Dashboard
                     </li>
-                    <li className={listStyles}>
+                    <li className={listStyles} onClick={() => setActiveView("myTask")}>
                         <DocumentCheckIcon className={iconStyles}/>
                         My Task
                     </li>
-                    <li className={listStyles}>
+                    <li className={listStyles} onClick={() => setActiveView("taskCategories")}>
                         <ListBulletIcon className={iconStyles}/>
                         Task Categories
                     </li>
-                    <li className={listStyles}>
+                    <li className={listStyles} onClick={() => setActiveView("settings")}>
                         <Cog6ToothIcon className={iconStyles}/>
                         Settings
                     </li>
-                    <li className={listStyles}>
+                    <li className={listStyles} onClick={() => setActiveView("about")}>
                         <ExclamationCircleIcon className={iconStyles}/>
                         About
                     </li>
-                    <li className={listStyles}>
+                    <li className={listStyles} onClick={() => setActiveView("help")}>
                         <QuestionMarkCircleIcon className={iconStyles}/>
                         Help
                     </li>
