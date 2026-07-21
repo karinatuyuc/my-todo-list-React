@@ -1,100 +1,89 @@
 import { useState } from "react";
 import { AddTaskModal } from "./addTaskModal";
 import { EditModal } from "./editModal";
-import  Dashboard  from "./Dashboard";
+import Dashboard from "./Dashboard";
 import { DeleteTaskModal } from "./optionModals/DeleteModal";
 import SideMenu from "./sideMenu";
 
 function TodoApp() {
+  const [activeView, setActiveView] = useState("dashboard");
 
-  const [ activeView, setActiveView ] = useState("dashboard");
+  console.log(activeView);
 
-  console.log(activeView)
-
-
-  // states 
-  const [ taskList, setTaskList] = useState([]); // State to hold the list of tasks
-  const [ selectedTask, setSelectedTask ] = useState(null);
+  // states
+  const [taskList, setTaskList] = useState([]); // State to hold the list of tasks
+  const [selectedTask, setSelectedTask] = useState(null);
 
   function addTask(task) {
-    setTaskList([...taskList, task])
-  };
+    setTaskList([...taskList, task]);
+  }
 
   function editTask(task) {
     setSelectedTask(task);
 
     const editTasked = taskList.map((tasks) => {
       if (tasks.id === task.id) {
-        return task
+        return task;
       } else {
-        return tasks
+        return tasks;
       }
-    })
+    });
 
     setTaskList(editTasked);
   }
 
-
   // States to control the Modal visibility
-  const [ showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
-  const [ editTaskModal, setEditTaskModal ] = useState(false); 
-  const [ deleteTaskModal, setDeleteTaskModal ]= useState(false);
-  const [ openOptionsTaskId, setOpenOptionsTaskId ] = useState(null);
+  const [showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
+  const [editTaskModal, setEditTaskModal] = useState(false);
+  const [deleteTaskModal, setDeleteTaskModal] = useState(false);
+  const [openOptionsTaskId, setOpenOptionsTaskId] = useState(null);
 
-    function onCloseModalAdd() { 
-     setAddTaskShowModal(false); 
+  function onCloseModalAdd() {
+    setAddTaskShowModal(false);
   }
 
   const closeEditModal = () => {
-   setEditTaskModal(false);
-  }
+    setEditTaskModal(false);
+  };
 
   const idOpenOptions = (idOpen) => {
     setOpenOptionsTaskId(idOpen);
-  }
+  };
 
- // console.log("Este es el id que guarda idOpenOptions", openOptionsTaskId)
-
+  // console.log("Este es el id que guarda idOpenOptions", openOptionsTaskId)
 
   function deleteTask(taskId) {
-
-    let filterTask = taskList.filter((taskFiltered) => taskFiltered.id !== taskId.id);
-    setTaskList(filterTask)
+    let filterTask = taskList.filter(
+      (taskFiltered) => taskFiltered.id !== taskId.id,
+    );
+    setTaskList(filterTask);
   }
 
-    return (
-        <>
-        <Dashboard
-            task={taskList}
-            addTask={addTask}
-            modalAddTask={showAddTaskModal}
-            setModalAddTask={setAddTaskShowModal}
-            onClose={onCloseModalAdd}
-
-            editTaskModal={editTaskModal}
-            setEditTaskModal={setEditTaskModal}
-            onCloseEditModal={closeEditModal}
-            selectedTask={selectedTask}
-            setSelectedTask={setSelectedTask}
-            editTask={editTask}
-
-            openOptionsTaskId={openOptionsTaskId}
-            setOpenOptionsTaskId={setOpenOptionsTaskId}
-            idOptions={idOpenOptions}
-
-            deleteTaskModal={deleteTaskModal}
-            setDeleteTaskModal={setDeleteTaskModal}
-            deleteTask={deleteTask}
-
-            activeView={activeView}
-            setActiveView={setActiveView}
-        />
-
-        </>
-    )
+  return (
+    <>
+      <Dashboard
+        task={taskList}
+        addTask={addTask}
+        modalAddTask={showAddTaskModal}
+        setModalAddTask={setAddTaskShowModal}
+        onClose={onCloseModalAdd}
+        editTaskModal={editTaskModal}
+        setEditTaskModal={setEditTaskModal}
+        onCloseEditModal={closeEditModal}
+        selectedTask={selectedTask}
+        setSelectedTask={setSelectedTask}
+        editTask={editTask}
+        openOptionsTaskId={openOptionsTaskId}
+        setOpenOptionsTaskId={setOpenOptionsTaskId}
+        idOptions={idOpenOptions}
+        deleteTaskModal={deleteTaskModal}
+        setDeleteTaskModal={setDeleteTaskModal}
+        deleteTask={deleteTask}
+        activeView={activeView}
+        setActiveView={setActiveView}
+      />
+    </>
+  );
 }
 
 export default TodoApp;
-
-
-

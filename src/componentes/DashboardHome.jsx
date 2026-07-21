@@ -1,29 +1,28 @@
-// 74 SWIM 
+// 74 SWIM
 
 import { useState, useRef } from "react";
 import ProgressCircle from "../ProgressCircle";
 import CompletedTask from "../CompletedTask";
-import { 
-    ClipboardDocumentCheckIcon, 
-    ClockIcon, 
-    PlusIcon, 
-    ClipboardIcon,
-    CheckCircleIcon
-    
- } from "@heroicons/react/16/solid";
-export function DashboardHome({ 
-    task, 
-    setModalAddTask, 
-    setEditTaskModal, 
-    setSelectedTask, 
-    openOptionsTaskId, 
-    setOpenOptionsTaskId,
-    editTask,
-    idOptions,
-    onCloseEditModal,
-    setDeleteTaskModal }) {
-
-      const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
+import {
+  ClipboardDocumentCheckIcon,
+  ClockIcon,
+  PlusIcon,
+  ClipboardIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/16/solid";
+export function DashboardHome({
+  task,
+  setModalAddTask,
+  setEditTaskModal,
+  setSelectedTask,
+  openOptionsTaskId,
+  setOpenOptionsTaskId,
+  editTask,
+  idOptions,
+  onCloseEditModal,
+  setDeleteTaskModal,
+}) {
+  const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
 
   const handleScroll = () => {
     if (tasksRef.current) {
@@ -32,169 +31,164 @@ export function DashboardHome({
     }
   };
 
-    const date = new Date(); //Creating the local date
+  const date = new Date(); //Creating the local date
 
-    const dayMonth = date.toLocaleDateString("en-US", {
+  const dayMonth = date.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
   });
 
-    const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
+  const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
 
-
-    const circles = [
+  const circles = [
     { title: "Completed", progress: "25%", color: "green" },
     { title: "In progress", progress: "50%", color: "blue" },
     { title: "Not started", progress: "75%", color: "red" },
   ];
 
-
-    
-    const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
+  const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
   return (
     <>
-      <div>
-        <section
-          className="
-                "
+      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-8">
+        {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
+        <div
+          ref={tasksRef}
+          onScroll={handleScroll}
+          className={`border-2 border-gray-200 shadow-2xl drop-shadow-lg rounded p-3 lg:p-3 lg:overflow-auto`}
         >
-          <div className="">
-            {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-
-            <div
-              ref={tasksRef}
-              onScroll={handleScroll}
-              className={`w-full border-2 border-gray-200 shadow-2xl drop-shadow-lg mb-16 rounded p-4
-                    lg:p-0 lg:overflow-auto`}
-            >
-              <div
-                className={`lg:top-0 lg:sticky text-red-400 ${hasScrolled ? "bg-red-400 text-white" : "bg-gray-00"}`}
+          <div
+            className={`lg:top-0 lg:sticky text-red-400 ${hasScrolled ? "bg-red-400 text-white" : "bg-gray-00"}`}
+          >
+            <div className="flex justify-between p-2.5 lg:h-17">
+              <span
+                className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg"
+                onClick={setEditTaskModal}
               >
-                <div className="flex justify-between p-2.5 lg:h-17">
-                  <span
-                    className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg"
-                    onClick={setEditTaskModal}
-                  >
-                    To-Do
-                  </span>
-                  <div className="relative">
-                    <ClipboardDocumentCheckIcon
-                      className="w-7 h-7 absolute
-                                      md:w-8 md:h-8"
-                    />
-                    <ClockIcon
-                      className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full
+                To-Do
+              </span>
+              <div className="relative">
+                <ClipboardDocumentCheckIcon
+                  className="w-7 h-7 absolute md:w-8 md:h-8"
+                />
+                <ClockIcon
+                  className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full
                                        md:left-4 md:top-5 lg:top-4 lg:w-5 lg:h-5 lg:p-0.5"
-                    />
-                  </div>
+                />
+              </div>
 
-                  <span
-                    className="absolute text-justify mt-10 text-[10ox]
+              <span
+                className="absolute text-justify mt-10 text-[10ox]
                                  md:text-sm md:mt-14 lg:text-[10px] lg:mt-10"
-                  >
-                    {dayMonth}
-                    <span
-                      className="text-gray-400 m-4
+              >
+                {dayMonth}
+                <span
+                  className="text-gray-400 m-4
                                      md:text-sm"
-                    >
-                      Today
-                    </span>
-                  </span>
+                >
+                  Today
+                </span>
+              </span>
 
-                  <button
-                    className="flex items-center text-sm cursor-pointer gap-1
+              <button
+                className="flex items-center text-sm cursor-pointer gap-1
                               md:text-base"
-                  >
-                    <PlusIcon
-                      className="w-5 h-5 text-red-500 font-medium
+              >
+                <PlusIcon
+                  className="w-5 h-5 text-red-500 font-medium
                                    md:w-6 md:h-6"
-                      onClick={() => setModalAddTask(true)}
-                    />
-                    <span className="text-gray-400 md:text-2xl lg:text-sm">
-                      Add task
-                    </span>
-                  </button>
-                </div>
-              </div>
-
-              <div className="">
-                {task.length === 0 ? (
-                  <div className=" p-1.5 rounded-sm gap-2 mt-12 m-6">
-                    <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
-                      {/* Barra tipo título */}
-                      <div className="h-5 bg-gray-200 rounded w-3/4"></div>
-
-                      {/* Barra tipo descripción */}
-                      <div className="h-4 bg-gray-200 rounded w-full"></div>
-                      <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-
-                      {/* Barra tipo detalle */}
-                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                    </div>
-
-                  </div>
-                ) : (
-                  task.map((tasks) => (
-                    <TaskCard
-                      key={tasks.id}
-                      tasks={tasks}
-                      setSelectedTask={setSelectedTask}
-                      setEditTaskModal={setEditTaskModal}
-                      editTask={editTask}
-                      idOptions={idOptions}
-                      setOpenOptionsTaskId={setOpenOptionsTaskId}
-                      openOptionsTaskId={openOptionsTaskId}
-                      onCloseEditModal={onCloseEditModal}
-                      setDeleteTaskModal={setDeleteTaskModal}
-                    />
-                  ))
-                )}
-              </div>
-            </div>
-
-            <div className="">
-              {/* TASK STATUS*/}
-              <div
-                className=""
-              >
-                <div className="">
-                  <div className="">
-                    <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
-                    <CheckCircleIcon
-                      className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200
-                              md:w-6 md:h-6 lg:w-4 lg:h-4"
-                    />
-                  </div>
-                  <span className="text-red-400 font-medium md:text-2xl lg:text-lg">
-                    Task Status
-                  </span>
-                </div>
-
-                {/*Progress circles*/}
-                <div className="grid grid-cols-3 gap-1.5 h-full">
-                  {circles.map((item, index) => (
-                    <ProgressCircle
-                      // Aqui van los props que le pasamos al componente
-                      key={index}
-                      title={item.title}
-                      progress={item.progress}
-                      color={item.color}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/*COMPLETED TASK*/}
-
-              <div
-                className=""
-              >
-                <CompletedTask dateIn={dateInNumber} />
-              </div>
+                  onClick={() => setModalAddTask(true)}
+                />
+                <span className="text-gray-400 md:text-2xl lg:text-sm">
+                  Add task
+                </span>
+              </button>
             </div>
           </div>
-        </section>
-      </div>
+
+          <div className=" flex flex-col justify-center items-center">
+            {task.length === 0 ? (
+              <div className=" min-w-72 p-1.5 rounded-sm gap-2 mt-12 m-6 md:min-w-9/12">
+                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
+                  {/* Barra tipo título */}
+                  <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+
+                  {/* Barra tipo descripción */}
+                  <div className="h-4 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+
+                  {/* Barra tipo detalle */}
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 mt-6">
+                  {/* Barra tipo título */}
+                  <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+
+                  {/* Barra tipo descripción */}
+                  <div className="h-4 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+
+                  {/* Barra tipo detalle */}
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              </div>
+            ) : (
+              task.map((tasks) => (
+                <TaskCard
+                  key={tasks.id}
+                  tasks={tasks}
+                  setSelectedTask={setSelectedTask}
+                  setEditTaskModal={setEditTaskModal}
+                  editTask={editTask}
+                  idOptions={idOptions}
+                  setOpenOptionsTaskId={setOpenOptionsTaskId}
+                  openOptionsTaskId={openOptionsTaskId}
+                  onCloseEditModal={onCloseEditModal}
+                  setDeleteTaskModal={setDeleteTaskModal}
+                />
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="border-amber-300 border-2 p-6 mt-5 md:mt-0">
+          {/* TASK STATUS*/}
+          <div className="bg-amber-400">
+
+            <div className="bg-blue-400 relative flex gap-4">
+              <div className="">
+                <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
+                <CheckCircleIcon
+                  className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200
+                   md:w-6 md:h-6 lg:w-4 lg:h-4"
+                />
+                
+              </div>
+              <span className="text-red-400 font-medium md:text-2xl lg:text-lg">
+                Task Status
+              </span>
+            </div>
+
+            {/*Progress circles*/}
+            <div className="grid grid-cols-3 gap-1.5 m-4">
+              {circles.map((item, index) => (
+                <ProgressCircle
+                  // Aqui van los props que le pasamos al componente
+                  key={index}
+                  title={item.title}
+                  progress={item.progress}
+                  color={item.color}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/*COMPLETED TASK*/}
+
+          <div className="bg-purple-600 p-2 min-h-56"> {/**Esto puede3 causar errores */}
+            <CompletedTask dateIn={dateInNumber} />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

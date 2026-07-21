@@ -47,7 +47,6 @@ export default function Dashboard({
 }) {
   const [userName, setUserName] = useState("");
 
-
   const date = new Date(); //Creating the local date
 
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
@@ -152,7 +151,7 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          <main className="flex-1 p-0.5 overflows-auto bg-red-600 lg:max-h-full">
+          <main className="flex-1 p-0.5 overflows-auto bg-black lg:h-screen overflow-auto">
             <div className="">
               <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
                 <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
@@ -167,26 +166,23 @@ export default function Dashboard({
               {/** Main section */}
             </div>
 
-            <div className="bg-red-300 lg:max-h-full">
-                            <DashboardHome
-                    task={task}
-                     setModalAddTask={setModalAddTask}
-                     setEditTaskModal={setEditTaskModal}
-                     editTask={editTask}
-                     idOptions={idOptions}
-                     onCloseEditModal={onCloseEditModal}
-                     setDeleteTaskModal={setDeleteTaskModal}
-                     setSelectedTask={setSelectedTask}
-                     openOptionsTaskId={openOptionsTaskId}
-                     setOpenOptionsTaskId={setOpenOptionsTaskId}
-              
+            <div className="p-2">
+              <DashboardHome
+                task={task}
+                setModalAddTask={setModalAddTask}
+                setEditTaskModal={setEditTaskModal}
+                editTask={editTask}
+                idOptions={idOptions}
+                onCloseEditModal={onCloseEditModal}
+                setDeleteTaskModal={setDeleteTaskModal}
+                setSelectedTask={setSelectedTask}
+                openOptionsTaskId={openOptionsTaskId}
+                setOpenOptionsTaskId={setOpenOptionsTaskId}
               />
             </div>
-
           </main>
         </div>
-
-        <span className="text-[10px] bg-red-900 p-2">
+        <span className="text-[10px] bg-red-900 p-1">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.
         </span>
       </div>
