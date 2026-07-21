@@ -8,8 +8,6 @@ import SideMenu from "./sideMenu";
 function TodoApp() {
   const [activeView, setActiveView] = useState("dashboard");
 
-  console.log(activeView);
-
   // states
   const [taskList, setTaskList] = useState([]); // State to hold the list of tasks
   const [selectedTask, setSelectedTask] = useState(null);

@@ -149,16 +149,16 @@ export default function SideMenu({
             </li>
             <li
               className={listStyles}
-              onClick={() => setActiveView("settings")}
+              onClick={() => setActiveView("Settings")}
             >
               <Cog6ToothIcon className={iconStyles} />
               Settings
             </li>
-            <li className={listStyles} onClick={() => setActiveView("about")}>
+            <li className={listStyles} onClick={() => setActiveView("About")}>
               <ExclamationCircleIcon className={iconStyles} />
               About
             </li>
-            <li className={listStyles} onClick={() => setActiveView("help")}>
+            <li className={listStyles} onClick={() => setActiveView("Help")}>
               <QuestionMarkCircleIcon className={iconStyles} />
               Help
             </li>

@@ -18,6 +18,10 @@ import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
 import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
 import { DashboardHome } from "./componentes/DashboardHome.jsx";
+import { TaskCategories } from "./componentes/TaskCategories.jsx";
+import { Settings } from "./componentes/Settings.jsx";
+import { About } from "./componentes/About.jsx";
+import { Help } from "./componentes/Help.jsx";
 
 export default function Dashboard({
   task,
@@ -52,7 +56,7 @@ export default function Dashboard({
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
 
- // let waveHand = "\u{1F44B}"; //Emoji hand waving
+  // let waveHand = "\u{1F44B}"; //Emoji hand waving
   /*
   const dayMonth = date.toLocaleDateString("en-US", {
     day: "numeric",
@@ -152,25 +156,35 @@ export default function Dashboard({
           {/**End SIDE MENU */}
 
           <main className="flex-1 p-0.5 overflows-auto bg-black lg:h-screen overflow-auto">
+            <span className="text-white">{activeView}</span>
 
-            <div className="p-2">
-              <DashboardHome
-                task={task}
-                setModalAddTask={setModalAddTask}
-                setEditTaskModal={setEditTaskModal}
-                editTask={editTask}
-                idOptions={idOptions}
-                onCloseEditModal={onCloseEditModal}
-                setDeleteTaskModal={setDeleteTaskModal}
-                setSelectedTask={setSelectedTask}
-                openOptionsTaskId={openOptionsTaskId}
-                setOpenOptionsTaskId={setOpenOptionsTaskId}
-              />
-            </div>
+            {activeView === "dashboard" ? (
+              <div className="p-2">
+                <DashboardHome
+                  task={task}
+                  setModalAddTask={setModalAddTask}
+                  setEditTaskModal={setEditTaskModal}
+                  editTask={editTask}
+                  idOptions={idOptions}
+                  onCloseEditModal={onCloseEditModal}
+                  setDeleteTaskModal={setDeleteTaskModal}
+                  setSelectedTask={setSelectedTask}
+                  openOptionsTaskId={openOptionsTaskId}
+                  setOpenOptionsTaskId={setOpenOptionsTaskId}
+                />
+              </div>
+            ) : activeView === "MyTask" ? (
+              <MyTask />
+            ) : activeView === "TaskCategories" ? (
+              <TaskCategories />
+            ) : activeView === "Settings" ? (
+              <Settings />
+            ) : activeView === "About" ? (
+              <About />
+            ) : 
+            <Help/>
+            }
           </main>
-
-
-
         </div>
         <span className="text-[10px] bg-red-900 p-1">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.
