@@ -8,7 +8,7 @@ export default function CompletedTask({dateIn}){
         
         <>
                {/** <div className="">*/}
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-16">
                     < DocumentCheckIcon
                         className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1"
                     />
@@ -18,11 +18,11 @@ export default function CompletedTask({dateIn}){
 
 
                 {/**CARDS*/}
-                <div className="flex flex-col gap-4 p-2 md:flex-row md:text-2xl lg:grid lg:pl-8 lg:pr-8 lg:p-0 lg:gap-0.5"> 
+                <div className=""> 
 
                     {/**CARD #1 */}
-                    <div className="grid border-2 border-violet-600 rounded-2xl grid-cols-[1fr_4fr_1fr] w-full max-w-md mx-auto p-1        
-                    lg:w-72 lg:mt-0.5 xl:mt-0.5">
+                    <div className="    
+                    ">
 
                         <div className="flex justify-center items-start pt-1">
                             <div className="w-4 h-4 rounded-full border-2 border-green-600 md:w-5 md:h-5 lg:w-4 lg:h-4"></div>

@@ -82,7 +82,7 @@ export function AddTaskModal({ addTask, onClose }) {
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-md">
+        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-md">
           <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Add New Task
@@ -96,7 +96,7 @@ export function AddTaskModal({ addTask, onClose }) {
           </nav>
 
           <form onSubmit={onSubmit}>
-            <div className="border-gray-200 border-2 mb-2 p-2 flex flex-col gap-1.5 mt-3 lg:p-2">
+            <div className="border-red-400 border-2 mb-2 p-2 flex flex-col gap-1.5 mt-3 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
                 Title <span className="text-[7px] text-red-600">*</span>

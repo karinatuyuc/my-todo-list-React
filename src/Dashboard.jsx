@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import {
   MagnifyingGlassIcon,
   ClockIcon,
@@ -11,13 +11,13 @@ import ProgressCircle from "./ProgressCircle.jsx";
 import CompletedTask from "./CompletedTask.jsx";
 import TaskCard from "./TaskCard.jsx";
 import SideMenu from "./sideMenu.jsx";
-import { TaskGrid } from "./TaskGrid.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 import { EditModal } from "./editModal.jsx";
 import TaskRenderer from "./TaskRenderer.jsx";
 import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
 import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
+import { DashboardHome } from "./componentes/DashboardHome.jsx";
 
 export default function Dashboard({
   task,
@@ -46,14 +46,7 @@ export default function Dashboard({
   setActiveView,
 }) {
   const [userName, setUserName] = useState("");
-  const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
 
-  const handleScroll = () => {
-    if (tasksRef.current) {
-      const scrolled = tasksRef.current.scrollTop > 0;
-      setHasScrolled(scrolled);
-    }
-  };
 
   const date = new Date(); //Creating the local date
 
@@ -73,8 +66,6 @@ export default function Dashboard({
     { title: "In progress", progress: "50%", color: "blue" },
     { title: "Not started", progress: "75%", color: "red" },
   ];*/
-
-  const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
 
   return (
     <>
@@ -107,7 +98,7 @@ export default function Dashboard({
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20
-            lg:flex lg:justify-around lg:p-4 lg:pl-12 lg:pr-12 lg:sticky lg:top-0 lg:z-20 lg:gap-44"
+            lg:flex lg:justify-around lg:p-2 lg:pl-12 lg:pr-12 lg:sticky lg:top-0 lg:z-20 lg:gap-44"
         >
           {/** Dashboard title*/}
           <div className="font-bold text-[15px] md:text-3xl">
@@ -148,9 +139,9 @@ export default function Dashboard({
           </div>
         </header>
 
-        <div className="flex min-h-screen flex-col lg:flex-row">
+        <div className="flex min-h-screen flex-col lg:flex-row lg:bg-amber-300">
           {/**SIDE MENU */}
-          <aside className="lg:bg-red-400 lg:w-80 lg:min-h-screen lg:sticky">
+          <aside className="lg:bg-red-400 lg:w-80 lg:max-h-screen lg:sticky">
             <SideMenu
               userName={userName}
               setUserName={setUserName}
@@ -161,8 +152,8 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          <main className="flex-1 p-0.5 overflows-auto bg-black">
-            <div className="border-y-green-900 bg-red-500">
+          <main className="flex-1 p-0.5 overflows-auto bg-red-600 lg:max-h-full">
+            <div className="">
               <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
                 <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
                   <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl">
@@ -176,25 +167,26 @@ export default function Dashboard({
               {/** Main section */}
             </div>
 
-            <div className="bg-amber-300 max-h-screen">
-              {
-
-              }
-
-
+            <div className="bg-red-300 lg:max-h-full">
+                            <DashboardHome
+                    task={task}
+                     setModalAddTask={setModalAddTask}
+                     setEditTaskModal={setEditTaskModal}
+                     editTask={editTask}
+                     idOptions={idOptions}
+                     onCloseEditModal={onCloseEditModal}
+                     setDeleteTaskModal={setDeleteTaskModal}
+                     setSelectedTask={setSelectedTask}
+                     openOptionsTaskId={openOptionsTaskId}
+                     setOpenOptionsTaskId={setOpenOptionsTaskId}
+              
+              />
             </div>
-
-
-
-
-
-
-
 
           </main>
         </div>
 
-        <span className="text-[10px] bg-red-200">
+        <span className="text-[10px] bg-red-900 p-2">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.
         </span>
       </div>

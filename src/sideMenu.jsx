@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ExclamationCircleIcon, Bars3Icon, UserCircleIcon, Squares2X2Icon, 
     DocumentCheckIcon, ListBulletIcon, Cog6ToothIcon, QuestionMarkCircleIcon, ArrowUturnLeftIcon, XMarkIcon, 
     PencilIcon, CheckIcon } from "@heroicons/react/16/solid"
-import UserName from "./UserNameModal";
 
 export default function SideMenu({ userName, setUserName, activeView, setActiveView}) {
 
@@ -52,11 +51,11 @@ export default function SideMenu({ userName, setUserName, activeView, setActiveV
         <div className={`z-20 w-full
             ${isOpen ? "translate-x-0" : "-translate-x-full"}
             fixed top-0 left-0 transition-transform duration-300 ease-in-out 
-            lg:static lg:translate-x-0 lg:w-80 lg:bg-fuchsia-100`}>
+            lg:static lg:translate-x-0 lg:w-80 bg-red-700 lg:bg-amber-300`}>
 
 
-            <div className={`bg-red-700 flex flex-col justify-center items-center w-full 
-            lg:w-80 lg:bg-red-400 
+            <div className={` flex flex-col justify-center items-center w-full 
+            lg:w-80
               
               
             `}>
@@ -70,7 +69,7 @@ export default function SideMenu({ userName, setUserName, activeView, setActiveV
 
 
                 {/**This is the icon */}   
-                <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-4">
+                <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-4 md:bg-red-700">
                     <img src={avatar} alt="avatar" className="w-20 h-20 md:w-20 md:h-20 rounded-full"/> 
                 </div>
 
@@ -78,7 +77,7 @@ export default function SideMenu({ userName, setUserName, activeView, setActiveV
 
                 {!isEditing ?  
 
-                  <div className="text-2xl text-white font-semibold mt-5 flex
+                  <div className="text-2xl text-white font-semibold mt-5 flex bg-red-700 lg:bg-amber-300
                         lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2">
                           <span className="truncate overflow-hidden text-ellipsis w-75 text-center
                           md:text-2xl md:w-56
@@ -123,18 +122,18 @@ export default function SideMenu({ userName, setUserName, activeView, setActiveV
 
 
 
-            <div className="bg-red-700 p-8 h-screen lg:bg-red-400 lg:w-80">
-                <ol className="space-y-12 md:space-y-14 lg:space-y-12 lg:mt-4">
+            <div className="bg-red-700 p-8 h-screen lg:bg-amber-300 lg:w-80 lg:min-h-full">
+                <ol className="space-y-12 md:space-y-12 lg:space-y-12 lg:mt-2">
                     <li className={listStyles} onClick={() => setActiveView("dashboard")}>
                         <Squares2X2Icon 
                         className={iconStyles}/>
                         Dashboard
                     </li>
-                    <li className={listStyles} onClick={() => setActiveView("myTask")}>
+                    <li className={listStyles} onClick={() => setActiveView("MyTask")}>
                         <DocumentCheckIcon className={iconStyles}/>
                         My Task
                     </li>
-                    <li className={listStyles} onClick={() => setActiveView("taskCategories")}>
+                    <li className={listStyles} onClick={() => setActiveView("TaskCategories")}>
                         <ListBulletIcon className={iconStyles}/>
                         Task Categories
                     </li>

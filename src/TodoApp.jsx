@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AddTaskModal } from "./addTaskModal";
 import { EditModal } from "./editModal";
 import  Dashboard  from "./Dashboard";
-import { TaskGrid } from "./TaskGrid";
 import { DeleteTaskModal } from "./optionModals/DeleteModal";
 import SideMenu from "./sideMenu";
 
