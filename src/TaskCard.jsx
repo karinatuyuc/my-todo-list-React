@@ -44,13 +44,13 @@ export default function TaskCard({
   return (
     <>
       <div
-        className="border-gray-800 
-        md:mt-2 lg:mt-2 lg:p-0.5"
+        className="border-gray-800 mt-4
+        md:mt-2 lg:mt-3 lg:p-0.5"
       >
-        <div className="grid grid-cols-1 gap-4 mt-10 p-1.5 md:grid md:grid-cols-2 md:p-2  lg:flex lg:mt-0.5 rounded-sm">
+        <div className="grid grid-cols-1 gap-4 mt-1.5 p-1.5 md:grid md:grid-cols-2 md:p-2 lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
-            className="w-full max-w-sm mx-auto bg-red-900 min-h-36 border-2 rounded-lg p-2 border-gray-300 md:grid md:grid-cols-1 md:p-2
+            className="w-72 max-w-sm mx-auto bg-red-900 min-h-36 border-2 rounded-lg p-2 border-gray-300 md:grid md:grid-cols-1 md:p-2
                  lg:w-80 lg:p-1.2"
           >
             <div

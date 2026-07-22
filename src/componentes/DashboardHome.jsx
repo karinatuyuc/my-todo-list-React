@@ -1,8 +1,6 @@
-// 74 SWIM
-
-import { useState, useRef } from "react";
 import ProgressCircle from "../ProgressCircle";
 import CompletedTask from "../CompletedTask";
+import TaskCard from "../TaskCard";
 import {
   ClipboardDocumentCheckIcon,
   ClockIcon,
@@ -22,14 +20,6 @@ export function DashboardHome({
   onCloseEditModal,
   setDeleteTaskModal,
 }) {
-  const [hasScrolled, setHasScrolled] = useState(false); // This state is to change the color of the header inside the box of the tasks cards
-
-  const handleScroll = () => {
-    if (tasksRef.current) {
-      const scrolled = tasksRef.current.scrollTop > 0;
-      setHasScrolled(scrolled);
-    }
-  };
 
   const date = new Date(); //Creating the local date
 
@@ -46,33 +36,34 @@ export function DashboardHome({
     { title: "Not started", progress: "75%", color: "red" },
   ];
 
-  const tasksRef = useRef(null); // Reference to the tasks container for scroll detection
+  let taskLimit = task.slice(0, 2);
+  console.log(taskLimit.length)
+
+
   return (
     <>
-                <div className="">
-              <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
-                <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
-                  <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl">
-                    Welcome, 
-                    <span className="text-3xl md:text-4xl lg:text-4xl text-white">
-                 ajsfkjasljfdlsk
-                    </span>
-                  </h1>
-                </div>
-              </div>
-              {/** Main section */}
-            </div>
+      <div className="">
+        <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
+          <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
+            <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl">
+              Welcome,
+              <span className="text-3xl md:text-4xl lg:text-4xl text-white">
+                ajsfkjasljfdlsk
+              </span>
+            </h1>
+          </div>
+        </div>
+        {/** Main section */}
+      </div>
       <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4">
         {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
         <div
-          ref={tasksRef}
-          onScroll={handleScroll}
-          className={`border-2 border-gray-200 shadow-2xl drop-shadow-lg rounded p-3 lg:p-3 lg:overflow-auto`}
+          className={`border-2 border-gray-200 shadow-2xl drop-shadow-lg rounded p-3 lg:p-0`}
         >
           <div
-            className={`lg:top-0 lg:sticky text-red-400 ${hasScrolled ? "bg-red-400 text-white" : "bg-gray-00"}`}
+            className={`lg:top-0 lg:sticky text-red-400`}
           >
-            <div className="flex justify-between p-2.5 lg:h-17">
+            <div className="flex justify-between p-2.5 lg:h-20 lg:p-4">
               <span
                 className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg"
                 onClick={setEditTaskModal}
@@ -80,9 +71,7 @@ export function DashboardHome({
                 To-Do
               </span>
               <div className="relative">
-                <ClipboardDocumentCheckIcon
-                  className="w-7 h-7 absolute md:w-8 md:h-8"
-                />
+                <ClipboardDocumentCheckIcon className="w-7 h-7 absolute md:w-8 md:h-8" />
                 <ClockIcon
                   className="w-6 h-6 relative left-3 top-4 p-1 bg-gray-200 text-gray-500 rounded-full
                                        md:left-4 md:top-5 lg:top-4 lg:w-5 lg:h-5 lg:p-0.5"
@@ -118,9 +107,9 @@ export function DashboardHome({
             </div>
           </div>
 
-          <div className=" flex flex-col justify-center items-center">
-            {task.length === 0 ? (
-              <div className=" min-w-72 p-1.5 rounded-sm gap-2 mt-12 m-6 md:min-w-9/12">
+          <div className=" flex flex-col justify-start items-center p-3 ">
+            {taskLimit.length === 0 ? (
+              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
                   {/* Barra tipo título */}
                   <div className="h-5 bg-gray-200 rounded w-3/4"></div>
@@ -132,7 +121,7 @@ export function DashboardHome({
                   {/* Barra tipo detalle */}
                   <div className="h-4 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 mt-6">
+                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 mt-6">
                   {/* Barra tipo título */}
                   <div className="h-5 bg-gray-200 rounded w-3/4"></div>
 
@@ -145,7 +134,7 @@ export function DashboardHome({
                 </div>
               </div>
             ) : (
-              task.map((tasks) => (
+              taskLimit.map((tasks) => (
                 <TaskCard
                   key={tasks.id}
                   tasks={tasks}
@@ -166,7 +155,6 @@ export function DashboardHome({
         <div className="border-amber-300 border-2 p-6 mt-5 md:mt-0">
           {/* TASK STATUS*/}
           <div className="bg-amber-400">
-
             <div className="bg-blue-400 relative flex gap-4">
               <div className="">
                 <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
@@ -174,7 +162,6 @@ export function DashboardHome({
                   className="w-4 h-4 relative mt-3 left-3 rounded-full text-gray-400 bg-gray-200
                    md:w-6 md:h-6 lg:w-4 lg:h-4"
                 />
-                
               </div>
               <span className="text-red-400 font-medium md:text-2xl lg:text-lg">
                 Task Status
@@ -197,7 +184,9 @@ export function DashboardHome({
 
           {/*COMPLETED TASK*/}
 
-          <div className="bg-purple-600 p-2 min-h-56"> {/**Esto puede3 causar errores */}
+          <div className="bg-purple-600 p-2 min-h-56">
+            {" "}
+            {/**Esto puede3 causar errores */}
             <CompletedTask dateIn={dateInNumber} />
           </div>
         </div>
