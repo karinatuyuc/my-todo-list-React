@@ -2,8 +2,13 @@ import {
   DocumentCheckIcon,
   EllipsisHorizontalIcon,
 } from "@heroicons/react/24/outline";
+ 
 
-export default function CompletedTask({ dateIn }) {
+export default function CompletedTask({ dateIn, task, taskLimit}) {
+
+  console.log(task.length, "desde el completedTask")
+  console.log(taskLimit, "limite del task")
+
   return (
     <>
       <div className="">
@@ -14,11 +19,10 @@ export default function CompletedTask({ dateIn }) {
             Completed Task
           </h1>
         </div>
-
         {/**CARDS*/}
-        <div className=" flex justify-center items-center p-1">
+        <div className=" flex justify-center items-center p-2 bg-blue-800">
           {/**CARD #1 */}
-          <div className="border-2 border-black rounded-2xl w-60 grid grid-cols-[1fr_2fr_1fr] md:w-72">
+          <div className="border-2 border-black rounded-2xl p-1 w-60 grid grid-cols-[1fr_2fr_1fr] md:w-72">
             <div className="flex justify-center items-start pt-1">
               <div className="w-4 h-4 rounded-full border-2 border-green-900 md:w-5 md:h-5 lg:w-4 lg:h-4"></div>
             </div>
@@ -44,6 +48,9 @@ export default function CompletedTask({ dateIn }) {
               <EllipsisHorizontalIcon className="w-6 h-6" />
             </div>
           </div>
+
+
+
         </div>
 
         {/** </div>*/}

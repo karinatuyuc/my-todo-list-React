@@ -44,8 +44,8 @@ export default function TaskCard({
   return (
     <>
       <div
-        className="border-gray-800 mt-4
-        md:mt-2 lg:mt-3 lg:p-0.5"
+        className="border-gray-800 mt-3 mb-2
+        md:mt-2 lg:mt-1 lg:p-0.5"
       >
         <div className="grid grid-cols-1 gap-4 mt-1.5 p-1.5 md:grid md:grid-cols-2 md:p-2 lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
@@ -76,7 +76,6 @@ export default function TaskCard({
                     {tasks.description}
                   </p>
                 </div>
-
                 {/** CARD FOOTER */}
                 <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5">
                   <span className="text-white">

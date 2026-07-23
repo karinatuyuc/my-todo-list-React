@@ -7,6 +7,7 @@ import {
   PlusIcon,
   ClipboardIcon,
   CheckCircleIcon,
+  ExclamationTriangleIcon,
 } from "@heroicons/react/16/solid";
 export function DashboardHome({
   task,
@@ -21,6 +22,11 @@ export function DashboardHome({
   setDeleteTaskModal,
 }) {
 
+
+  //**/
+  // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK 
+  // 
+  //  */
   const date = new Date(); //Creating the local date
 
   const dayMonth = date.toLocaleDateString("en-US", {
@@ -36,9 +42,9 @@ export function DashboardHome({
     { title: "Not started", progress: "75%", color: "red" },
   ];
 
-  let taskLimit = task.slice(0, 2);
-  console.log(taskLimit.length)
-
+  let taskLimit = task.slice(0, 3);
+  let completedLimit = task.slice(0, 2);
+  console.log(task, "desde el dashboardHome")
 
   return (
     <>
@@ -60,9 +66,7 @@ export function DashboardHome({
         <div
           className={`border-2 border-gray-200 shadow-2xl drop-shadow-lg rounded p-3 lg:p-0`}
         >
-          <div
-            className={`lg:top-0 lg:sticky text-red-400`}
-          >
+          <div className={`lg:top-0 lg:sticky text-red-400`}>
             <div className="flex justify-between p-2.5 lg:h-20 lg:p-4">
               <span
                 className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg"
@@ -107,7 +111,7 @@ export function DashboardHome({
             </div>
           </div>
 
-          <div className=" flex flex-col justify-start items-center p-3 ">
+          <div className=" flex flex-col justify-start items-center p-3 bg-amber-200 ">
             {taskLimit.length === 0 ? (
               <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
@@ -149,6 +153,15 @@ export function DashboardHome({
                 />
               ))
             )}
+
+            <div className="translate-x-20 lg:translate-x-36">
+              {task.length > 3 && (
+                <div className="flex text-[8px] text-red-500 bg-red-400">
+                  <ExclamationTriangleIcon className="w-4 h-3 text-amber-300" />
+                  <p>Visit My Task to see all task</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -184,10 +197,35 @@ export function DashboardHome({
 
           {/*COMPLETED TASK*/}
 
-          <div className="bg-purple-600 p-2 min-h-56">
+          <div className="bg-red-900 p-2 min-h-56 flex justify-center items-center">
             {" "}
-            {/**Esto puede3 causar errores */}
-            <CompletedTask dateIn={dateInNumber} />
+            {
+              task.length === 0 ? (
+              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
+                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
+                  {/* Barra tipo título */}
+                  <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+
+                  {/* Barra tipo descripción */}
+                  <div className="h-4 bg-gray-200 rounded w-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+
+                  {/* Barra tipo detalle */}
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+              </div>
+              ) : completedLimit > 2 ? (
+                completedLimit.map((compl) => (
+                   <CompletedTask
+                   key={compl}
+                   dateIn={dateInNumber}
+                   task={task}
+                />
+              ))
+              )  : (
+                <p>Se ejecuta?</p>
+              )
+            }
           </div>
         </div>
       </section>

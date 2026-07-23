@@ -70,6 +70,7 @@ export default function Dashboard({
     { title: "Not started", progress: "75%", color: "red" },
   ];*/
 
+  console.log(task, 'desde el dashboard')
   return (
     <>
       {modalAddTask && (
