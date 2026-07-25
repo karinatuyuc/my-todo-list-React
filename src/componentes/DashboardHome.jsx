@@ -166,9 +166,9 @@ export function DashboardHome({
           </div>
         </div>
 
-        <div className="border-amber-300 border-2 p-6 mt-5 md:mt-0">
+        <div className="border-amber-300 border-2 p-6 mt-4 md:mt-0">
           {/* TASK STATUS*/}
-          <div className="bg-amber-400">
+          <div className="bg-gray-400">
             <div className="bg-blue-400 relative flex gap-4">
               <div className="">
                 <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
@@ -183,7 +183,7 @@ export function DashboardHome({
             </div>
 
             {/*Progress circles*/}
-            <div className="grid grid-cols-3 gap-1.5 m-4">
+            <div className="grid grid-cols-3 gap-1.5 m-5 p-2">
               {circles.map((item, index) => (
                 <ProgressCircle
                   // Aqui van los props que le pasamos al componente
@@ -223,7 +223,10 @@ export function DashboardHome({
               </div>
             ) :
               elementosCompletedTask.map((compl) => (
-                <CompletedTask key={compl} dateIn={dateInNumber} task={task} />
+                <CompletedTask 
+                key={compl} dateIn={dateInNumber} 
+                task={task}
+                openOptionsTaskId={openOptionsTaskId} />
               ))
             }
           </div>

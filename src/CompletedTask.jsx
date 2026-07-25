@@ -3,9 +3,12 @@ import {
   EllipsisHorizontalIcon,
 } from "@heroicons/react/24/outline";
 
-export default function CompletedTask({ dateIn, task, taskLimit }) {
-  console.log(task.length, "desde el completedTask");
-  console.log(taskLimit, "limite del task");
+export default function CompletedTask({ dateIn }) {
+
+  function deleteCompletedTask () {
+    return alert("Seguro que desea eliminar el task seleccioando?")
+  }
+
 
   return (
     <>
@@ -13,9 +16,7 @@ export default function CompletedTask({ dateIn, task, taskLimit }) {
       {/*CARD TASKS */}
       <div className="grid grid-cols-1 gap-4 md:grid md:grid-cols-2 lg:flex rounded-sm">
         {/**Card #1 */}
-        <div
-          className="w- max-w-sm mx-auto bg-red-900 border-2 p-1 rounded-lg border-gray-300 md:grid md:grid-cols-1 lg:w-72 "
-        >
+        <div className="w-64 max-w-sm mx-auto bg-red-900 border-2 p-1 mb-3 rounded-lg border-gray-300 md:grid md:grid-cols-1 lg:w-64">
           <div className="flex gap-2">
             {/**This  is the cricle  */}
             <div className=" flex ">
@@ -66,7 +67,14 @@ export default function CompletedTask({ dateIn, task, taskLimit }) {
               </div>
             </div>
 
-            <div className="cursor-pointer"></div>
+              <div className="cursor-pointer">
+                <EllipsisHorizontalIcon
+                 className="w-5 h-5"
+                 onClick={deleteCompletedTask}
+                />
+                  
+                
+              </div>
           </div>
         </div>
       </div>
