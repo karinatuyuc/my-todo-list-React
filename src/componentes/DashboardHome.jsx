@@ -8,6 +8,7 @@ import {
   ClipboardIcon,
   CheckCircleIcon,
   ExclamationTriangleIcon,
+  DocumentCheckIcon,
 } from "@heroicons/react/16/solid";
 export function DashboardHome({
   task,
@@ -21,11 +22,9 @@ export function DashboardHome({
   onCloseEditModal,
   setDeleteTaskModal,
 }) {
-
-
   //**/
-  // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK 
-  // 
+  // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK
+  //
   //  */
   const date = new Date(); //Creating the local date
 
@@ -43,8 +42,10 @@ export function DashboardHome({
   ];
 
   let taskLimit = task.slice(0, 3);
-  let completedLimit = task.slice(0, 2);
-  console.log(task, "desde el dashboardHome")
+  const totalCompleted = taskLimit.length;
+
+  const limiteDiv2 = totalCompleted === 3 ? 2 : 1;
+  const elementosCompletedTask = task.slice(0, limiteDiv2);
 
   return (
     <>
@@ -197,12 +198,18 @@ export function DashboardHome({
 
           {/*COMPLETED TASK*/}
 
-          <div className="bg-red-900 p-2 min-h-56 flex justify-center items-center">
-            {" "}
-            {
-              task.length === 0 ? (
-              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
-                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
+          <div className="bg-red-900 flex flex-col justify-center items-center p-2 gap-3">
+            {/** <div className="">*/}
+            <div className="flex -translate-x-32">
+              <DocumentCheckIcon className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1" />
+              <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-lg">
+                Completed Task
+              </h1>
+            </div>
+            {task.length === 0 ? (
+
+              <div className="w-72 rounded-sm gap-2 lg:w-80 bg-red-500">
+                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full">
                   {/* Barra tipo título */}
                   <div className="h-5 bg-gray-200 rounded w-3/4"></div>
 
@@ -214,17 +221,10 @@ export function DashboardHome({
                   <div className="h-4 bg-gray-200 rounded w-1/2"></div>
                 </div>
               </div>
-              ) : completedLimit > 2 ? (
-                completedLimit.map((compl) => (
-                   <CompletedTask
-                   key={compl}
-                   dateIn={dateInNumber}
-                   task={task}
-                />
+            ) :
+              elementosCompletedTask.map((compl) => (
+                <CompletedTask key={compl} dateIn={dateInNumber} task={task} />
               ))
-              )  : (
-                <p>Se ejecuta?</p>
-              )
             }
           </div>
         </div>

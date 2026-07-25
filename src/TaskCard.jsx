@@ -45,7 +45,7 @@ export default function TaskCard({
     <>
       <div
         className="border-gray-800 mt-3 mb-2
-        md:mt-2 lg:mt-1 lg:p-0.5"
+        md:mt-2 lg:mt-1 lg:p-0.5 bg-blue-400"
       >
         <div className="grid grid-cols-1 gap-4 mt-1.5 p-1.5 md:grid md:grid-cols-2 md:p-2 lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
