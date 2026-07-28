@@ -200,7 +200,7 @@ export function DashboardHome({
 
           <div className="bg-red-900 flex flex-col justify-center items-center p-2 gap-3">
             {/** <div className="">*/}
-            <div className="flex -translate-x-32">
+            <div className="flex -translate-x-20">
               <DocumentCheckIcon className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1" />
               <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-lg">
                 Completed Task

@@ -157,8 +157,6 @@ export default function Dashboard({
           {/**End SIDE MENU */}
 
           <main className="flex-1 p-0.5 bg-black ">
-            <span className="text-white">{activeView}</span>
-
             {activeView === "dashboard" ? (
               <div className="p-2">
                 <DashboardHome

@@ -17,7 +17,6 @@ import {
 export default function SideMenu({
   userName,
   setUserName,
-  activeView,
   setActiveView,
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,8 +52,8 @@ export default function SideMenu({
   return (
     <>
       {/**Movil Menu hamburguer */}
-      <div className="w-7 h-7 m-1 block md:m-2 md:w-10 md:h-10 lg:hidden">
-        <Bars3Icon onClick={() => setIsOpen(true)} />
+      <div className="w-7 h-7 m-2 flex md:m-2 md:w-10 md:h-10 lg:hidden text-red-600">
+        <Bars3Icon onClick={() => setIsOpen(true)}/>
       </div>
 
       <div
@@ -131,34 +130,34 @@ export default function SideMenu({
           <ol className="space-y-12 md:space-y-10 lg:space-y-8 lg:mt-2">
             <li
               className={listStyles}
-              onClick={() => setActiveView("dashboard")}
+              onClick={() => {setActiveView("dashboard"), setIsOpen(false)}}
             >
               <Squares2X2Icon className={iconStyles} />
               Dashboard
             </li>
-            <li className={listStyles} onClick={() => setActiveView("MyTask")}>
+            <li className={listStyles} onClick={() => { setActiveView("MyTask"), setIsOpen(false)}}>
               <DocumentCheckIcon className={iconStyles} />
               My Task
             </li>
             <li
               className={listStyles}
-              onClick={() => setActiveView("TaskCategories")}
+              onClick={() => { setActiveView("TaskCategories"), setIsOpen(false)}}
             >
               <ListBulletIcon className={iconStyles} />
               Task Categories
             </li>
             <li
               className={listStyles}
-              onClick={() => setActiveView("Settings")}
+              onClick={() => { setActiveView("Settings"), setIsOpen(false)}}
             >
               <Cog6ToothIcon className={iconStyles} />
               Settings
             </li>
-            <li className={listStyles} onClick={() => setActiveView("About")}>
+            <li className={listStyles} onClick={() => { setActiveView("About"), setIsOpen(false)}}>
               <ExclamationCircleIcon className={iconStyles} />
               About
             </li>
-            <li className={listStyles} onClick={() => setActiveView("Help")}>
+            <li className={listStyles} onClick={() => { setActiveView("Help"), setIsOpen(false)}}>
               <QuestionMarkCircleIcon className={iconStyles} />
               Help
             </li>
