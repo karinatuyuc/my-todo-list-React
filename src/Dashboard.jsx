@@ -70,7 +70,6 @@ export default function Dashboard({
     { title: "Not started", progress: "75%", color: "red" },
   ];*/
 
-  console.log(task, 'desde el dashboard')
   return (
     <>
       {modalAddTask && (
@@ -173,7 +172,13 @@ export default function Dashboard({
                 />
               </div>
             ) : activeView === "MyTask" ? (
-              <MyTask />
+              <MyTask
+               task={task}
+               setSelectedTask={setSelectedTask}
+               setEditTaskModal={setEditTaskModal}
+               setDeleteTaskModal={setDeleteTaskModal}
+    
+              />
             ) : activeView === "TaskCategories" ? (
               <TaskCategories />
             ) : activeView === "Settings" ? (
