@@ -160,6 +160,7 @@ export default function Dashboard({
               <div className="p-2">
                 <DashboardHome
                   task={task}
+                  userName={userName}
                   setModalAddTask={setModalAddTask}
                   setEditTaskModal={setEditTaskModal}
                   editTask={editTask}
@@ -175,6 +176,7 @@ export default function Dashboard({
               <MyTask
                task={task}
                setSelectedTask={setSelectedTask}
+               selectedTask={selectedTask}
                setEditTaskModal={setEditTaskModal}
                setDeleteTaskModal={setDeleteTaskModal}
     

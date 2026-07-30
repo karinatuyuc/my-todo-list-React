@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/16/solid";
 export function DashboardHome({
   task,
+  userName,
   setModalAddTask,
   setEditTaskModal,
   setSelectedTask,
@@ -26,7 +27,10 @@ export function DashboardHome({
   // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK
   //
   //  */
+
+  let waveHand = "\u{1F44B}"; //Emoji hand waving
   const date = new Date(); //Creating the local date
+  console.log("este debe ser el nombre", userName)
 
   const dayMonth = date.toLocaleDateString("en-US", {
     day: "numeric",
@@ -52,12 +56,13 @@ export function DashboardHome({
       <div className="">
         <div className="flex items-center justify-center gap-2 lg:mt-6 lg:ml-6 text-center">
           <div className="mx-auto text-xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0 flex">
-            <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-black font-bold md:text-2xl">
+            <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis text-white font-bold md:text-2xl">
               Welcome,
-              <span className="text-3xl md:text-4xl lg:text-4xl text-white">
-                ajsfkjasljfdlsk
+              <span className="text-2xl p-6 md:text-4xl lg:text-4xl text-white">
+                {userName}
               </span>
             </h1>
+            {waveHand}
           </div>
         </div>
         {/** Main section */}

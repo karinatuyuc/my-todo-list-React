@@ -1,5 +1,5 @@
 import { TrashIcon, ArrowDownIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //COMPONENTE HIJO
 function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
@@ -32,21 +32,34 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
 }
 
 // COMPONENTE PADRE
-export function MyTask({ task, setDeleteTaskModal, setEditTaskModal, setSelectedTask }) {
+export function MyTask({ task, setDeleteTaskModal, setEditTaskModal, setSelectedTask, selectedTask }) {
   const [detailsTaks, setDetailsTask] = useState(null);
+
+  useEffect(() => {
+    if (selectedTask) {
+      const updatedTaks = task.find(t => t.id === selectedTask.id);
+
+      if(updatedTaks) {
+        setDetailsTask(updatedTaks);
+      } else {
+        setDetailsTask(null);
+      }
+    }
+  }, [task, selectedTask])
+
   return (
     <>
-      <div className="bg-orange-500 m-0.5 lg:m-3 lg:min-h-11/12 lg:grid lg:grid-cols-2">
+      <div className="bg-orange-500 m-1.5 lg:m-3 lg:min-h-11/12">
         <span className="flex justify-end text-3xl">My task</span>
       </div>
-      <div className="bg-amber-400 p-2 rounded-sm m-0.5 min-h-24 max-h-64 overflow-y-scroll">
+      <div className="bg-amber-400 p-2 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll">
         <TaskMyTask 
         taskList={task} 
         setDetailsTask={setDetailsTask}
         setSelectedTask={setSelectedTask} />
       </div>
 
-      <div className="bg-red-600 p-3 m-0.5 mt-2 rounded-sm text-black">
+      <div className="bg-red-600 p-3 m-1.5 mt-2 rounded-sm text-black">
         <div className="p-1 bg-amber-400 flex-1 overflow-y-scroll ">
           {detailsTaks === null ? (
             <p>Aqui no hay task seleccionados</p>
