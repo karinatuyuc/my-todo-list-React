@@ -118,7 +118,7 @@ export function DashboardHome({
           </div>
 
           <div className=" flex flex-col justify-start items-center p-3 bg-amber-200 
-          md:flex md:flex-row md:justify-center md:items-center md:gap-6 md:p-5">
+          md:flex md:flex-row md:justify-center md:items-center md:gap-6 md:p-5 lg:flex lg:bg-amber-700 lg:flex-col">
             {taskLimit.length === 0 ? (
               <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
@@ -203,17 +203,17 @@ export function DashboardHome({
 
           {/*COMPLETED TASK*/}
 
-          <div className="bg-red-900 flex flex-col justify-center items-center p-2 gap-3">
+          <div className="bg-red-900 flex flex-col justify-center items-center p-2 gap-3 lg:bg-neutral-700">
             {/** <div className="">*/}
-            <div className="flex -translate-x-20 md:-translate-x-60">
+            <div className="flex -translate-x-16 md:-translate-x-56 lg:bg-amber-300 lg:-translate-x-20">
               <DocumentCheckIcon className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1" />
               <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-lg">
                 Completed Task
               </h1>
             </div>
-            <div className="md:flex md:flex-row md:gap-10">
+            <div className="md:flex md:flex-row md:gap-10 lg:flex lg:flex-col">
               {task.length === 0 ? (
-                <div className="w-72 rounded-sm gap-2 lg:w-80 bg-red-500">
+                <div className="w-60 rounded-sm gap-2 lg:w-80 bg-red-500">
                   <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full">
                     {/* Barra tipo título */}
                     <div className="h-5 bg-gray-200 rounded w-3/4"></div>

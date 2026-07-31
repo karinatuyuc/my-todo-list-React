@@ -1,14 +1,19 @@
 import { TrashIcon, ArrowDownIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 
+
+
+/// DEBE APARECER COMO UN ESQUELETO EN CADA DIV SI NO HAY TAKS SELECCIONADOS PARA MOSTRAR LOS DETALLES, NO PUEDE 
+/// QUEDAR COMO QUEDO AHORA!!!
+
 //COMPONENTE HIJO
 function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
   return (
     <>
       {/*Div para renderizar los task */}
       <div
-        className="bg-amber-200 mt-1.5 p-2 rounded-2xl border-b-red-700 border-b-2 text-black text-lg max-w-full
-      md:flex md:flex-col md:justify-center md:items-center md:p-4"
+        className="bg-amber-900 mt-1.5 p-2 rounded-2xl border-b-red-700 border-b-2 text-black text-lg max-w-full
+      md:flex md:flex-col md:justify-center md:items-center md:p-4 lg:p-0 lg:bg-gray-50"
       >
         {taskList.map((task) => (
           <div
@@ -63,8 +68,9 @@ export function MyTask({
 
   return (
     <>
-      <div className="md:bg-blue-200 md:p-2 lg:grid lg:grid-cols-2">
-        <div className="bg-amber-400 p-2 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl ">
+      <div className="md:bg-blue-200 md:p-2 lg:grid lg:grid-cols-2 lg:h-full">
+        <div className="bg-amber-900 p-2 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl
+         lg:overflow-hidden lg:mt-6 lg:max-h-full">
           <div className="">
             <span className="flex text-2xl font-bold md:pb-3 underline decoration-orange-500 decoration-2 underline-offset-4 text-black">
               My Tasks
