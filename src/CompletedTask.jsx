@@ -14,9 +14,10 @@ export default function CompletedTask({ dateIn }) {
     <>
       {/**CARDS*/}
       {/*CARD TASKS */}
-      <div className="grid grid-cols-1 gap-4 md:grid md:grid-cols-2 lg:flex rounded-sm">
+      <div className="grid grid-cols-1 gap-4 lg:flex rounded-sm md:p-2 md:flex md:flex-row">
         {/**Card #1 */}
-        <div className="w-64 max-w-sm mx-auto bg-red-900 border-2 p-1 mb-3 rounded-lg border-gray-300 md:grid md:grid-cols-1 lg:w-64">
+        <div className="w-64 max-w-sm mx-auto bg-red-900 border-2 p-1 mb-3 rounded-lg border-gray-300 md:grid md:grid-cols-1 
+        md:w-72 lg:w-64">
           <div className="flex gap-2">
             {/**This  is the cricle  */}
             <div className=" flex ">

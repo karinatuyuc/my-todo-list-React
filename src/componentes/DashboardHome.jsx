@@ -30,7 +30,7 @@ export function DashboardHome({
 
   let waveHand = "\u{1F44B}"; //Emoji hand waving
   const date = new Date(); //Creating the local date
-  console.log("este debe ser el nombre", userName)
+  console.log("este debe ser el nombre", userName);
 
   const dayMonth = date.toLocaleDateString("en-US", {
     day: "numeric",
@@ -45,10 +45,10 @@ export function DashboardHome({
     { title: "Not started", progress: "75%", color: "red" },
   ];
 
-  let taskLimit = task.slice(0, 3);
+  let taskLimit = task.slice(0, 2);
   const totalCompleted = taskLimit.length;
 
-  const limiteDiv2 = totalCompleted === 3 ? 2 : 1;
+  const limiteDiv2 = totalCompleted === 2 ? 2 : 1;
   const elementosCompletedTask = task.slice(0, limiteDiv2);
 
   return (
@@ -67,7 +67,7 @@ export function DashboardHome({
         </div>
         {/** Main section */}
       </div>
-      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4">
+      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4 md:gap-16">
         {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
         <div
           className={`border-2 border-gray-200 shadow-2xl drop-shadow-lg rounded p-3 lg:p-0`}
@@ -117,7 +117,8 @@ export function DashboardHome({
             </div>
           </div>
 
-          <div className=" flex flex-col justify-start items-center p-3 bg-amber-200 ">
+          <div className=" flex flex-col justify-start items-center p-3 bg-amber-200 
+          md:flex md:flex-row md:justify-center md:items-center md:gap-6 md:p-5">
             {taskLimit.length === 0 ? (
               <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
@@ -159,19 +160,18 @@ export function DashboardHome({
                 />
               ))
             )}
-
-            <div className="translate-x-20 lg:translate-x-36">
-              {task.length > 3 && (
-                <div className="flex text-[8px] text-red-500 bg-red-400">
-                  <ExclamationTriangleIcon className="w-4 h-3 text-amber-300" />
-                  <p>Visit My Task to see all task</p>
-                </div>
-              )}
-            </div>
+          </div>
+          <div className="bg-red-700">
+            {task.length >= 3 && (
+              <div className="flex text-[8px] text-red-500 bg-red-400">
+                <ExclamationTriangleIcon className="w-4 h-3 text-black" />
+                <p>Visit My Task to see all task</p>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="border-amber-300 border-2 p-6 mt-4 md:mt-0">
+        <div className="border-amber-300 border-2 p-6 mt-4 md:mt-8">
           {/* TASK STATUS*/}
           <div className="bg-gray-400">
             <div className="bg-blue-400 relative flex gap-4">
@@ -205,35 +205,38 @@ export function DashboardHome({
 
           <div className="bg-red-900 flex flex-col justify-center items-center p-2 gap-3">
             {/** <div className="">*/}
-            <div className="flex -translate-x-20">
+            <div className="flex -translate-x-20 md:-translate-x-60">
               <DocumentCheckIcon className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1" />
               <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-lg">
                 Completed Task
               </h1>
             </div>
-            {task.length === 0 ? (
+            <div className="md:flex md:flex-row md:gap-10">
+              {task.length === 0 ? (
+                <div className="w-72 rounded-sm gap-2 lg:w-80 bg-red-500">
+                  <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full">
+                    {/* Barra tipo título */}
+                    <div className="h-5 bg-gray-200 rounded w-3/4"></div>
 
-              <div className="w-72 rounded-sm gap-2 lg:w-80 bg-red-500">
-                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full">
-                  {/* Barra tipo título */}
-                  <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+                    {/* Barra tipo descripción */}
+                    <div className="h-4 bg-gray-200 rounded w-full"></div>
+                    <div className="h-4 bg-gray-200 rounded w-5/6"></div>
 
-                  {/* Barra tipo descripción */}
-                  <div className="h-4 bg-gray-200 rounded w-full"></div>
-                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-
-                  {/* Barra tipo detalle */}
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                    {/* Barra tipo detalle */}
+                    <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                  </div>
                 </div>
-              </div>
-            ) :
-              elementosCompletedTask.map((compl) => (
-                <CompletedTask 
-                key={compl} dateIn={dateInNumber} 
-                task={task}
-                openOptionsTaskId={openOptionsTaskId} />
-              ))
-            }
+              ) : (
+                elementosCompletedTask.map((compl) => (
+                  <CompletedTask
+                    key={compl}
+                    dateIn={dateInNumber}
+                    task={task}
+                    openOptionsTaskId={openOptionsTaskId}
+                  />
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>

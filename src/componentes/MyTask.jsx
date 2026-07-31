@@ -63,13 +63,13 @@ export function MyTask({
 
   return (
     <>
-      <div className="md:bg-amber-950 md:p-2 lg:grid lg:grid-cols-2">
-        <div className="bg-amber-400 p-2 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl">
-          <sdiv className="bg-orange-500">
+      <div className="md:bg-blue-200 md:p-2 lg:grid lg:grid-cols-2">
+        <div className="bg-amber-400 p-2 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl ">
+          <div className="">
             <span className="flex text-2xl font-bold md:pb-3 underline decoration-orange-500 decoration-2 underline-offset-4 text-black">
               My Tasks
             </span>
-          </sdiv>
+          </div>
 
           <TaskMyTask
             taskList={task}
