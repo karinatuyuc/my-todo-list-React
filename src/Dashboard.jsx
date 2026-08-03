@@ -18,7 +18,7 @@ import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
 import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
 import { DashboardHome } from "./componentes/DashboardHome.jsx";
-import { TaskCategories } from "./componentes/TaskCategories.jsx";
+import { TaskCategories } from "./componentes/TaskCategories/TaskCategories.jsx";
 import { Settings } from "./componentes/Settings.jsx";
 import { About } from "./componentes/About.jsx";
 import { Help } from "./componentes/Help.jsx";

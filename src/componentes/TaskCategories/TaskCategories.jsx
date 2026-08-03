@@ -10,11 +10,11 @@ export function TaskStatus() { {/**Hijo */}
     <>
       <div className=" bg-white flex justify-center items-center mx-1 rounded-xl border-2 border-gray-300">
         <table className="w-full text-center text-black">
-          <tr className="">
+          <tbody className="">
             <th className="p-2 border-r-2 border-gray-300">SN</th>
             <th className="p-2 border-l-2 border-gray-300">Task Status</th>
             <th className="p-2 border-l-2 border-gray-300">Action</th>
-          </tr>
+          </tbody>
           <tr className="border-t-2 border-gray-300">
             <td className="border-r-2 border-gray-300">1</td>
             <td className="border-r-2 border-gray-300">Completed</td>
@@ -44,11 +44,11 @@ export function TaskPriority() {
     <>
       <div className=" bg-white flex justify-center items-center mx-1 rounded-xl border-2 border-gray-300">
         <table className="w-full text-center text-black">
-          <tr className="">
+          <tbody className="">
             <th className="p-2 border-r-2 border-gray-300">SN</th>
             <th className="p-2 border-l-2 border-gray-300">Task Priority</th>
             <th className="p-2 border-l-2 border-gray-300">Action</th>
-          </tr>
+          </tbody>
           <tr className="border-t-2 border-gray-300">
             <td className="border-r-2 border-gray-300">1</td>
             <td className="border-r-2 border-gray-300">Completed</td>
