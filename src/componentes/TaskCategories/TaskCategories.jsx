@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { CreateCategoryModal } from './modals/CreateCategoryModal'
 import {
   DocumentArrowUpIcon,
   PlusIcon,
@@ -5,7 +7,10 @@ import {
   PencilSquareIcon,
 } from "@heroicons/react/16/solid";
 
-export function TaskStatus() { {/**Hijo */}
+export function TaskStatus() {
+  {
+    /**Hijo */
+  }
   return (
     <>
       <div className=" bg-white flex justify-center items-center mx-1 rounded-xl border-2 border-gray-300">
@@ -15,7 +20,7 @@ export function TaskStatus() { {/**Hijo */}
             <th className="p-2 border-l-2 border-gray-300">Task Status</th>
             <th className="p-2 border-l-2 border-gray-300">Action</th>
           </tbody>
-          <tr className="border-t-2 border-gray-300">
+          <tbody className="border-t-2 border-gray-300">
             <td className="border-r-2 border-gray-300">1</td>
             <td className="border-r-2 border-gray-300">Completed</td>
 
@@ -31,14 +36,16 @@ export function TaskStatus() { {/**Hijo */}
                 </button>
               </div>
             </td>
-          </tr>
+          </tbody>
         </table>
       </div>
     </>
   );
 }
 
-{/**Hijo */}
+{
+  /**Hijo */
+}
 export function TaskPriority() {
   return (
     <>
@@ -49,7 +56,7 @@ export function TaskPriority() {
             <th className="p-2 border-l-2 border-gray-300">Task Priority</th>
             <th className="p-2 border-l-2 border-gray-300">Action</th>
           </tbody>
-          <tr className="border-t-2 border-gray-300">
+          <tbody className="border-t-2 border-gray-300">
             <td className="border-r-2 border-gray-300">1</td>
             <td className="border-r-2 border-gray-300">Completed</td>
 
@@ -65,31 +72,44 @@ export function TaskPriority() {
                 </button>
               </div>
             </td>
-          </tr>
+          </tbody>
         </table>
       </div>
     </>
   );
 }
 
-{/**Padre */}
+{
+  /**Padre */
+}
 export function TaskCategories() {
+  const [showCategoryModal, setShowCategoryModal] = useState(false);
   return (
     <>
-      <div className=" h-screen m-1 mt-2 text-white lg:p-4">
-        <div className=" font-medium flex flex-col gap-3 mb-8 lg:mb-0">
+      <div className=" border-2 border-gray-400 rounded-xl h-screen mt-10 m-2 p-2.5 text-white lg:p-4">
+
+        <div className="">
+          {showCategoryModal && <CreateCategoryModal /> }
+        </div>
+          
+
+
+        <div className="font-medium flex flex-col gap-3 lg:mb-0 ">
           <div className="text-3xl lg:text-2xl">
             <span className="underline decoration-neutral-700 decoration-2">
               Task{" "}
             </span>
             Categories
           </div>
-          <button className="bg-orange-600 rounded-md w-32 p-2 text-white lg:p-1 lg:w-28">
+          <button
+            className="bg-orange-600 rounded-md w-32 p-2 text-white lg:p-1 lg:w-28"
+            onClick={() => setShowCategoryModal(true)}
+          >
             Add Category
           </button>
         </div>
 
-        <div className="min-h-[80vh] rounded-md p-2 lg:min-h-[70vh]">
+        <div className="max-h-full rounded-md lg:min-h-[70vh] overflow-auto">
           <div className="py-2.5 mb-16">
             <div className="flex justify-between py-2.5 text-2xl">
               <div className="font-medium">
