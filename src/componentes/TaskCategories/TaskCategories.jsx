@@ -84,19 +84,20 @@ export function TaskPriority() {
 }
 export function TaskCategories() {
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+
   return (
     <>
       <div className=" border-2 border-gray-400 rounded-xl h-screen mt-10 m-2 p-2.5 text-white lg:p-4">
-
-        <div className="">
-          {showCategoryModal && <CreateCategoryModal /> }
-        </div>
           
-
-
+          {showCategoryModal ? (
+            <CreateCategoryModal
+            setShowCategoryModal={setShowCategoryModal}
+            />
+          ) : 
+          <div>
         <div className="font-medium flex flex-col gap-3 lg:mb-0 ">
           <div className="text-3xl lg:text-2xl">
-            <span className="underline decoration-neutral-700 decoration-2">
+            <span className="underline decoration-orange-700 underline-offset-4">
               Task{" "}
             </span>
             Categories
@@ -113,13 +114,13 @@ export function TaskCategories() {
           <div className="py-2.5 mb-16">
             <div className="flex justify-between py-2.5 text-2xl">
               <div className="font-medium">
-                <span className="underline decoration-emerald-600 decoration-2">
+                <span className="underline decoration-orange-700 decoration-2 underline-offset-4">
                   Task{" "}
                 </span>
                 Status
               </div>
               <button className="flex">
-                <PlusIcon className="h-5 w-5 text-orange-600" />
+                <PlusIcon className="h-5 w-5 text-orange-700" />
                 <span className="text-gray-400 text-sm">Add Task Status</span>
               </button>
             </div>
@@ -130,7 +131,7 @@ export function TaskCategories() {
           <div>
             <div className="flex justify-between py-2.5 text-2xl">
               <div className="font-medium">
-                <span className="underline decoration-emerald-600 decoration-2">
+                <span className="underline decoration-orange-600 decoration-2 underline-offset-4">
                   Task{" "}
                 </span>
                 Priority
@@ -144,6 +145,9 @@ export function TaskCategories() {
             <TaskPriority />
           </div>
         </div>
+    </div>}
+
+
       </div>
     </>
   );
