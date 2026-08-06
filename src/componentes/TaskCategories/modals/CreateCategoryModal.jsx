@@ -19,7 +19,7 @@ export function CreateCategoryModal({ setShowCategoryModal }) {
           <label>Category Name</label>
           <input
             type="text"
-            className="w-full p-2.5 text-lg text-black rounded-md border-2 border-gray-400"
+            className="w-full p-2.5 text-lg text-black rounded-md border-2 border-gray-300"
           />
         </div>
 

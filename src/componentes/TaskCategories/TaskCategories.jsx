@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CreateCategoryModal } from './modals/CreateCategoryModal'
+import EditStatus, { AddNewStatus } from "./modals/StatusModals";
 import {
   DocumentArrowUpIcon,
   PlusIcon,
@@ -7,7 +8,7 @@ import {
   PencilSquareIcon,
 } from "@heroicons/react/16/solid";
 
-export function TaskStatus() {
+export function TaskStatus({ setEditStatus }) {
   {
     /**Hijo */
   }
@@ -26,8 +27,8 @@ export function TaskStatus() {
 
             <td className="text-black w-1/12 p-1.5 lg:w-96">
               <div className="gap-2 flex justify-items-center justify-center text-white text-center">
-                <button className="bg-orange-600 flex p-1 rounded-sm lg:p-2">
-                  <PencilSquareIcon className="w-5 h-5" />
+                <button className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer" onClick={() => setEditStatus(true)}>
+                  <PencilSquareIcon className="w-5 h-5"/>
                   Edit
                 </button>
                 <button className="bg-orange-600 flex p-1 rounded-sm lg:p-2">
@@ -83,10 +84,26 @@ export function TaskPriority() {
   /**Padre */
 }
 export function TaskCategories() {
-  const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [ showCategoryModal, setShowCategoryModal ] = useState(false);
+  const [ newStatus, setNewStatus ] = useState(false);
+  const [ editStatus, setEditStatus ] = useState(false);
+
+  console.log(newStatus)
 
   return (
     <>
+    {newStatus && (
+      <AddNewStatus
+       setNewStatus={setNewStatus}
+      />
+    )}
+    {
+      editStatus && (
+        <EditStatus
+        setEditStatus={setEditStatus}/>
+      )
+    }
+
       <div className=" border-2 border-gray-400 rounded-xl h-screen mt-10 m-2 p-2.5 text-white lg:p-4">
           
           {showCategoryModal ? (
@@ -103,7 +120,7 @@ export function TaskCategories() {
             Categories
           </div>
           <button
-            className="bg-orange-600 rounded-md w-32 p-2 text-white lg:p-1 lg:w-28"
+            className="bg-orange-600 rounded-md w-32 p-2 text-white lg:p-1 lg:w-28 cursor-pointer"
             onClick={() => setShowCategoryModal(true)}
           >
             Add Category
@@ -119,13 +136,16 @@ export function TaskCategories() {
                 </span>
                 Status
               </div>
-              <button className="flex">
+              <button className="flex cursor-pointer">
                 <PlusIcon className="h-5 w-5 text-orange-700" />
-                <span className="text-gray-400 text-sm">Add Task Status</span>
+                <span 
+                className="text-gray-400 text-sm" onClick={() => setNewStatus(true)}>Add Task Status</span>
               </button>
             </div>
 
-            <TaskStatus />
+            <TaskStatus
+             setEditStatus={setEditStatus}
+            />
           </div>
 
           <div>
