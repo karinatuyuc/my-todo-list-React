@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddTaskModal } from "./addTaskModal";
 import { EditModal } from "./editModal";
 import Dashboard from "./Dashboard";
@@ -9,10 +9,19 @@ function TodoApp() {
   const [activeView, setActiveView] = useState("dashboard");
 
   // states
-  const [taskList, setTaskList] = useState([]); // State to hold the list of tasks
+  const [taskList, setTaskList] = useState(() => {
+    const datosGuardados = localStorage.getItem('todo_app_v1');
+    return datosGuardados ? JSON.parse(datosGuardados) : [];
+  }); // State to hold the list of tasks
+
   const [selectedTask, setSelectedTask] = useState(null);
 
-  function addTask(task) {
+
+  useEffect(() => {
+    localStorage.setItem('todo_app_v1', JSON.stringify(taskList));
+  }, [taskList]);
+
+  function addTask(task) { 
     setTaskList([...taskList, task]);
   }
 
@@ -48,7 +57,7 @@ function TodoApp() {
     setOpenOptionsTaskId(idOpen);
   };
 
-  // console.log("Este es el id que guarda idOpenOptions", openOptionsTaskId)
+  // console.log("Este es e id que guarda idOpenOptions", openOptionsTaskId)
 
   function deleteTask(taskId) {
     let filterTask = taskList.filter(
