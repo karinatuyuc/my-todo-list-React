@@ -1,3 +1,4 @@
+import { CircularProgressbar } from "react-circular-progressbar";
 import ProgressCircle from "../ProgressCircle";
 import CompletedTask from "../CompletedTask";
 import TaskCard from "../TaskCard";
@@ -39,17 +40,21 @@ export function DashboardHome({
 
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
 
+  /*
   const circles = [
     { title: "Completed", progress: "25%", color: "green" },
     { title: "In progress", progress: "50%", color: "blue" },
     { title: "Not started", progress: "75%", color: "red" },
-  ];
+  ];*/
 
   let taskLimit = task.slice(0, 2);
   const totalCompleted = taskLimit.length;
 
   const limiteDiv2 = totalCompleted === 2 ? 2 : 1;
   const elementosCompletedTask = task.slice(0, limiteDiv2);
+  const percentageCompleted = 84;
+  const percentageInProgress = 46;
+  const percentageNotStarted = 13;
 
   return (
     <>
@@ -117,8 +122,10 @@ export function DashboardHome({
             </div>
           </div>
 
-          <div className=" flex flex-col justify-start items-center p-3 bg-amber-200 
-          md:flex md:flex-row md:justify-center md:items-center md:gap-6 md:p-5 lg:flex lg:bg-amber-700 lg:flex-col">
+          <div
+            className=" flex flex-col justify-start items-center p-3 bg-amber-200 
+          md:flex md:flex-row md:justify-center md:items-center md:gap-6 md:p-1 lg:flex lg:bg-amber-400 lg:flex-col"
+          >
             {taskLimit.length === 0 ? (
               <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
@@ -171,9 +178,9 @@ export function DashboardHome({
           </div>
         </div>
 
-        <div className="border-amber-300 border-2 p-6 mt-4 md:mt-8">
+        <div className="border-amber-300 border-2 p-4">
           {/* TASK STATUS*/}
-          <div className="bg-gray-400">
+          <div className="bg-gray-400 mb-4">
             <div className="bg-blue-400 relative flex gap-4">
               <div className="">
                 <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
@@ -188,17 +195,79 @@ export function DashboardHome({
             </div>
 
             {/*Progress circles*/}
-            <div className="grid grid-cols-3 gap-1.5 m-5 p-2">
-              {circles.map((item, index) => (
-                <ProgressCircle
-                  // Aqui van los props que le pasamos al componente
-                  key={index}
-                  title={item.title}
-                  progress={item.progress}
-                  color={item.color}
-                />
-              ))}
+            <div className="grid grid-cols-3 gap-4 p-3">
+              <div className="">
+                  <CircularProgressbar
+                    value={percentageCompleted}
+                    text={`${percentageCompleted} %`}
+                    strokeWidth={14}
+                    styles={{
+                      path: { stroke: "#008000" },
+                      trail: { stroke: "#C0C0C0" },
+                      text: {
+                        fontSize: "17px",
+                        fontWeight: 'bold',
+                        textAnchor: "middle",
+                        dominantBaseline: "middle",
+                      },
+                    }}
+                  />
+                  <div className="flex justify-center items-center gap-2 md:gap-1 md:mt-1">
+                    <span className="text-[10px] text-center md:text-2xl lg:text-base text-black">
+                      Completed
+                    </span>
+                  </div>
+              </div>
+                            <div className="">
+                  <CircularProgressbar
+                    value={percentageInProgress}
+                    text={`${percentageInProgress} %`}
+                    strokeWidth={14}
+                    styles={{
+                      path: { stroke: "#000080" },
+                      trail: { stroke: "#C0C0C0" },
+                      text: {
+                        fontSize: "17px",
+                        fontWeight: 'bold',
+                        textAnchor: "middle",
+                        dominantBaseline: "middle",
+                      },
+                    }}
+                  />
+                  <div className="flex justify-center items-center gap-2 md:gap-1 md:mt-1">
+                    <span className="text-[10px] text-center md:text-2xl lg:text-base text-black">
+                      In Progress
+                    </span>
+                  </div>
+              </div>
+                            <div className="">
+                  <CircularProgressbar
+                    value={percentageNotStarted}
+                    text={`${percentageNotStarted} %`}
+                    strokeWidth={14}
+                    styles={{
+                      path: { stroke: "#FF0000" },
+                      trail: { stroke: "#C0C0C0" },
+                      text: {
+                        fontSize: "17px",
+                        fontWeight: 'bold',
+                        textAnchor: "middle",
+                        dominantBaseline: "middle",
+                      },
+                    }}
+                  />
+                  <div className="flex justify-center items-center gap-2 md:gap-1 md:mt-1">
+                    <span className="text-[10px] text-center md:text-2xl lg:text-base text-black">
+                      Not Started
+                    </span>
+                  </div>
+              </div>
+
+
             </div>
+
+
+
           </div>
 
           {/*COMPLETED TASK*/}
