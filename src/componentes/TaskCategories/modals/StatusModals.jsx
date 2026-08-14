@@ -2,7 +2,7 @@ export function AddNewStatus({ setNewStatus }) {
   return (
     <>
       <div className="bg-black/95 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm text-black">
-        <div className="bg-white w-80 p-8 rounded-lg">
+        <div className="bg-white w-80 p-6 rounded-lg">
           <div className="flex justify-between mb-8">
             <div>
               <span className="underline underline-offset-4 decoration-amber-700 cursor-pointer">
@@ -27,6 +27,7 @@ export function AddNewStatus({ setNewStatus }) {
                 Create
               </button>
               <button
+                onClick={() => setNewStatus(false)}
                 className="bg-orange-600 px-6 py-1 rounded-sm cursor-pointer hover:bg-orange-400"
                 
               >
@@ -44,7 +45,7 @@ function EditStatus({ setEditStatus }) {
   return (
     <>
       <div className="bg-black/95 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm text-black">
-        <div className="bg-white w-80 p-8 rounded-lg">
+        <div className="bg-white w-80 p-6 rounded-lg">
           <div className="flex justify-between mb-8">
             <div className="font-bold">
               <span className="underline underline-offset-4 decoration-amber-700">

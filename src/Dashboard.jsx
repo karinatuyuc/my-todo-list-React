@@ -56,20 +56,6 @@ export default function Dashboard({
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
 
-  // let waveHand = "\u{1F44B}"; //Emoji hand waving
-  /*
-  const dayMonth = date.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-
-
-  const circles = [
-    { title: "Completed", progress: "25%", color: "green" },
-    { title: "In progress", progress: "50%", color: "blue" },
-    { title: "Not started", progress: "75%", color: "red" },
-  ];*/
-
   return (
     <>
       {modalAddTask && (
@@ -155,7 +141,7 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          <main className="flex-1 p-0.5 bg-black md:px-6">
+          <main className="flex-1 p-2 bg-gray-400 md:px-6">
             {activeView === "dashboard" ? (
               <div className="p-2">
                 <DashboardHome

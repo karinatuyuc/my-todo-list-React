@@ -44,13 +44,13 @@ export default function TaskCard({
   return (
     <>
       <div
-        className="border-gray-800 mt-2 mb-2
-        md:mt-3 lg:p-0.5 bg-blue-600 md:flex md:justify-center md:items-center md:w-96"
+        className="mt-0.5 mb-0.5
+        md:mt-3 lg:p-0.5 md:flex md:justify-center md:items-center md:w-96"
       >
         <div className="grid grid-cols-1 gap-4 mt-1.5 p-1.5 lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
-            className="w-64 max-w-sm mx-auto bg-red-900 min-h-36 border-2 rounded-lg p-2 border-gray-300 
+            className="w-72 max-w-sm mx-auto min-h-36 border-2 rounded-lg p-2 border-gray-300 
             md:grid md:grid-cols-1 md:p-2 md:w-full lg:w-80 lg:p-1.2"
           >
             <div
@@ -77,8 +77,8 @@ export default function TaskCard({
                   </p>
                 </div>
                 {/** CARD FOOTER */}
-                <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5 md:text-[10px] md:gap-1">
-                  <span className="text-white">
+                <div className="text-[8px] text-black grid grid-cols-3 justify-between mt-6 md:text-[10px] md:gap-1">
+                  <span className="">
                     Priority: {" "}
                     <span className={priorityColors[tasks.priority]} >
                     {tasks.priority}
@@ -90,7 +90,7 @@ export default function TaskCard({
                   </span>{" "}
 
                   {/**This should be interactive  */}
-                  <span className="text-gray-500">
+                  <span className="text-gray-400">
                     Created on: <span>{tasks.date}</span>
                   </span>
                 </div>

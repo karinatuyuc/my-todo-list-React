@@ -16,7 +16,7 @@ export default function CompletedTask({ dateIn }) {
       {/*CARD TASKS */}
       <div className="grid grid-cols-1 gap-4  rounded-sm md:p-2 md:flex md:flex-row">
         {/**Card #1 */}
-        <div className="w-64 max-w-sm mx-auto bg-red-900 border-2 p-1 mb-3 rounded-lg border-gray-300 md:grid md:grid-cols-1 
+        <div className="w-60 max-w-sm mx-auto border-2 p-1.5 mb-3 rounded-lg border-gray-300 md:grid md:grid-cols-1 
         md:w-72 lg:w-64">
           <div className="flex gap-2">
             {/**This  is the cricle  */}
@@ -26,13 +26,13 @@ export default function CompletedTask({ dateIn }) {
             </div>
 
             {/*CARD TASKS */}
-            <div className="grid w-full p-2">
+            <div className="grid w-full p-0.5">
               <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black">
                 TITULO DEL TASK
               </span>
 
-              <div className="text-sm h-14 text-ellipsis w-full m-0.5">
-                <p className="text-xs font-medium text-gray-900 line-clamp-4 break-all">
+              <div className="text-sm h-8 text-ellipsis w-full m-0.5">
+                <p className="text-xs font-medium text-gray-900 line-clamp-2 break-all">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Recusandae autem beatae est eius iure rem quasi et! Temp ora
                   laboriosam nisi nulla deleniti non inventore ab temp ore
@@ -54,12 +54,9 @@ export default function CompletedTask({ dateIn }) {
                 </p>
               </div>
               {/** CARD FOOTER */}
-              <div className="text-[8px] grid grid-cols-3 justify-between mt-2.5">
-                <span className="text-white">
-                  Priority: <span></span>
-                </span>
+              <div className=" flex flex-col text-[8px] mt-2 gap-1 text-black">
                 <span className="">
-                  Status: <span className="text-red-600">No status</span>
+                  Status: <span className="">No status</span>
                 </span>{" "}
                 {/**This should be interactive  */}
                 <span className="text-gray-500">
