@@ -55,6 +55,7 @@ export default function Dashboard({
 
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
+  let waveHand = "\u{1F44B}";
 
   return (
     <>
@@ -141,12 +142,26 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          <main className="flex-1 p-2 bg-gray-400 md:px-6">
+          <div className="mx-3.5">
+            <div className="flex gap-2 lg:mt-6 lg:ml-6">
+              <div className="flex text-black text-2xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
+                <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-2xl">
+                  Welcome,{" "}
+                  <span className=" text-2xl md:text-4xl lg:text-4xl">
+                    {userName}
+                  </span>
+                </h1>
+                {waveHand}
+              </div>
+            </div>
+            {/** Main section */}
+          </div>
+
+          <main className="flex-1 p-2 bg-white md:px-6 border-2 border-gray-300 m-2">
             {activeView === "dashboard" ? (
               <div className="p-2">
                 <DashboardHome
                   task={task}
-                  userName={userName}
                   setModalAddTask={setModalAddTask}
                   setEditTaskModal={setEditTaskModal}
                   editTask={editTask}
@@ -160,12 +175,11 @@ export default function Dashboard({
               </div>
             ) : activeView === "MyTask" ? (
               <MyTask
-               task={task}
-               setSelectedTask={setSelectedTask}
-               selectedTask={selectedTask}
-               setEditTaskModal={setEditTaskModal}
-               setDeleteTaskModal={setDeleteTaskModal}
-    
+                task={task}
+                setSelectedTask={setSelectedTask}
+                selectedTask={selectedTask}
+                setEditTaskModal={setEditTaskModal}
+                setDeleteTaskModal={setDeleteTaskModal}
               />
             ) : activeView === "TaskCategories" ? (
               <TaskCategories />
@@ -173,9 +187,9 @@ export default function Dashboard({
               <Settings />
             ) : activeView === "About" ? (
               <About />
-            ) : 
-            <Help/>
-            }
+            ) : (
+              <Help />
+            )}
           </main>
         </div>
         <span className="text-[10px] bg-red-900 p-1">

@@ -98,7 +98,7 @@ export default function TaskCard({
 
               <div className="cursor-pointer">
                 <EllipsisHorizontalIcon
-                 className="w-5 h-5"
+                 className="w-5 h-5 text-gray-600"
                  onClick={() => {
                   idOptions(tasks.id)}}
                 />
