@@ -1,7 +1,7 @@
 export function CreateCategoryModal({ setShowCategoryModal }) {
   return (
     <>
-      <div className="bg-red-700 h-full w-full flex flex-col gap-4 p-4 rounded-2xl text-black">
+      <div className="bg-red-700 min-h-2/6 w-full flex flex-col gap-4 p-4 rounded-2xl text-black relative">
 
         <div className="flex items-center justify-between p-2.5 text-lg font-bold">
           <div className="text-lg">

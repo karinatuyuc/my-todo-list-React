@@ -182,7 +182,8 @@ export default function Dashboard({
                 setDeleteTaskModal={setDeleteTaskModal}
               />
             ) : activeView === "TaskCategories" ? (
-              <TaskCategories />
+              <TaskCategories
+              taskList={task} />
             ) : activeView === "Settings" ? (
               <Settings />
             ) : activeView === "About" ? (
