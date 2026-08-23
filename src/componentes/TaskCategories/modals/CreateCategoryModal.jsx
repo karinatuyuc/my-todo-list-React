@@ -21,6 +21,7 @@ export function CreateCategoryModal({ setShowCategoryModal }) {
             type="text"
             className="w-full p-2.5 text-lg text-black rounded-md border-2 border-gray-300"
           />
+          <span>Hola mundo</span>
         </div>
 
         <div className="flex gap-4">
