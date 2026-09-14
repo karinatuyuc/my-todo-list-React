@@ -57,6 +57,8 @@ export default function Dashboard({
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
   let waveHand = "\u{1F44B}";
 
+  console.log(activeView);
+
   return (
     <>
       {modalAddTask && (
@@ -181,16 +183,13 @@ export default function Dashboard({
                 setEditTaskModal={setEditTaskModal}
                 setDeleteTaskModal={setDeleteTaskModal}
               />
-            ) : activeView === "TaskCategories" ? (
-              <TaskCategories
-              taskList={task} />
+            ): activeView === "TaskCategories" ? (
+              <TaskCategories />
             ) : activeView === "Settings" ? (
               <Settings />
-            ) : activeView === "About" ? (
-              <About />
             ) : (
-              <Help />
-            )}
+              <About />
+            ) }
           </main>
         </div>
         <span className="text-[10px] bg-red-900 p-1">

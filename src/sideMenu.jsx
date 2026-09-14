@@ -135,7 +135,7 @@ export default function SideMenu({
               <Squares2X2Icon className={iconStyles} />
               Dashboard
             </li>
-            <li className={listStyles} onClick={() => { setActiveView("MyTask"), setIsOpen(false)}}>
+            <li className={listStyles} onClick={() => {setActiveView("MyTask"), setIsOpen(false)}}>
               <DocumentCheckIcon className={iconStyles} />
               My Task
             </li>

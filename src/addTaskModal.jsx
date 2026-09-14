@@ -2,7 +2,11 @@ import { useState } from "react";
 import { GenerateUniqueID } from "./UniqueId";
 //import { data } from "autoprefixer";
 import FormErrors from "./FormErrors/FormErrors";
-import { validateTitle, validateDescription, validatePriority } from "./helper/validation";
+import {
+  validateTitle,
+  validateDescription,
+  validatePriority,
+} from "./helper/validation";
 
 export function AddTaskModal({ addTask, onClose }) {
   // Receive setTasks and onClose as props
@@ -13,53 +17,53 @@ export function AddTaskModal({ addTask, onClose }) {
   const [date, setDate] = useState("");
 
   const priorityOptions = ["Extreme", "Moderate", "Low"];
-   const priorityColors = {
-  "Low": 'bg-green-500',
-  "Moderate": "bg-blue-400",
-  "Extreme": "bg-red-700"
- }
+  const priorityColors = {
+    Low: "bg-green-500",
+    Moderate: "bg-blue-400",
+    Extreme: "bg-red-700",
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
     let hasErrors = false;
 
-    if(title.trim() === "") {
+    if (title.trim() === "") {
       setErrors((prev) => ({
         ...prev,
-        title: "Title is required"
-      }))
-          hasErrors = true;
-    } else {
-      setErrors((prev) => ({
-        ...prev,
-        title: ""
-      }))
-    };
-
-    if(priority.trim() === "") {
-      setErrors((prev) => ({
-        ...prev,
-        priority: "Priority is required"
+        title: "Title is required",
       }));
       hasErrors = true;
     } else {
       setErrors((prev) => ({
         ...prev,
-        priority: ""
-      }))
+        title: "",
+      }));
     }
 
-    if(description.trim() === '') {
+    if (priority.trim() === "") {
       setErrors((prev) => ({
         ...prev,
-        description: "Description is required"
-      }))
+        priority: "Priority is required",
+      }));
       hasErrors = true;
     } else {
       setErrors((prev) => ({
         ...prev,
-        description: ""
-      }))
+        priority: "",
+      }));
+    }
+
+    if (description.trim() === "") {
+      setErrors((prev) => ({
+        ...prev,
+        description: "Description is required",
+      }));
+      hasErrors = true;
+    } else {
+      setErrors((prev) => ({
+        ...prev,
+        description: "",
+      }));
     }
 
     let newTask = {
@@ -70,13 +74,10 @@ export function AddTaskModal({ addTask, onClose }) {
       description,
     };
 
-
-    if(!hasErrors) {
+    if (!hasErrors) {
       addTask(newTask);
       onClose();
     }
-
-
   };
 
   return (
@@ -123,13 +124,40 @@ export function AddTaskModal({ addTask, onClose }) {
                 className="w-60 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:p-0.5"
               />
 
+              {/**Categories */}
+              <div className="flex gap-2 flex-col mb-2 mt-2">
+                <span className="font-medium">Cateogory: </span>
+                <select
+                  value={priority}
+                  onChange={(e) =>
+                    validatePriority(e.target.value, setPriority, setErrors)
+                  }
+                  className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
+                >
+                  <option value="" className="text-[8px]">
+                    Select a category...
+                  </option>
+                  <option value="low" className="text-[8px]">
+                    Work
+                  </option>
+                  <option value="medium" className="text-[8px]">
+                    Personal
+                  </option>
+                  <option value="high" className="text-[8px]">
+                    Study
+                  </option>
+                </select>
+              </div>
+
               {/* Priority options  */}
               <fieldset className="flex gap-6 mt-1 bg-gray-100 p-1 rounded-sm">
                 <legend className="font-medium mb-2">Priority</legend>
 
                 {priorityOptions.map((priorities) => (
                   <div key={priorities} className="flex items-center gap-2">
-                    <span className={`${priorityColors[priorities]} w-2 h-2 rounded-full shrink-0`}></span>                 
+                    <span
+                      className={`${priorityColors[priorities]} w-2 h-2 rounded-full shrink-0`}
+                    ></span>
                     <label htmlFor={`priority-${priorities}`}>
                       {" "}
                       {priorities}
@@ -140,13 +168,14 @@ export function AddTaskModal({ addTask, onClose }) {
                       name="priority"
                       value={priorities}
                       checked={priority === priorities}
-                      onChange={(e) => validatePriority(e.target.value, setPriority, setErrors)}
+                      onChange={(e) =>
+                        validatePriority(e.target.value, setPriority, setErrors)
+                      }
                     />
                   </div>
                 ))}
               </fieldset>
               <span className="text-[8px] text-red-600">{errors.priority}</span>
-            
 
               {/*Text area del la descripcion del task */}
               <label className="font-medium">Task Description</label>
@@ -155,11 +184,15 @@ export function AddTaskModal({ addTask, onClose }) {
                 name="taskDescription"
                 type="text"
                 value={description} // Bind the textarea value to the description state
-                onChange={(e) => validateDescription(e.target.value, setDescription, setErrors)}
+                onChange={(e) =>
+                  validateDescription(e.target.value, setDescription, setErrors)
+                }
                 placeholder="Start writing here...." // Placeholder text
                 className="h-28 w-80 border-2 border-gray-200 rounded-sm p-2"
               ></textarea>
-              <span className="text-[8px] text-red-600">{errors.description}</span>
+              <span className="text-[8px] text-red-600">
+                {errors.description}
+              </span>
             </div>
 
             <button

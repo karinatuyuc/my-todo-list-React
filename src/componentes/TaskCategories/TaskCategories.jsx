@@ -62,8 +62,12 @@ export function TaskCategories({ taskList }) {
       {newStatus && <AddNewStatus setNewStatus={setNewStatus} />}
       {editStatus && <EditStatus setEditStatus={setEditStatus} />}
 
-      <div className="rounded-xl h-full m-2 p-1 lg:p-4 text-black absolute">
-        <div className="flex flex-col gap-5 mb-6 fixed">
+      <div className="rounded-xl h-screen m-2 p-1 lg:p-4 text-black relative">
+
+        {showCategoryModal ? (
+          <CreateCategoryModal setShowCategoryModal={setShowCategoryModal} />
+        ) : (
+          <div className="flex flex-col gap-5 mb-6 ">
           <div className="text-3xl lg:text-2xl font-bold">
             <span className="underline decoration-orange-700 underline-offset-4">
               Task{" "}
@@ -78,12 +82,6 @@ export function TaskCategories({ taskList }) {
           </button>
         </div>
 
-        {showCategoryModal ? (
-          <CreateCategoryModal setShowCategoryModal={setShowCategoryModal} />
-        ) : taskList.lenght === 0 ? (
-          <span>No hay nada</span>
-        ) : (
-          <span>Si hay</span>
         )}
       </div>
     </>

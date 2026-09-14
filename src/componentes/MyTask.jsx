@@ -49,6 +49,7 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
             onClick={() => {
               (setDetailsTask(task), setSelectedTask(task));
             }}
+            key={task.id}
           >
             <div className="flex md:p-3">
               <span className="rounded-full w-5 h-5 text-red-700 border-4"></span>
@@ -59,9 +60,9 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
 
               <div className="flex gap-14 text-base md:py-2">
                 <span className="md:text-lg">Priority: {task.priority}</span>
-                <sapn className="md:text-lg">
+                <span className="md:text-lg">
                   Status: {task.status} No status
-                </sapn>
+                </span>
               </div>
             </div>
           </div>
