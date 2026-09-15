@@ -41,9 +41,6 @@ export default function Dashboard({
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Moderate", "Low"]);
 
-
-
-
   const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number

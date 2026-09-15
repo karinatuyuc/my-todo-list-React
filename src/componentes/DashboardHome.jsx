@@ -21,7 +21,7 @@ export function DashboardHome({
   editTask,
   idOptions,
   onCloseEditModal,
-  setDeleteTaskModal,
+  setDeleteTaskModal
 }) {
   //**/
   // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK
@@ -265,9 +265,9 @@ export function DashboardHome({
                   </div>
                 </div>
               ) : (
-                elementosCompletedTask.map((compl) => (
+                elementosCompletedTask.map((compl, index) => (
                   <CompletedTask
-                    key={compl}
+                    key={index}
                     dateIn={dateInNumber}
                     task={task}
                     openOptionsTaskId={openOptionsTaskId}
