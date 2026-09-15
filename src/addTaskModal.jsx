@@ -6,7 +6,12 @@ import {
   validatePriority,
 } from "./helper/validation";
 
-export function AddTaskModal({ addTask, onClose, priorities }) {
+export function AddTaskModal({
+  addTask,
+  onClose,
+  priorities,
+  createCategories,
+}) {
   // Receive setTasks and onClose as props
   const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
@@ -131,18 +136,15 @@ export function AddTaskModal({ addTask, onClose, priorities }) {
                   }
                   className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
                 >
-                  <option value="" className="text-[8px]">
+                  <option value="" className="text-[5px] p-1.5">
                     Select a category...
                   </option>
-                  <option value="low" className="text-[8px]">
-                    Work
-                  </option>
-                  <option value="medium" className="text-[8px]">
-                    Personal
-                  </option>
-                  <option value="high" className="text-[8px]">
-                    Study
-                  </option>
+
+                  {createCategories.map((categorias, index) => (
+                    <option value={categorias} className="text-[8px]" key={index}>
+                      {categorias}
+                    </option>
+                  ))}
                 </select>
               </div>
 

@@ -40,6 +40,8 @@ export default function Dashboard({
 
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Moderate", "Low"]);
+  const [createCategories, setCreateCategories] = useState(["Work", "School", "dayoff"]);
+
 
   const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
@@ -54,6 +56,7 @@ export default function Dashboard({
           onClose={onClose} // Pass the onClose function as a prop to close the modal
           onSubmit={onSubmit} // Passing onAddTask function to update the task list in the Dashboard component when a new task is added
           priorities={priorities} // Pass the priorities array as a prop to the AddTaskModal component
+          createCategories={createCategories}
         />
       )}
 
@@ -174,6 +177,8 @@ export default function Dashboard({
             ): activeView === "TaskCategories" ? (
               <TaskCategories
                priorities={priorities}
+               createCategories={createCategories}
+               setCreateCategories={setCreateCategories}
               />
             ) : activeView === "Settings" ? (
               <Settings />
