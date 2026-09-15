@@ -6,7 +6,7 @@ import {
   validatePriority,
 } from "./helper/validation";
 
-export function AddTaskModal({ addTask, onClose }) {
+export function AddTaskModal({ addTask, onClose, priorities }) {
   // Receive setTasks and onClose as props
   const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
@@ -14,7 +14,6 @@ export function AddTaskModal({ addTask, onClose }) {
   const [priority, setPriority] = useState("");
   const [date, setDate] = useState("");
 
-  const priorityOptions = ["Extreme", "Moderate", "Low"];
   const priorityColors = {
     Low: "bg-green-500",
     Moderate: "bg-blue-400",
@@ -151,7 +150,7 @@ export function AddTaskModal({ addTask, onClose }) {
               <fieldset className="flex gap-6 mt-1 bg-gray-100 p-1 rounded-sm">
                 <legend className="font-medium mb-2">Priority</legend>
 
-                {priorityOptions.map((priorities) => (
+                {priorities.map((priorities) => (
                   <div key={priorities} className="flex items-center gap-2">
                     <span
                       className={`${priorityColors[priorities]} w-2 h-2 rounded-full shrink-0`}
