@@ -8,7 +8,7 @@ export function CreateCategoryModal({ setShowCategoryModal }) {
             <span className="underline underline-offset-8 decoration-amber-600">
               Create {" "}
             </span>
-            Category
+            Catego
           </div>
           <div className="text-lg underline underline-offset-4 decoration-black" onClick={() => setShowCategoryModal(false)}>
             Go Back

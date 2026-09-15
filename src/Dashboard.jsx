@@ -3,25 +3,17 @@ import {
   MagnifyingGlassIcon,
   ClockIcon,
   ClipboardDocumentCheckIcon,
-  PlusIcon,
-  ClipboardIcon,
-  CheckCircleIcon,
 } from "@heroicons/react/24/outline";
-import ProgressCircle from "./ProgressCircle.jsx";
-import CompletedTask from "./CompletedTask.jsx";
-import TaskCard from "./TaskCard.jsx";
+
 import SideMenu from "./sideMenu.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 import { EditModal } from "./editModal.jsx";
-import TaskRenderer from "./TaskRenderer.jsx";
-import { EditDeleteModal } from "./optionModals/EditDeleteModal.jsx";
 import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
 import { DashboardHome } from "./componentes/DashboardHome.jsx";
 import { TaskCategories } from "./componentes/TaskCategories/TaskCategories.jsx";
 import { Settings } from "./componentes/Settings.jsx";
 import { About } from "./componentes/About.jsx";
-import { Help } from "./componentes/Help.jsx";
 
 export default function Dashboard({
   task,
@@ -33,31 +25,28 @@ export default function Dashboard({
   editTaskModal,
   setEditTaskModal,
   onCloseEditModal,
-
   selectedTask,
   setSelectedTask,
   editTask,
-
   idOptions,
   openOptionsTaskId,
   setOpenOptionsTaskId,
-
   deleteTaskModal,
   setDeleteTaskModal,
   deleteTask,
-
   activeView,
   setActiveView,
 }) {
+
   const [userName, setUserName] = useState("");
 
-  const date = new Date(); //Creating the local date
 
+
+  
+  const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
   let waveHand = "\u{1F44B}";
-
-  console.log(activeView);
 
   return (
     <>

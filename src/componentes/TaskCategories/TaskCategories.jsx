@@ -14,7 +14,7 @@ export function TaskStatus({ setEditStatus }) {
   }
   return (
     <>
-      <div className=" bg-white flex justify-center items-center mx-1 rounded-xl border-2 border-gray-300">
+      <div className=" bg-white flex rounded-xl border-2 border-gray-300">
         <table className="w-full text-center text-black">
           <tbody className="">
             <th className="p-2 border-r-2 border-gray-300">SN</th>
@@ -26,16 +26,60 @@ export function TaskStatus({ setEditStatus }) {
             <td className="border-r-2 border-gray-300">Completed</td>
 
             <td className="text-black w-1/12 p-1.5 lg:w-96">
-              <div className="gap-2 flex justify-items-center justify-center text-white text-center">
+              <div className="gap-2 p-1 flex justify-items-center justify-center text-white text-center">
                 <button
                   className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer"
                   onClick={() => setEditStatus(true)}
                 >
-                  <PencilSquareIcon className="w-5 h-5" />
+                  <PencilSquareIcon className="w-4 h-5" />
                   Edit
                 </button>
                 <button className="bg-orange-600 flex p-1 rounded-sm lg:p-2">
-                  <TrashIcon className="w-5 h-5" />
+                  <TrashIcon className="w-4 h-5" />
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+
+{
+  /**Static table for Priority */
+}
+export function TaskPriority({ setEditStatus }) {
+  {
+    /**Hijo */
+  }
+  return (
+    <>
+      <div className=" bg-white w-full flex rounded-xl border-2 mt-2 border-gray-300">
+        <table className="w-full text-center text-black">
+          <tbody className="">
+            <th className="p-2 border-r-2 border-gray-300">SN</th>
+            <th className="p-2 border-l-2 border-gray-300">Task Priority</th>
+            <th className="p-2 border-l-2 border-gray-300">Action</th>
+          </tbody>
+          <tbody className="border-t-2 border-gray-300">
+            <td className="border-r-2 border-gray-300">1</td>
+            <td className="border-r-2 border-gray-300">High</td>
+
+            <td className="text-black w-1/12 p-1.5 lg:w-96">
+              <div className="gap-2 p-1 flex justify-items-center justify-center text-white text-center">
+                <button
+                  className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer"
+                  onClick={() => setEditStatus(true)}
+                >
+                  <PencilSquareIcon className="w-4 h-5" />
+                  Edit
+                </button>
+                <button className="bg-orange-600 flex p-1 rounded-sm lg:p-2  disabled:bg-orange-400 disabled:text-white disabled:cursor-not-allowed"
+                disabled={true}>
+                  <TrashIcon className="w-4 h-5" />
                   Delete
                 </button>
               </div>
@@ -50,39 +94,37 @@ export function TaskStatus({ setEditStatus }) {
 {
   /**Padre */
 }
-export function TaskCategories({ taskList }) {
-  const [showCategoryModal, setShowCategoryModal] = useState(false);
+export function TaskCategories() {
   const [newStatus, setNewStatus] = useState(false);
   const [editStatus, setEditStatus] = useState(false);
-
-  console.log(newStatus);
 
   return (
     <>
       {newStatus && <AddNewStatus setNewStatus={setNewStatus} />}
       {editStatus && <EditStatus setEditStatus={setEditStatus} />}
 
-      <div className="rounded-xl h-screen m-2 p-1 lg:p-4 text-black relative">
-
-        {showCategoryModal ? (
-          <CreateCategoryModal setShowCategoryModal={setShowCategoryModal} />
-        ) : (
-          <div className="flex flex-col gap-5 mb-6 ">
+      <div className="rounded-xl h-screen m-1 p-1 lg:p-4 text-black relative">
+        <div className="flex flex-col gap-5 mb-6 ">
           <div className="text-3xl lg:text-2xl font-bold">
             <span className="underline decoration-orange-700 underline-offset-4">
               Task{" "}
             </span>
             Categories
           </div>
-          <button
-            className="bg-orange-600 rounded-md w-32 p-2 text-white lg:p-1 lg:w-28 cursor-pointer"
-            onClick={() => setShowCategoryModal(true)}
-          >
-            Add Category
-          </button>
         </div>
 
-        )}
+        <div className="flex flex-col gap-8 p-1">
+          <TaskStatus setEditStatus={setEditStatus} />
+
+
+          <div className="">
+            <span className="font-medium"> <span className="underline decoration-orange-700 underline-offset-4">Task</span> Priority</span>
+            <TaskPriority setEditStatus={setEditStatus} />
+          </div>
+        
+        </div>
+
+        
       </div>
     </>
   );

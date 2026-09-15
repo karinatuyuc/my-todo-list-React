@@ -44,7 +44,7 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
         {taskList.map((task) => (
 
           <div
-            className="border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl
+            className="border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
             md:max-w-5/6 md:m-2 md:rounded-2xl"
             onClick={() => {
               (setDetailsTask(task), setSelectedTask(task));
@@ -118,13 +118,13 @@ export function MyTask({
           />
         </div>
 
-        <div className="border-gray-300 border-2 p-3 m-1.5 mt-2 rounded-sm text-black md:rounded-2xl md:mt-6">
+        <div className="border-gray-300 border-2 p-3 m-1.5 mt-2 rounded-2xl text-black md:rounded-2xl md:mt-6">
           <div className="p-1 flex-1 overflow-y-scroll md:rounded-lg md:p-6">
             {detailsTaks === null ? (
               <p className="text-sm bg-gray-300 text-gray-600">Please select a task above to see the details</p>
             ) : (
               <div>
-                <div className="grid col-end-1 border-b-green-600 border-b-2 mb-4">
+                <div className="grid col-end-1 border-b-red-400 border-b-2 mb-4">
                   <span>
                     <strong className="md:text-lg">{detailsTaks.title}</strong>
                   </span>
@@ -140,11 +140,11 @@ export function MyTask({
 
                 <div className="mt-3 grid gap-1.5 md:gap-5">
                   <span>
-                    <strong className="md:text-lg">Task title: </strong>{" "}
+                    <strong className="md:text-lg text-gray-600">Task title: </strong>{" "}
                     {detailsTaks.title}
                   </span>
                   <div>
-                    <strong className="md:text-lg">Task Description: </strong>
+                    <strong className="md:text-lg text-gray-600">Task Description: </strong>
                     <span className="md:text-base">
                       {detailsTaks.description}
                     </span>
@@ -152,7 +152,7 @@ export function MyTask({
                 </div>
 
                 <div>
-                  <strong>Date:</strong> {detailsTaks.date}
+                  <strong className="text-gray-600">Date:</strong> {detailsTaks.date}
                 </div>
               </div>
             )}

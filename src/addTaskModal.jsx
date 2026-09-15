@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { GenerateUniqueID } from "./UniqueId";
-//import { data } from "autoprefixer";
-import FormErrors from "./FormErrors/FormErrors";
 import {
   validateTitle,
   validateDescription,
