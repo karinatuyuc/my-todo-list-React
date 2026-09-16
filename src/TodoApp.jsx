@@ -42,7 +42,7 @@ function TodoApp() {
   // States to control the Modal visibility
   const [showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   const [editTaskModal, setEditTaskModal] = useState(false);
-  const [deleteTaskModal, setDeleteTaskModal] = useState(false);
+ // const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openOptionsTaskId, setOpenOptionsTaskId] = useState(null);
 
   function onCloseModalAdd() {
@@ -59,12 +59,13 @@ function TodoApp() {
 
   // console.log("Este es e id que guarda idOpenOptions", openOptionsTaskId)
 
-  function deleteTask(taskId) {
+  /*
+  function filterTaskDelete(taskId) {
     let filterTask = taskList.filter(
       (taskFiltered) => taskFiltered.id !== taskId.id,
     );
     setTaskList(filterTask);
-  }
+  }*/
 
   return (
     <>
@@ -83,9 +84,6 @@ function TodoApp() {
         openOptionsTaskId={openOptionsTaskId}
         setOpenOptionsTaskId={setOpenOptionsTaskId}
         idOptions={idOpenOptions}
-        deleteTaskModal={deleteTaskModal}
-        setDeleteTaskModal={setDeleteTaskModal}
-        deleteTask={deleteTask}
         activeView={activeView}
         setActiveView={setActiveView}
       />

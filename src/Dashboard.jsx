@@ -8,7 +8,6 @@ import {
 import SideMenu from "./sideMenu.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
 import { EditModal } from "./editModal.jsx";
-import { DeleteTaskModal } from "./optionModals/DeleteModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
 import { DashboardHome } from "./componentes/DashboardHome.jsx";
 import { TaskCategories } from "./componentes/TaskCategories/TaskCategories.jsx";
@@ -31,16 +30,13 @@ export default function Dashboard({
   idOptions,
   openOptionsTaskId,
   setOpenOptionsTaskId,
-  deleteTaskModal,
-  setDeleteTaskModal,
-  deleteTask,
   activeView,
   setActiveView,
 }) {
 
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Moderate", "Low"]);
-  const [createCategories, setCreateCategories] = useState(["Work", "School", "dayoff"]);
+ // const [createCategories, setCreateCategories] = useState(["Work", "School", "dayoff"]);
 
 
   const date = new Date(); //Creating the local date
@@ -56,7 +52,6 @@ export default function Dashboard({
           onClose={onClose} // Pass the onClose function as a prop to close the modal
           onSubmit={onSubmit} // Passing onAddTask function to update the task list in the Dashboard component when a new task is added
           priorities={priorities} // Pass the priorities array as a prop to the AddTaskModal component
-          createCategories={createCategories}
         />
       )}
 
@@ -68,14 +63,6 @@ export default function Dashboard({
         />
       )}
 
-      {deleteTaskModal && (
-        <DeleteTaskModal
-          setDeleteTaskModal={setDeleteTaskModal}
-          selectedTask={selectedTask}
-          deleteTask={deleteTask}
-          idOptions={idOptions}
-        />
-      )}
 
       <div className="w-full text-white">
         {/*Header*/}
@@ -160,7 +147,6 @@ export default function Dashboard({
                   editTask={editTask}
                   idOptions={idOptions}
                   onCloseEditModal={onCloseEditModal}
-                  setDeleteTaskModal={setDeleteTaskModal}
                   setSelectedTask={setSelectedTask}
                   openOptionsTaskId={openOptionsTaskId}
                   setOpenOptionsTaskId={setOpenOptionsTaskId}
@@ -172,12 +158,10 @@ export default function Dashboard({
                 setSelectedTask={setSelectedTask}
                 selectedTask={selectedTask}
                 setEditTaskModal={setEditTaskModal}
-                setDeleteTaskModal={setDeleteTaskModal}
               />
             ): activeView === "TaskCategories" ? (
               <TaskCategories
                priorities={priorities}
-               createCategories={createCategories}
               />
             ) : activeView === "Settings" ? (
               <Settings />

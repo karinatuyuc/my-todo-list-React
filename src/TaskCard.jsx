@@ -10,7 +10,7 @@ export default function TaskCard({
   setOpenOptionsTaskId, 
   setEditTaskModal, 
   setSelectedTask,
-  setDeleteTaskModal}) {
+ }) {
   // Receive dataInputs, date, tasks, and setTasks as props
   //  editTaskModal,setEditTaskModal,onCloseEditModal,
 
@@ -114,7 +114,6 @@ export default function TaskCard({
                       setEditTaskModal(true);
                     }}
                     onDelete={ () => {
-                      setDeleteTaskModal(true)
                       setSelectedTask(tasks)
                     }
                     }
