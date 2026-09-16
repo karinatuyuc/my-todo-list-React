@@ -4,7 +4,7 @@ export function DeleteTaskModal( { setDeleteTaskModal, selectedTask, deleteTask 
   return (
     <>
      <div className="bg-amber-500/50 fixed inset-0 z-50 flex justify-center items-center">
-     <div className="bg-white rounded-lg shadow-xl w-96 p-6">
+     <div className="bg-white rounded-lg shadow-xl w-80 p-6">
         <h2 className="text-red-700 font-bold text-lg">Delete Task?</h2>
         <p className="text-gray-700 mt-2">This action cannot be undone. Are you sure you want to delete this task?
         </p>

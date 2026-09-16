@@ -178,7 +178,6 @@ export default function Dashboard({
               <TaskCategories
                priorities={priorities}
                createCategories={createCategories}
-               setCreateCategories={setCreateCategories}
               />
             ) : activeView === "Settings" ? (
               <Settings />

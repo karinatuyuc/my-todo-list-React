@@ -20,7 +20,7 @@ export function TaskPriority({ priorities }) {
                 <td className="border-r-2 border-gray-300">{priorities}</td>
 
                 <td className="text-black w-1/12 p-1.5 lg:w-96">
-                  <div className="gap-2 p-1 flex justify-items-center justify-center text-white text-center">
+                  <div className="gap-2 flex justify-items-center justify-center text-white text-center">
                     <button className={`bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer ${disabledStyles}`} disabled={true}>
                       <PencilSquareIcon className="w-4 h-5" />
                       Edit
