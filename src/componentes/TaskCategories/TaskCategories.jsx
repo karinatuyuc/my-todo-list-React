@@ -7,7 +7,7 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 
 
-export function TaskCategory({ createCategories}) {
+export function TaskCategory({ createCategories, onDelete}) {
   return (
     <>
       <div className=" bg-white flex rounded-xl border-2 border-gray-300 mt-2 w-full">
@@ -37,6 +37,7 @@ export function TaskCategory({ createCategories}) {
                     </button>
                     <button
                       className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
+                      onClick={() => onDelete(categoria, "task category")}
                      
                     >
                       <TrashIcon className="w-4 h-5 " />
@@ -59,6 +60,7 @@ export function TaskCategory({ createCategories}) {
 export function TaskCategories({
   priorities,
   createCategories,
+  onDelete
 }) {
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -105,6 +107,7 @@ export function TaskCategories({
 
             <TaskCategory
               createCategories={createCategories}
+              onDelete={onDelete}
             />
           </div>
 

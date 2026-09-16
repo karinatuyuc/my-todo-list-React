@@ -32,11 +32,12 @@ export default function Dashboard({
   setOpenOptionsTaskId,
   activeView,
   setActiveView,
+  onDelete
 }) {
 
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Moderate", "Low"]);
- // const [createCategories, setCreateCategories] = useState(["Work", "School", "dayoff"]);
+  const [createCategories, setCreateCategories] = useState(["Work", "School", "dayoff"]);
 
 
   const date = new Date(); //Creating the local date
@@ -150,6 +151,7 @@ export default function Dashboard({
                   setSelectedTask={setSelectedTask}
                   openOptionsTaskId={openOptionsTaskId}
                   setOpenOptionsTaskId={setOpenOptionsTaskId}
+                  onDelete={onDelete}
                 />
               </div>
             ) : activeView === "MyTask" ? (
@@ -161,7 +163,9 @@ export default function Dashboard({
               />
             ): activeView === "TaskCategories" ? (
               <TaskCategories
+               createCategories={createCategories}
                priorities={priorities}
+               onDelete={onDelete}
               />
             ) : activeView === "Settings" ? (
               <Settings />

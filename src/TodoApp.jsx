@@ -10,18 +10,17 @@ function TodoApp() {
 
   // states
   const [taskList, setTaskList] = useState(() => {
-    const datosGuardados = localStorage.getItem('todo_app_v1');
+    const datosGuardados = localStorage.getItem("todo_app_v1");
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   }); // State to hold the list of tasks
 
   const [selectedTask, setSelectedTask] = useState(null);
 
-
   useEffect(() => {
-    localStorage.setItem('todo_app_v1', JSON.stringify(taskList));
+    localStorage.setItem("todo_app_v1", JSON.stringify(taskList));
   }, [taskList]);
 
-  function addTask(task) { 
+  function addTask(task) {
     setTaskList([...taskList, task]);
   }
 
@@ -42,8 +41,11 @@ function TodoApp() {
   // States to control the Modal visibility
   const [showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
   const [editTaskModal, setEditTaskModal] = useState(false);
- // const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openOptionsTaskId, setOpenOptionsTaskId] = useState(null);
+
+  // Para el modal de Delete
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("");
 
   function onCloseModalAdd() {
     setAddTaskShowModal(false);
@@ -57,6 +59,13 @@ function TodoApp() {
     setOpenOptionsTaskId(idOpen);
   };
 
+  function onDelete(item, selected) {
+    if (item) {
+      setOpenDeleteModal(true);
+      setSelectedItem(selected);
+    }
+  }
+
   // console.log("Este es e id que guarda idOpenOptions", openOptionsTaskId)
 
   /*
@@ -69,6 +78,8 @@ function TodoApp() {
 
   return (
     <>
+      {openDeleteModal && <DeleteTaskModal selectedItem={selectedItem} onClose={() => setOpenDeleteModal(false)}/>}
+
       <Dashboard
         task={taskList}
         addTask={addTask}
@@ -86,6 +97,7 @@ function TodoApp() {
         idOptions={idOpenOptions}
         activeView={activeView}
         setActiveView={setActiveView}
+        onDelete={onDelete}
       />
     </>
   );

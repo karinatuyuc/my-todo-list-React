@@ -21,7 +21,8 @@ export function DashboardHome({
   editTask,
   idOptions,
   onCloseEditModal,
-  setDeleteTaskModal
+  setDeleteTaskModal,
+  onDelete
 }) {
   //**/
   // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK
@@ -138,6 +139,7 @@ export function DashboardHome({
                   openOptionsTaskId={openOptionsTaskId}
                   onCloseEditModal={onCloseEditModal}
                   setDeleteTaskModal={setDeleteTaskModal}
+                  onDelete={onDelete}
                 />
               ))
             )}
