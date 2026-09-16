@@ -7,12 +7,25 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 
 
-export function TaskCategory({ createCategories, onDelete}) {
+export function TaskCategory({ createCategories, setOpenCreate, onDelete,}) {
+
   return (
     <>
       <div className=" bg-white flex rounded-xl border-2 border-gray-300 mt-2 w-full">
-        <table className="w-full text-center text-black">
-          <thead>
+
+        {createCategories.length  === 0 ?
+        <div className="flex flex-col justify-center items-center w-full gap-2 p-2">
+          <span className="font-medium">No Categories yet</span>
+          <h2 className="font-light">Start by adding a new category</h2>
+          <button className="bg-orange-600 text-white font-medium p-1.5 rounded-lg w-40 cursor-pointer"
+          onClick={() => setOpenCreate(true)}
+          >
+            Add Category
+          </button>
+        </div>
+        : 
+        <table className="w-full text-center text-black bg-red-700">
+        <thead>
             <tr>
               <th className="p-2 border-r-2 border-gray-300">SN</th>
               <th className="p-2 border-l-2 border-gray-300">Task Category</th>
@@ -20,7 +33,7 @@ export function TaskCategory({ createCategories, onDelete}) {
             </tr>
           </thead>
 
-          {createCategories.map((categoria, index) => (
+           { createCategories.map((categoria, index) => (
             <tbody className="border-t-2 border-gray-300" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
@@ -38,7 +51,6 @@ export function TaskCategory({ createCategories, onDelete}) {
                     <button
                       className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
                       onClick={() => onDelete(categoria, "task category")}
-                     
                     >
                       <TrashIcon className="w-4 h-5 " />
                       Delete
@@ -48,7 +60,8 @@ export function TaskCategory({ createCategories, onDelete}) {
               </tr>
             </tbody>
           ))}
-        </table>
+        </table>}
+        
       </div>
     </>
   );
@@ -95,7 +108,9 @@ export function TaskCategories({
                 Categories
               </span>
 
-              <div className="text-gray-500 text-sm flex">
+
+              {createCategories.length === 0 ? null : (
+                <div className="text-gray-500 text-sm flex">
                 <button className="flex cursor-pointer"
                   onClick={() => setOpenCreate(true)}
                 >
@@ -103,10 +118,12 @@ export function TaskCategories({
                   Add Task Category
                 </button>
               </div>
+              )}
             </div>
 
             <TaskCategory
               createCategories={createCategories}
+              setOpenCreate={setOpenCreate}
               onDelete={onDelete}
             />
           </div>

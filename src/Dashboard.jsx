@@ -37,7 +37,7 @@ export default function Dashboard({
 
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Moderate", "Low"]);
-  const [createCategories, setCreateCategories] = useState(["Work", "School", "dayoff"]);
+  const [createCategories, setCreateCategories] = useState([]);
 
 
   const date = new Date(); //Creating the local date
