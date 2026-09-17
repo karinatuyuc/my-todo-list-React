@@ -37,7 +37,10 @@ export default function Dashboard({
 
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Moderate", "Low"]);
-  const [createCategories, setCreateCategories] = useState([]);
+  const [createCategories, setCreateCategories] = useState([
+    { id: 1, name: "Personal" },
+    { id: 2, name: "Work" }
+  ]);
 
 
   const date = new Date(); //Creating the local date
@@ -50,6 +53,7 @@ export default function Dashboard({
       {modalAddTask && (
         <AddTaskModal
           addTask={addTask}
+          createCategories={createCategories}
           onClose={onClose} // Pass the onClose function as a prop to close the modal
           onSubmit={onSubmit} // Passing onAddTask function to update the task list in the Dashboard component when a new task is added
           priorities={priorities} // Pass the priorities array as a prop to the AddTaskModal component

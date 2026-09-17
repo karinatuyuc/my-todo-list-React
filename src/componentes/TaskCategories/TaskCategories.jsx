@@ -24,7 +24,7 @@ export function TaskCategory({ createCategories, setOpenCreate, onDelete,}) {
           </button>
         </div>
         : 
-        <table className="w-full text-center text-black bg-red-700">
+        <table className="w-full text-center text-black">
         <thead>
             <tr>
               <th className="p-2 border-r-2 border-gray-300">SN</th>
@@ -37,7 +37,7 @@ export function TaskCategory({ createCategories, setOpenCreate, onDelete,}) {
             <tbody className="border-t-2 border-gray-300" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
-                <td className="border-r-2 border-gray-300">{categoria}</td>
+                <td className="border-r-2 border-gray-300">{categoria.name}</td>
 
                 <td className="text-black w-1/12 p-1.5 lg:w-96">
                   <div className="gap-2 flex justify-items-center justify-center text-white text-center">

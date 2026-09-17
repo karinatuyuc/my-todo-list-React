@@ -129,24 +129,25 @@ export function AddTaskModal({
               {/**Categories */}
               <div className="flex gap-2 flex-col mb-2 mt-2">
                 <span className="font-medium">Cateogory: </span>
+
                 <select
                   value={priority}
                   onChange={(e) =>
-                    validatePriority(e.target.value, setPriority, setErrors)
+                  validatePriority(e.target.value, setPriority, setErrors)
                   }
                   className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
                 >
-                  <option value="" className="text-[5px] p-1.5">
-                    Select a category...
-                  </option>
 
-                  {createCategories.map((categorias, index) => (
-                    <option value={categorias} className="text-[8px]" key={index}>
-                      {categorias}
+                  {createCategories.length === 0 ? <option>No categories to show...</option> : 
+                  createCategories.map((cate, index) => (
+                    <option key={index}>
+                     {cate.name}
                     </option>
                   ))}
+                  
                 </select>
               </div>
+
 
               {/* Priority options  */}
               <fieldset className="flex gap-6 mt-1 bg-gray-100 p-1 rounded-sm">
