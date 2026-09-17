@@ -15,9 +15,13 @@ export function AddTaskModal({
   // Receive setTasks and onClose as props
   const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState(null);
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
-  const [date, setDate] = useState("");
+
+  console.log(category)
+
 
   const priorityColors = {
     Low: "bg-green-500",
@@ -72,6 +76,7 @@ export function AddTaskModal({
       id: GenerateUniqueID().id,
       title,
       date,
+      category,
       priority,
       description,
     };
@@ -131,10 +136,8 @@ export function AddTaskModal({
                 <span className="font-medium">Cateogory: </span>
 
                 <select
-                  value={priority}
-                  onChange={(e) =>
-                  validatePriority(e.target.value, setPriority, setErrors)
-                  }
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                   className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
                 >
 
