@@ -42,6 +42,10 @@ export default function Dashboard({
     { id: 2, name: "Work" }
   ]);
 
+  function addCategory(categoryId) {
+    console.log(categoryId);
+  }
+
 
   const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
@@ -170,6 +174,7 @@ export default function Dashboard({
                createCategories={createCategories}
                priorities={priorities}
                onDelete={onDelete}
+               addCategory={addCategory}
               />
             ) : activeView === "Settings" ? (
               <Settings />

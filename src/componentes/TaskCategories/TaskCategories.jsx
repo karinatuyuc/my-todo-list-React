@@ -73,7 +73,8 @@ export function TaskCategory({ createCategories, setOpenCreate, onDelete,}) {
 export function TaskCategories({
   priorities,
   createCategories,
-  onDelete
+  onDelete,
+  addCategory
 }) {
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -84,6 +85,7 @@ export function TaskCategories({
     {openCreate ? (
       <CreateCategoryModal
        setOpenEdit={setOpenCreate}
+       addCategory={addCategory}
       />
     ) : 
     <div className="h-screen m-1 p-0.5 lg:p-4 text-black">

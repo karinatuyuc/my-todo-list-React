@@ -1,4 +1,7 @@
-export function CreateCategoryModal({ setOpenEdit }) {
+export function CreateCategoryModal({ setOpenEdit, addCategory }) {
+
+
+
   return (
     <>
       <div className=" h-screen w-full flex flex-col gap-4 p-3 rounded-2xl text-black">
