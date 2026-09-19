@@ -7,7 +7,7 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 
 
-export function TaskCategory({ createCategories, setOpenCreate, onDelete,}) {
+export function TaskCategory({createCategories, setOpenCreate, onDelete,}) {
 
   return (
     <>
@@ -71,10 +71,10 @@ export function TaskCategory({ createCategories, setOpenCreate, onDelete,}) {
   /**Padre */
 }
 export function TaskCategories({
+  addCategory,
   priorities,
   createCategories,
   onDelete,
-  addCategory
 }) {
   const [openCreate, setOpenCreate] = useState(false);
 
@@ -84,7 +84,7 @@ export function TaskCategories({
 
     {openCreate ? (
       <CreateCategoryModal
-       setOpenEdit={setOpenCreate}
+       setOpenCreate={setOpenCreate}
        addCategory={addCategory}
       />
     ) : 

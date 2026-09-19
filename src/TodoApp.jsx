@@ -14,9 +14,6 @@ function TodoApp() {
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   }); // State to hold the list of tasks
 
-
-  console.log(taskList)
-
   const [selectedTask, setSelectedTask] = useState(null);
 
   useEffect(() => {

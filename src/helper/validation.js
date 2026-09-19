@@ -49,5 +49,10 @@ export function validateDescription(value, setDescription, setErrors) {
 }
 
 
+export function validateCategory(value, stateFunction) {
+  stateFunction(value);
+}
+
+
 
 

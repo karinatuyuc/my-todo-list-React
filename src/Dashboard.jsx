@@ -43,9 +43,8 @@ export default function Dashboard({
   ]);
 
   function addCategory(categoryId) {
-    console.log(categoryId);
+    setCreateCategories([...createCategories, categoryId]);
   }
-
 
   const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
@@ -171,10 +170,10 @@ export default function Dashboard({
               />
             ): activeView === "TaskCategories" ? (
               <TaskCategories
+               addCategory={addCategory}
                createCategories={createCategories}
                priorities={priorities}
                onDelete={onDelete}
-               addCategory={addCategory}
               />
             ) : activeView === "Settings" ? (
               <Settings />

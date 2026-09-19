@@ -1,5 +1,20 @@
-export function CreateCategoryModal({ setOpenEdit, addCategory }) {
+import { useState } from "react";
+import { GenerateUniqueID } from "../../../UniqueId";
 
+export function CreateCategoryModal({ setOpenCreate, addCategory }) {
+
+  const [categoryName, setCategoryName] = useState("");
+
+
+  function cateogoryNa(){
+
+    let newCat = {
+      id: GenerateUniqueID().id,
+      name: categoryName
+    }
+
+    addCategory(newCat);
+  }
 
 
   return (
@@ -14,7 +29,7 @@ export function CreateCategoryModal({ setOpenEdit, addCategory }) {
           </div>
           <div
             className="text-lg underline underline-offset-4 decoration-black cursor-pointer"
-            onClick={() => setOpenEdit(false)}
+            onClick={() => setOpenCreate(false)}
           >
             Go Back
           </div>
@@ -27,17 +42,23 @@ export function CreateCategoryModal({ setOpenEdit, addCategory }) {
           <input
             id="category"
             type="text"
+            value={categoryName}
+            onChange={(e) => setCategoryName(e.target.value)}
             className="w-full p-1.5 text-lg text-black rounded-md border-2 border-gray-300"
           />
         </div>
 
         <div className="flex gap-4">
-          <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer">
+          <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer"
+          onClick={() => {
+            setOpenCreate(false),
+            cateogoryNa()
+          }}>
             Create
           </button>
           <button
             className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer"
-            onClick={() => setOpenEdit(false)}
+            onClick={() => setOpenCreate(false)}
           >
             Cancel
           </button>

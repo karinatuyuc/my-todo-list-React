@@ -20,14 +20,14 @@ export function AddTaskModal({
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
 
-  console.log(category)
-
 
   const priorityColors = {
     Low: "bg-green-500",
     Moderate: "bg-blue-400",
     Extreme: "bg-red-700",
   };
+
+  console.log(title)
 
   const onSubmit = (e) => {
     e.preventDefault();
