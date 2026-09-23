@@ -48,11 +48,13 @@ export function validateDescription(value, setDescription, setErrors) {
   }
 }
 
-
-export function validateCategory(value, stateFunction) {
-  stateFunction(value);
+export function validateTaskCategoryInput(value, setCategoryName){
+  setCategoryName(value);
+  if (value.trim() === "") {
+    console.log("No hay nada")
+  } else {
+    console.log("categoria guardada")
+  }
 }
-
-
 
 

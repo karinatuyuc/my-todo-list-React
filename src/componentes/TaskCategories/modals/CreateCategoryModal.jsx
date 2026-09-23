@@ -4,16 +4,38 @@ import { GenerateUniqueID } from "../../../UniqueId";
 export function CreateCategoryModal({ setOpenCreate, addCategory }) {
 
   const [categoryName, setCategoryName] = useState("");
+  const [error, setError] = useState({});
+
+  let colorInput = "border-green-5000";
 
 
   function cateogoryNa(){
+    let hasErrors = false;
 
-    let newCat = {
+    if(categoryName.trim() === "") {
+      setError(prev => ({
+        ...prev,
+        inputCategory: "Esta vacio"
+      }))
+      hasErrors = true;
+      console.log('cambio de color de borde')
+    } else {
+      setError(prev => ({
+        ...prev,
+        inputCategory: ""
+      }))
+    }
+
+    let newCategory = {
       id: GenerateUniqueID().id,
       name: categoryName
     }
 
-    addCategory(newCat);
+    if(!hasErrors) {
+      addCategory(newCategory);
+      setCategoryName("");
+    }
+
   }
 
 
@@ -44,14 +66,14 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
             type="text"
             value={categoryName}
             onChange={(e) => setCategoryName(e.target.value)}
-            className="w-full p-1.5 text-lg text-black rounded-md border-2 border-gray-300"
+            className={` ${categoryName.trim() === "" ? "border-amber-500 border-2" : "border-amber-300"}`}
           />
         </div>
+        <span className="text-sm text-red-500">{error.inputCategory}</span>
 
         <div className="flex gap-4">
           <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer"
           onClick={() => {
-            setOpenCreate(false),
             cateogoryNa()
           }}>
             Create
