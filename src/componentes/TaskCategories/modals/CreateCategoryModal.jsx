@@ -68,7 +68,7 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
             type="text"
             value={categoryName}
             onChange={(e) => setCategoryName(e.target.value)}
-            className={` ${categoryName.trim() === "" ? "border-amber-500 border-2" : "border-amber-300"}`}
+            className={` border-gray-400 border-2 rounded-lg px-4 py-2 focus:border-red-300 focus:ring-2 focus:ring-red-400 focus:outline-none transition-all`}
           />
         </div>
         <span className="text-sm text-red-500">{error.inputCategory}</span>
