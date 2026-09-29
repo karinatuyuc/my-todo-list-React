@@ -5,9 +5,6 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
 
   const [categoryName, setCategoryName] = useState("");
   const [error, setError] = useState({});
-  const [inputColor, setInputColor] = useState(false);
-
-  let colorInput = "border-green-5000";
 
 
   function cateogoryNa(){
@@ -19,7 +16,6 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
         inputCategory: "Esta vacio"
       }))
       hasErrors = true;
-      setInputColor(true)
     } else {
       setError(prev => ({
         ...prev,

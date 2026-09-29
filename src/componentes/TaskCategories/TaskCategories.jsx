@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TaskPriority } from "./modals/PriorityModals";
+import { EditTaskCategory } from "./modals/EditTaskCategory";
 import { TaskStatus } from "./modals/StatusModals";
 import { CreateCategoryModal } from "./modals/CreateCategoryModal";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/16/solid";
@@ -7,7 +8,7 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 
 
-export function TaskCategory({createCategories, setOpenCreate, onDelete,}) {
+export function TaskCategory({createCategories, setOpenCreate, onDelete, setOpenEditCategory}) {
 
   return (
     <>
@@ -43,7 +44,7 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,}) {
                   <div className="gap-2 flex justify-items-center justify-center text-white text-center">
                     <button
                       className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer"
-                      onClick={() => console.log('se abre el edot moal')}
+                      onClick={() => setOpenEditCategory(true)}
                     >
                       <PencilSquareIcon className="w-4 h-5" />
                       Edit
@@ -75,11 +76,20 @@ export function TaskCategories({
   priorities,
   createCategories,
   onDelete,
+  setEditTaskModal
 }) {
   const [openCreate, setOpenCreate] = useState(false);
+  const [openEditCateogory, setOpenEditCategory] = useState(false);
 
   return (
     <>
+
+    {openEditCateogory && 
+    ( <EditTaskCategory
+          closeEdit={setOpenEditCategory}
+      />
+
+    )}
 
 
     {openCreate ? (
@@ -126,6 +136,8 @@ export function TaskCategories({
             <TaskCategory
               createCategories={createCategories}
               setOpenCreate={setOpenCreate}
+              setOpenEditCategory={setOpenEditCategory}
+              setEditTaskModal={setEditTaskModal}
               onDelete={onDelete}
             />
           </div>
