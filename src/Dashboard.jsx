@@ -7,7 +7,7 @@ import {
 
 import SideMenu from "./sideMenu.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
-import { EditModal } from "./editModal.jsx";
+import { EditModal } from "./EditModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
 import { DashboardHome } from "./componentes/DashboardHome.jsx";
 import { TaskCategories } from "./componentes/TaskCategories/TaskCategories.jsx";
@@ -41,10 +41,17 @@ export default function Dashboard({
     { id: 1, name: "Personal" },
     { id: 2, name: "Work" }
   ]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   function addCategory(categoryId) {
     setCreateCategories([...createCategories, categoryId]);
   }
+
+  function editCategory(task){
+    setCreateCategories(task);
+    console.log(selectedCategory);
+  }
+
 
   console.log(createCategories)
 

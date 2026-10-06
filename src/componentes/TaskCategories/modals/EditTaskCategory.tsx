@@ -1,5 +1,7 @@
 
 export function EditTaskCategory({ closeEdit }) {
+
+
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">

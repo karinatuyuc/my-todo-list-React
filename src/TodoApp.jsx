@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { AddTaskModal } from "./addTaskModal";
-import { EditModal } from "./editModal";
 import Dashboard from "./Dashboard";
 import { DeleteTaskModal } from "./optionModals/DeleteModal";
 import SideMenu from "./sideMenu";
