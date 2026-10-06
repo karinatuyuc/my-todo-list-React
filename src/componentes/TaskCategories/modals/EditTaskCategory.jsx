@@ -1,6 +1,11 @@
+import { useState } from "react";
 
-export function EditTaskCategory({ closeEdit }) {
+export function EditTaskCategory({ closeEdit,
+  selectedCategory,
+  editCategory
+ }) {
 
+  const [ categoryTitle, setCategoryTitle] = useState("");
 
   return (
     <>

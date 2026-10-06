@@ -41,19 +41,21 @@ export default function Dashboard({
     { id: 1, name: "Personal" },
     { id: 2, name: "Work" }
   ]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const [ selectedCategory, setSelectedCategory] = useState(null);
 
   function addCategory(categoryId) {
     setCreateCategories([...createCategories, categoryId]);
   }
 
-  function editCategory(task){
-    setCreateCategories(task);
-    console.log(selectedCategory);
+  function editCategory(categoryId) {
+    setSelectedCategory(categoryId);
+    console.log(categoryId);
   }
 
+    console.log(selectedCategory)
 
-  console.log(createCategories)
+
 
   const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
@@ -186,6 +188,8 @@ export default function Dashboard({
                editTask={editTask}
                setEditTaskModal={setEditTaskModal}
                onDelete={onDelete}
+               editCategory={editCategory}
+               selectedCategory={selectedCategory}  
               />
             ) : activeView === "Settings" ? (
               <Settings />

@@ -8,7 +8,10 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 
 
-export function TaskCategory({createCategories, setOpenCreate, onDelete, setOpenEditCategory}) {
+export function TaskCategory({createCategories, setOpenCreate, onDelete, 
+  setOpenEditCategory,
+  editCategory
+}) {
 
   return (
     <>
@@ -34,7 +37,7 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete, setOpen
             </tr>
           </thead>
 
-           { createCategories.map((categoria, index) => (
+           {createCategories.map((categoria, index) => (
             <tbody className="border-t-2 border-gray-300" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
@@ -46,7 +49,9 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete, setOpen
                       className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer"
                       onClick={() => setOpenEditCategory(true)}
                     >
-                      <PencilSquareIcon className="w-4 h-5" />
+                      <PencilSquareIcon className="w-4 h-5"
+                      onClick={() => editCategory(categoria)}
+                      />
                       Edit
                     </button>
                     <button
@@ -76,10 +81,13 @@ export function TaskCategories({
   priorities,
   createCategories,
   onDelete,
-  setEditTaskModal
+  setEditTaskModal,
+  editCategory,
+  selectedCategory
 }) {
   const [openCreate, setOpenCreate] = useState(false);
   const [openEditCateogory, setOpenEditCategory] = useState(false);
+
 
   return (
     <>
@@ -87,6 +95,9 @@ export function TaskCategories({
     {openEditCateogory && 
     ( <EditTaskCategory
           closeEdit={setOpenEditCategory}
+          selectedCategory={selectedCategory}
+          editCategory={editCategory}
+          
       />
 
     )}
@@ -139,6 +150,8 @@ export function TaskCategories({
               setOpenEditCategory={setOpenEditCategory}
               setEditTaskModal={setEditTaskModal}
               onDelete={onDelete}
+              editCategory={editCategory}
+
             />
           </div>
 
