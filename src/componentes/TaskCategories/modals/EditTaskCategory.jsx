@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export function EditTaskCategory({ closeEdit,
   selectedCategory,
   editCategory
  }) {
+  
+  const [ categoryTitle, setCategoryTitle] = useState(selectedCategory?.name || '');
 
-  const [ categoryTitle, setCategoryTitle] = useState("");
+  function onSubmit(e) {
+    e.preventDefault();
+
+    let hasEmptyInput = false;
+
+    if(categoryTitle.trim() === "") {
+      alert("You need to write something to update the task category");
+      hasEmptyInput = true;
+    } else {
+      hasEmptyInput = false;
+    }
+
+    const categoryUpdate = {
+      id: selectedCategory.id,
+      name: categoryTitle
+    }
+
+
+    if(!hasEmptyInput) {
+      editCategory(categoryUpdate);
+      closeEdit(false);
+    }
+  }
+
 
   return (
     <>
@@ -33,13 +58,16 @@ export function EditTaskCategory({ closeEdit,
                 <input
                   id="category"
                   type="text"
+                  value={categoryTitle}
+                  onChange={(e) => setCategoryTitle(e.target.value)}
                   className={` border-gray-400 border-2 rounded-sm px-2 py-1 focus:border-red-300 focus:ring-1 focus:ring-red-400 focus:outline-none transition-all`}
                 />
               </div>
 
               <span className="text-sm text-red-500"></span>
               <div className="flex gap-4 mt-6">
-                <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer">
+                <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer"
+                onClick={onSubmit}>
                   Update
                 </button>
                 <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer"

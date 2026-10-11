@@ -65,16 +65,6 @@ function TodoApp() {
     }
   }
 
-  // console.log("Este es e id que guarda idOpenOptions", openOptionsTaskId)
-
-  /*
-  function filterTaskDelete(taskId) {
-    let filterTask = taskList.filter(
-      (taskFiltered) => taskFiltered.id !== taskId.id,
-    );
-    setTaskList(filterTask);
-  }*/
-
   return (
     <>
       {openDeleteModal && <DeleteTaskModal selectedItem={selectedItem} onClose={() => setOpenDeleteModal(false)}/>}

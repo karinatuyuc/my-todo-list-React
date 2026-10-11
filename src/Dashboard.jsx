@@ -50,10 +50,21 @@ export default function Dashboard({
 
   function editCategory(categoryId) {
     setSelectedCategory(categoryId);
-    console.log(categoryId);
+
+    const editedCategories = createCategories.map((category) => {
+
+      if (category.id === categoryId.id) {
+        return {
+          ...category,
+          name: categoryId.name
+        }
+      } else {
+        return category;
+      }
+    })
+    setCreateCategories(editedCategories);
   }
 
-    console.log(selectedCategory)
 
 
 
@@ -189,7 +200,8 @@ export default function Dashboard({
                setEditTaskModal={setEditTaskModal}
                onDelete={onDelete}
                editCategory={editCategory}
-               selectedCategory={selectedCategory}  
+               selectedCategory={selectedCategory} 
+               setSelectedCategory={setSelectedCategory}
               />
             ) : activeView === "Settings" ? (
               <Settings />

@@ -3,6 +3,7 @@ import { TaskPriority } from "./modals/PriorityModals";
 import { EditTaskCategory } from "./modals/EditTaskCategory";
 import { TaskStatus } from "./modals/StatusModals";
 import { CreateCategoryModal } from "./modals/CreateCategoryModal";
+import { EditDeleteModal } from "../../optionModals/EditDeleteModal";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/16/solid";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
@@ -10,8 +11,10 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 export function TaskCategory({createCategories, setOpenCreate, onDelete, 
   setOpenEditCategory,
-  editCategory
+  editCategory,
+  setSelectedCategory
 }) {
+
 
   return (
     <>
@@ -56,7 +59,12 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
                     </button>
                     <button
                       className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
-                      onClick={() => onDelete(categoria, "task category")}
+                      onDelete={ () => {
+                      onDelete(categoria, "task category")
+                      setSelectedCategory(categoria.id)
+                    }
+                    }
+                    onClick={() => onDelete(categoria, "task category")}
                     >
                       <TrashIcon className="w-4 h-5 " />
                       Delete
@@ -83,7 +91,8 @@ export function TaskCategories({
   onDelete,
   setEditTaskModal,
   editCategory,
-  selectedCategory
+  selectedCategory,
+  setSelectedCategory
 }) {
   const [openCreate, setOpenCreate] = useState(false);
   const [openEditCateogory, setOpenEditCategory] = useState(false);
@@ -151,7 +160,8 @@ export function TaskCategories({
               setEditTaskModal={setEditTaskModal}
               onDelete={onDelete}
               editCategory={editCategory}
-
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
             />
           </div>
 
