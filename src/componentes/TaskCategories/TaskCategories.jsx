@@ -12,7 +12,7 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 export function TaskCategory({createCategories, setOpenCreate, onDelete, 
   setOpenEditCategory,
   editCategory,
-  setSelectedCategory
+  deleteCategory
 }) {
 
 
@@ -58,15 +58,15 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
                       Edit
                     </button>
                     <button
-                      className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
-                      onDelete={ () => {
-                      onDelete(categoria, "task category")
-                      setSelectedCategory(categoria.id)
-                    }
-                    }
-                    onClick={() => onDelete(categoria, "task category")}
+                      className={`bg-black text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
+                      onClick={() =>
+                        onDelete(categoria, "task category", () =>
+                          deleteCategory(categoria.id)
+                        )
+                      }
                     >
-                      <TrashIcon className="w-4 h-5 " />
+                      <TrashIcon className="w-4 h-5 bg-red-600"
+                      />
                       Delete
                     </button>
                   </div>
@@ -92,7 +92,10 @@ export function TaskCategories({
   setEditTaskModal,
   editCategory,
   selectedCategory,
-  setSelectedCategory
+  setSelectedCategory,
+  deleteCategory,
+  openDeleteModal,
+  setOpenDeleteModal
 }) {
   const [openCreate, setOpenCreate] = useState(false);
   const [openEditCateogory, setOpenEditCategory] = useState(false);
@@ -162,6 +165,9 @@ export function TaskCategories({
               editCategory={editCategory}
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
+              deleteCategory={deleteCategory}
+              setOpenDeleteModal={setOpenDeleteModal}
+              openDeleteModal={openDeleteModal}
             />
           </div>
 

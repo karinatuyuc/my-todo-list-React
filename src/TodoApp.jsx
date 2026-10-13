@@ -45,6 +45,7 @@ function TodoApp() {
   // Para el modal de Delete
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
+  const [deleteAction, setDeleteAction] = useState(null);
 
   function onCloseModalAdd() {
     setAddTaskShowModal(false);
@@ -58,16 +59,43 @@ function TodoApp() {
     setOpenOptionsTaskId(idOpen);
   };
 
-  function onDelete(item, selected) {
+  function onDelete(item, selected, action) {
+    console.log(item);
     if (item) {
       setOpenDeleteModal(true);
       setSelectedItem(selected);
+      const actionToConfirm =
+        action ??
+        (selected === "task"
+          ? () =>
+              setTaskList((currentTasks) =>
+                currentTasks.filter((task) => task.id !== item.id)
+              )
+          : null);
+      setDeleteAction(() => actionToConfirm);
     }
+  }
+
+  function confirmDelete() {
+    deleteAction?.();
+    setOpenDeleteModal(false);
+    setDeleteAction(null);
+  }
+
+  function closeDeleteModal() {
+    setOpenDeleteModal(false);
+    setDeleteAction(null);
   }
 
   return (
     <>
-      {openDeleteModal && <DeleteTaskModal selectedItem={selectedItem} onClose={() => setOpenDeleteModal(false)}/>}
+      {openDeleteModal && (
+        <DeleteTaskModal
+          selectedItem={selectedItem}
+          onClose={closeDeleteModal}
+          onConfirmDelete={confirmDelete}
+        />
+      )}
 
       <Dashboard
         task={taskList}
@@ -87,6 +115,8 @@ function TodoApp() {
         activeView={activeView}
         setActiveView={setActiveView}
         onDelete={onDelete}
+        openDeleteModal={openDeleteModal}
+        setOpenDeleteModal={setOpenDeleteModal}
       />
     </>
   );

@@ -1,6 +1,6 @@
 
 
-export function DeleteTaskModal({selectedItem, onClose }) {
+export function DeleteTaskModal({ selectedItem, onClose, onConfirmDelete }) {
   return (
     <>
      <div className="bg-amber-500/50 fixed inset-0 z-50 flex justify-center items-center">
@@ -17,7 +17,7 @@ export function DeleteTaskModal({selectedItem, onClose }) {
                 Cancel
             </button>
             <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition cursor-pointer"
-            
+        onClick={onConfirmDelete}
             >
                 Delete
             </button>

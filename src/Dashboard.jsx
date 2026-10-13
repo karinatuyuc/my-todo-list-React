@@ -32,7 +32,9 @@ export default function Dashboard({
   setOpenOptionsTaskId,
   activeView,
   setActiveView,
-  onDelete
+  onDelete,
+  openDeleteModal,
+  setOpenDeleteModal
 }) {
 
   const [userName, setUserName] = useState("");
@@ -44,9 +46,10 @@ export default function Dashboard({
 
   const [ selectedCategory, setSelectedCategory] = useState(null);
 
+
   function addCategory(categoryId) {
     setCreateCategories([...createCategories, categoryId]);
-  }
+  } 
 
   function editCategory(categoryId) {
     setSelectedCategory(categoryId);
@@ -64,6 +67,11 @@ export default function Dashboard({
     })
     setCreateCategories(editedCategories);
   }
+
+  function deleteCategory(id){
+    setCreateCategories(createCategories.filter((category) => category.id !== id));
+  }
+
 
 
 
@@ -202,6 +210,9 @@ export default function Dashboard({
                editCategory={editCategory}
                selectedCategory={selectedCategory} 
                setSelectedCategory={setSelectedCategory}
+               deleteCategory={deleteCategory}
+               setOpenDeleteModal={setOpenDeleteModal}
+               openDeleteModal={openDeleteModal}
               />
             ) : activeView === "Settings" ? (
               <Settings />
