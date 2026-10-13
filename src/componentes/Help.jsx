@@ -1,11 +1,12 @@
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline"
-export function Help(){
-
-    return (
-        <>
-         <div>
-            <ExclamationCircleIcon className="w-72 h-72"/>
-         </div>
-        </>
-    )
+export function Help() {
+  return (
+    <>
+      <div className="bg-black h-full">
+        <div
+          className="bg-[url('/public/Avatar/help.webp')] 
+                      bg-cover bg-center bg-no-repeat h-screen w-full"
+        ></div>
+      </div>
+    </>
+  );
 }

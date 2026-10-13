@@ -1,15 +1,10 @@
 import { useState } from "react";
 import {
-  ExclamationCircleIcon,
   Bars3Icon,
-  UserCircleIcon,
   Squares2X2Icon,
   DocumentCheckIcon,
   ListBulletIcon,
-  Cog6ToothIcon,
   QuestionMarkCircleIcon,
-  ArrowUturnLeftIcon,
-  XMarkIcon,
   PencilIcon,
   CheckIcon,
 } from "@heroicons/react/16/solid";
@@ -69,7 +64,8 @@ export default function SideMenu({
               
             `}
         >
-          <div className="absolute right-4 top-4 text-xl text-white md:text-2xl lg:hidden">
+          <div className="absolute right-4 top-4 text-xl text-white
+          cursor-pointer md:text-2xl lg:hidden">
             <button onClick={() => setIsOpen(false)}>Close</button>
           </div>
 
@@ -105,8 +101,13 @@ export default function SideMenu({
             </div>
           ) : (
             <div className="flex items-center mt-5 md:mt-7 lg:mt-3">
+              <label 
+               htmlFor="username"
+              ></label>
               <input
                 type="text"
+                id="username"
+                name="username"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="write your username"
@@ -145,21 +146,6 @@ export default function SideMenu({
             >
               <ListBulletIcon className={iconStyles} />
               Task Categories
-            </li>
-            <li
-              className={listStyles}
-              onClick={() => { setActiveView("Settings"), setIsOpen(false)}}
-            >
-              <Cog6ToothIcon className={iconStyles} />
-              Settings
-            </li>
-            <li className={listStyles} onClick={() => { setActiveView("About"), setIsOpen(false)}}>
-              <ExclamationCircleIcon className={iconStyles} />
-              About
-            </li>
-            <li className={listStyles} onClick={() => { setActiveView("Help"), setIsOpen(false)}}>
-              <QuestionMarkCircleIcon className={iconStyles} />
-              Help
             </li>
           </ol>
         </div>

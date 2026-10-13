@@ -11,8 +11,6 @@ import { EditModal } from "./EditModal.jsx";
 import { MyTask } from "./componentes/MyTask.jsx";
 import { DashboardHome } from "./componentes/DashboardHome.jsx";
 import { TaskCategories } from "./componentes/TaskCategories/TaskCategories.jsx";
-import { Settings } from "./componentes/Settings.jsx";
-import { About } from "./componentes/About.jsx";
 
 export default function Dashboard({
   task,
@@ -197,6 +195,7 @@ export default function Dashboard({
                 setSelectedTask={setSelectedTask}
                 selectedTask={selectedTask}
                 setEditTaskModal={setEditTaskModal}
+                onDelete={onDelete}
               />
             ): activeView === "TaskCategories" ? (
               <TaskCategories
@@ -214,11 +213,7 @@ export default function Dashboard({
                setOpenDeleteModal={setOpenDeleteModal}
                openDeleteModal={openDeleteModal}
               />
-            ) : activeView === "Settings" ? (
-              <Settings />
-            ) : (
-              <About />
-            ) }
+            ) : null }
           </main>
         </div>
         <span className="text-[10px] bg-red-900 p-1">

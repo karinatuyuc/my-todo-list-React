@@ -77,7 +77,7 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
 // COMPONENTE PADRE
 export function MyTask({
   task,
-  setDeleteTaskModal,
+  onDelete,
   setEditTaskModal,
   setSelectedTask,
   selectedTask,
@@ -161,7 +161,7 @@ export function MyTask({
           <div className="flex justify-end gap-1 p-1.5 md:p-4">
             <TrashIcon
               className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-10 md:h-10 text-gray-100 cursor-pointer"
-              onClick={() => setDeleteTaskModal(true)}
+              onClick={() => onDelete(detailsTaks, "task")}
             />
             <PencilSquareIcon
               className="w-8 h-8 bg-red-400 p-1 rounded-sm md:w-10 md:h-10 text-gray-100 cursor-pointer"

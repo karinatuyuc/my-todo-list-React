@@ -7,6 +7,7 @@ import SideMenu from "./sideMenu";
 function TodoApp() {
   const [activeView, setActiveView] = useState("dashboard");
 
+  console.log(activeView);
   // states
   const [taskList, setTaskList] = useState(() => {
     const datosGuardados = localStorage.getItem("todo_app_v1");
