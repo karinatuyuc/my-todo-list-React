@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
-import { AddTaskModal } from "./addTaskModal";
 import Dashboard from "./Dashboard";
 import { DeleteTaskModal } from "./optionModals/DeleteModal";
-import SideMenu from "./sideMenu";
 
 function TodoApp() {
   const [activeView, setActiveView] = useState("dashboard");
+  const [ status, setStatus ] = useState([
+    { status: "Not started", id: 1 },
+    { status: "In progress", id: 2 },
+    { status: "Completed", id: 3 }
+  ]);
 
-  console.log(activeView);
   // states
   const [taskList, setTaskList] = useState(() => {
     const datosGuardados = localStorage.getItem("todo_app_v1");
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   }); // State to hold the list of tasks
+
+  console.log(taskList)
 
   const [selectedTask, setSelectedTask] = useState(null);
 
@@ -36,7 +40,9 @@ function TodoApp() {
     });
 
     setTaskList(editTasked);
+    console.log(editTasked)
   }
+
 
   // States to control the Modal visibility
   const [showAddTaskModal, setAddTaskShowModal] = useState(false); // State to control the visibility of the modal
@@ -118,6 +124,8 @@ function TodoApp() {
         onDelete={onDelete}
         openDeleteModal={openDeleteModal}
         setOpenDeleteModal={setOpenDeleteModal}
+        status={status}
+        setStatus={setStatus}
       />
     </>
   );

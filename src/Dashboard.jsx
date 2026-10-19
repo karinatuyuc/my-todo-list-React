@@ -32,7 +32,9 @@ export default function Dashboard({
   setActiveView,
   onDelete,
   openDeleteModal,
-  setOpenDeleteModal
+  setOpenDeleteModal,
+  status,
+  setStatus
 }) {
 
   const [userName, setUserName] = useState("");
@@ -96,6 +98,8 @@ export default function Dashboard({
           onCloseEditModal={onCloseEditModal}
           selectedTask={selectedTask}
           editTask={editTask}
+          status={status}
+          setStatus={setStatus}
         />
       )}
 

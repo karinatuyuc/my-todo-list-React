@@ -2,13 +2,14 @@
 import { useState, useEffect } from "react";
 import { validateTitle, validatePriority, validateDescription} from "./helper/validation"
 
-export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
+export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
 
   //Local state with the actual value of the inputs
   const [ title, setTitle ] = useState(selectedTask?.title || '');
   const [ date, setDate ] = useState(selectedTask?.date || '');
   const [ priority, setPriority ] = useState(selectedTask?.priority || '');
-  const [ description, setDescription ] = useState(selectedTask?.description || ''); 
+  const [ description, setDescription ] = useState(selectedTask?.description || '');
+  const [ stat, setStat ] =  useState("");
 
   // State to control de erros
   const [ errors, setErrors ] = useState({});
@@ -33,6 +34,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
     setDate(selectedTask.date)
     setPriority(selectedTask.priority)
     setDescription(selectedTask.description)
+    setStat("")
     }
 
   }, [selectedTask])
@@ -72,8 +74,11 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
       title,
       date,
       priority,
-      description
+      description,
+      stat
     }
+
+    console.log(newTask)
 
     if(!hasEmptyInputs) {
       editTask(newTask);
@@ -97,10 +102,10 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
           </nav>
 
           <form onSubmit={onSubmitEditedTask}>
-            <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2.5 lg:mt-4 lg:p-2">
+            <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2 lg:mt-4 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
-                Title
+                Titleasfds
               </label>
               <input
                 id="title"
@@ -147,6 +152,24 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask}) {
                   );
                 })}
               </fieldset>
+
+              
+              {/**Categories */}
+              <div className="flex gap-2 flex-col mb-2 mt-2">
+                <span className="font-medium">Choose status: </span>
+
+                <select
+                  value={stat}
+                  onChange={(e) => setStat(e.target.value)}
+                  className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
+                >
+                  {status.map((statusItem) => (
+                    <option key={statusItem.id}>
+                      {statusItem.status}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               {/*Text area del la descripcion del task */}
               <label className="font-medium">Task Description</label>
