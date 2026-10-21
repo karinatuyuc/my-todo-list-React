@@ -100,6 +100,7 @@ export default function Dashboard({
           editTask={editTask}
           status={status}
           setStatus={setStatus}
+          createCategories={createCategories}
         />
       )}
 

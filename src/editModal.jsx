@@ -1,77 +1,82 @@
-
 import { useState, useEffect } from "react";
-import { validateTitle, validatePriority, validateDescription} from "./helper/validation"
+import {
+  validateTitle,
+  validatePriority,
+  validateDescription,
+} from "./helper/validation";
 
-export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
-
-  console.log(status)
-
+export function EditModal({
+  onCloseEditModal,
+  selectedTask,
+  editTask,
+  status,
+  createCategories,
+}) {
   //Local state with the actual value of the inputs
-  const [ title, setTitle ] = useState(selectedTask?.title || '');
-  const [ date, setDate ] = useState(selectedTask?.date || '');
-  const [ priority, setPriority ] = useState(selectedTask?.priority || '');
-  const [ description, setDescription ] = useState(selectedTask?.description || '');
-  const [ estado, setEstado ] =  useState(selectedTask?.estado || "");
-  const [ category, setCategory] = useState(selectedTask?.category || "");
+  const [title, setTitle] = useState(selectedTask?.title || "");
+  const [date, setDate] = useState(selectedTask?.date || "");
+  const [priority, setPriority] = useState(selectedTask?.priority || "");
+  const [description, setDescription] = useState(
+    selectedTask?.description || "",
+  );
+  const [estado, setEstado] = useState(selectedTask?.estado || "");
+  const [category, setCategory] = useState(selectedTask?.category || "");
 
+  console.log(createCategories);
 
   // State to control de erros
-  const [ errors, setErrors ] = useState({});
+  const [errors, setErrors] = useState({});
 
   // state for the disabled/availabe button
-  const [ isDisabled, setIsDisabled ] = useState(false) // True para indicar que los campos estan llenos
-
+  const [isDisabled, setIsDisabled] = useState(false); // True para indicar que los campos estan llenos
 
   useEffect(() => {
-    if(title.trim() !== "" && description.trim() !== "") {
+    if (title.trim() !== "" && description.trim() !== "") {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
     }
-
   }, [title, description]);
-
 
   useEffect(() => {
     if (selectedTask) {
-    setTitle(selectedTask.title)
-    setDate(selectedTask.date)
-    setPriority(selectedTask.priority)
-    setDescription(selectedTask.description)
-    setEstado(selectedTask.estado)
-    setCategory(selectedTask.category)
+      setTitle(selectedTask.title);
+      setDate(selectedTask.date);
+      setPriority(selectedTask.priority);
+      setDescription(selectedTask.description);
+      setEstado(selectedTask.estado);
+      setCategory(selectedTask.category);
     }
-
-  }, [selectedTask])
+  }, [selectedTask]);
 
   const priorityOptions = ["Low", "Medium", "Extreme"]; // Options for task priority
 
   const onSubmitEditedTask = (e) => {
     e.preventDefault();
     let hasEmptyInputs = false;
-    if(title.trim() === "") {
+    if (title.trim() === "") {
       setErrors((prev) => ({
         ...prev,
-        title: "Title is required"
-      })) 
+        title: "Title is required",
+      }));
       hasEmptyInputs = true;
     } else {
       setErrors((prev) => ({
         ...prev,
-        title: ""
-      }))
+        title: "",
+      }));
     }
 
-    if(description.trim() === "") {
-      setErrors(prev => ({
+    if (description.trim() === "") {
+      setErrors((prev) => ({
         ...prev,
-        description: 'Description is required'
-      }))
+        description: "Description is required",
+      }));
     } else {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        description: ''
-      }))
+        description: "",
+      }));
     }
 
     const newTask = {
@@ -81,17 +86,14 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
       priority,
       description,
       estado,
-      category
-    }
+      category,
+    };
 
-    if(!hasEmptyInputs) {
+    if (!hasEmptyInputs) {
       editTask(newTask);
       onCloseEditModal();
     }
-
-  }
-
-
+  };
 
   return (
     <>
@@ -101,7 +103,10 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Edit Task
             </span>
-            <button onClick={onCloseEditModal} className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4">
+            <button
+              onClick={onCloseEditModal}
+              className="cursor-pointer hover:underline hover:decoration-orange-500 hover:decoration-2 hover:underline-offset-4"
+            >
               Go Back
             </button>
           </nav>
@@ -117,7 +122,9 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
                 type="text"
                 name="taskTitle" // Update the title state on input change
                 value={title}
-                onChange={(e) => validateTitle(e.target.value, setTitle, setErrors)}
+                onChange={(e) =>
+                  validateTitle(e.target.value, setTitle, setErrors)
+                }
                 className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5"
               />
               <span className="text-[8px] text-red-600">{errors.title}</span>
@@ -150,7 +157,14 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
                         name="priority" // Name attribute to group radio buttons
                         value={priorityOption}
                         checked={priority === priorityOption}
-                        onChange={(e) => validatePriority(e.target.value, setPriority, setErrors, setIsDisabled)}
+                        onChange={(e) =>
+                          validatePriority(
+                            e.target.value,
+                            setPriority,
+                            setErrors,
+                            setIsDisabled,
+                          )
+                        }
                         className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>
@@ -158,22 +172,24 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
                 })}
               </fieldset>
 
-              
               {/**Categories */}
               <div className="flex gap-2 flex-col mb-2 mt-2">
                 <span className="font-medium">Cateogory: </span>
 
                 <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
                 >
-
-                  <option></option>
-
+                  {createCategories.length === 0 ? 
+                  <option>-- No categories to show--</option> :
+                  createCategories.map((categories) => (
+                    <option key={categories.id}>{categories.name}</option>
+                  ))
+                  }
                 </select>
               </div>
-              
+
               {/**Estado*/}
               <div className="flex gap-2 flex-col mb-2 mt-2">
                 <span className="font-medium">Choose status: </span>
@@ -184,9 +200,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
                   className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
                 >
                   {status.map((statusItem) => (
-                    <option key={statusItem.id}>
-                      {statusItem.status}
-                    </option>
+                    <option key={statusItem.id}>{statusItem.status}</option>
                   ))}
                 </select>
               </div>
@@ -199,16 +213,19 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
                 type="text"
                 placeholder="Start writing here...." // Placeholder text
                 value={description}
-                onChange={(e) => validateDescription(e.target.value, setDescription, setErrors)}
+                onChange={(e) =>
+                  validateDescription(e.target.value, setDescription, setErrors)
+                }
                 className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
               ></textarea>
-             <span className="text-[8px] text-red-600">{errors.description}</span>
-
+              <span className="text-[8px] text-red-600">
+                {errors.description}
+              </span>
             </div>
 
             <button
               type="submit"
-              className={`cursor-pointer p-1 text-amber-50 rounded-sm mt-1 ml-4 w-18 ${!isDisabled ? 'bg-orange-500' : 'bg-orange-300'}`}
+              className={`cursor-pointer p-1 text-amber-50 rounded-sm mt-1 ml-4 w-18 ${!isDisabled ? "bg-orange-500" : "bg-orange-300"}`}
               disabled={isDisabled}
             >
               Done
@@ -216,9 +233,8 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
           </form>
         </div>
       </div>
-    </> 
+    </>
   );
 }
-
 
 // className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"
