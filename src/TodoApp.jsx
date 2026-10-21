@@ -16,8 +16,6 @@ function TodoApp() {
     return datosGuardados ? JSON.parse(datosGuardados) : [];
   }); // State to hold the list of tasks
 
-  console.log(taskList)
-
   const [selectedTask, setSelectedTask] = useState(null);
 
   useEffect(() => {
@@ -40,7 +38,6 @@ function TodoApp() {
     });
 
     setTaskList(editTasked);
-    console.log(editTasked)
   }
 
 
@@ -67,7 +64,6 @@ function TodoApp() {
   };
 
   function onDelete(item, selected, action) {
-    console.log(item);
     if (item) {
       setOpenDeleteModal(true);
       setSelectedItem(selected);

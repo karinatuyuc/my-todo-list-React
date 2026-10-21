@@ -38,11 +38,13 @@ export default function Dashboard({
 }) {
 
   const [userName, setUserName] = useState("");
-  const [priorities] = useState(["Extreme", "Moderate", "Low"]);
+  const [priorities] = useState(["Extreme", "Medium", "Low"]);
   const [createCategories, setCreateCategories] = useState([
     { id: 1, name: "Personal" },
     { id: 2, name: "Work" }
   ]);
+
+  console.log(priorities)
 
   const [ selectedCategory, setSelectedCategory] = useState(null);
 

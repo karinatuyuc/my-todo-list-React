@@ -16,18 +16,16 @@ export function AddTaskModal({
   const [errors, setErrors] = useState({}); // State to hold form validation errors
   const [title, setTitle] = useState(""); // State to hold the task title
   const [date, setDate] = useState("");
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
 
-
   const priorityColors = {
     Low: "bg-green-500",
-    Moderate: "bg-blue-400",
+    Medium: "bg-blue-400",
     Extreme: "bg-red-700",
   };
 
-  console.log(title)
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -79,7 +77,10 @@ export function AddTaskModal({
       category,
       priority,
       description,
+      estado: 'Not started'
     };
+
+    console.log(newTask)
 
     if (!hasErrors) {
       addTask(newTask);

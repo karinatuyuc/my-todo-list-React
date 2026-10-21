@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { EllipsisHorizontalIcon, } from "@heroicons/react/24/outline";
-import { EditModal } from "./editModal";
 import { EditDeleteModal } from "./optionModals/EditDeleteModal";
 
 export default function TaskCard({ 
@@ -15,6 +14,7 @@ export default function TaskCard({
   // Receive dataInputs, date, tasks, and setTasks as props
   //  editTaskModal,setEditTaskModal,onCloseEditModal,
 
+  console.log(tasks.priority)
 
   const modalRef = useRef(null);
 
@@ -37,9 +37,10 @@ export default function TaskCard({
 
  const priorityColors = {
   "Low": 'text-green-500',
-  "Moderate": "text-blue-400",
+  "Medium": "text-blue-400",
   "Extreme": "text-red-700"
  }
+
 
 
   return (
@@ -87,7 +88,7 @@ export default function TaskCard({
                   </span>
 
                   <span className="">
-                    Status: <span className="text-red-600">No status</span>
+                    Status: <span>{tasks.estado}</span>
                   </span>{" "}
 
                   {/**This should be interactive  */}

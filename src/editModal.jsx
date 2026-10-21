@@ -9,7 +9,8 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
   const [ date, setDate ] = useState(selectedTask?.date || '');
   const [ priority, setPriority ] = useState(selectedTask?.priority || '');
   const [ description, setDescription ] = useState(selectedTask?.description || '');
-  const [ stat, setStat ] =  useState("");
+  const [ estado, setEstado ] =  useState(selectedTask?.estado || "");
+
 
   // State to control de erros
   const [ errors, setErrors ] = useState({});
@@ -34,7 +35,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
     setDate(selectedTask.date)
     setPriority(selectedTask.priority)
     setDescription(selectedTask.description)
-    setStat("")
+    setEstado(selectedTask.estado)
     }
 
   }, [selectedTask])
@@ -75,10 +76,8 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
       date,
       priority,
       description,
-      stat
+      estado
     }
-
-    console.log(newTask)
 
     if(!hasEmptyInputs) {
       editTask(newTask);
@@ -86,6 +85,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
     }
 
   }
+
 
 
   return (
@@ -159,8 +159,8 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
                 <span className="font-medium">Choose status: </span>
 
                 <select
-                  value={stat}
-                  onChange={(e) => setStat(e.target.value)}
+                  value={estado}
+                  onChange={(e) => setEstado(e.target.value)}
                   className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
                 >
                   {status.map((statusItem) => (

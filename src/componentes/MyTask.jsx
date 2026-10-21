@@ -36,6 +36,7 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
     <>
 
     { taskList.length === 0 ? (
+
       <TaskSkeleton/>
     ) : (<div
         className=" mt-1.5 p-2 rounded-2xl border-b-2 text-black text-lg max-w-full
@@ -61,7 +62,7 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
               <div className="flex gap-14 text-base md:py-2">
                 <span className="md:text-lg">Priority: {task.priority}</span>
                 <span className="md:text-lg">
-                  Status: {task.status} No status
+                  Status: {task.estado}
                 </span>
               </div>
             </div>
@@ -134,7 +135,7 @@ export function MyTask({
                   </span>
                   <span>
                     <strong className="md:text-lg">Status: </strong>{" "}
-                    {detailsTaks.status} no status
+                    {detailsTaks.estado}
                   </span>
                 </div>
 
