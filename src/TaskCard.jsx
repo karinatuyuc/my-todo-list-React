@@ -14,8 +14,6 @@ export default function TaskCard({
   // Receive dataInputs, date, tasks, and setTasks as props
   //  editTaskModal,setEditTaskModal,onCloseEditModal,
 
-  console.log(tasks.priority)
-
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -40,6 +38,14 @@ export default function TaskCard({
   "Medium": "text-blue-400",
   "Extreme": "text-red-700"
  }
+
+ const statusColors = {
+  "Not started": "text-red-500",
+  "In progress": "text-blue-400",
+  "Completed": 'text-green-700'
+ }
+
+
 
 
 
@@ -88,7 +94,7 @@ export default function TaskCard({
                   </span>
 
                   <span className="">
-                    Status: <span>{tasks.estado}</span>
+                    Status: <span className={statusColors[tasks.estado]}>{tasks.estado}</span>
                   </span>{" "}
 
                   {/**This should be interactive  */}

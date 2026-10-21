@@ -44,8 +44,6 @@ export default function Dashboard({
     { id: 2, name: "Work" }
   ]);
 
-  console.log(priorities)
-
   const [ selectedCategory, setSelectedCategory] = useState(null);
 
 
@@ -106,7 +104,7 @@ export default function Dashboard({
       )}
 
 
-      <div className="w-full text-white">
+      <div className="flex min-h-screen w-full flex-col text-white">
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20
@@ -151,7 +149,7 @@ export default function Dashboard({
           </div>
         </header>
 
-        <div className="flex min-h-screen flex-col lg:flex-row lg:bg-amber-300">
+        <div className="flex flex-1 flex-col lg:flex-row lg:bg-amber-300">
           {/**SIDE MENU */}
           <aside className="lg:bg-red-400 lg:w-80 lg:max-h-screen lg:sticky">
             <SideMenu
@@ -179,7 +177,7 @@ export default function Dashboard({
             {/** Main section */}
           </div>
 
-          <main className="flex-1 p-2 bg-white md:px-6 border-2 border-gray-300 m-2">
+          <main className="flex-1 p-2 md:px-6 border-2 border-gray-300 m-2">
             {activeView === "dashboard" ? (
               <div className="p-2">
                 <DashboardHome
@@ -222,7 +220,7 @@ export default function Dashboard({
             ) : null }
           </main>
         </div>
-        <span className="text-[10px] bg-red-900 p-1">
+        <span className="mt-auto text-[10px] bg-red-900 p-1">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.
         </span>
       </div>

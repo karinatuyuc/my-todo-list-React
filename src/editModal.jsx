@@ -4,12 +4,15 @@ import { validateTitle, validatePriority, validateDescription} from "./helper/va
 
 export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
 
+  console.log(status)
+
   //Local state with the actual value of the inputs
   const [ title, setTitle ] = useState(selectedTask?.title || '');
   const [ date, setDate ] = useState(selectedTask?.date || '');
   const [ priority, setPriority ] = useState(selectedTask?.priority || '');
   const [ description, setDescription ] = useState(selectedTask?.description || '');
   const [ estado, setEstado ] =  useState(selectedTask?.estado || "");
+  const [ category, setCategory] = useState(selectedTask?.category || "");
 
 
   // State to control de erros
@@ -36,6 +39,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
     setPriority(selectedTask.priority)
     setDescription(selectedTask.description)
     setEstado(selectedTask.estado)
+    setCategory(selectedTask.category)
     }
 
   }, [selectedTask])
@@ -76,7 +80,8 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
       date,
       priority,
       description,
-      estado
+      estado,
+      category
     }
 
     if(!hasEmptyInputs) {
@@ -90,7 +95,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
 
   return (
     <>
-      <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
+      <div className="bg-black/80 fixed inset-0 z-50 h-full flex items-center justify-center rounded-xs text-sm">
         <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-md">
           <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
@@ -105,7 +110,7 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
             <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2 lg:mt-4 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
-                Titleasfds
+                Title
               </label>
               <input
                 id="title"
@@ -155,6 +160,21 @@ export function EditModal({ onCloseEditModal, selectedTask, editTask, status}) {
 
               
               {/**Categories */}
+              <div className="flex gap-2 flex-col mb-2 mt-2">
+                <span className="font-medium">Cateogory: </span>
+
+                <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
+                >
+
+                  <option></option>
+
+                </select>
+              </div>
+              
+              {/**Estado*/}
               <div className="flex gap-2 flex-col mb-2 mt-2">
                 <span className="font-medium">Choose status: </span>
 

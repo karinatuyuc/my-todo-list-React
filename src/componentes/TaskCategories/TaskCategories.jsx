@@ -58,14 +58,14 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
                       Edit
                     </button>
                     <button
-                      className={`bg-black text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
+                      className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
                       onClick={() =>
                         onDelete(categoria, "task category", () =>
                           deleteCategory(categoria.id)
                         )
                       }
                     >
-                      <TrashIcon className="w-4 h-5 bg-red-600"
+                      <TrashIcon className="w-4 h-5"
                       />
                       Delete
                     </button>
@@ -121,7 +121,7 @@ export function TaskCategories({
        addCategory={addCategory}
       />
     ) : 
-    <div className="h-screen m-1 p-0.5 lg:p-4 text-black">
+    <div className="m-1 p-0.5 lg:p-4 text-black">
         <div className="flex flex-col gap-5 mb-6 ">
           <div className="text-3xl lg:text-2xl font-bold">
             <span className="underline decoration-orange-700 underline-offset-4">

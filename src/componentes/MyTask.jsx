@@ -99,9 +99,9 @@ export function MyTask({
 
   return (
     <>
-      <div className="md:bg-blue-200 md:p-2 lg:grid lg:grid-cols-2 lg:h-full">
+      <div className="md:bg-gray-500 md:p-2 lg:grid lg:grid-cols-2 lg:h-full">
         <div
-          className="p-2 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl
+          className=" p-3 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl
          lg:overflow-hidden lg:mt-6 lg:max-h-full"
         >
           <div className="text-2xl flex text-black font-bold">
@@ -119,7 +119,7 @@ export function MyTask({
           />
         </div>
 
-        <div className="border-gray-300 border-2 p-3 m-1.5 mt-2 rounded-2xl text-black md:rounded-2xl md:mt-6">
+        <div className=" border-gray-300 border-2 p-3 m-1.5 mt-4 rounded-2xl text-black md:rounded-2xl md:mt-6">
           <div className="p-1 flex-1 overflow-y-scroll md:rounded-lg md:p-6">
             {detailsTaks === null ? (
               <p className="text-sm bg-gray-300 text-gray-600">Please select a task above to see the details</p>
@@ -139,7 +139,7 @@ export function MyTask({
                   </span>
                 </div>
 
-                <div className="mt-3 grid gap-1.5 md:gap-5">
+                <div className="mt-6 gridmd:gap-5">
                   <span>
                     <strong className="md:text-lg text-gray-600">Task title: </strong>{" "}
                     {detailsTaks.title}
