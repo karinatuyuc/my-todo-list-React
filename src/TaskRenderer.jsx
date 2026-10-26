@@ -3,7 +3,7 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 
 function TaskRenderer({tasks, setEditingTaskId, onSecond, deleteTask, statusChange}) { // Receive tasks and setEditingTaskId as props
 
-    const statusValues = ['Not started', "In Progress", "Completed"];
+    const statusValues = ['Not started', 'In progress', 'Completed'];
 
     const buttonStylesEdit= {
         backgroundColor: "#67058dff",

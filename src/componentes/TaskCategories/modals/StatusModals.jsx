@@ -2,7 +2,7 @@ import { PencilSquareIcon, TrashIcon } from "@heroicons/react/16/solid";
 
 export function TaskStatus() {
     const disabledStyles = "disabled:bg-orange-300 disabled:text-white disabled:cursor-not-allowed";
-    const status = ["Completed", "In Progress", "Not Started"];
+    const status = ["Completed", "In progress", "Not started"];
 
   return (
     <>

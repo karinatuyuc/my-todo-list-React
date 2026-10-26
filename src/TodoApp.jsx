@@ -3,17 +3,36 @@ import Dashboard from "./Dashboard";
 import { DeleteTaskModal } from "./optionModals/DeleteModal";
 
 function TodoApp() {
-  const [activeView, setActiveView] = useState("dashboard");
-  const [ status, setStatus ] = useState([
+  const statusOptions = [
     { status: "Not started", id: 1 },
     { status: "In progress", id: 2 },
-    { status: "Completed", id: 3 }
-  ]);
+    { status: "Completed", id: 3 },
+  ];
+
+  const [activeView, setActiveView] = useState("dashboard");
+  const [ status, setStatus ] = useState(statusOptions);
+
+  const normalizeStatus = (statusValue) => {
+    const normalized = {
+      "Not Started": "Not started",
+      "In Progress": "In progress",
+      "Completed": "Completed",
+      "Not started": "Not started",
+      "In progress": "In progress",
+    };
+
+    return normalized[statusValue] ?? statusValue ?? "Not started";
+  };
 
   // states
   const [taskList, setTaskList] = useState(() => {
     const datosGuardados = localStorage.getItem("todo_app_v1");
-    return datosGuardados ? JSON.parse(datosGuardados) : [];
+    const savedTasks = datosGuardados ? JSON.parse(datosGuardados) : [];
+
+    return savedTasks.map((task) => ({
+      ...task,
+      estado: normalizeStatus(task.estado),
+    }));
   }); // State to hold the list of tasks
 
   const [selectedTask, setSelectedTask] = useState(null);
@@ -23,15 +42,19 @@ function TodoApp() {
   }, [taskList]);
 
   function addTask(task) {
-    setTaskList([...taskList, task]);
+    setTaskList((currentTasks) => [
+      ...currentTasks,
+      { ...task, estado: normalizeStatus(task.estado) },
+    ]);
   }
 
   function editTask(task) {
-    setSelectedTask(task);
+    const normalizedTask = { ...task, estado: normalizeStatus(task.estado) };
+    setSelectedTask(normalizedTask);
 
     const editTasked = taskList.map((tasks) => {
-      if (tasks.id === task.id) {
-        return task;
+      if (tasks.id === normalizedTask.id) {
+        return normalizedTask;
       } else {
         return tasks;
       }
