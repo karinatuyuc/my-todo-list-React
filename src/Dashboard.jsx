@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MagnifyingGlassIcon,
   ClockIcon,
@@ -39,16 +39,36 @@ export default function Dashboard({
 
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Medium", "Low"]);
-  const [createCategories, setCreateCategories] = useState([
+  const defaultCategories = [
     { id: 1, name: "Personal" },
-    { id: 2, name: "Work" }
-  ]);
+    { id: 2, name: "Work" },
+  ];
+
+  const [createCategories, setCreateCategories] = useState(() => {
+    const savedCategories = localStorage.getItem("todo_categories_v1");
+
+    if (!savedCategories) {
+      return defaultCategories;
+    }
+
+    try {
+      const parsedCategories = JSON.parse(savedCategories);
+      return parsedCategories.length > 0 ? parsedCategories : defaultCategories;
+    } catch (error) {
+      console.error("Error parsing saved categories:", error);
+      return defaultCategories;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todo_categories_v1", JSON.stringify(createCategories));
+  }, [createCategories]);
 
   const [ selectedCategory, setSelectedCategory] = useState(null);
 
 
   function addCategory(categoryId) {
-    setCreateCategories([...createCategories, categoryId]);
+    setCreateCategories((currentCategories) => [...currentCategories, categoryId]);
   } 
 
   function editCategory(categoryId) {
@@ -69,7 +89,9 @@ export default function Dashboard({
   }
 
   function deleteCategory(id){
-    setCreateCategories(createCategories.filter((category) => category.id !== id));
+    setCreateCategories((currentCategories) =>
+      currentCategories.filter((category) => category.id !== id)
+    );
   }
 
 

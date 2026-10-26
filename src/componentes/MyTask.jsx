@@ -31,7 +31,9 @@ function TaskSkeleton() {
 }
 
 //COMPONENTE HIJO
-function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
+function TaskMyTask({ taskList, setDetailsTask, selectedTask, setSelectedTask }) {
+
+  console.log("SelectedTask from TaskMyTask", selectedTask)
   return (
     <>
 
@@ -45,12 +47,13 @@ function TaskMyTask({ taskList, setDetailsTask, setSelectedTask }) {
         {taskList.map((task) => (
 
           <div
-            className="border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
-            md:max-w-5/6 md:m-2 md:rounded-2xl"
+            className={`border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
+            md:max-w-5/6 md:m-2 md:rounded-2xl ${task.id === selectedTask.id ? "bg-amber-100" : "bg-white"}`}
             onClick={() => {
               (setDetailsTask(task), setSelectedTask(task));
             }}
             key={task.id}
+            
           >
             <div className="flex md:p-3">
               <span className="rounded-full w-5 h-5 text-red-700 border-4"></span>
@@ -97,6 +100,7 @@ export function MyTask({
     }
   }, [task, selectedTask]);
 
+
   return (
     <>
       <div className="md:bg-gray-500 md:p-2 lg:grid lg:grid-cols-2 lg:h-full">
@@ -115,6 +119,7 @@ export function MyTask({
           <TaskMyTask
             taskList={task}
             setDetailsTask={setDetailsTask}
+            selectedTask={selectedTask}
             setSelectedTask={setSelectedTask}
           />
         </div>
