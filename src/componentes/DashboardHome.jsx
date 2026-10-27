@@ -38,15 +38,17 @@ export function DashboardHome({
   });
 
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
+    let taskLimit = task.slice(0, 2);
+   // const totalCompleted = taskLimit.length;
+ // const limiteDiv2 = totalCompleted === 2 ? 2 : 1;
 
-  let taskLimit = task.slice(0, 2);
-  const totalCompleted = taskLimit.length;
 
-  const limiteDiv2 = totalCompleted === 2 ? 2 : 1;
-  const elementosCompletedTask = task.slice(0, limiteDiv2);
+
   const percentageCompleted = 84;
   const percentageInProgress = 46;
   const percentageNotStarted = 13;
+  const filteredTask = task.filter((taskCompleted) => taskCompleted.estado === "Completed");
+
 
   return (
     <>
@@ -252,7 +254,7 @@ export function DashboardHome({
               </h1>
             </div>
             <div className="md:flex md:flex-row md:gap-10 lg:flex lg:flex-col">
-              {task.length === 0 ? (
+              {filteredTask.length === 0 ? (
                 <div className="w-60 rounded-sm gap-2 lg:w-80 border-gray-200 border-2">
                   <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full">
                     {/* Barra tipo título */}
@@ -267,14 +269,11 @@ export function DashboardHome({
                   </div>
                 </div>
               ) : (
-                elementosCompletedTask.map((compl, index) => (
                   <CompletedTask
-                    key={index}
                     dateIn={dateInNumber}
-                    task={task}
+                    filteredTask={filteredTask}
                     openOptionsTaskId={openOptionsTaskId}
                   />
-                ))
               )}
             </div>
           </div>

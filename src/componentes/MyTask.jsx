@@ -33,7 +33,8 @@ function TaskSkeleton() {
 //COMPONENTE HIJO
 function TaskMyTask({ taskList, setDetailsTask, selectedTask, setSelectedTask }) {
 
-  console.log("SelectedTask from TaskMyTask", selectedTask)
+
+  console.log("selectedTaskId", selectedTask.id)
   return (
     <>
 
