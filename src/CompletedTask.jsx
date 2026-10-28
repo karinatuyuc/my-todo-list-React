@@ -4,8 +4,6 @@ export default function CompletedTask({ dateIn, filteredTask }) {
 
     let taskCompletedLimit = filteredTask.slice(0, 2);
 
-    console.log(taskCompletedLimit)
-
   return (
     <>
       <div className="grid grid-cols-1 gap-4  rounded-sm md:p-2 md:flex md:flex-row">

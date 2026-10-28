@@ -39,15 +39,18 @@ export function DashboardHome({
 
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
     let taskLimit = task.slice(0, 2);
-   // const totalCompleted = taskLimit.length;
- // const limiteDiv2 = totalCompleted === 2 ? 2 : 1;
+    let length = task.length;
 
 
 
-  const percentageCompleted = 84;
-  const percentageInProgress = 46;
-  const percentageNotStarted = 13;
   const filteredTask = task.filter((taskCompleted) => taskCompleted.estado === "Completed");
+  const inProgressTask = task.filter((taskProgress) => taskProgress.estado === "In progress");
+  const notStartedTask = task.filter((taskNotStarted) => taskNotStarted.estado === "Not started");
+
+  
+  const percentageCompleted = length > 0 ? Math.round((filteredTask.length * 100) / task.length) : 0;
+  const percentageInProgress = length > 0 ? Math.round((inProgressTask.length * 100) / task.length ) : 0;
+  const percentageNotStarted = length > 0 ?  Math.round((notStartedTask.length * 100) / task.length ) : 0;
 
 
   return (
