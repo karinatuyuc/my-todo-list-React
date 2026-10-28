@@ -33,8 +33,6 @@ function TaskSkeleton() {
 //COMPONENTE HIJO
 function TaskMyTask({ taskList, setDetailsTask, selectedTask, setSelectedTask }) {
 
-
-  console.log("selectedTaskId", selectedTask.id)
   return (
     <>
 
@@ -49,7 +47,7 @@ function TaskMyTask({ taskList, setDetailsTask, selectedTask, setSelectedTask })
 
           <div
             className={`border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
-            md:max-w-5/6 md:m-2 md:rounded-2xl ${task.id === selectedTask.id ? "bg-amber-100" : "bg-white"}`}
+            md:max-w-5/6 md:m-2 md:rounded-2xl ${task.id === selectedTask?.id ? "bg-amber-100" : "bg-white"}`}
             onClick={() => {
               (setDetailsTask(task), setSelectedTask(task));
             }}
