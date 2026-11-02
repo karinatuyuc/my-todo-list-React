@@ -56,9 +56,9 @@ export default function TaskCard({
             className="w-full max-w-sm mx-auto min-h-36 border-2 rounded-lg p-2 border-blue-300
             md:grid md:grid-cols-1 md:p-2 md:w-full lg:w-80 lg:p-1.2"
           >
-            <div className="flex gap-0.5 bg-amber-600">
+            <div className="flex gap-0.5 h-full">
               {/**This  is the cricle  */}
-              <div className=" flex mt-1 bg-amber-200">
+              <div className=" flex mt-1">
                 <span
                   className={`w-2 h-2 border-8 rounded-full md:w-4 md:h-4 ${statusColors[tasks.estado]}`}
                 ></span>{" "}
@@ -66,29 +66,37 @@ export default function TaskCard({
               </div>
 
               {/*CARD TASKS */}
+              <div className="w-full gap-8 h-28">
 
-              <div className=" w-full bg-gray-700">
-                <div className="grid grid-cols-2 w-full bg-purple-700">
-                  <div className="">
+                <div className="grid grid-cols-12 w-full h-full">
+                  <div className="col-span-11 p-0.5">
                     <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black md:text-lg">
                       {tasks.title}
                     </span>
 
                     <div className="text-sm h-14 text-ellipsis w-full m-0.5 md:h-24">
-                      <p className="text-xs font-medium text-gray-900 line-clamp-4 break-all md:text-base">
+                      <p className="text-xs font-medium text-gray-900 line-clamp-5 break-all md:text-base">
                         {tasks.description}
                       </p>
                     </div>
                     {/** CARD FOOTER */}
                   </div>
 
-                  <div className="cursor-pointer bg-blue-900">
-                    <EllipsisHorizontalIcon
-                      className="w-5 h-5 text-gray-600"
-                      onClick={() => {
+                  <div className="col-span-1">
+
+                    <div onClick={() => {
                         idOptions(tasks.id);
                       }}
+                      
+                      className="rounded-full hover:bg-red-300/60 cursor-pointer transition-colors"
+                      >
+
+                        <EllipsisHorizontalIcon
+                      className="w-5 h-5 text-black"
+                      
                     />
+                      </div>
+                    
 
                     {openOptionsTaskId === tasks.id && (
                       <EditDeleteModal
@@ -107,8 +115,7 @@ export default function TaskCard({
                 </div>
 
                 <div
-                  className="text-white grid w-20 row-auto justify-between 
-                    mt-6 md:text-[10px] md:gap-1 bg-black"
+                  className="flex flex-row justify-between p-0.5 text-black"
                 >
                   <span className="text-[7px]">
                     Priority:{" "}
@@ -124,14 +131,16 @@ export default function TaskCard({
                   </span>{" "}
                   {/**This should be interactive  */}
                   <span className="text-gray-400 text-[7px]">
-                    Created
+                    Created on: {" "}
                     <span>
-                      <span className="text-yellow-200 text-[7px]">
+                      <span className="text-gray-400 text-[7px]">
                         {tasks.date}
                       </span>
                     </span>
                   </span>
                 </div>
+
+
               </div>
             </div>
           </div>
