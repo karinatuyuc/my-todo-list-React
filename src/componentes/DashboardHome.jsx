@@ -151,9 +151,9 @@ export function DashboardHome({
           </div>
           <div className="bg-red-700">
             {task.length >= 3 && (
-              <div className="flex text-[8px] text-red-500 bg-red-400">
+              <div className="flex text-[8px] text-white bg-red-400">
                 <ExclamationTriangleIcon className="w-4 h-3 text-black" />
-                <p>Visit My Task to see all task</p>
+                <p>Visit "My Task" to see all task</p>
               </div>
             )}
           </div>

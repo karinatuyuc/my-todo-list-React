@@ -43,8 +43,9 @@ function TodoApp() {
 
   function addTask(task) {
     setTaskList((currentTasks) => [
-      ...currentTasks,
       { ...task, estado: normalizeStatus(task.estado) },
+      ...currentTasks,
+
     ]);
   }
 

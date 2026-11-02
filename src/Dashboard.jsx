@@ -34,9 +34,8 @@ export default function Dashboard({
   openDeleteModal,
   setOpenDeleteModal,
   status,
-  setStatus
+  setStatus,
 }) {
-
   const [userName, setUserName] = useState("");
   const [priorities] = useState(["Extreme", "Medium", "Low"]);
   const defaultCategories = [
@@ -61,47 +60,65 @@ export default function Dashboard({
   });
 
   useEffect(() => {
-    localStorage.setItem("todo_categories_v1", JSON.stringify(createCategories));
+    localStorage.setItem(
+      "todo_categories_v1",
+      JSON.stringify(createCategories),
+    );
   }, [createCategories]);
 
-  const [ selectedCategory, setSelectedCategory] = useState(null);
-
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   function addCategory(categoryId) {
-    setCreateCategories((currentCategories) => [...currentCategories, categoryId]);
-  } 
+    setCreateCategories((currentCategories) => [
+      ...currentCategories,
+      categoryId,
+    ]);
+  }
 
   function editCategory(categoryId) {
     setSelectedCategory(categoryId);
 
     const editedCategories = createCategories.map((category) => {
-
       if (category.id === categoryId.id) {
         return {
           ...category,
-          name: categoryId.name
-        }
+          name: categoryId.name,
+        };
       } else {
         return category;
       }
-    })
+    });
     setCreateCategories(editedCategories);
   }
 
-  function deleteCategory(id){
+  function deleteCategory(id) {
     setCreateCategories((currentCategories) =>
-      currentCategories.filter((category) => category.id !== id)
+      currentCategories.filter((category) => category.id !== id),
     );
   }
-
-
-
-
 
   const date = new Date(); //Creating the local date
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" }); // To show the day of the week
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
   let waveHand = "\u{1F44B}";
+
+  let view =
+    activeView === "dashboard"
+      ? "Dash"
+      : activeView === "MyTask"
+        ? "My"
+        : activeView === "TaskCategories"
+          ? "Task"
+          : null;
+
+  let view2 =
+    activeView === "dashboard"
+      ? "board"
+      : activeView === "MyTask"
+        ? "Task"
+        : activeView === "TaskCategories"
+          ? "Categories"
+          : null;
 
   return (
     <>
@@ -126,7 +143,6 @@ export default function Dashboard({
         />
       )}
 
-
       <div className="flex min-h-screen w-full flex-col text-white">
         {/*Header*/}
         <header
@@ -134,12 +150,12 @@ export default function Dashboard({
             lg:flex lg:justify-around lg:p-2 lg:pl-12 lg:pr-12 lg:sticky lg:top-0 lg:z-20 lg:gap-44"
         >
           {/** Dashboard title*/}
-          <div className="font-bold text-[15px] md:text-3xl">
-            <span className="text-red-300">Dash</span>
-            <span className="text-black">board</span>
+          <div className="font-bold text-2xl md:text-3xl">
+            <span className="text-red-300">{view} </span>
+            <span className="text-black">{view2}</span>
           </div>
 
-          {/** Search bar */}
+          {/** Search bar 
           <div className="flex bg-yellow-50 hover:bg-red-200 rounded-lg md:w-94 lg:w-lvw ">
             <input
               type="text"
@@ -151,7 +167,7 @@ export default function Dashboard({
             <button className="flex items-center justify-center md:h-9 hover:bg-red-300">
               <MagnifyingGlassIcon className="w-7 h-9 p-1.5 bg-red-400  text-white rounded-lg md:w-8 md:h-8 lg:w-9 lg:h-9" />
             </button>
-          </div>
+          </div> */}
 
           {/** Date section */}
           <div className="flex items-center justify-center gap-6">
@@ -161,11 +177,9 @@ export default function Dashboard({
               <ClipboardDocumentCheckIcon className="w-8 h-8 bg-red-400 p-1.5 rounded-md" />
             </div>
 
-            <div className="flex flex-col gap-0.5">
-              <span className="font-bold text-[9px] md:text-sm lg:text-xs">
-                {dayName}
-              </span>
-              <span className="font-bold text-[9px] text-blue-300 md:text-sm md:flex md:justify-center lg:text-sm">
+            <div className="flex flex-col gap-0.5 text-sm">
+              <span className="font-bold text-black md:text-sm lg:text-xs">{dayName}</span>
+              <span className="font-bold text-blue-300 text-sm md:text-sm md:flex md:justify-center lg:text-sm">
                 {dateInNumber}
               </span>
             </div>
@@ -224,23 +238,23 @@ export default function Dashboard({
                 setEditTaskModal={setEditTaskModal}
                 onDelete={onDelete}
               />
-            ): activeView === "TaskCategories" ? (
+            ) : activeView === "TaskCategories" ? (
               <TaskCategories
-               addCategory={addCategory}
-               createCategories={createCategories}
-               priorities={priorities}
-               setSelectedTask={setSelectedTask}
-               editTask={editTask}
-               setEditTaskModal={setEditTaskModal}
-               onDelete={onDelete}
-               editCategory={editCategory}
-               selectedCategory={selectedCategory} 
-               setSelectedCategory={setSelectedCategory}
-               deleteCategory={deleteCategory}
-               setOpenDeleteModal={setOpenDeleteModal}
-               openDeleteModal={openDeleteModal}
+                addCategory={addCategory}
+                createCategories={createCategories}
+                priorities={priorities}
+                setSelectedTask={setSelectedTask}
+                editTask={editTask}
+                setEditTaskModal={setEditTaskModal}
+                onDelete={onDelete}
+                editCategory={editCategory}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                deleteCategory={deleteCategory}
+                setOpenDeleteModal={setOpenDeleteModal}
+                openDeleteModal={openDeleteModal}
               />
-            ) : null }
+            ) : null}
           </main>
         </div>
         <span className="mt-auto text-[10px] bg-red-900 p-1">
