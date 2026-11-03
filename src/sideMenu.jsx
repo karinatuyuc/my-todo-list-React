@@ -9,11 +9,7 @@ import {
   CheckIcon,
 } from "@heroicons/react/16/solid";
 
-export default function SideMenu({
-  userName,
-  setUserName,
-  setActiveView,
-}) {
+export default function SideMenu({ userName, setUserName, setActiveView }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -48,7 +44,7 @@ export default function SideMenu({
     <>
       {/**Movil Menu hamburguer */}
       <div className="w-7 h-7 m-2 flex md:m-2 md:w-10 md:h-10 lg:hidden text-red-600">
-        <Bars3Icon onClick={() => setIsOpen(true)}/>
+        <Bars3Icon onClick={() => setIsOpen(true)} />
       </div>
 
       <div
@@ -60,13 +56,13 @@ export default function SideMenu({
         <div
           className={` flex flex-col justify-center items-center w-full 
             lg:w-80
-              
-              
             `}
         >
-          <div className="absolute right-4 top-4 text-xl text-white
-          cursor-pointer md:text-2xl lg:hidden">
-            <button onClick={() => setIsOpen(false)}>Close</button>
+          <div
+            className="absolute right-4 top-4 text-xl text-white
+          cursor-pointer md:text-2xl lg:hidden"
+          >
+            <button onClick={() => setIsOpen(false)} className="cursor-pointer hover:bg-red-300 p-2 rounded-2xl">Close</button>
           </div>
 
           {/**This is the icon */}
@@ -78,32 +74,8 @@ export default function SideMenu({
             />
           </div>
 
-          {!isEditing ? (
-            <div
-              className="text-2xl text-white font-semibold mt-5 flex 
-                        lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2"
-            >
-              <span
-                className="truncate overflow-hidden text-ellipsis w-75 text-center
-                          md:text-2xl md:w-56
-                          lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis "
-              >
-                {userName === "" ? "user name" : userName}
-              </span>
-
-              <button onClick={onClickButton}>
-                <PencilIcon
-                  className="w-5 h-5 text-white ml-2 cursor-pointer hover:text-red-700 
-                          md:w-7 md:h-7 md:ml-0.5 md:bg-green-400/10
-                          lg:ml-0.5 lg:w-5 lg:h-5"
-                />
-              </button>
-            </div>
-          ) : (
-            <div className="flex items-center mt-5 md:mt-7 lg:mt-3">
-              <label 
-               htmlFor="username"
-              ></label>
+           <div className="flex items-center mt-5 md:mt-7 lg:mt-3">
+              <label htmlFor="username"></label>
               <input
                 type="text"
                 id="username"
@@ -111,16 +83,19 @@ export default function SideMenu({
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="write your username"
-                className="bg-red-300 p-0.5 border-none text-lg rounded-sm focus:ring-2 focus:ring-red-500 focus:outline-none 
+                className="bg-red-500 p-0.5 border-none text-lg rounded-l-lg focus:ring-2 focus:ring-red-500 focus:outline-none 
                       md:text-medium
                       text-center"
               />
               <CheckIcon
-                className="w-8 h-8 cursor-pointer text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm md:bg-green-700"
-                onClick={onClickButton}
+                className="w-8 h-8 cursor-pointer rounded-r-lg text-white bg-red-500
+                hover:bg-red-200 text-xl p-0.5 rounded-es-sm"
+                onClick={() => {
+                  onClickButton();
+                  setIsOpen(false);
+                }}
               />
             </div>
-          )}
 
           {/**DIV for the username */}
 
@@ -131,18 +106,27 @@ export default function SideMenu({
           <ol className="space-y-12 md:space-y-10 lg:space-y-8 lg:mt-2">
             <li
               className={listStyles}
-              onClick={() => {setActiveView("dashboard"), setIsOpen(false)}}
+              onClick={() => {
+                (setActiveView("dashboard"), setIsOpen(false));
+              }}
             >
               <Squares2X2Icon className={iconStyles} />
               Dashboard
             </li>
-            <li className={listStyles} onClick={() => {setActiveView("MyTask"), setIsOpen(false)}}>
+            <li
+              className={listStyles}
+              onClick={() => {
+                (setActiveView("MyTask"), setIsOpen(false));
+              }}
+            >
               <DocumentCheckIcon className={iconStyles} />
               My Task
             </li>
             <li
               className={listStyles}
-              onClick={() => { setActiveView("TaskCategories"), setIsOpen(false)}}
+              onClick={() => {
+                (setActiveView("TaskCategories"), setIsOpen(false));
+              }}
             >
               <ListBulletIcon className={iconStyles} />
               Task Categories
@@ -153,3 +137,43 @@ export default function SideMenu({
     </>
   );
 }
+
+
+/**
+ * 
+ *           {!isEditing ? (
+            <div
+              className="text-2xl text-white font-semibold mt-5 flex 
+                        lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2"
+            >
+              <span
+                className="truncate overflow-hidden bg-red-700 text-ellipsis w-75 text-center
+                          md:text-2xl md:w-56
+                          lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis "
+              >
+                {userName === "" ? "user name" : userName}
+              </span>
+
+
+            </div>
+          ) : (
+            <div className="flex items-center mt-5 md:mt-7 lg:mt-3">
+              <label htmlFor="username"></label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="write your username"
+                className="bg-red-300 p-0.5 border-none text-lg rounded-l-full focus:ring-2 focus:ring-red-500 focus:outline-none 
+                      md:text-medium
+                      text-center"
+              />
+              <CheckIcon
+                className="w-8 h-8 cursor-pointer bg-black rounded-r-full text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm md:bg-green-700"
+                onClick={onClickButton}
+              />
+            </div>
+          )}
+ */

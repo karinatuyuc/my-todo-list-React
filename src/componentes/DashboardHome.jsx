@@ -59,21 +59,21 @@ export function DashboardHome({
       <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4 md:gap-16">
         {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
         <div
-          className={` shadow-2xl drop-shadow-lg rounded p-2 lg:p-0 mb-6`}
+          className={`shadow-2xl drop-shadow-lg rounded p-2 lg:p-0 mb-6`}
         >
           <div className={`lg:top-0 lg:sticky`}>
             <div className="flex justify-between p-2.5 lg:h-20 lg:p-4">
               <span
-                className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-2xl lg:text-lg text-red-400"
+                className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-3xl lg:text-lg text-red-400"
                 onClick={setEditTaskModal}
               >
                 To-Do
               </span>
               <div className="relative">
-                <ClipboardDocumentCheckIcon className="w-7 h-7 absolute md:w-8 md:h-8" />
+                <ClipboardDocumentCheckIcon className="w-7 h-7 absolute md:w-12 md:h-12" />
                 <ClockIcon
                   className="w-5 h-5 relative left-3 top-4 p-0.5 bg-gray-200 text-gray-400 rounded-full
-                                       md:left-4 md:top-5 lg:top-4 lg:w-5 lg:h-5 lg:p-0.5"
+                   md:left-4 md:w-8 md:h-8 md:top-5 lg:top-4 lg:w-5 lg:h-5 lg:p-0.5"
                 />
               </div>
 
@@ -161,7 +161,7 @@ export function DashboardHome({
 
         <div className="p-1 lg:p-0 mb-6 rounded">
           {/* TASK STATUS*/}
-          <div className=" shadow-2xl mb-4 p-2 rounded-lg drop-shadow-lg">
+          <div className="shadow-2xl mb-4 p-2 rounded-lg drop-shadow-lg bg-purple-500">
             <div className=" relative flex gap-4">
               <div className="">
                 <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />

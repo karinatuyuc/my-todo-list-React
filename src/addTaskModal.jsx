@@ -192,7 +192,7 @@ export function AddTaskModal({
                   validateDescription(e.target.value, setDescription, setErrors)
                 }
                 placeholder="Start writing here...." // Placeholder text
-                className="h-28 w-80 border-2 border-gray-200 rounded-sm p-2"
+                className="h-28 w-72 border-2 border-gray-200 rounded-sm p-2"
               ></textarea>
               <span className="text-[8px] text-red-600">
                 {errors.description}

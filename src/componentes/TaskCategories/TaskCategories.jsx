@@ -35,7 +35,7 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
         <thead>
             <tr>
               <th className="p-2 border-r-2 border-gray-300">SN</th>
-              <th className="p-2 border-l-2 border-gray-300">Task Category</th>
+              <th className="p-2 text-lg border-l-2 border-gray-300">Task Category</th>
               <th className="p-2 border-l-2 border-gray-300">Action</th>
             </tr>
           </thead>

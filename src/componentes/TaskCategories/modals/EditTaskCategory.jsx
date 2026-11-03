@@ -34,8 +34,8 @@ export function EditTaskCategory({ closeEdit,
 
   return (
     <>
-      <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-white text-black h- p-3 rounded-sm">
+      <div className="bg-black/80 fixed inset-0 z-50 h-screen w-full flex items-center justify-center rounded-xs text-sm">
+        <div className="bg-white text-black w-80 p-3 rounded-sm">
           <div className="p-2">
             <div className="flex items-center justify-between text-lg font-bold mb-10">
               <div className="text-md">

@@ -54,7 +54,7 @@ export default function TaskCard({
           {/**Card #1 */}
           <div
             className="w-full max-w-sm mx-auto min-h-36 border-2 rounded-lg p-2 border-blue-300
-            md:grid md:grid-cols-1 md:p-2 md:w-full lg:w-80 lg:p-1.2"
+            md:grid md:grid-cols-1 md:p-2 md:w-full md:min-h-40 lg:w-80 lg:p-1.2"
           >
             <div className="flex gap-0.5 h-full">
               {/**This  is the cricle  */}
@@ -66,7 +66,7 @@ export default function TaskCard({
               </div>
 
               {/*CARD TASKS */}
-              <div className="w-full gap-8 h-28">
+              <div className="w-full gap-8 h-28 bg-red-700">
 
                 <div className="grid grid-cols-12 w-full h-full">
                   <div className="col-span-11 p-0.5">
@@ -75,7 +75,7 @@ export default function TaskCard({
                     </span>
 
                     <div className="text-sm h-14 text-ellipsis w-full m-0.5 md:h-24">
-                      <p className="text-xs font-medium text-gray-900 line-clamp-5 break-all md:text-base">
+                      <p className="text-xs font-medium text-gray-900 line-clamp-5 break-all md:text-sm md:line-clamp-3 md:py-0.5">
                         {tasks.description}
                       </p>
                     </div>
@@ -115,25 +115,25 @@ export default function TaskCard({
                 </div>
 
                 <div
-                  className="flex flex-row justify-between p-0.5 text-black"
+                  className="flex flex-row justify-between p-0.5 text-black "
                 >
-                  <span className="text-[7px]">
+                  <span className="text-[7px] md:text-[10px]">
                     Priority:{" "}
                     <span className={priorityColors[tasks.priority]}>
                       {tasks.priority}
                     </span>
                   </span>
-                  <span className="text-[7px]">
+                  <span className="text-[7px] md:text-[10px]">
                     Status:{" "}
                     <span className={statusColors[tasks.estado]}>
                       {tasks.estado}
                     </span>
                   </span>{" "}
                   {/**This should be interactive  */}
-                  <span className="text-gray-400 text-[7px]">
+                  <span className="text-gray-400 text-[7px] md:text-[10px]">
                     Created on: {" "}
                     <span>
-                      <span className="text-gray-400 text-[7px]">
+                      <span className="text-gray-400 text-[7px] md:text-[10px]">
                         {tasks.date}
                       </span>
                     </span>

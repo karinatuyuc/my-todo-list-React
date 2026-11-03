@@ -120,6 +120,8 @@ export default function Dashboard({
           ? "Categories"
           : null;
 
+
+
   return (
     <>
       {modalAddTask && (
@@ -142,6 +144,9 @@ export default function Dashboard({
           createCategories={createCategories}
         />
       )}
+
+          
+
 
       <div className="flex min-h-screen w-full flex-col text-white">
         {/*Header*/}
@@ -178,7 +183,9 @@ export default function Dashboard({
             </div>
 
             <div className="flex flex-col gap-0.5 text-sm">
-              <span className="font-bold text-black md:text-sm lg:text-xs">{dayName}</span>
+              <span className="font-bold text-black md:text-sm lg:text-xs">
+                {dayName}
+              </span>
               <span className="font-bold text-blue-300 text-sm md:text-sm md:flex md:justify-center lg:text-sm">
                 {dateInNumber}
               </span>
@@ -199,20 +206,24 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          <div className="mx-3.5">
-            <div className="flex gap-2 lg:mt-6 lg:ml-6">
-              <div className="flex text-black text-2xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
-                <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-2xl">
-                  Welcome,{" "}
-                  <span className=" text-2xl md:text-4xl lg:text-4xl">
-                    {userName}
+          {activeView === "dashboard" && (
+            <div className="mx-3.5">
+              <div className="flex gap-2 lg:mt-6 lg:ml-6">
+                <div className="flex text-black text-2xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
+                  <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-4xl">
+                    Welcome,{" "}
+                    <span className="text-lg md:text-4xl lg:text-4xl">
+                      {userName}
+                    </span>
+                  </h1>
+                  <span className="text-2xl md:text-4xl lg:text-4xl">
+                    {waveHand}
                   </span>
-                </h1>
-                {waveHand}
+                </div>
               </div>
+              {/** Main section */}
             </div>
-            {/** Main section */}
-          </div>
+          )}
 
           <main className="flex-1 p-2 md:px-6 border-4 border-gray-300 m-2 rounded-2xl shadow-2xl drop-shadow-2xl">
             {activeView === "dashboard" ? (
