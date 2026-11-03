@@ -214,7 +214,7 @@ export default function Dashboard({
             {/** Main section */}
           </div>
 
-          <main className="flex-1 p-2 md:px-6 border-2 border-gray-300 m-2">
+          <main className="flex-1 p-2 md:px-6 border-4 border-gray-300 m-2 rounded-2xl shadow-2xl drop-shadow-2xl">
             {activeView === "dashboard" ? (
               <div className="p-2">
                 <DashboardHome

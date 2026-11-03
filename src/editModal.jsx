@@ -22,7 +22,6 @@ export function EditModal({
   const [estado, setEstado] = useState(selectedTask?.estado || "");
   const [category, setCategory] = useState(selectedTask?.category || "");
 
-  console.log(createCategories);
 
   // State to control de erros
   const [errors, setErrors] = useState({});
