@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 /// DEBE APARECER COMO UN ESQUELETO EN CADA DIV SI NO HAY TAKS SELECCIONADOS PARA MOSTRAR LOS DETALLES, NO PUEDE
 /// QUEDAR COMO QUEDO AHORA!!!
 
-
 // Componente HIJO SKELETON CARD
 function TaskSkeleton() {
   return (
@@ -14,16 +13,14 @@ function TaskSkeleton() {
           {/* Barra tipo título */}
           <div className="flex gap-1">
             <div className="h-5 bg-gray-200 rounded-full w-5"></div>
-          <div className="h-5 bg-gray-200 rounded w-3/4"></div>
+            <div className="h-5 bg-gray-200 rounded w-3/4"></div>
           </div>
-          
 
           {/* Barra tipo detalle */}
           <div className="flex gap-6">
             <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/2"></div>
           </div>
-          
         </div>
       </div>
     </>
@@ -31,48 +28,47 @@ function TaskSkeleton() {
 }
 
 //COMPONENTE HIJO
-function TaskMyTask({ taskList, setDetailsTask, selectedTask, setSelectedTask }) {
-
+function TaskMyTask({
+  taskList,
+  setDetailsTask,
+  selectedTask,
+  setSelectedTask,
+}) {
   return (
     <>
-
-    { taskList.length === 0 ? (
-
-      <TaskSkeleton/>
-    ) : (<div
-        className=" mt-1.5 p-2 rounded-2xl border-b-2 text-black text-lg max-w-full
+      {taskList.length === 0 ? (
+        <TaskSkeleton />
+      ) : (
+        <div
+          className=" mt-1.5 p-2 rounded-2xl border-b-2 text-black text-lg max-w-full
       md:flex md:flex-col md:justify-center md:items-center md:p-4 lg:p-0 lg:bg-gray-50"
-      >
-        {taskList.map((task) => (
-
-          <div
-            className={`border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
+        >
+          {taskList.map((task) => (
+            <div
+              className={`border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
             md:max-w-5/6 md:m-2 md:rounded-2xl ${task.id === selectedTask?.id ? "bg-amber-100" : "bg-white"}`}
-            onClick={() => {
-              (setDetailsTask(task), setSelectedTask(task));
-            }}
-            key={task.id}
-            
-          >
-            <div className="flex md:p-3">
-              <span className="rounded-full w-5 h-5 text-red-700 border-4"></span>
-            </div>
+              onClick={() => {
+                (setDetailsTask(task), setSelectedTask(task));
+              }}
+              key={task.id}
+            >
+              <div className="flex md:p-3">
+                <span className="rounded-full w-5 h-5 text-red-700 border-4"></span>
+              </div>
 
-            <div className="md:p-5">
-              <span className="font-bold text-lg">{task.title}</span>
+              <div className="md:p-5">
+                <span className="font-bold text-lg">{task.title}</span>
 
-              <div className="flex gap-14 text-base md:py-2">
-                <span className="md:text-lg">Priority: {task.priority}</span>
-                <span className="md:text-lg">
-                  Status: {task.estado}
-                </span>
+                <div className="flex gap-14 text-base md:py-2">
+                  <span className="md:text-lg">Priority: {task.priority}</span>
+                  <span className="md:text-lg">Status: {task.estado}</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>) }
+          ))}
+        </div>
+      )}
       {/*Div para renderizar los task */}
-      
     </>
   );
 }
@@ -99,29 +95,70 @@ export function MyTask({
     }
   }, [task, selectedTask]);
 
+  console.log(task);
 
   return (
     <>
       <div className="md:bg-gray-500 md:p-2 lg:grid lg:grid-cols-2 lg:h-full">
-        <div
-          className=" p-3 rounded-sm m-1.5 min-h-24 max-h-64 overflow-y-scroll md:p-4 md:min-h-80 md:rounded-2xl
-         lg:overflow-hidden lg:mt-6 lg:max-h-full"
-        >
-          <div className="text-2xl flex text-black font-bold">
-            
-            <span className="underline underline-offset-4 decoration-2 decoration-amber-600 text-2xl md:pb-3">
-              My
-            </span>
-              Tasks
-          </div>
+        {task.length === 0 ? (
+          <div className="text-black flex flex-col justify-center items-center gap-4">
+            <div className="p-4">
+              <img
+                src="public/mytask.webp"
+                alt="My Task"
+                className="w-36 h-36"
+              />
+            </div>
 
-          <TaskMyTask
-            taskList={task}
-            setDetailsTask={setDetailsTask}
-            selectedTask={selectedTask}
-            setSelectedTask={setSelectedTask}
-          />
-        </div>
+            <div className="text-center">
+              <h1 className="text-2xl font-semibold m-4">All Done for now!!</h1>
+              <p>
+                Any task you've added from the Dashboard or created will be
+                listed here automatically. Currently, there is nothing new to
+                show.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div
+            className=" mt-1.5 p-2 rounded-2xl border-b-2 text-black text-lg max-w-full
+      md:flex md:flex-col md:justify-center md:items-center md:p-4 lg:p-0 lg:bg-gray-50"
+          >
+            {task.map((tasks) => (
+              <div
+                className={`border-gray-400 border-2 w-full flex gap-2 p-2 rounded-2xl mt-1.5
+            md:max-w-5/6 md:m-2 md:rounded-2xl ${tasks.id === selectedTask?.id ? "bg-amber-100" : "bg-white"}`}
+                onClick={() => {
+                  (setDetailsTask(tasks), setSelectedTask(tasks));
+                }}
+                key={tasks.id}
+              >
+                <div className="flex md:p-3">
+                  <span className="rounded-full w-5 h-5 text-red-700 border-4"></span>
+                </div>
+
+                <div className="md:p-5">
+                  <span className="font-bold text-lg">{tasks.title}</span>
+
+                  <div className="flex gap-14 text-base md:py-2">
+                    <span className="md:text-lg">
+                      Priority: {tasks.priority}
+                    </span>
+                    <span className="md:text-lg">Status: {tasks.estado}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
+// DESHABILITAR BOTONES CUANDO NO HAY NADA EN TASKLIST
+
+/* 
 
         <div className=" border-gray-300 border-2 p-3 m-1.5 mt-4 rounded-2xl text-black md:rounded-2xl md:mt-6">
           <div className="p-1 flex-1 overflow-y-scroll md:rounded-lg md:p-6">
@@ -173,10 +210,20 @@ export function MyTask({
               onClick={() => setEditTaskModal(true)}
             />
           </div>
-        </div>
-      </div>
-    </>
-  );
-}
+        </div>*/
 
-// DESHABILITAR BOTONES CUANDO NO HAY NADA EN TASKLIST
+/*
+                <div className=" border-gray-300 border-2 p-3 m-1.5 mt-4 rounded-2xl text-black md:rounded-2xl md:mt-6">
+          <div className="p-1 flex-1 overflow-y-scroll md:rounded-lg md:p-6"></div>
+
+          <div className="flex justify-end gap-1 p-1.5 md:p-4">
+            <TrashIcon
+              className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-10 md:h-10 text-gray-100 cursor-pointer"
+              onClick={() => onDelete(detailsTaks, "task")}
+            />
+            <PencilSquareIcon
+              className="w-8 h-8 bg-red-400 p-1 rounded-sm md:w-10 md:h-10 text-gray-100 cursor-pointer"
+              onClick={() => setEditTaskModal(true)}
+            />
+          </div>
+        </div>*/
