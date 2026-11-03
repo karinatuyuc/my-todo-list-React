@@ -4,20 +4,18 @@ import {
   Squares2X2Icon,
   DocumentCheckIcon,
   ListBulletIcon,
-  QuestionMarkCircleIcon,
-  PencilIcon,
   CheckIcon,
 } from "@heroicons/react/16/solid";
 
-export default function SideMenu({ userName, setUserName, setActiveView }) {
+export default function SideMenu({ setUserName, setActiveView }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const listStyles =
-    "group flex items-center gap-2 text-xl text-white md:gap-4 lg:text-medium lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-2 lg:hover:scale-110 transition-all duration-300";
+    "group flex items-center gap-2 text-xl text-white md:gap-4 md:text-4xl lg:text-medium lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-2 lg:hover:scale-110 transition-all duration-300";
   const iconStyles =
-    "w-7 h-7 text-white lg:group-hover:text-red-500 lg:transition-colors lg:duration-200";
+    "w-7 h-7 text-white md:w-10 md:h-10 lg:group-hover:text-red-500 lg:transition-colors lg:duration-200";
 
   const avatarRandom = [
     "/Avatar/avatar1.webp",
@@ -62,7 +60,10 @@ export default function SideMenu({ userName, setUserName, setActiveView }) {
             className="absolute right-4 top-4 text-xl text-white
           cursor-pointer md:text-2xl lg:hidden"
           >
-            <button onClick={() => setIsOpen(false)} className="cursor-pointer hover:bg-red-300 p-2 rounded-2xl">Close</button>
+            <button onClick={() => setIsOpen(false)} 
+              className="cursor-pointer hover:bg-red-300 p-2 rounded-2xl md:text-4xl">
+              Close
+            </button>
           </div>
 
           {/**This is the icon */}
@@ -70,7 +71,7 @@ export default function SideMenu({ userName, setUserName, setActiveView }) {
             <img
               src={avatar}
               alt="avatar"
-              className="w-20 h-20 md:w-20 md:h-20 rounded-full"
+              className="w-20 h-20 rounded-full md:w-32 md:h-32"
             />
           </div>
 
@@ -84,26 +85,22 @@ export default function SideMenu({ userName, setUserName, setActiveView }) {
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="write your username"
                 className="bg-red-500 p-0.5 border-none text-lg rounded-l-lg focus:ring-2 focus:ring-red-500 focus:outline-none 
-                      md:text-medium
-                      text-center"
+                      md:text-3xl md:w-full md:h-10 md:text-center md:p-6
+                      lg:w-60 lg:h-10 lg:text-lg lg:rounded-l-lg lg:text-center"
               />
               <CheckIcon
                 className="w-8 h-8 cursor-pointer rounded-r-lg text-white bg-red-500
-                hover:bg-red-200 text-xl p-0.5 rounded-es-sm"
+                hover:bg-red-200 text-xl p-0.5 rounded-es-sm md:w-18 md:h-12"
                 onClick={() => {
                   onClickButton();
                   setIsOpen(false);
                 }}
               />
             </div>
-
-          {/**DIV for the username */}
-
-          {/**End DIV FOR THE USERNAME */}
         </div>
 
-        <div className=" p-8 h-screen lg:w-80 lg:max-h-96">
-          <ol className="space-y-12 md:space-y-10 lg:space-y-8 lg:mt-2">
+        <div className=" p-8 h-screen md:p-10 lg:w-80 lg:max-h-96">
+          <ol className="space-y-12 md:space-y-18 lg:space-y-8 lg:mt-2">
             <li
               className={listStyles}
               onClick={() => {
@@ -137,43 +134,3 @@ export default function SideMenu({ userName, setUserName, setActiveView }) {
     </>
   );
 }
-
-
-/**
- * 
- *           {!isEditing ? (
-            <div
-              className="text-2xl text-white font-semibold mt-5 flex 
-                        lg:text-2xl lg:flex lg:justify-center lg:items-center lg:text-center lg:mt-2"
-            >
-              <span
-                className="truncate overflow-hidden bg-red-700 text-ellipsis w-75 text-center
-                          md:text-2xl md:w-56
-                          lg:w-65 lg:truncate lg:overflow-hidden lg:text-ellipsis "
-              >
-                {userName === "" ? "user name" : userName}
-              </span>
-
-
-            </div>
-          ) : (
-            <div className="flex items-center mt-5 md:mt-7 lg:mt-3">
-              <label htmlFor="username"></label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="write your username"
-                className="bg-red-300 p-0.5 border-none text-lg rounded-l-full focus:ring-2 focus:ring-red-500 focus:outline-none 
-                      md:text-medium
-                      text-center"
-              />
-              <CheckIcon
-                className="w-8 h-8 cursor-pointer bg-black rounded-r-full text-white hover:text-red-700 text-xl p-0.5 rounded-es-sm md:bg-green-700"
-                onClick={onClickButton}
-              />
-            </div>
-          )}
- */
