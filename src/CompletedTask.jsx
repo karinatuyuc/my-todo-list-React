@@ -1,19 +1,15 @@
 // FILTRNDO LOS TASK COMPLETED, PARA MOSTRARLO EN ESTE FILE
 export default function CompletedTask({ dateIn, filteredTask }) {
-
-
-    let taskCompletedLimit = filteredTask.slice(0, 2);
+  let taskCompletedLimit = filteredTask.slice(0, 2);
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4  rounded-sm md:p-2 md:flex md:flex-row">
-
-
+      <div className="grid grid-cols-1 gap-4 rounded-sm md:flex md:flex-row md:p-4">
         {taskCompletedLimit.map((filter) => (
           <div
-            className="w-60 max-w-sm mx-auto border-2 p-1.5 mb-3 rounded-lg border-gray-900 md:grid md:grid-cols-1 
-        md:w-72 lg:w-64"
-        key={filter.id}
+            className="w-60 max-w-sm mx-auto border-2 p-1.5 mb-3 rounded-lg border-gray-900 
+            md:grid md:grid-cols-1 md:w-80 md:h-36 lg:w-64"
+            key={filter.id}
           >
             <div className="flex gap-2">
               {/**This  is the cricle  */}
@@ -22,15 +18,20 @@ export default function CompletedTask({ dateIn, filteredTask }) {
                 {/**This sould be interactive too */}
               </div>
               <div className="grid w-full p-0.5">
-                <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black">{filter.title}</span>
+                <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black
+                md:text-xl ">
+                  {filter.title}
+                </span>
 
                 <div className="text-sm h-8 text-ellipsis w-full m-0.5">
-                  <p className="text-xs font-medium text-gray-900 line-clamp-2 break-all">{filter.description}</p>
+                  <p className="text-xs font-medium text-gray-900 line-clamp-2 break-all md:text-base">
+                    {filter.description}
+                  </p>
                 </div>
                 {/** CARD FOOTER */}
-                <div className=" flex flex-col text-[8px] mt-2 gap-1 text-black">
+                <div className=" flex flex-col text-[8px] mt-2 gap-1 text-black md:text-sm md:mt-4">
                   <span className="">
-                    Status: <span className="text-green-500"></span>
+                    Status: <span className="text-green-500">{filter.estado}</span>
                   </span>{" "}
                   {/**This should be interactive  */}
                   <span className="text-gray-500">
@@ -41,8 +42,6 @@ export default function CompletedTask({ dateIn, filteredTask }) {
             </div>
           </div>
         ))}
-       
-
       </div>
 
       {/** </div>*/}

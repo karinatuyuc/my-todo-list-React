@@ -145,34 +145,18 @@ export default function Dashboard({
         />
       )}
 
-          
-
-
+        
       <div className="flex min-h-screen w-full flex-col text-white">
         {/*Header*/}
         <header
-          className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20
+          className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20 md:p-6 
             lg:flex lg:justify-around lg:p-2 lg:pl-12 lg:pr-12 lg:sticky lg:top-0 lg:z-20 lg:gap-44"
         >
           {/** Dashboard title*/}
-          <div className="font-bold text-2xl md:text-3xl">
+          <div className="font-bold text-2xl md:text-4xl">
             <span className="text-red-300">{view} </span>
             <span className="text-black">{view2}</span>
           </div>
-
-          {/** Search bar 
-          <div className="flex bg-yellow-50 hover:bg-red-200 rounded-lg md:w-94 lg:w-lvw ">
-            <input
-              type="text"
-              id="search"
-              name="search"
-              placeholder="Search your task here...."
-              className=" w-full h-9 p-2 text-sm rounded-lg focus:outline-none md:h-9 md:text-base hover:bg-red-200"
-            />
-            <button className="flex items-center justify-center md:h-9 hover:bg-red-300">
-              <MagnifyingGlassIcon className="w-7 h-9 p-1.5 bg-red-400  text-white rounded-lg md:w-8 md:h-8 lg:w-9 lg:h-9" />
-            </button>
-          </div> */}
 
           {/** Date section */}
           <div className="flex items-center justify-center gap-6">
@@ -183,14 +167,15 @@ export default function Dashboard({
             </div>
 
             <div className="flex flex-col gap-0.5 text-sm">
-              <span className="font-bold text-black md:text-sm lg:text-xs">
+              <span className="font-bold text-black md:text-2xl lg:text-xs">
                 {dayName}
               </span>
-              <span className="font-bold text-blue-300 text-sm md:text-sm md:flex md:justify-center lg:text-sm">
+              <span className="font-bold text-blue-300 text-sm md:text-2xl md:flex md:justify-center lg:text-sm">
                 {dateInNumber}
               </span>
             </div>
           </div>
+
         </header>
 
         <div className="flex flex-1 flex-col lg:flex-row lg:bg-amber-300">
@@ -209,10 +194,10 @@ export default function Dashboard({
           {activeView === "dashboard" && (
             <div className="mx-3.5">
               <div className="flex gap-2 lg:mt-6 lg:ml-6">
-                <div className="flex text-black text-2xl font-medium mb-4 md:text-2xl lg:ml-0 lg:text-3xl lg:mb-0">
+                <div className="flex text-black text-2xl font-medium mb-4 md:text-4xl lg:ml-0 lg:text-3xl lg:mb-0">
                   <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-4xl">
                     Welcome,{" "}
-                    <span className="text-lg md:text-4xl lg:text-4xl">
+                    <span className="text-lg md:text-4xl md:h-20 lg:text-4xl">
                       {userName}
                     </span>
                   </h1>

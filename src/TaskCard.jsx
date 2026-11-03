@@ -48,13 +48,13 @@ export default function TaskCard({
     <>
       <div
         className="mt-0.5 mb-0.5 w-72
-        md:mt-3 lg:p-0.5 md:flex md:justify-center md:items-center md:w-96"
+         md:w-full lg:p-0.5"
       >
         <div className="grid grid-cols-1 gap-4 mt-1.5 p-1.5 lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
-            className="w-full max-w-sm mx-auto min-h-36 border-2 rounded-lg p-2 border-blue-300
-            md:grid md:grid-cols-1 md:p-2 md:w-full md:min-h-40 lg:w-80 lg:p-1.2"
+            className="w-full max-w-sm mx-auto min-h-36 border-2 rounded-lg p-2 border-blue-300 md:border-black
+            md:grid md:grid-cols-1 md:p-2 md:w-full md:min-h-44 lg:w-80 lg:p-1.2"
           >
             <div className="flex gap-0.5 h-full">
               {/**This  is the cricle  */}
@@ -66,16 +66,17 @@ export default function TaskCard({
               </div>
 
               {/*CARD TASKS */}
-              <div className="w-full gap-8 h-28 bg-red-700">
+              <div className="w-full gap-8 h-28 md:h-36">
 
                 <div className="grid grid-cols-12 w-full h-full">
                   <div className="col-span-11 p-0.5">
-                    <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black md:text-lg">
+                    <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black md:text-xl">
                       {tasks.title}
                     </span>
 
-                    <div className="text-sm h-14 text-ellipsis w-full m-0.5 md:h-24">
-                      <p className="text-xs font-medium text-gray-900 line-clamp-5 break-all md:text-sm md:line-clamp-3 md:py-0.5">
+                    <div className="text-sm h-14 text-ellipsis w-full m-0.5 md:h-40">
+                      <p className="text-xs font-medium text-gray-900 line-clamp-5 break-all 
+                      md:text-base md:line-clamp-4 md:py-0.5">
                         {tasks.description}
                       </p>
                     </div>
@@ -92,7 +93,7 @@ export default function TaskCard({
                       >
 
                         <EllipsisHorizontalIcon
-                      className="w-5 h-5 text-black"
+                      className="w-5 h-5 text-black md:w-7 md:h-7"
                       
                     />
                       </div>
@@ -115,7 +116,7 @@ export default function TaskCard({
                 </div>
 
                 <div
-                  className="flex flex-row justify-between p-0.5 text-black "
+                  className="flex flex-row justify-between p-0.5 text-black"
                 >
                   <span className="text-[7px] md:text-[10px]">
                     Priority:{" "}

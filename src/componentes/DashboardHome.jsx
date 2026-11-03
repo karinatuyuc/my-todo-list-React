@@ -92,10 +92,10 @@ export function DashboardHome({
               >
                 <PlusIcon
                   className="w-5 h-5 text-red-400 font-medium
-                                   md:w-6 md:h-6"
+                                   md:w-8 md:h-8"
                   onClick={() => setModalAddTask(true)}
                 />
-                <span className="text-gray-400 md:text-2xl lg:text-sm">
+                <span className="text-gray-400 md:text-3xl lg:text-sm">
                   Add task
                 </span>
               </button>
@@ -104,10 +104,10 @@ export function DashboardHome({
 
           <div
             className=" flex flex-col justify-start items-center p-3 mt-4
-          md:flex md:flex-row md:justify-center md:items-center md:gap-6 md:p-1 lg:flex lg:bg-amber-400 lg:flex-col"
+            md:w-full lg:flex lg:bg-amber-400 lg:flex-col"
           >
             {taskLimit.length === 0 ? (
-              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 lg:w-80">
+              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 md:w-full md:p-1.5 md:grid md:grid-cols-2">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
                   {/* Barra tipo título */}
                   <div className="h-5 bg-gray-200 rounded w-3/4"></div>
@@ -119,7 +119,7 @@ export function DashboardHome({
                   {/* Barra tipo detalle */}
                   <div className="h-4 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 mt-6">
+                <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
                   {/* Barra tipo título */}
                   <div className="h-5 bg-gray-200 rounded w-3/4"></div>
 
@@ -132,7 +132,9 @@ export function DashboardHome({
                 </div>
               </div>
             ) : (
-              taskLimit.map((tasks) => (
+
+              <div className="md:flex md:flex-row-2">
+                {taskLimit.map((tasks) => (
                 <TaskCard
                   key={tasks.id}
                   tasks={tasks}
@@ -146,13 +148,14 @@ export function DashboardHome({
                   setDeleteTaskModal={setDeleteTaskModal}
                   onDelete={onDelete}
                 />
-              ))
+              ))}
+              </div>
             )}
           </div>
           <div className="bg-red-700">
             {task.length >= 3 && (
               <div className="flex text-[8px] text-white bg-red-400">
-                <ExclamationTriangleIcon className="w-4 h-3 text-black" />
+                <ExclamationTriangleIcon className="w-4 h-3 text-amber-300" />
                 <p>Visit "My Task" to see all task</p>
               </div>
             )}
@@ -161,7 +164,7 @@ export function DashboardHome({
 
         <div className="p-1 lg:p-0 mb-6 rounded">
           {/* TASK STATUS*/}
-          <div className="shadow-2xl mb-4 p-2 rounded-lg drop-shadow-lg bg-purple-500">
+          <div className="shadow-2xl mb-4 p-2 rounded-lg drop-shadow-lg">
             <div className=" relative flex gap-4">
               <div className="">
                 <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
@@ -170,14 +173,14 @@ export function DashboardHome({
                    md:w-6 md:h-6 lg:w-4 lg:h-4"
                 />
               </div>
-              <span className="text-red-400 font-medium md:text-2xl lg:text-lg">
+              <span className="text-red-400 font-medium md:text-3xl lg:text-lg">
                 Task Status
               </span>
             </div>
 
             {/*Progress circles*/}
-            <div className="grid grid-cols-3 gap-4 p-3">
-              <div className="">
+            <div className="grid grid-cols-3 gap-4 p-3 md:grid md:grid-cols-3 md:justify-center md:items-center md:p-4">
+              <div className="md:w-36 md:flex-1 md:m-auto">
                 <CircularProgressbar
                   value={percentageCompleted}
                   text={`${percentageCompleted} %`}
@@ -199,7 +202,7 @@ export function DashboardHome({
                   </span>
                 </div>
               </div>
-              <div className="">
+              <div className="md:w-36 md:m-auto md:flex-1 ">
                 <CircularProgressbar
                   value={percentageInProgress}
                   text={`${percentageInProgress} %`}
@@ -221,7 +224,7 @@ export function DashboardHome({
                   </span>
                 </div>
               </div>
-              <div className="">
+              <div className="md:w-36 md:m-auto md:flex-1">
                 <CircularProgressbar
                   value={percentageNotStarted}
                   text={`${percentageNotStarted} %`}
@@ -248,18 +251,19 @@ export function DashboardHome({
 
           {/*COMPLETED TASK*/}
 
-          <div className="border-2 shadow-2xl not-only-of-type:flex flex-col justify-center items-center p-2 gap-3 rounded-lg lg:bg-neutral-700">
+          <div className="border-2 shadow-2xl not-only-of-type:flex flex-col justify-center items-center p-2 gap-3 rounded-lg
+          md:p-8 lg:bg-neutral-700">
             {/** <div className="">*/}
             <div className="flex -translate-x-16 md:-translate-x-56 lg:bg-amber-300 lg:-translate-x-20">
               <DocumentCheckIcon className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1" />
-              <h1 className=" text-red-400 font-medium md:text-2xl lg:text-sm xl:text-lg">
+              <h1 className=" text-red-400 font-medium md:text-3xl lg:text-sm xl:text-lg">
                 Completed Task
               </h1>
             </div>
             <div className="md:flex md:flex-row md:gap-10 lg:flex lg:flex-col">
               {filteredTask.length === 0 ? (
-                <div className="w-60 rounded-sm gap-2 lg:w-80 border-gray-200 border-2">
-                  <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full">
+                <div className="w-60 rounded-sm gap-2 md:w-80 lg:w-80 border-gray-200 border-2">
+                  <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3 w-full md:p-8">
                     {/* Barra tipo título */}
                     <div className="h-5 bg-gray-200 rounded w-3/4"></div>
 
