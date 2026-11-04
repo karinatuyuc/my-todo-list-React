@@ -9,14 +9,14 @@ export function TaskStatus() {
       <div className=" bg-white w-full flex rounded-xl border-2 mt-2 border-gray-300 text-[12px]">
         <table className="w-full text-center text-black">
           <thead>
-            <tr>
+            <tr className="text-lg">
               <th className="p-2 border-r-2 border-gray-300">SN</th>
               <th className="p-2 border-l-2 border-gray-300">Task Status</th>
               <th className="p-2 border-l-2 border-gray-300">Action</th>
             </tr>
           </thead>
           {status.map((estado, index) => (
-            <tbody className="border-t-2 border-gray-300" key={index}>
+            <tbody className="border-t-2 border-gray-300 text-lg" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
                 <td className="border-r-2 border-gray-300">{estado}</td>

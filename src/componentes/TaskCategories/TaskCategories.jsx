@@ -33,26 +33,26 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
         : 
         <table className="w-full text-center text-black">
         <thead>
-            <tr>
+            <tr className="md:text-xl md:p-8">
               <th className="p-2 border-r-2 border-gray-300">SN</th>
-              <th className="p-2 text-lg border-l-2 border-gray-300">Task Category</th>
+              <th className="p-2 text-lg border-l-2 border-gray-300 md:text-xl">Task Category</th>
               <th className="p-2 border-l-2 border-gray-300">Action</th>
             </tr>
           </thead>
 
            {createCategories.map((categoria, index) => (
-            <tbody className="border-t-2 border-gray-300" key={index}>
+            <tbody className="border-t-2 border-gray-300 md:text-2xl" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
                 <td className="border-r-2 border-gray-300">{categoria.name}</td>
 
-                <td className="text-black w-1/12 p-1.5 lg:w-96">
+                <td className="text-black w-1/12 p-1.5 md:p-3 md:w-4/12 lg:w-96">
                   <div className="gap-2 flex justify-items-center justify-center text-white text-center">
                     <button
                       className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer"
                       onClick={() => setOpenEditCategory(true)}
                     >
-                      <PencilSquareIcon className="w-4 h-5"
+                      <PencilSquareIcon className="w-4 h-5 md:w-6 md:h-6"
                       onClick={() => editCategory(categoria)}
                       />
                       Edit
@@ -65,7 +65,7 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
                         )
                       }
                     >
-                      <TrashIcon className="w-4 h-5"
+                      <TrashIcon className="w-4 h-5 md:w-6 md:h-6"
                       />
                       Delete
                     </button>
@@ -111,7 +111,6 @@ export function TaskCategories({
           editCategory={editCategory}
           
       />
-
     )}
 
 
@@ -136,7 +135,7 @@ export function TaskCategories({
 
 
             <div className="flex justify-between">
-              <span className="font-medium">
+              <span className="font-medium md:text-2xl">
                 <span className="underline decoration-orange-700 underline-offset-4">
                   Task
                 </span>{" "}
@@ -145,11 +144,11 @@ export function TaskCategories({
 
 
               {createCategories.length === 0 ? null : (
-                <div className="text-gray-500 text-sm flex">
+                <div className="text-gray-500 text-sm flex md:text-2xl">
                 <button className="flex cursor-pointer"
                   onClick={() => setOpenCreate(true)}
                 >
-                  <PlusIcon className="w-4 h-4 text-orange-600 font-bold"/>
+                  <PlusIcon className="w-4 h-4 text-orange-600 font-bold md:w-7 md:h-7"/>
                   Add Task Category
                 </button>
               </div>
