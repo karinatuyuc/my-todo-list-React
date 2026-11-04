@@ -97,8 +97,8 @@ export function EditModal({
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-full flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-md">
-          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
+        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-9/12">
+          <nav className="flex justify-between md:text-xl lg:mt-1 lg:mb-6 lg:font-semibold">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Edit Task
             </span>
@@ -111,7 +111,7 @@ export function EditModal({
           </nav>
 
           <form onSubmit={onSubmitEditedTask}>
-            <div className="border-gray-200 border-2 mt-3 mb-2 p-2 flex flex-col gap-2 lg:mt-4 lg:p-2">
+            <div className="border-gray-200 border-2 mt-3 mb-2 p-2 md:text-lg flex flex-col gap-2 lg:mt-4 lg:p-2">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
                 Title
@@ -124,7 +124,7 @@ export function EditModal({
                 onChange={(e) =>
                   validateTitle(e.target.value, setTitle, setErrors)
                 }
-                className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5"
+                className="w-52 border-gray-300 border-2 rounded-sm lg:p-0.5 md:w-72"
               />
               <span className="text-[8px] text-red-600">{errors.title}</span>
 
@@ -135,7 +135,7 @@ export function EditModal({
                 name="taskDate"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-52 border-gray-300 border-2 rounded-sm cursor-pointer md:w-52 lg:p-0.5"
+                className="w-52 border-gray-300 border-2 rounded-sm cursor-pointer md:w-72 lg:p-0.5"
               />
 
               {/* Priority options  */}
@@ -164,7 +164,8 @@ export function EditModal({
                             setIsDisabled,
                           )
                         }
-                        className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 border-amber-50 rounded-sm lg:bg-amber-300"
+                        className="cursor-pointer flex flex-row w-3  bg-red-700 border-2 
+                        border-amber-50 rounded-sm lg:bg-amber-300"
                       />
                     </div>
                   );
@@ -215,7 +216,7 @@ export function EditModal({
                 onChange={(e) =>
                   validateDescription(e.target.value, setDescription, setErrors)
                 }
-                className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-72 lg:h-20 lg:w-96"
+                className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-96 md:h-28 lg:h-20 lg:w-96"
               ></textarea>
               <span className="text-[8px] text-red-600">
                 {errors.description}
@@ -224,7 +225,8 @@ export function EditModal({
 
             <button
               type="submit"
-              className={`cursor-pointer p-1 text-amber-50 rounded-sm mt-1 ml-4 w-18 ${!isDisabled ? "bg-orange-500" : "bg-orange-300"}`}
+              className={`cursor-pointer p-1 text-amber-50 
+                rounded-sm mt-1 ml-4 w-18 md:w-24 md:text-lg ${!isDisabled ? "bg-orange-500" : "bg-orange-300"}`}
               disabled={isDisabled}
             >
               Done

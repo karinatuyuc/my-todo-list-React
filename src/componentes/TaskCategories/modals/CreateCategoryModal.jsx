@@ -41,14 +41,14 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
     <>
       <div className=" h-screen w-full flex flex-col gap-4 p-3 rounded-2xl text-black">
         <div className="flex items-center justify-between p-1 text-lg font-bold">
-          <div className="text-2xl">
+          <div className="text-2xl md:text-3xl">
             <span className="underline underline-offset-8 decoration-amber-600">
               Create{" "}
             </span>
             Categories
           </div>
           <div
-            className="text-lg underline underline-offset-4 decoration-black cursor-pointer"
+            className="text-lg underline underline-offset-4 decoration-black cursor-pointer md:text-2xl"
             onClick={() => setOpenCreate(false)}
           >
             Go Back
@@ -56,7 +56,7 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <label htmlFor="category" className="text-sm font-medium">
+          <label htmlFor="category" className="text-sm font-medium md:text-xl">
             Category Name
           </label>
           <input
@@ -64,12 +64,13 @@ export function CreateCategoryModal({ setOpenCreate, addCategory }) {
             type="text"
             value={categoryName}
             onChange={(e) => setCategoryName(e.target.value)}
-            className={` border-gray-400 border-2 rounded-lg px-4 py-2 focus:border-red-300 focus:ring-2 focus:ring-red-400 focus:outline-none transition-all`}
+            className={` border-gray-400 border-2 rounded-lg px-4 py-2 
+              focus:border-red-300 focus:ring-2 focus:ring-red-400 focus:outline-none transition-all md:text-xl`}
           />
         </div>
         <span className="text-sm text-red-500">{error.inputCategory}</span>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 md:text-lg">
           <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer"
           onClick={() => {
             cateogoryNa()

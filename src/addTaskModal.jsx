@@ -91,8 +91,8 @@ export function AddTaskModal({
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-md">
-          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold">
+        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-9/12 md:text-lg">
+          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold md:text-xl md:font-semibold">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Add New Task
             </span>
@@ -118,7 +118,7 @@ export function AddTaskModal({
                 onChange={(e) =>
                   validateTitle(e.target.value, setTitle, setErrors)
                 } // Call validateField on input change
-                className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5"
+                className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5 md:text-xl"
               />
               <span className="text-[8px] text-red-600">{errors.title}</span>
 
@@ -192,7 +192,7 @@ export function AddTaskModal({
                   validateDescription(e.target.value, setDescription, setErrors)
                 }
                 placeholder="Start writing here...." // Placeholder text
-                className="h-28 w-72 border-2 border-gray-200 rounded-sm p-2"
+                className="h-28 w-72 border-2 border-gray-200 rounded-sm p-2 md:w-96 md:text-xl"
               ></textarea>
               <span className="text-[8px] text-red-600">
                 {errors.description}
