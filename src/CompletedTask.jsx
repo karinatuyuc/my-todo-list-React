@@ -4,7 +4,7 @@ export default function CompletedTask({ dateIn, filteredTask }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 rounded-sm md:flex md:flex-row md:p-4">
+      <div className="grid grid-cols-1 gap-4 rounded-sm md:flex md:flex-row md:p-4 lg:flex-col">
         {taskCompletedLimit.map((filter) => (
           <div
             className="w-60 max-w-sm mx-auto border-2 p-1.5 mb-3 rounded-lg border-gray-900 
@@ -19,17 +19,17 @@ export default function CompletedTask({ dateIn, filteredTask }) {
               </div>
               <div className="grid w-full p-0.5">
                 <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black
-                md:text-xl ">
+                md:text-xl lg:text-base">
                   {filter.title}
                 </span>
 
                 <div className="text-sm h-8 text-ellipsis w-full m-0.5">
-                  <p className="text-xs font-medium text-gray-900 line-clamp-2 break-all md:text-base">
+                  <p className="text-xs font-medium text-gray-900 line-clamp-2 break-all md:text-base lg:text-sm">
                     {filter.description}
                   </p>
                 </div>
                 {/** CARD FOOTER */}
-                <div className=" flex flex-col text-[8px] mt-2 gap-1 text-black md:text-sm md:mt-4">
+                <div className=" flex flex-col text-[8px] mt-2 gap-1 text-black md:text-sm md:mt-4 lg:text-xs">
                   <span className="">
                     Status: <span className="text-green-500">{filter.estado}</span>
                   </span>{" "}

@@ -48,19 +48,19 @@ export default function TaskCard({
     <>
       <div
         className="mt-0.5 mb-0.5 w-72
-         md:w-full lg:p-0.5"
+         md:w-full lg:p-0.5 lg:w-full"
       >
         <div className="grid grid-cols-1 gap-4 mt-1.5 p-1.5 lg:flex lg:mt-0.5 rounded-sm">
           {/**Card #1 */}
           <div
             className="w-full max-w-sm mx-auto min-h-36 border-2 rounded-lg p-2 border-blue-300 md:border-black
-            md:grid md:grid-cols-1 md:p-2 md:w-full md:min-h-44 lg:w-80 lg:p-1.2"
+            md:grid md:grid-cols-1 md:p-2 md:w-full md:min-h-44 lg:w-96 lg:p-1.2"
           >
             <div className="flex gap-0.5 h-full">
               {/**This  is the cricle  */}
-              <div className=" flex mt-1">
+              <div className=" flex mt-1 lg:pr-1">
                 <span
-                  className={`w-2 h-2 border-8 rounded-full md:w-4 md:h-4 ${statusColors[tasks.estado]}`}
+                  className={`w-2 h-2 border-4 rounded-full md:w-4 md:h-4 lg:w-4 lg:h-4 ${statusColors[tasks.estado]}`}
                 ></span>{" "}
                 {/**This sould be interactive too */}
               </div>
@@ -70,7 +70,7 @@ export default function TaskCard({
 
                 <div className="grid grid-cols-12 w-full h-full">
                   <div className="col-span-11 p-0.5">
-                    <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black md:text-xl">
+                    <span className="font-bold text-sm text-ellipsis break-all line-clamp-2 text-black md:text-xl lg:text-md">
                       {tasks.title}
                     </span>
 

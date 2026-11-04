@@ -22,7 +22,7 @@ export function DashboardHome({
   idOptions,
   onCloseEditModal,
   setDeleteTaskModal,
-  onDelete
+  onDelete,
 }) {
   //**/
   // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK
@@ -38,61 +38,69 @@ export function DashboardHome({
   });
 
   const dateInNumber = date.toLocaleDateString("en-US"); // To show the date in number
-    let taskLimit = task.slice(0, 2);
-    let length = task.length;
 
+  let taskLimit2 =
+    window.innerWidth >= 1366 ? task.slice(0, 3) : task.slice(0, 2);
 
+  let length = task.length;
 
-  const filteredTask = task.filter((taskCompleted) => taskCompleted.estado === "Completed");
-  const inProgressTask = task.filter((taskProgress) => taskProgress.estado === "In progress");
-  const notStartedTask = task.filter((taskNotStarted) => taskNotStarted.estado === "Not started");
+  const filteredTask = task.filter(
+    (taskCompleted) => taskCompleted.estado === "Completed",
+  );
+  const inProgressTask = task.filter(
+    (taskProgress) => taskProgress.estado === "In progress",
+  );
+  const notStartedTask = task.filter(
+    (taskNotStarted) => taskNotStarted.estado === "Not started",
+  );
 
-  
-  const percentageCompleted = length > 0 ? Math.round((filteredTask.length * 100) / task.length) : 0;
-  const percentageInProgress = length > 0 ? Math.round((inProgressTask.length * 100) / task.length ) : 0;
-  const percentageNotStarted = length > 0 ?  Math.round((notStartedTask.length * 100) / task.length ) : 0;
+  const percentageCompleted =
+    length > 0 ? Math.round((filteredTask.length * 100) / task.length) : 0;
+  const percentageInProgress =
+    length > 0 ? Math.round((inProgressTask.length * 100) / task.length) : 0;
+  const percentageNotStarted =
+    length > 0 ? Math.round((notStartedTask.length * 100) / task.length) : 0;
 
+  console.log(taskLimit2);
 
   return (
     <>
-
-      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4 md:gap-16">
+      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4 md:gap-16 lg:bg-amber-800">
         {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
-        <div
-          className={`shadow-2xl drop-shadow-lg rounded p-2 lg:p-0 mb-6`}
-        >
+        <div className={`shadow-2xl drop-shadow-lg rounded p-2 lg:p-0 mb-6`}>
           <div className={`lg:top-0 lg:sticky`}>
             <div className="flex justify-between p-2.5 lg:h-20 lg:p-4">
               <span
-                className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-3xl lg:text-lg text-red-400"
+                className="absolute text-justify left-16 text-xm ml-2 font-medium md:text-3xl lg:text-sm text-red-400"
                 onClick={setEditTaskModal}
               >
                 To-Do
               </span>
               <div className="relative">
-                <ClipboardDocumentCheckIcon className="w-7 h-7 absolute md:w-12 md:h-12" />
+                <ClipboardDocumentCheckIcon className="w-7 h-7 absolute md:w-12 md:h-12 lg:w-7 lg:h-7" />
                 <ClockIcon
                   className="w-5 h-5 relative left-3 top-4 p-0.5 bg-gray-200 text-gray-400 rounded-full
-                   md:left-4 md:w-8 md:h-8 md:top-5 lg:top-4 lg:w-5 lg:h-5 lg:p-0.5"
+                   md:left-4 md:w-8 md:h-8 md:top-5 lg:top-4 lg:w-4 lg:h-4 lg:p-0.5"
                 />
               </div>
 
-              <span className="absolute text-black text-justify mt-10 text-[12px] md:text-sm md:mt-14 lg:text-[10px] lg:mt-10">
+              <span
+                className="absolute text-black text-justify mt-10 text-[12px] 
+              md:text-sm md:mt-14 lg:text-[10px] lg:mt-8"
+              >
                 {dayMonth}
-                <span
-                  className="text-gray-400 m-4 md:text-sm"
-                >
+                <span className="text-gray-400 m-4 md:text-sm lg:text-xs">
                   Today
                 </span>
               </span>
 
               <button
                 className="flex items-center text-sm cursor-pointer gap-1
-                              md:text-base"
+                              md:text-base lg:text-sm"
               >
                 <PlusIcon
                   className="w-5 h-5 text-red-400 font-medium
-                                   md:w-8 md:h-8"
+                                   md:w-8 md:h-8 lg:w-6 lg:h-6"
                   onClick={() => setModalAddTask(true)}
                 />
                 <span className="text-gray-400 md:text-3xl lg:text-sm">
@@ -104,10 +112,10 @@ export function DashboardHome({
 
           <div
             className=" flex flex-col justify-start items-center p-3 mt-4
-            md:w-full lg:flex lg:bg-amber-400 lg:flex-col"
+            md:w-full lg:h-96"
           >
-            {taskLimit.length === 0 ? (
-              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 md:w-full md:p-1.5 md:grid md:grid-cols-2">
+            {taskLimit2.length === 0 ? (
+              <div className="w-72 p-1.5 rounded-sm gap-2 m-6 md:w-full md:p-1.5 md:grid md:grid-cols-2 lg:flex lg:flex-col lg:w-80">
                 <div className="bg-white p-4 rounded-md shadow-sm animate-pulse flex flex-col gap-3">
                   {/* Barra tipo título */}
                   <div className="h-5 bg-gray-200 rounded w-3/4"></div>
@@ -132,40 +140,40 @@ export function DashboardHome({
                 </div>
               </div>
             ) : (
+              <div className="md:flex md:flex-row-2 lg:flex lg:flex-col lg:h-screen">
+                {taskLimit2.map((tasks) => (
+                  <TaskCard
+                    key={tasks.id}
+                    tasks={tasks}
+                    setSelectedTask={setSelectedTask}
+                    setEditTaskModal={setEditTaskModal}
+                    editTask={editTask}
+                    idOptions={idOptions}
+                    setOpenOptionsTaskId={setOpenOptionsTaskId}
+                    openOptionsTaskId={openOptionsTaskId}
+                    onCloseEditModal={onCloseEditModal}
+                    setDeleteTaskModal={setDeleteTaskModal}
+                    onDelete={onDelete}
+                  />
+                ))}
+              </div>
+            )}
 
-              <div className="md:flex md:flex-row-2">
-                {taskLimit.map((tasks) => (
-                <TaskCard
-                  key={tasks.id}
-                  tasks={tasks}
-                  setSelectedTask={setSelectedTask}
-                  setEditTaskModal={setEditTaskModal}
-                  editTask={editTask}
-                  idOptions={idOptions}
-                  setOpenOptionsTaskId={setOpenOptionsTaskId}
-                  openOptionsTaskId={openOptionsTaskId}
-                  onCloseEditModal={onCloseEditModal}
-                  setDeleteTaskModal={setDeleteTaskModal}
-                  onDelete={onDelete}
-                />
-              ))}
-              </div>
-            )}
-          </div>
-          <div className="bg-red-700">
-            {task.length >= 3 && (
-              <div className="flex text-[8px] text-white bg-red-400">
-                <ExclamationTriangleIcon className="w-4 h-3 text-amber-300" />
-                <p>Visit "My Task" to see all task</p>
-              </div>
-            )}
+            <div className="mb-2 lg:mt-4 lg:w-full">
+              {task.length >= 4 && (
+                <div className="flex text-[8px] rounded-2xl text-white bg-red-500 lg:w-full">
+                  <ExclamationTriangleIcon className="w-4 h-3 text-amber-300" />
+                  <p>Visit "My Task" to see all task</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
         <div className="p-1 lg:p-0 mb-6 rounded">
           {/* TASK STATUS*/}
           <div className="shadow-2xl mb-4 p-2 rounded-lg drop-shadow-lg">
-            <div className=" relative flex gap-4">
+            <div className=" relative flex gap-4 lg:gap-5 lg:p-4">
               <div className="">
                 <ClipboardIcon className="w-7 h-7 absolute text-gray-400 md:w-10 md:h-10 lg:w-7 lg:h-7" />
                 <CheckCircleIcon
@@ -180,7 +188,7 @@ export function DashboardHome({
 
             {/*Progress circles*/}
             <div className="grid grid-cols-3 gap-4 p-3 md:grid md:grid-cols-3 md:justify-center md:items-center md:p-4">
-              <div className="md:w-36 md:flex-1 md:m-auto">
+              <div className="md:w-36 md:flex-1 md:m-auto lg:w-28">
                 <CircularProgressbar
                   value={percentageCompleted}
                   text={`${percentageCompleted} %`}
@@ -202,7 +210,7 @@ export function DashboardHome({
                   </span>
                 </div>
               </div>
-              <div className="md:w-36 md:m-auto md:flex-1 ">
+              <div className="md:w-36 md:m-auto md:flex-1 lg:w-28">
                 <CircularProgressbar
                   value={percentageInProgress}
                   text={`${percentageInProgress} %`}
@@ -224,7 +232,7 @@ export function DashboardHome({
                   </span>
                 </div>
               </div>
-              <div className="md:w-36 md:m-auto md:flex-1">
+              <div className="md:w-36 md:m-auto md:flex-1 lg:w-28">
                 <CircularProgressbar
                   value={percentageNotStarted}
                   text={`${percentageNotStarted} %`}
@@ -251,10 +259,12 @@ export function DashboardHome({
 
           {/*COMPLETED TASK*/}
 
-          <div className="border-2 shadow-2xl not-only-of-type:flex flex-col justify-center items-center p-2 gap-3 rounded-lg
-          md:p-8 lg:bg-neutral-700">
+          <div
+            className="border-2 shadow-2xl not-only-of-type:flex flex-col justify-center items-center p-2 gap-3 rounded-lg
+          md:p-8 lg:p-8"
+          >
             {/** <div className="">*/}
-            <div className="flex -translate-x-16 md:-translate-x-56 lg:bg-amber-300 lg:-translate-x-20">
+            <div className="flex -translate-x-16 md:-translate-x-56 lg:-translate-x-20">
               <DocumentCheckIcon className="w-7 h-7 text-gray-500 mb-2 md:w-8 md:h-8 md:mb-4 lg:w-7 lg:h-7 lg:mb-1" />
               <h1 className=" text-red-400 font-medium md:text-3xl lg:text-sm xl:text-lg">
                 Completed Task
@@ -276,11 +286,11 @@ export function DashboardHome({
                   </div>
                 </div>
               ) : (
-                  <CompletedTask
-                    dateIn={dateInNumber}
-                    filteredTask={filteredTask}
-                    openOptionsTaskId={openOptionsTaskId}
-                  />
+                <CompletedTask
+                  dateIn={dateInNumber}
+                  filteredTask={filteredTask}
+                  openOptionsTaskId={openOptionsTaskId}
+                />
               )}
             </div>
           </div>

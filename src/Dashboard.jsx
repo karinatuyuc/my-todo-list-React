@@ -120,8 +120,6 @@ export default function Dashboard({
           ? "Categories"
           : null;
 
-
-
   return (
     <>
       {modalAddTask && (
@@ -145,29 +143,22 @@ export default function Dashboard({
         />
       )}
 
-        
-      <div className="flex min-h-screen w-full flex-col text-white">
+      <div className="flex min-h-screen w-full flex-col text-white lg:bg-green-700">
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20 md:p-6 
-            lg:flex lg:justify-around lg:p-2 lg:pl-12 lg:pr-12 lg:sticky lg:top-0 lg:z-20 lg:gap-44"
+            lg:flex lg:justify-between lg:p-2 lg:sticky lg:top-0 lg:z-20"
         >
           {/** Dashboard title*/}
-          <div className="font-bold text-2xl md:text-4xl">
-            <span className="text-red-300">{view} </span>
+          <div className="font-bold text-2xl md:text-4xl lg:text-3xl">
+            <span className="text-red-300">{view}</span>
             <span className="text-black">{view2}</span>
           </div>
 
           {/** Date section */}
           <div className="flex items-center justify-center gap-6">
-            {/**Notification and calendar icon */}
-            <div className="hidden lg:flex lg:gap-2 text-gray-50">
-              <ClockIcon className="w-8 h-8 bg-red-400 p-1.5 rounded-md" />
-              <ClipboardDocumentCheckIcon className="w-8 h-8 bg-red-400 p-1.5 rounded-md" />
-            </div>
-
             <div className="flex flex-col gap-0.5 text-sm">
-              <span className="font-bold text-black md:text-2xl lg:text-xs">
+              <span className="font-bold text-black md:text-2xl lg:text-lg">
                 {dayName}
               </span>
               <span className="font-bold text-blue-300 text-sm md:text-2xl md:flex md:justify-center lg:text-sm">
@@ -175,12 +166,11 @@ export default function Dashboard({
               </span>
             </div>
           </div>
-
         </header>
 
         <div className="flex flex-1 flex-col lg:flex-row lg:bg-amber-300">
           {/**SIDE MENU */}
-          <aside className="lg:bg-red-400 lg:w-80 lg:max-h-screen lg:sticky">
+          <aside className="lg:bg-red-400 lg:w-80 lg:sticky">
             <SideMenu
               userName={userName}
               setUserName={setUserName}
@@ -191,67 +181,72 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          {activeView === "dashboard" && (
-            <div className="mx-3.5">
-              <div className="flex gap-2 lg:mt-6 lg:ml-6">
-                <div className="flex text-black text-2xl font-medium mb-4 md:text-4xl lg:ml-0 lg:text-3xl lg:mb-0">
-                  <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-4xl">
-                    Welcome,{" "}
-                    <span className="text-lg md:text-4xl md:h-20 lg:text-4xl">
-                      {userName}
+          <div className="lg:bg-black lg:w-full">
+            {activeView === "dashboard" && (
+              <div className="mx-3.5 lg:p-0.5 lg:bg-purple-500">
+                <div className="flex gap-2 lg:mt-3 lg:ml-6">
+                  <div className="flex text-black text-2xl font-medium mb-4 md:text-4xl lg:ml-0 lg:mb-0">
+                    <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-4xl lg:text-2xl lg:font-medium">
+                      Welcome,{" "}
+                      <span className="text-lg md:text-4xl md:h-20 lg:text-2xl">
+                        {userName}
+                      </span>
+                    </h1>
+                    <span className="text-2xl md:text-4xl lg:text-2xl">
+                      {waveHand}
                     </span>
-                  </h1>
-                  <span className="text-2xl md:text-4xl lg:text-4xl">
-                    {waveHand}
-                  </span>
+                  </div>
                 </div>
+                {/** Main section */}
               </div>
-              {/** Main section */}
-            </div>
-          )}
+            )}
 
-          <main className="flex-1 p-2 md:px-6 border-4 border-gray-300 m-2 rounded-2xl shadow-2xl drop-shadow-2xl">
-            {activeView === "dashboard" ? (
-              <div className="p-2">
-                <DashboardHome
+            <main
+              className="flex-1 p-2 md:px-6 border-4 border-gray-200 m-2 rounded-2xl shadow-2xl drop-shadow-2xl 
+          lg:bg-red-800 lg:max-w-full lg:rounded-md lg:border-2"
+            >
+              {activeView === "dashboard" ? (
+                <div className="p-2">
+                  <DashboardHome
+                    task={task}
+                    setModalAddTask={setModalAddTask}
+                    setEditTaskModal={setEditTaskModal}
+                    editTask={editTask}
+                    idOptions={idOptions}
+                    onCloseEditModal={onCloseEditModal}
+                    setSelectedTask={setSelectedTask}
+                    openOptionsTaskId={openOptionsTaskId}
+                    setOpenOptionsTaskId={setOpenOptionsTaskId}
+                    onDelete={onDelete}
+                  />
+                </div>
+              ) : activeView === "MyTask" ? (
+                <MyTask
                   task={task}
-                  setModalAddTask={setModalAddTask}
-                  setEditTaskModal={setEditTaskModal}
-                  editTask={editTask}
-                  idOptions={idOptions}
-                  onCloseEditModal={onCloseEditModal}
                   setSelectedTask={setSelectedTask}
-                  openOptionsTaskId={openOptionsTaskId}
-                  setOpenOptionsTaskId={setOpenOptionsTaskId}
+                  selectedTask={selectedTask}
+                  setEditTaskModal={setEditTaskModal}
                   onDelete={onDelete}
                 />
-              </div>
-            ) : activeView === "MyTask" ? (
-              <MyTask
-                task={task}
-                setSelectedTask={setSelectedTask}
-                selectedTask={selectedTask}
-                setEditTaskModal={setEditTaskModal}
-                onDelete={onDelete}
-              />
-            ) : activeView === "TaskCategories" ? (
-              <TaskCategories
-                addCategory={addCategory}
-                createCategories={createCategories}
-                priorities={priorities}
-                setSelectedTask={setSelectedTask}
-                editTask={editTask}
-                setEditTaskModal={setEditTaskModal}
-                onDelete={onDelete}
-                editCategory={editCategory}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-                deleteCategory={deleteCategory}
-                setOpenDeleteModal={setOpenDeleteModal}
-                openDeleteModal={openDeleteModal}
-              />
-            ) : null}
-          </main>
+              ) : activeView === "TaskCategories" ? (
+                <TaskCategories
+                  addCategory={addCategory}
+                  createCategories={createCategories}
+                  priorities={priorities}
+                  setSelectedTask={setSelectedTask}
+                  editTask={editTask}
+                  setEditTaskModal={setEditTaskModal}
+                  onDelete={onDelete}
+                  editCategory={editCategory}
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                  deleteCategory={deleteCategory}
+                  setOpenDeleteModal={setOpenDeleteModal}
+                  openDeleteModal={openDeleteModal}
+                />
+              ) : null}
+            </main>
+          </div>
         </div>
         <span className="mt-auto text-[10px] bg-red-900 p-1">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.

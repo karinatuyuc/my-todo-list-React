@@ -13,9 +13,9 @@ export default function SideMenu({ setUserName, setActiveView }) {
   const [inputValue, setInputValue] = useState("");
 
   const listStyles =
-    "group flex items-center gap-2 text-xl text-white md:gap-4 md:text-4xl lg:text-medium lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-2 lg:hover:scale-110 transition-all duration-300";
+    "group flex items-center gap-2 text-xl text-white md:gap-4 md:text-4xl lg:text-xl lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-2 lg:hover:scale-110 transition-all duration-300";
   const iconStyles =
-    "w-7 h-7 text-white md:w-10 md:h-10 lg:group-hover:text-red-500 lg:transition-colors lg:duration-200";
+    "w-7 h-7 text-white md:w-10 md:h-10 lg:w-8 lg:h-8 lg:group-hover:text-red-500 lg:transition-colors lg:duration-200";
 
   const avatarRandom = [
     "/Avatar/avatar1.webp",
@@ -67,11 +67,11 @@ export default function SideMenu({ setUserName, setActiveView }) {
           </div>
 
           {/**This is the icon */}
-          <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-4">
+          <div className="rounded-full mt-4 border-white border-2 md:mt-8 lg:mt-2">
             <img
               src={avatar}
               alt="avatar"
-              className="w-20 h-20 rounded-full md:w-32 md:h-32"
+              className="w-20 h-20 rounded-full md:w-32 md:h-32 lg:w-18 lg:h-18"
             />
           </div>
 
@@ -84,13 +84,13 @@ export default function SideMenu({ setUserName, setActiveView }) {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="write your username"
-                className="bg-red-500 p-0.5 border-none text-lg rounded-l-lg focus:ring-2 focus:ring-red-500 focus:outline-none 
+                className="bg-red-300 p-0.5 border-none text-lg rounded-l-lg focus:ring-2 focus:ring-red-500 focus:outline-none 
                       md:text-3xl md:w-full md:h-10 md:text-center md:p-6
-                      lg:w-60 lg:h-10 lg:text-lg lg:rounded-l-lg lg:text-center"
+                      lg:text-xs lg:p-0.5 lg:h-6"
               />
               <CheckIcon
-                className="w-8 h-8 cursor-pointer rounded-r-lg text-white bg-red-500
-                hover:bg-red-200 text-xl p-0.5 rounded-es-sm md:w-18 md:h-12"
+                className="bg-red-300 w-8 h-8 cursor-pointer rounded-r-lg text-white bg-red-6
+                hover:bg-red-200 text-xl p-0.5 rounded-es-sm md:w-18 md:h-12 lg:w-8 lg:h-6 lg:rounded-l-none"
                 onClick={() => {
                   onClickButton();
                   setIsOpen(false);
@@ -99,7 +99,7 @@ export default function SideMenu({ setUserName, setActiveView }) {
             </div>
         </div>
 
-        <div className=" p-8 h-screen md:p-10 lg:w-80 lg:max-h-96">
+        <div className="p-8 h-screen md:p-10 lg:w-72 lg:h-8/12 lg:mt-8 lg:p-6">
           <ol className="space-y-12 md:space-y-18 lg:space-y-8 lg:mt-2">
             <li
               className={listStyles}

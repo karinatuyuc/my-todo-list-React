@@ -96,9 +96,56 @@ export function MyTask({
     }
   }, [task, selectedTask]);
 
+  let windowWith = window.innerWidth >= 1366;
+  console.log(windowWith);
+
+  console.log(window.innerWidth);
+
   return (
     <>
-      <div className=" h-full lg:grid lg:grid-cols-2 lg:h-full">
+      <div
+        className={`h-full lg:bg-amber-500 
+        lg:w-full lg:h-screen`}
+      >
+        {task.length === 0 ? (
+          <div
+            className="text-black flex flex-col justify-center items-center gap-4 
+           md:flex md:justify-center md:items-center"
+          >
+            <div className="p-4">
+              <img
+                src="public/mytask.webp"
+                alt="My Task"
+                className="w-36 h-36 md:w-60 md:h-60"
+              />
+            </div>
+            <div className="text-center">
+              <h1 className="text-2xl font-semibold m-4 md:text-4xl">
+                All Done for now!!
+              </h1>
+              <p className="text-2xl">
+                Any task you've added from the Dashboard or created will be
+                listed here automatically. Currently, there is nothing new to
+                show.
+              </p>
+            </div>
+          </div>
+        ) : (
+          
+          <div className="text-black">
+            todo 
+          </div>
+          
+        )}
+      </div>
+    </>
+  );
+}
+
+/**      <div className={`h-full lg:bg-mauve-600 
+        ${widthCondition && task.length !== 0 
+        ? "lg:grid lg:grid-cols-2 lg:h-screen lg:w-full" 
+        : "lg:w-full lg:h-screen"} `}>
         {task.length === 0 ? (
           <div className="text-black flex flex-col justify-center items-center gap-4 
            md:flex md:justify-center md:items-center">
@@ -109,7 +156,6 @@ export function MyTask({
                 className="w-36 h-36 md:w-60 md:h-60"
               />
             </div>
-
             <div className="text-center">
               <h1 className="text-2xl font-semibold m-4 md:text-4xl">All Done for now!!</h1>
               <p className="text-2xl">
@@ -122,7 +168,7 @@ export function MyTask({
         ) : (
           <div
             className=" flex-1 h-full overflow-y-scroll mt-1.5 gap-60 p-2 rounded-2xl text-black text-lg max-w-full
-            md:w-full md:bg-gray-200 md:p-4 lg:p-0 lg:bg-gray-50"
+            md:w-full md:bg-gray-200 md:p-4 lg:p-0 lg:bg-gray-500 lg:w-full"
           >
             {task.map((tasks) => {
               const isSelected = tasks.id === selectedTask?.id;
@@ -143,10 +189,11 @@ export function MyTask({
             : "bg-white border-blue-200 shadow-sm"
         }`}
                 >
-                  {/* --- PARTE 1: Información básica (Siempre visible) --- */}
-                  <div className="flex items-center justify-between">
+        
+
+                  <div className="flex items-center justify-between lg:bg-purple-500">
                     <div className="flex items-center gap-2">
-                      {/* Indicador o icono */}
+        
                       <div
                         className={`w-4 h-4 rounded-full ${
                           isSelected ? (
@@ -161,7 +208,6 @@ export function MyTask({
                       </h3>
                     </div>
 
-                    {/* Badges de Estado y Prioridad */}
                     <div className="flex gap-2">
                       <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 rounded-full md:text-base">
                         {tasks.estado}
@@ -172,7 +218,6 @@ export function MyTask({
                     </div>
                   </div>
 
-                  {/* --- PARTE 2: Detalles completos (Solo se muestra si está seleccionada) --- */}
                   {isSelected && (
                     <div className="mt-3 pt-3 border-t border-red-300 space-y-2 text-sm text-gray-700 animate-fadeIn">
                       <div className="flex justify-between">
@@ -185,11 +230,12 @@ export function MyTask({
                         <strong>Category:</strong> {tasks.category}
                       </p>
 
+
                       <p className="text-gray-600 italic md:text-xl">
                         "{tasks.description}"
                       </p>
 
-                      {/* Botones de acción dentro de la tarjeta expandida */}
+            
                       <div className="flex justify-end gap-2 pt-2">
                         <TrashIcon
                           className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-11 md:h-11 text-gray-100 cursor-pointer"
@@ -203,122 +249,10 @@ export function MyTask({
                     </div>
                   )}
                 </div>
+
+
               );
             })}
           </div>
         )}
-      </div>
-    </>
-  );
-}
-
-// DESHABILITAR BOTONES CUANDO NO HAY NADA EN TASKLIST
-
-/* 
-
-        <div className=" border-gray-300 border-2 p-3 m-1.5 mt-4 rounded-2xl text-black md:rounded-2xl md:mt-6">
-          <div className="p-1 flex-1 overflow-y-scroll md:rounded-lg md:p-6">
-            {detailsTaks === null ? (
-              <p className="text-sm bg-gray-300 text-gray-600">Please select a task above to see the details</p>
-            ) : (
-              <div>
-                <div className="grid col-end-1 border-b-red-400 border-b-2 mb-4">
-                  <span>
-                    <strong className="md:text-lg">{detailsTaks.title}</strong>
-                  </span>
-                  <span>
-                    <strong className="md:text-lg">Priority: </strong>{" "}
-                    {detailsTaks.priority}
-                  </span>
-                  <span>
-                    <strong className="md:text-lg">Status: </strong>{" "}
-                    {detailsTaks.estado}
-                  </span>
-                </div>
-
-                <div className="mt-6 gridmd:gap-5">
-                  <span>
-                    <strong className="md:text-lg text-gray-600">Task title: </strong>{" "}
-                    {detailsTaks.title}
-                  </span>
-                  <div>
-                    <strong className="md:text-lg text-gray-600">Task Description: </strong>
-                    <span className="md:text-base">
-                      {detailsTaks.description}
-                    </span>
-                  </div>
-                </div>
-
-                <div>
-                  <strong className="text-gray-600">Date:</strong> {detailsTaks.date}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="flex justify-end gap-1 p-1.5 md:p-4">
-            <TrashIcon
-              className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-10 md:h-10 text-gray-100 cursor-pointer"
-              onClick={() => onDelete(detailsTaks, "task")}
-            />
-            <PencilSquareIcon
-              className="w-8 h-8 bg-red-400 p-1 rounded-sm md:w-10 md:h-10 text-gray-100 cursor-pointer"
-              onClick={() => setEditTaskModal(true)}
-            />
-          </div>
-        </div>*/
-
-/*
-                <div className=" border-gray-300 border-2 p-3 m-1.5 mt-4 rounded-2xl text-black md:rounded-2xl md:mt-6">
-          <div className="p-1 flex-1 overflow-y-scroll md:rounded-lg md:p-6"></div>
-
-          <div className="flex justify-end gap-1 p-1.5 md:p-4">
-            <TrashIcon
-              className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-10 md:h-10 text-gray-100 cursor-pointer"
-              onClick={() => onDelete(detailsTaks, "task")}
-            />
-            <PencilSquareIcon
-              className="w-8 h-8 bg-red-400 p-1 rounded-sm md:w-10 md:h-10 text-gray-100 cursor-pointer"
-              onClick={() => setEditTaskModal(true)}
-            />
-          </div>
-        </div>*/
-
-/**            {task.map((tasks) => {
-              const isSelected = tasks.id === selectedTask?.id;
-
-              <div
-                key={tasks.id}
-                onClick={() => {
-                  (setDetailsTask(tasks), setSelectedTask(tasks));
-                }}
-                
-                className={` border-4 flex gap-2 p-2 rounded-2xl mt-6 py-2 
-                md:max-w-5/6 md:m-2 md:rounded-2xl ${isSelected 
-                  ? "bg-amber-100 border-amber-700 border-2 scale-[1.03] ease-in-out" 
-                  : "bg-white border-blue-200"}`}
-              >
-
-
-                
-                <div className="">
-                  <ClipboardDocumentIcon className="w-8 h-8 text-blue-500"/>
-             
-                </div>
-
-                <div className=" w-full md:p-5">
-                  <span className="font-bold text-xl">{tasks.title}</span>
-
-                  <div className="flex justify-between text-base py-2 md:py-4">
-                    <span className="md:text-lg">
-                      Priority: <br /> 
-                      <span className="bg-blue-100 px-2 rounded-xl">{tasks.priority}</span>
-                    </span>
-
-                    <span className="md:text-lg">Status: <br/>
-                    <span className="bg-blue-100 px-2 rounded-xl">{tasks.estado}</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            })} */
+      </div> */
