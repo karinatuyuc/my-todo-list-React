@@ -41,15 +41,15 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
           </thead>
 
            {createCategories.map((categoria, index) => (
-            <tbody className="border-t-2 border-gray-300 md:text-2xl" key={index}>
+            <tbody className="border-t-2 border-gray-300 md:text-2xl lg:text-xl" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
                 <td className="border-r-2 border-gray-300">{categoria.name}</td>
 
-                <td className="text-black w-1/12 p-1.5 md:p-3 md:w-4/12 lg:w-96">
+                <td className="text-black w-1/12 p-1.5 md:p-3 md:w-4/12 lg:w-96 lg:text-lg">
                   <div className="gap-2 flex justify-items-center justify-center text-white text-center">
                     <button
-                      className="bg-orange-600 flex p-1 rounded-sm lg:p-2 cursor-pointer"
+                      className="bg-orange-600 flex p-1 rounded-sm lg:p-1 cursor-pointer"
                       onClick={() => setOpenEditCategory(true)}
                     >
                       <PencilSquareIcon className="w-4 h-5 md:w-6 md:h-6"
@@ -58,7 +58,7 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
                       Edit
                     </button>
                     <button
-                      className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-2 cursor-pointer`}
+                      className={`bg-orange-600 text-white flex p-1 rounded-sm lg:p-1 cursor-pointer`}
                       onClick={() =>
                         onDelete(categoria, "task category", () =>
                           deleteCategory(categoria.id)
@@ -122,7 +122,7 @@ export function TaskCategories({
     ) : 
     <div className="m-1 p-0.5 lg:p-4 text-black">
         <div className="flex flex-col gap-5 mb-6 ">
-          <div className="text-3xl lg:text-2xl font-bold">
+          <div className="text-3xl lg:text-3xl font-bold">
             <span className="underline decoration-orange-700 underline-offset-4">
               Task{" "}
             </span>
@@ -144,7 +144,7 @@ export function TaskCategories({
 
 
               {createCategories.length === 0 ? null : (
-                <div className="text-gray-500 text-sm flex md:text-2xl">
+                <div className="text-gray-500 text-sm flex md:text-2xl lg:text-xl">
                 <button className="flex cursor-pointer"
                   onClick={() => setOpenCreate(true)}
                 >
