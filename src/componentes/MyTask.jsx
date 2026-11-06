@@ -132,84 +132,33 @@ export function MyTask({
           </div>
         ) : (
           <div className={`${windowWith ? "bg-gray-400" : "bg-green-400"}`}>
-            
             {task.map((tasks) => {
               const isSelected = tasks.id === selectedTask?.id;
 
               return (
-                <div className={`${windowWith ? "bg-red-700 grid grid-cols-2" : "bg-green-500"}`} key={tasks.id}>
-                  <div onClick={() => {
-                    setDetailsTask(tasks);
-                    setSelectedTask(tasks);
-                  }}>
-                <div className="">
-                    <div className="flex items-center gap-2">
-        
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          isSelected ? (
-                            "bg-red-500"
-                          ) : (
-                            <ClipboardDocumentListIcon />
-                          )
-                        }`}
-                      />
-                      <h3 className="font-semibold text-gray-900 text-sm md:text-xl">
-                        {tasks.title}
-                      </h3>
-                    </div>
-
-                    <div className="flex gap-2">
-                      <span className="px-2 py-0.5 text-xs font-medium bg-gray-100 rounded-full md:text-base">
-                        {tasks.estado}
-                      </span>
-                      <span className="px-2 py-0.5 text-xs font-medium bg-amber-200 rounded-full md:text-base">
-                        {tasks.priority}
-                      </span>
-                    </div>
+                <div
+                  className={`${windowWith && isSelected ? "bg-red-700 grid grid-cols-2" : "bg-green-500"}`}
+                  key={tasks.id}
+                >
+                  <div
+                    onClick={() => {
+                      setDetailsTask(tasks);
+                      setSelectedTask(tasks);
+                    }}
+                  >
+                    listas
                   </div>
-
-                  </div>
-
-
-
 
                   {isSelected && (
-                                       <div className="mt-3 pt-3 border-t border-red-300 space-y-2 text-sm text-gray-700 animate-fadeIn">
-                      <div className="flex justify-between">
-                        <span className="md:text-lg">
-                          <strong>Created:</strong> {tasks.date}
-                        </span>
-                      </div>
-
-                      <p className="md:text-lg">
-                        <strong>Category:</strong> {tasks.category}
-                      </p>
-
-
-                      <p className="text-gray-600 italic md:text-xl">
-                        "{tasks.description}"
-                      </p>
-
-            
-                      <div className="flex justify-end gap-2 pt-2">
-                        <TrashIcon
-                          className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-11 md:h-11 text-gray-100 cursor-pointer"
-                          onClick={() => onDelete(detailsTaks, "task")}
-                        />
-                        <PencilSquareIcon
-                          className="w-8 h-8 bg-red-400 p-1 rounded-sm md:w-11 md:h-11 text-gray-100 cursor-pointer"
-                          onClick={() => setEditTaskModal(true)}
-                        />
-                      </div>
+                    <div>
+                      detallesfasdf<br/>
+                      safds
+                      asdfsdf
+                      asdfs
                     </div>
                   )}
-
-
-                  
-
                 </div>
-              )
+              );
             })}
           </div>
         )}
