@@ -91,8 +91,8 @@ export function AddTaskModal({
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-9/12 md:text-lg">
-          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold md:text-xl md:font-semibold">
+        <div className="bg-green-500 p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-9/12 md:text-lg lg:h-11/12 lg:w-2/6">
+          <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold md:text-xl md:font-semibold lg:text-sm">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Add New Task
             </span>
@@ -105,7 +105,7 @@ export function AddTaskModal({
           </nav>
 
           <form onSubmit={onSubmit}>
-            <div className="border-orange-200 border-2 mb-2 p-2 flex flex-col gap-1.5 mt-3 lg:p-2">
+            <div className="border-orange-200 border-2 mb-2 p-2 flex flex-col gap-1.5 mt-3 lg:p-2 lg:text-sm">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
                 Title <span className="text-[7px] text-red-600">*</span>
@@ -118,7 +118,7 @@ export function AddTaskModal({
                 onChange={(e) =>
                   validateTitle(e.target.value, setTitle, setErrors)
                 } // Call validateField on input change
-                className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5 md:text-xl"
+                className="w-60 border-gray-300 border-2 rounded-sm md:w-72 lg:p-0.5 md:text-xl lg:text-sm"
               />
               <span className="text-[8px] text-red-600">{errors.title}</span>
 
@@ -192,7 +192,7 @@ export function AddTaskModal({
                   validateDescription(e.target.value, setDescription, setErrors)
                 }
                 placeholder="Start writing here...." // Placeholder text
-                className="h-28 w-72 border-2 border-gray-200 rounded-sm p-2 md:w-96 md:text-xl"
+                className="h-28 w-72 border-2 border-gray-200 rounded-sm p-2 md:w-96 md:text-xl lg:h-24"
               ></textarea>
               <span className="text-[8px] text-red-600">
                 {errors.description}
@@ -201,7 +201,7 @@ export function AddTaskModal({
 
             <button
               type="submit"
-              className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500"
+              className="cursor-pointer bg-orange-600 p-1 text-amber-50 rounded-sm mt-1 ml-4 w-20 hover:bg-orange-500 lg:p-0.5 lg:text-base "
             >
               Done
             </button>

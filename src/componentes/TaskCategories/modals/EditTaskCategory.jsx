@@ -34,25 +34,25 @@ export function EditTaskCategory({ closeEdit,
 
   return (
     <>
-      <div className="bg-black/80 fixed inset-0 z-50 h-screen w-full flex items-center justify-center rounded-xs text-sm">
+      <div className="bg-black/80 fixed inset-0 z-50 h-full w-full flex items-center justify-center rounded-xs text-sm">
         <div className="bg-white text-black w-80 p-3 rounded-sm md:w-96">
           <div className="p-2">
             <div className="flex items-center justify-between text-lg font-bold mb-10">
-              <div className="text-md md:text-xl">
+              <div className="text-md md:text-xl lg:text-base">
                 <span className="underline underline-offset-4 decoration-amber-600">
                   Edit {" "}
                 </span>
                 Task {" "} Category
               </div>
-              <button className="text-lg underline underline-offset-4 decoration-black cursor-pointer md:text-xl"
+              <button className="text-lg underline underline-offset-4 decoration-black cursor-pointer md:text-xl lg:text-base"
               onClick={() => closeEdit(false)}>
                 Go Back
               </button>
             </div>
 
-            <div className="border-2 border-gray-200 p-4 h-full">
+            <div className="border-2 border-gray-200 p-4 h-full lg:text-base">
               <div className="flex flex-col gap-4">
-                <label htmlFor="category" className="text-sm font-medium md:text-xl">
+                <label htmlFor="category" className="text-sm font-medium md:text-xl lg:text-base">
                   Task Category Title
                 </label>
                 <input
@@ -62,17 +62,19 @@ export function EditTaskCategory({ closeEdit,
                   onChange={(e) => setCategoryTitle(e.target.value)}
                   className={` border-gray-400 border-2 rounded-sm px-2 py-1 
                     focus:border-red-300 focus:ring-1 focus:ring-red-400 focus:outline-none 
-                    transition-all md:p-2 md:text-lg`}
+                    transition-all md:p-2 md:text-lg lg:text-base lg:p-1`}
                 />
               </div>
 
               <span className="text-sm text-red-500"></span>
-              <div className="flex gap-4 mt-6 md:text-lg">
-                <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer md:py-2"
+              <div className="flex gap-4 mt-6 md:text-lg lg:text-xs">
+                <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 
+                rounded w-32 cursor-pointer md:py-2 lg:py-0.5 lg:px-1"
                 onClick={onSubmit}>
                   Update
                 </button>
-                <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded w-32 cursor-pointer md:py-2"
+                <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-1.5 px-3 rounded 
+                w-32 cursor-pointer md:py-2 lg:py-2 lg:px-1"
                 onClick={() => closeEdit(false)}>
                   Cancel
                 </button>

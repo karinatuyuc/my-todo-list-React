@@ -33,26 +33,26 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
         : 
         <table className="w-full text-center text-black">
         <thead>
-            <tr className="md:text-xl md:p-8">
+            <tr className="md:text-xl md:p-8 lg:text-sm">
               <th className="p-2 border-r-2 border-gray-300">SN</th>
-              <th className="p-2 text-lg border-l-2 border-gray-300 md:text-xl">Task Category</th>
+              <th className="p-2 text-lg border-l-2 border-gray-300 md:text-xl lg:text-base">Task Category</th>
               <th className="p-2 border-l-2 border-gray-300">Action</th>
             </tr>
           </thead>
 
            {createCategories.map((categoria, index) => (
-            <tbody className="border-t-2 border-gray-300 md:text-2xl lg:text-xl" key={index}>
+            <tbody className="border-t-2 border-gray-300 md:text-2xl lg:text-base" key={index}>
               <tr>
                 <td className="border-r-2 border-gray-300">{index + 1}</td>
                 <td className="border-r-2 border-gray-300">{categoria.name}</td>
 
-                <td className="text-black w-1/12 p-1.5 md:p-3 md:w-4/12 lg:w-96 lg:text-lg">
+                <td className="text-black w-1/12 p-1.5 md:p-3 md:w-4/12 lg:w-96 lg:text-sm">
                   <div className="gap-2 flex justify-items-center justify-center text-white text-center">
                     <button
-                      className="bg-orange-600 flex p-1 rounded-sm lg:p-1 cursor-pointer"
+                      className="bg-orange-600 flex p-1 rounded-sm lg:p-0.5 cursor-pointer"
                       onClick={() => setOpenEditCategory(true)}
                     >
-                      <PencilSquareIcon className="w-4 h-5 md:w-6 md:h-6"
+                      <PencilSquareIcon className="w-4 h-5 md:w-6 md:h-6 lg:w-5 lg:h-5"
                       onClick={() => editCategory(categoria)}
                       />
                       Edit
@@ -65,7 +65,7 @@ export function TaskCategory({createCategories, setOpenCreate, onDelete,
                         )
                       }
                     >
-                      <TrashIcon className="w-4 h-5 md:w-6 md:h-6"
+                      <TrashIcon className="w-4 h-5 md:w-6 md:h-6 lg:w-5 lg:h-5"
                       />
                       Delete
                     </button>
@@ -135,7 +135,7 @@ export function TaskCategories({
 
 
             <div className="flex justify-between">
-              <span className="font-medium md:text-2xl">
+              <span className="font-medium md:text-2xl lg:text-xl">
                 <span className="underline decoration-orange-700 underline-offset-4">
                   Task
                 </span>{" "}
@@ -144,7 +144,7 @@ export function TaskCategories({
 
 
               {createCategories.length === 0 ? null : (
-                <div className="text-gray-500 text-sm flex md:text-2xl lg:text-xl">
+                <div className="text-gray-500 text-sm flex md:text-2xl lg:text-base">
                 <button className="flex cursor-pointer"
                   onClick={() => setOpenCreate(true)}
                 >

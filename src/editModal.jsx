@@ -97,8 +97,8 @@ export function EditModal({
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-full flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-9/12">
-          <nav className="flex justify-between md:text-xl lg:mt-1 lg:mb-6 lg:font-semibold">
+        <div className="bg-red-500 p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-9/12 lg:h-11/12 lg:w-2/6">
+          <nav className="flex justify-between md:text-xl lg:mt-1 lg:mb-1.5 lg:font-semibold lg:text-sm">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Edit Task
             </span>
@@ -111,7 +111,7 @@ export function EditModal({
           </nav>
 
           <form onSubmit={onSubmitEditedTask}>
-            <div className="border-gray-200 border-2 mt-3 mb-2 p-2 md:text-lg flex flex-col gap-2 lg:mt-4 lg:p-2">
+            <div className="border-gray-200 border-2 mt-3 mb-2 p-2 md:text-lg flex flex-col gap-2 lg:mt-0.5 lg:p-2 lg:text-sm">
               {/**This is the TITLE INPUT */}
               <label htmlFor="title" className="font-medium">
                 Title
@@ -139,7 +139,7 @@ export function EditModal({
               />
 
               {/* Priority options  */}
-              <fieldset className="flex gap-4 lg:gap-8">
+              <fieldset className="flex gap-4 lg:gap-7">
                 <legend className="font-medium">Priority</legend>
                 {priorityOptions.map((priorityOption) => {
                   return (
@@ -173,7 +173,7 @@ export function EditModal({
               </fieldset>
 
               {/**Categories */}
-              <div className="flex gap-2 flex-col mb-2 mt-2">
+              <div className="flex gap-2 flex-col mb-2 mt-2 lg:mt-1 lg:mb-1">
                 <span className="font-medium">Cateogory: </span>
 
                 <select
@@ -191,7 +191,7 @@ export function EditModal({
               </div>
 
               {/**Estado*/}
-              <div className="flex gap-2 flex-col mb-2 mt-2">
+              <div className="flex gap-2 flex-col mb-2 mt-2 lg:mb-1 lg:mt-1">
                 <span className="font-medium">Choose status: </span>
 
                 <select
@@ -216,7 +216,7 @@ export function EditModal({
                 onChange={(e) =>
                   validateDescription(e.target.value, setDescription, setErrors)
                 }
-                className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-96 md:h-28 lg:h-20 lg:w-96"
+                className="border-2 border-gray-200 rounded-sm w-64 p-2 md:w-96 md:h-28 lg:h-16 lg:w-96"
               ></textarea>
               <span className="text-[8px] text-red-600">
                 {errors.description}
@@ -226,7 +226,7 @@ export function EditModal({
             <button
               type="submit"
               className={`cursor-pointer p-1 text-amber-50 
-                rounded-sm mt-1 ml-4 w-18 md:w-24 md:text-lg ${!isDisabled ? "bg-orange-500" : "bg-orange-300"}`}
+                rounded-sm mt-1 ml-4 w-18 md:w-24 md:text-lg lg:p-0.5 lg:text-sm ${!isDisabled ? "bg-orange-500" : "bg-orange-300"}`}
               disabled={isDisabled}
             >
               Done

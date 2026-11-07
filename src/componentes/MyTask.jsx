@@ -118,7 +118,8 @@ export function MyTask({ task, onDelete, setEditTaskModal, setSelectedTask }) {
                     onClick={() => onDelete(detailsTask, "task")}
                     className=""
                   >
-                    <TrashIcon className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-11 md:h-11 text-gray-100 cursor-pointer" />
+                    <TrashIcon className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-11 md:h-11 text-gray-100 cursor-pointer
+                    lg:w-8 lg:h-8" />
                   </button>
                   <button
                     type="button"
@@ -129,7 +130,8 @@ export function MyTask({ task, onDelete, setEditTaskModal, setSelectedTask }) {
                     }}
                     className="rounded-lg"
                   >
-                    <PencilSquareIcon className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-11 md:h-11 text-gray-100 cursor-pointer" />
+                    <PencilSquareIcon className="w-8 h-8 bg-red-400 p-1 rounded-lg md:w-11 md:h-11 text-gray-100 cursor-pointer
+                    lg:w-8 lg:h-8" />
                   </button>
                 </div>
               </section>
