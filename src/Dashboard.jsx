@@ -36,7 +36,7 @@ export default function Dashboard({
   status,
   setStatus,
 }) {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState(localStorage.getItem("username") || "");
   const [priorities] = useState(["Extreme", "Medium", "Low"]);
   const defaultCategories = [
     { id: 1, name: "Personal" },
@@ -65,6 +65,8 @@ export default function Dashboard({
       JSON.stringify(createCategories),
     );
   }, [createCategories]);
+
+  localStorage.setItem("nombre", userName)
 
   const [selectedCategory, setSelectedCategory] = useState(null);
 

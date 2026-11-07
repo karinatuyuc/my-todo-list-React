@@ -10,8 +10,8 @@ import {
 export default function SideMenu({ setUserName, setActiveView }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-
+  const [inputValue, setInputValue] = useState(localStorage.getItem("username") || "");
+localStorage.getItem("username") || ""
   const listStyles =
     "group flex items-center gap-2 text-xl text-white md:gap-4 md:text-4xl lg:text-xl lg:hover:bg-white lg:hover:rounded-lg lg:hover:text-red-500 lg:hover:font-medium lg:hover:cursor-pointer lg:hover:p-2 lg:hover:scale-110 transition-all duration-300";
   const iconStyles =
@@ -33,9 +33,13 @@ export default function SideMenu({ setUserName, setActiveView }) {
     /**This is the fx to change the input username value */
   }
 
+  console.log(inputValue)
+  
   function onClickButton() {
     setUserName(inputValue);
     setIsEditing(!isEditing);
+
+    localStorage.setItem("username", inputValue)
   }
 
   return (
