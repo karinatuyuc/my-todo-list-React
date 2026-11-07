@@ -97,7 +97,7 @@ export function EditModal({
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-full flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-red-500 p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-9/12 lg:h-11/12 lg:w-2/6">
+        <div className="bg-white p-4 m-8 rounded-sm border-2 border-gray-100 shadow-lg w-full md:w-9/12 lg:h-11/12 lg:w-2/6">
           <nav className="flex justify-between md:text-xl lg:mt-1 lg:mb-1.5 lg:font-semibold lg:text-sm">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Edit Task

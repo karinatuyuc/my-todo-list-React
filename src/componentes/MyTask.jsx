@@ -47,7 +47,7 @@ export function MyTask({ task, onDelete, setEditTaskModal, setSelectedTask }) {
           >
             <ul
               className="mt-1.5 flex max-w-full flex-col gap-2 rounded-2xl p-2 text-lg text-black md:p-4
-            lg:bg-amber-500"
+            "
             >
               {task.map((item) => (
                 <li key={item.id}>
@@ -55,7 +55,7 @@ export function MyTask({ task, onDelete, setEditTaskModal, setSelectedTask }) {
                     className={`border p-4 cursor-pointer transition-all  duration-300 ease-in-out 
                       w-full rounded-lg text-left font-bold text-black ${
                         item.id === selectedTaskId
-                          ? "bg-amber-100 border-amber-700 shadow-xl scale-[1.03]"
+                          ? "bg-red-100 border-amber-700 shadow-xl scale-[1.03]"
                           : "bg-white border-blue-200 shadow-sm"
                       }`}
                     onClick={() => {
@@ -67,7 +67,7 @@ export function MyTask({ task, onDelete, setEditTaskModal, setSelectedTask }) {
                     <div
                       className={`flex h-4 w-4 items-center justify-center rounded-full ${
                         item.id === selectedTaskId
-                          ? "bg-white text-red-500"
+                          ? "bg-red-100 text-red-500"
                           : "bg-gray-200"
                       }`}
                     >
@@ -95,7 +95,9 @@ export function MyTask({ task, onDelete, setEditTaskModal, setSelectedTask }) {
             </ul>
 
             {detailsTask && (
-              <section className="rounded-lg border border-red-300 p-6 animate-fadein bg-gray-100 text-black">
+              <section className={`rounded-lg border border-red-300 p-6 animate-fadein bg-gray-100 text-black`
+                
+              }>
                 <h2 className="mb-3 wrap-break-words text-xl font-bold">
                   {detailsTask.title}
                 </h2>

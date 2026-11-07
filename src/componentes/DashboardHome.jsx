@@ -1,5 +1,4 @@
 import { CircularProgressbar } from "react-circular-progressbar";
-import ProgressCircle from "../ProgressCircle";
 import CompletedTask from "../CompletedTask";
 import TaskCard from "../TaskCard";
 import {
@@ -24,10 +23,6 @@ export function DashboardHome({
   setDeleteTaskModal,
   onDelete,
 }) {
-  //**/
-  // CREANDO EL COMPLETED TASK PARA QUE SOLO REDNERIZE DOS SI HAY MAS DE TRES TASK EN EL DASHBOAR DE TASK
-  //
-  //  */
 
   //Emoji hand waving
   const date = new Date(); //Creating the local date
@@ -65,7 +60,7 @@ export function DashboardHome({
 
   return (
     <>
-      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4 md:gap-16 lg:bg-amber-800">
+      <section className="lg:grid lg:grid-cols-2 lg:gap-8 lg:mt-4 md:gap-16">
         {/*ADD TASK SECTION AND CARDS TASKS (different component in REVIEW)*/}
         <div className={`shadow-2xl drop-shadow-lg rounded p-2 lg:p-0 mb-6`}>
           <div className={`lg:top-0 lg:sticky`}>
@@ -96,16 +91,14 @@ export function DashboardHome({
 
               <button
                 className="flex items-center text-sm cursor-pointer gap-1
-                              md:text-base lg:text-sm"
+                              md:text-base lg:text-sm text-gray-400"
+                              onClick={() => setModalAddTask(true)}
               >
                 <PlusIcon
                   className="w-5 h-5 text-red-400 font-medium
                                    md:w-8 md:h-8 lg:w-6 lg:h-6"
-                  onClick={() => setModalAddTask(true)}
                 />
-                <span className="text-gray-400 md:text-3xl lg:text-sm">
-                  Add task
-                </span>
+                Add task
               </button>
             </div>
           </div>

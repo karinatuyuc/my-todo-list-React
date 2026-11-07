@@ -143,7 +143,7 @@ export default function Dashboard({
         />
       )}
 
-      <div className="flex min-h-screen w-full flex-col text-white lg:bg-green-700">
+      <div className="flex min-h-screen w-full flex-col text-white">
         {/*Header*/}
         <header
           className="flex justify-between items-center p-1.5 bg-red-100 sticky top-0 z-20 md:p-6 
@@ -168,7 +168,7 @@ export default function Dashboard({
           </div>
         </header>
 
-        <div className="flex flex-1 flex-col lg:flex-row lg:bg-amber-300">
+        <div className="flex flex-1 flex-col lg:flex-row">
           {/**SIDE MENU */}
           <aside className="lg:bg-red-400 lg:w-80 lg:sticky">
             <SideMenu
@@ -181,9 +181,9 @@ export default function Dashboard({
           </aside>
           {/**End SIDE MENU */}
 
-          <div className="lg:bg-black lg:w-full">
+          <div className="lg:w-full">
             {activeView === "dashboard" && (
-              <div className="mx-3.5 lg:p-0.5 lg:bg-purple-500">
+              <div className="mx-3.5 lg:p-0.5">
                 <div className="flex gap-2 lg:mt-3 lg:ml-6">
                   <div className="flex text-black text-2xl font-medium mb-4 md:text-4xl lg:ml-0 lg:mb-0">
                     <h1 className="sm:truncate sm:overflow-hidden sm:text-ellipsis md:text-4xl lg:text-2xl lg:font-medium">
@@ -203,7 +203,7 @@ export default function Dashboard({
 
             <main
               className="flex-1 p-2 md:px-6 border-4 border-gray-200 m-2 rounded-2xl shadow-2xl drop-shadow-2xl 
-          lg:bg-red-800 lg:max-w-full lg:rounded-md lg:border-2"
+           lg:max-w-full lg:rounded-md lg:border-2"
             >
               {activeView === "dashboard" ? (
                 <div className="p-2">
@@ -248,7 +248,7 @@ export default function Dashboard({
             </main>
           </div>
         </div>
-        <span className="mt-auto text-[10px] bg-red-900 p-1">
+        <span className="mt-auto text-[9px] bg-red-700 p-0.5">
           &copy; 2026 <a>RacooDev</a>. All rights reserved.
         </span>
       </div>

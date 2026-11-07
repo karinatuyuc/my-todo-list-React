@@ -91,7 +91,7 @@ export function AddTaskModal({
   return (
     <>
       <div className="bg-black/80 fixed inset-0 z-50 h-screen flex items-center justify-center rounded-xs text-sm">
-        <div className="bg-green-500 p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-9/12 md:text-lg lg:h-11/12 lg:w-2/6">
+        <div className=" bg-white p-4 m-8 rounded-sm border-2 border-gray-900 shadow-lg w-full md:w-9/12 md:text-lg lg:h-11/12 lg:w-2/6">
           <nav className="flex justify-between lg:mt-1 lg:mb-6 lg:font-semibold md:text-xl md:font-semibold lg:text-sm">
             <span className="underline decoration-orange-500 dcoration-2 underline-offset-4">
               Add New Task
@@ -134,7 +134,7 @@ export function AddTaskModal({
 
               {/**Categories */}
               <div className="flex gap-2 flex-col mb-2 mt-2">
-                <span className="font-medium">Cateogory: </span>
+                <span className="font-medium">Category: </span>
 
                 <select
                   value={category}
