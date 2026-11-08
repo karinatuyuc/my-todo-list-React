@@ -1,9 +1,4 @@
 import { useEffect, useState } from "react";
-import {
-  MagnifyingGlassIcon,
-  ClockIcon,
-  ClipboardDocumentCheckIcon,
-} from "@heroicons/react/24/outline";
 
 import SideMenu from "./sideMenu.jsx";
 import { AddTaskModal } from "./addTaskModal.jsx";
