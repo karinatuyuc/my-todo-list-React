@@ -3,7 +3,6 @@ import { TaskPriority } from "./modals/PriorityModals";
 import { EditTaskCategory } from "./modals/EditTaskCategory";
 import { TaskStatus } from "./modals/StatusModals";
 import { CreateCategoryModal } from "./modals/CreateCategoryModal";
-import { EditDeleteModal } from "../../optionModals/EditDeleteModal";
 import { TrashIcon, PencilSquareIcon } from "@heroicons/react/16/solid";
 import { PlusIcon } from "@heroicons/react/24/outline";
 

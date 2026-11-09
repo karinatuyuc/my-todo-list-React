@@ -11,8 +11,7 @@ export default function TaskCard({
   setSelectedTask,
   onDelete,
 }) {
-  // Receive dataInputs, date, tasks, and setTasks as props
-  //  editTaskModal,setEditTaskModal,onCloseEditModal,
+
 
   const modalRef = useRef(null);
 
